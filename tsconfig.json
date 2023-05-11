@@ -1,0 +1,20 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"extends": "@acdh-oeaw/tsconfig",
+	"compilerOptions": {
+		"module": "preserve",
+		"paths": {
+			"@/*": ["./*"]
+		},
+		"plugins": [{ "name": "next" }]
+	},
+	"include": [
+		"./next-env.d.ts",
+		"./**/*.d.ts",
+		"./**/*.js",
+		"./**/*.ts",
+		"./**/*.tsx",
+		".next/types/**/*.ts"
+	],
+	"exclude": ["node_modules", "out"]
+}
