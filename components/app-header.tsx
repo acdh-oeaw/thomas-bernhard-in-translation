@@ -4,7 +4,6 @@ import type { ReactNode } from "react";
 import { AppNavLink } from "@/components/app-nav-link";
 import { ColorSchemeSwitcher } from "@/components/color-scheme-switcher";
 import type { LinkProps } from "@/components/link";
-import { LocaleSwitcher } from "@/components/locale-switcher";
 import { createHref } from "@/lib/create-href";
 
 export function AppHeader(): ReactNode {
@@ -31,7 +30,6 @@ export function AppHeader(): ReactNode {
 
 				<div className="flex items-center gap-4">
 					<ColorSchemeSwitcher />
-					<LocaleSwitcher />
 				</div>
 			</div>
 		</header>

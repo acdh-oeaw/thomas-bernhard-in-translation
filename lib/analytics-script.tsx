@@ -5,11 +5,12 @@ import type { NextWebVitalsMetric } from "next/app";
 import { useSearchParams } from "next/navigation";
 import Script from "next/script";
 import { useReportWebVitals } from "next/web-vitals";
+import { useLocale } from "next-intl";
 import { Fragment, type ReactNode, Suspense, useEffect } from "react";
 
 import { env } from "@/config/env.config";
 import type { Locale } from "@/config/i18n.config";
-import { useLocale, usePathname } from "@/lib/navigation";
+import { usePathname } from "@/lib/navigation";
 
 declare global {
 	interface Window {

@@ -40,11 +40,6 @@
 	"LocaleLayout": {
 		"skip-to-main-content": "Zum Hauptinhalt springen"
 	},
-	"LocaleSwitcher": {
-		"current-locale": "Aktuelle Sprache: {locale}",
-		"switch-locale": "Sprache wechseln",
-		"switch-locale-to": "Zu {locale} wechseln"
-	},
 	"Mdx": {
 		"FootnoteBackLabel": "Zurück zu Referenz {reference}",
 		"Footnotes": "Fußnoten"

@@ -1,34 +1,12 @@
-import { notFound } from "next/navigation";
-import { useLocale as _useLocale } from "next-intl";
-import { createSharedPathnamesNavigation } from "next-intl/navigation";
+// eslint-disable-next-line no-restricted-imports
+import NextLink from "next/link";
 import type { ComponentPropsWithRef, FC } from "react";
 
-import { isValidLocale, type Locale, locales } from "@/config/i18n.config";
+// eslint-disable-next-line no-restricted-imports
+export { redirect, usePathname, useRouter } from "next/navigation";
 
-const {
-	Link,
-	redirect: _redirect,
-	usePathname,
-	useRouter,
-} = createSharedPathnamesNavigation({
-	locales,
-});
-
-/** FIXME: @see https://github.com/amannn/next-intl/issues/823 */
-const redirect: typeof _redirect = _redirect;
-
-export { redirect, usePathname, useRouter };
-
-export type LocaleLinkProps = Omit<ComponentPropsWithRef<typeof Link>, "href"> & {
+export type LocaleLinkProps = Omit<ComponentPropsWithRef<typeof NextLink>, "href"> & {
 	href?: string | undefined;
 };
 
-export const LocaleLink = Link as FC<LocaleLinkProps>;
-
-export function useLocale(): Locale {
-	const locale = _useLocale();
-
-	if (!isValidLocale(locale)) notFound();
-
-	return locale;
-}
+export const LocaleLink = NextLink as FC<LocaleLinkProps>;

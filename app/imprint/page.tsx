@@ -1,8 +1,8 @@
 import { HttpError, request } from "@acdh-oeaw/lib";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
-import { useTranslations } from "next-intl";
-import { getTranslations, unstable_setRequestLocale as setRequestLocale } from "next-intl/server";
+import { useLocale, useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
 import { MainContent } from "@/components/main-content";
@@ -10,20 +10,13 @@ import { PageTitle } from "@/components/ui/page-title";
 import type { Locale } from "@/config/i18n.config";
 import { createImprintUrl } from "@/config/imprint.config";
 
-interface ImprintPageProps {
-	params: {
-		locale: Locale;
-	};
-}
+interface ImprintPageProps extends EmptyObject {}
 
 export async function generateMetadata(
-	props: ImprintPageProps,
+	_props: ImprintPageProps,
 	_parent: ResolvingMetadata,
 ): Promise<Metadata> {
-	const { params } = props;
-
-	const { locale } = params;
-	const t = await getTranslations({ locale, namespace: "ImprintPage" });
+	const t = await getTranslations("ImprintPage");
 
 	const metadata: Metadata = {
 		title: t("meta.title"),
@@ -32,11 +25,8 @@ export async function generateMetadata(
 	return metadata;
 }
 
-export default function ImprintPage(props: ImprintPageProps): ReactNode {
-	const { params } = props;
-
-	const { locale } = params;
-	setRequestLocale(locale);
+export default function ImprintPage(_props: ImprintPageProps): ReactNode {
+	const locale = useLocale();
 
 	const t = useTranslations("ImprintPage");
 

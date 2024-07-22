@@ -13,29 +13,21 @@ test("should set a canonical url", async ({ createIndexPage }) => {
 		const canonicalUrl = indexPage.page.locator('link[rel="canonical"]');
 		await expect(canonicalUrl).toHaveAttribute(
 			"href",
-			String(createUrl({ baseUrl: env.NEXT_PUBLIC_APP_BASE_URL, pathname: `/${locale}` })),
+			dropTrailingSlash(createUrl({ baseUrl: env.NEXT_PUBLIC_APP_BASE_URL, pathname: "/" })),
 		);
 	}
 });
 
 /** FIXME: @see https://github.com/vercel/next.js/issues/45620 */
 test.fixme("should set document title on not-found page", async ({ createI18n, page }) => {
-	const en = await createI18n(defaultLocale);
+	const { t } = await createI18n(defaultLocale);
 	await page.goto("/unknown");
-	await expect(page).toHaveTitle(
-		[en.t("NotFoundPage.meta.title"), en.t("metadata.title")].join(" | "),
-	);
-
-	const de = await createI18n("de");
-	await page.goto("/de/unknown");
-	await expect(page).toHaveTitle(
-		[de.t("NotFoundPage.meta.title"), de.t("metadata.title")].join(" | "),
-	);
+	await expect(page).toHaveTitle([t("NotFoundPage.meta.title"), t("metadata.title")].join(" | "));
 });
 
 /** FIXME: @see https://github.com/vercel/next.js/issues/45620 */
 test.fixme("should disallow indexing of not-found page", async ({ page }) => {
-	for (const pathname of ["/unknown", "/de/unknown"]) {
+	for (const pathname of ["/unknown"]) {
 		await page.goto(pathname);
 
 		const ogTitle = page.locator('meta[name="robots"]');
@@ -81,7 +73,7 @@ test("should set page metadata", async ({ createIndexPage }) => {
 		const ogUrl = page.locator('meta[property="og:url"]');
 		await expect(ogUrl).toHaveAttribute(
 			"content",
-			String(createUrl({ baseUrl: env.NEXT_PUBLIC_APP_BASE_URL, pathname: `/${locale}` })),
+			dropTrailingSlash(createUrl({ baseUrl: env.NEXT_PUBLIC_APP_BASE_URL, pathname: "/" })),
 		);
 
 		const ogLocale = page.locator('meta[property="og:locale"]');
@@ -110,12 +102,13 @@ test("should add json+ld metadata", async ({ createIndexPage }) => {
 	}
 });
 
-test("should serve an open-graph image", async ({ page, request }) => {
+test("should serve an open-graph image", async ({ createIndexPage, request }) => {
 	for (const locale of locales) {
-		const imagePath = `/${locale}/opengraph-image`;
+		const imagePath = "/opengraph-image";
 
-		await page.goto(`/${locale}`);
-		await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+		const { indexPage } = await createIndexPage(locale);
+		await indexPage.goto();
+		await expect(indexPage.page.locator('meta[property="og:image"]')).toHaveAttribute(
 			"content",
 			expect.stringContaining(
 				String(createUrl({ baseUrl: env.NEXT_PUBLIC_APP_BASE_URL, pathname: imagePath })) + `?`,
@@ -130,3 +123,7 @@ test("should serve an open-graph image", async ({ page, request }) => {
 		expect(contentType).toBe("image/png");
 	}
 });
+
+function dropTrailingSlash(url: URL): string {
+	return String(url).replace(/\/$/, "");
+}

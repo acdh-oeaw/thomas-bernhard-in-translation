@@ -1,26 +1,18 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { useTranslations } from "next-intl";
-import { getTranslations, unstable_setRequestLocale as setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
 import { Logo } from "@/components/logo";
 import { MainContent } from "@/components/main-content";
-import type { Locale } from "@/config/i18n.config";
 
-interface IndexPageProps {
-	params: {
-		locale: Locale;
-	};
-}
+interface IndexPageProps extends EmptyObject {}
 
 export async function generateMetadata(
-	props: IndexPageProps,
+	_props: IndexPageProps,
 	_parent: ResolvingMetadata,
 ): Promise<Metadata> {
-	const { params } = props;
-
-	const { locale } = params;
-	const _t = await getTranslations({ locale, namespace: "IndexPage" });
+	const _t = await getTranslations("IndexPage");
 
 	const metadata: Metadata = {
 		/**
@@ -34,12 +26,7 @@ export async function generateMetadata(
 	return metadata;
 }
 
-export default function IndexPage(props: IndexPageProps): ReactNode {
-	const { params } = props;
-
-	const { locale } = params;
-	setRequestLocale(locale);
-
+export default function IndexPage(_props: IndexPageProps): ReactNode {
 	const t = useTranslations("IndexPage");
 
 	return (

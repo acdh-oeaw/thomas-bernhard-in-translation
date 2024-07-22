@@ -7,9 +7,9 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
 	const meta = await getTranslations({ locale, namespace: "metadata" });
 
 	return {
-		name: meta("Manifest.name"),
-		short_name: meta("Manifest.short-name"),
-		description: meta("Manifest.description"),
+		name: meta("manifest.name"),
+		short_name: meta("manifest.short-name"),
+		description: meta("manifest.description"),
 		start_url: "/",
 		display: "standalone",
 		background_color: "#fff",

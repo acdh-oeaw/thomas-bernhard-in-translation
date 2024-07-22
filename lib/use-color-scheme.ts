@@ -1,10 +1,10 @@
 import "client-only";
 
 import { assert } from "@acdh-oeaw/lib";
+import { useLocale } from "next-intl";
 import { useLayoutEffect, useSyncExternalStore } from "react";
 
 import type { ColorScheme, ColorSchemeState } from "@/lib/color-scheme-script";
-import { useLocale } from "@/lib/navigation";
 
 interface UseColorSchemeReturnValue {
 	colorSchemeState: ColorSchemeState;

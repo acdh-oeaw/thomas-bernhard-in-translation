@@ -1,24 +1,17 @@
 import "server-only";
 
-import { notFound } from "next/navigation";
 import { getRequestConfig } from "next-intl/server";
 
-import { isValidLocale } from "@/config/i18n.config";
+import { defaultLocale } from "@/config/i18n.config";
 
-export default getRequestConfig(async ({ locale }) => {
-	if (!isValidLocale(locale)) notFound();
-
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-	const _messages = await (locale === "en"
-		? /** Enables hot-module-reloading for `en` when using `turbopack`. */
-			import("@/messages/en.json")
-		: import(`@/messages/${locale}.json`));
+export default getRequestConfig(async () => {
+	const locale = defaultLocale;
 
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-	const _metadata = await (locale === "en"
-		? /** Enables hot-module-reloading for `en` when using `turbopack`. */
-			import("@/content/en/metadata/index.json")
-		: import(`@/content/${locale}/metadata/index.json`));
+	const _messages = await import(`@/messages/${locale}.json`);
+
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+	const _metadata = await import(`@/content/${locale}/metadata/index.json`);
 
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
 	const messages = { metadata: _metadata.default, ..._messages.default } as IntlMessages;
@@ -26,6 +19,7 @@ export default getRequestConfig(async ({ locale }) => {
 	const timeZone = "UTC";
 
 	return {
+		locale,
 		messages,
 		timeZone,
 	};

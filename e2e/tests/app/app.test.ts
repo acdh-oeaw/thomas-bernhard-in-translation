@@ -50,12 +50,12 @@ test.describe("app", () => {
 			].join("\n"),
 		);
 
-		for (const locale of locales) {
-			for (const url of ["/", "/imprint"]) {
+		for (const _locale of locales) {
+			for (const pathname of ["/", "/imprint"]) {
 				const loc = String(
 					createUrl({
 						baseUrl: env.NEXT_PUBLIC_APP_BASE_URL,
-						pathname: ["/", locale, url].join(""),
+						pathname,
 					}),
 				);
 
@@ -72,9 +72,9 @@ test.describe("app", () => {
 
 		expect(body.toString()).toEqual(
 			JSON.stringify({
-				name: i18n.t("metadata.Manifest.name"),
-				short_name: i18n.t("metadata.Manifest.short-name"),
-				description: i18n.t("metadata.Manifest.description"),
+				name: i18n.t("metadata.manifest.name"),
+				short_name: i18n.t("metadata.manifest.short-name"),
+				description: i18n.t("metadata.manifest.description"),
 				start_url: "/",
 				display: "standalone",
 				background_color: "#fff",

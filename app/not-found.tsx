@@ -1,19 +1,18 @@
 import type { Metadata, ResolvingMetadata } from "next";
+import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
 import { MainContent } from "@/components/main-content";
 import { PageTitle } from "@/components/ui/page-title";
-import { defaultLocale } from "@/config/i18n.config";
-import { ColorSchemeScript } from "@/lib/color-scheme-script";
-import * as fonts from "@/lib/fonts";
-import { cn } from "@/lib/styles";
+
+interface NotFoundPageProps extends EmptyObject {}
 
 export async function generateMetadata(
-	_props: Record<string, never>,
+	_props: NotFoundPageProps,
 	_parent: ResolvingMetadata,
 ): Promise<Metadata> {
-	const t = await getTranslations({ locale: defaultLocale, namespace: "NotFoundPage" });
+	const t = await getTranslations("NotFoundPage");
 
 	const metadata: Metadata = {
 		title: t("meta.title"),
@@ -30,25 +29,12 @@ export async function generateMetadata(
 	return metadata;
 }
 
-export default async function NotFoundPage(): Promise<Awaited<ReactNode>> {
-	const t = await getTranslations({ locale: defaultLocale, namespace: "NotFoundPage" });
+export default function NotFoundPage(_props: NotFoundPageProps): ReactNode {
+	const t = useTranslations("NotFoundPage");
 
 	return (
-		<html
-			className={cn(fonts.body.variable, fonts.heading.variable)}
-			lang={defaultLocale}
-			/**
-			 * Suppressing hydration warning because we add `data-ui-color-scheme` before first paint.
-			 */
-			suppressHydrationWarning={true}
-		>
-			<body>
-				<ColorSchemeScript />
-
-				<MainContent className="container py-8">
-					<PageTitle>{t("title")}</PageTitle>
-				</MainContent>
-			</body>
-		</html>
+		<MainContent className="container py-8">
+			<PageTitle>{t("title")}</PageTitle>
+		</MainContent>
 	);
 }

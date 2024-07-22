@@ -92,3 +92,11 @@ if the validation pipeline passes.
 
 you can reference the [template repository](https://github.com/acdh-oeaw/template-app-next) for a
 working setup.
+
+## template variants
+
+- `variant/with-commitlint` branch: enables `commitlint` and runs it as a git hook, and as part of
+  the validation workflow in a github action.
+- `variant/with-single-locale` branch: adjusts the template to support a single pre-configured
+  locale only, and removes internationalised routing. ui strings are still managed in the
+  [`messages`](./messages) folder to make it easy to activate full i18n support later if needed.

@@ -17,7 +17,7 @@ const baseUrl = env.NEXT_PUBLIC_APP_BASE_URL;
  * @see https://nextjs.org/docs/app/api-reference/functions/generate-sitemaps
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-	const paths = await glob("./**/page.tsx", { cwd: join(process.cwd(), "app", "[locale]") });
+	const paths = await glob("./**/page.tsx", { cwd: join(process.cwd(), "app") });
 
 	const routes: Array<string> = [];
 
@@ -41,10 +41,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		routes.push(segments.join("/"));
 	});
 
-	const entries = locales.flatMap((locale) => {
+	const entries = locales.flatMap((_locale) => {
 		return routes.map((pathname) => {
 			return {
-				url: String(createUrl({ baseUrl, pathname: `/${locale}/${pathname}` })),
+				url: String(createUrl({ baseUrl, pathname })),
 				/**
 				 * Only add `lastmod` when the publication date is actually known.
 				 * Don't use the build date instead.

@@ -5,7 +5,7 @@
 		"creator": "@acdh_oeaw",
 		"site": "@acdh_oeaw"
 	},
-	"Manifest": {
+	"manifest": {
 		"description": "ACDH-CH Application template",
 		"name": "ACDH-CH App",
 		"short-name": "ACDH-CH App"
