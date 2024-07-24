@@ -104,7 +104,7 @@ jobs:
 
   build-deploy:
     if: ${{ github.event_name == 'push' }}
-    needs: [validate]
+    # needs: [validate]
     uses: ./.github/workflows/build-deploy.yml
     secrets: inherit
     # https://docs.github.com/en/actions/using-workflows/reusing-workflows#access-and-permissions

@@ -14,7 +14,7 @@ import { Providers } from "@/app/providers";
 import { AppFooter } from "@/components/app-footer";
 import { AppHeader } from "@/components/app-header";
 import { AppLayout } from "@/components/app-layout";
-import { id } from "@/components/main-content";
+import { id, MainContent } from "@/components/main-content";
 import { SkipLink } from "@/components/skip-link";
 import { env } from "@/config/env.config";
 import { AnalyticsScript } from "@/lib/analytics-script";
@@ -73,7 +73,6 @@ export async function generateMetadata(
 
 export default function LocaleLayout(props: LocaleLayoutProps): ReactNode {
 	const { children } = props;
-
 	const locale = useLocale();
 
 	const t = useTranslations("LocaleLayout");
@@ -118,7 +117,9 @@ export default function LocaleLayout(props: LocaleLayoutProps): ReactNode {
 				<Providers locale={locale} messages={pick(messages, ["Error"])}>
 					<AppLayout>
 						<AppHeader />
-						{children}
+						<MainContent className="container flex justify-center py-8">
+							<div className="mx-auto max-w-xl">{children}</div>
+						</MainContent>
 						<AppFooter />
 					</AppLayout>
 				</Providers>
@@ -126,3 +127,5 @@ export default function LocaleLayout(props: LocaleLayoutProps): ReactNode {
 		</html>
 	);
 }
+
+// 	return (<html lang={locale}><body className="flex flex-col gap-16 p-10">

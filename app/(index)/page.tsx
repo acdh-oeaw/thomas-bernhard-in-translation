@@ -1,10 +1,10 @@
 import type { Metadata, ResolvingMetadata } from "next";
-import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
-import { Logo } from "@/components/logo";
-import { MainContent } from "@/components/main-content";
+import { ClickablePublicationThumbnail } from "@/components/publication-cover";
+
+import { getPublications } from "../data";
 
 interface IndexPageProps extends EmptyObject {}
 
@@ -27,22 +27,19 @@ export async function generateMetadata(
 }
 
 export default function IndexPage(_props: IndexPageProps): ReactNode {
-	const t = useTranslations("IndexPage");
+	// const t = useTranslations("IndexPage");
+
+	const pubs = getPublications({ erstpublikation: true }, undefined, "RANDOM()", 0, 12);
 
 	return (
-		<MainContent className="container py-8">
-			<section className="mx-auto grid w-full max-w-screen-lg items-start justify-items-center gap-3 px-4 py-8 text-center md:py-12">
-				<div className="flex items-center gap-2 rounded-lg bg-muted px-3 py-1 text-sm font-medium leading-tight">
-					<Logo className="size-4 shrink-0" />
-					<span>{t("badge")}</span>
+		<section className="mx-auto grid w-full max-w-screen-lg items-start justify-items-center gap-3 px-4 py-8 text-center md:py-12">
+			<div className="mx-auto w-full max-w-screen-md text-pretty text-lg text-on-muted sm:text-xl">
+				<div className="grid grid-cols-3 gap-4 lg:grid-cols-4">
+					{pubs.map((p) => {
+						return <ClickablePublicationThumbnail key={p.signatur} publication={p} />;
+					})}
 				</div>
-				<h1 className="text-balance text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:text-6xl">
-					{t("title")}
-				</h1>
-				<div className="mx-auto w-full max-w-screen-md text-pretty text-lg text-on-muted sm:text-xl">
-					{t("lead-in")}
-				</div>
-			</section>
-		</MainContent>
+			</div>
+		</section>
 	);
 }

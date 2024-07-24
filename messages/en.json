@@ -1,4 +1,12 @@
 {
+	"BernhardCategories": {
+		"autobiography": "autobiography",
+		"drama": "drama & libretti",
+		"letterspeechinterview": "letters, speeches, interviews",
+		"novella": "novellas & short prose",
+		"novel": "novels",
+		"prose": "prose"
+	},
 	"AppFooter": {
 		"links": {
 			"imprint": "Imprint"
@@ -7,7 +15,10 @@
 	},
 	"AppHeader": {
 		"links": {
-			"home": "Home"
+			"home": "home",
+			"works": "works",
+			"languages": "languages",
+			"translators": "translators"
 		},
 		"navigation-primary": "Primary"
 	},
@@ -18,6 +29,9 @@
 			"light": "Light",
 			"system": "System"
 		}
+	},
+	"PublicationCover": {
+		"alt_text": "Book cover of"
 	},
 	"Error": {
 		"something-went-wrong": "Something went wrong!",
@@ -37,8 +51,11 @@
 	"Loading": {
 		"loading": "Loading"
 	},
+	"LanguagesPage": {
+		"languages": "languages"
+	},
 	"LocaleLayout": {
-		"skip-to-main-content": "Skip to main content"
+		"skip-to-main-content": "skip to main content"
 	},
 	"Mdx": {
 		"FootnoteBackLabel": "Back to reference {reference}",
@@ -49,5 +66,14 @@
 			"title": "Page not found"
 		},
 		"title": "Page not found"
+	},
+	"PublicationPage": {
+		"contains": "contains",
+		"more_in": "more in",
+		"translated_by": "translated by",
+		"later_editions": "later editions"
+	},
+	"WorkPage": {
+		"foo": "bar"
 	}
 }
