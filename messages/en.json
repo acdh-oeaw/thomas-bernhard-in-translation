@@ -1,11 +1,14 @@
 {
 	"BernhardCategories": {
+		"adaptations": "adaptations",
 		"autobiography": "autobiography",
 		"drama": "drama & libretti",
+		"fragments": "fragments",
 		"letterspeechinterview": "letters, speeches, interviews",
-		"novella": "novellas & short prose",
-		"novel": "novels",
-		"prose": "prose"
+		"novellas": "novellas & short prose",
+		"novels": "novels",
+		"prose": "prose",
+		"poetry": "poetry"
 	},
 	"AppFooter": {
 		"links": {
@@ -16,7 +19,7 @@
 	"AppHeader": {
 		"links": {
 			"home": "home",
-			"works": "works",
+			"works": "explore works",
 			"languages": "languages",
 			"translators": "translators"
 		},
@@ -73,7 +76,10 @@
 		"translated_by": "translated by",
 		"later_editions": "later editions"
 	},
+	"TranslatorPage": {
+		"published_in": "published in"
+	},
 	"WorkPage": {
-		"foo": "bar"
+		"category": "category"
 	}
 }

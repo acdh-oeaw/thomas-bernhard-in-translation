@@ -1,9 +1,11 @@
-// eslint-disable-next-line no-restricted-imports
-import Link from "next/link";
 import { useTranslations } from "next-intl";
 
 import { getLanguages, getPublications } from "@/app/data";
+import { AppNavLink } from "@/components/app-nav-link";
+import { MainContent } from "@/components/main-content";
 import { ClickablePublicationThumbnail } from "@/components/publication-cover";
+import { PublicationGrid } from "@/components/publication-grid";
+import { Select, SelectContent, SelectTrigger } from "@/components/ui/select";
 
 interface LanguagesPageProps {
 	language?: string;
@@ -18,30 +20,32 @@ export default function LanguagesPage(props: LanguagesPageProps) {
 	// TODO throw error if empty
 
 	return (
-		<div className="flex">
+		<MainContent>
 			<div className="w-44">
 				<span className="font-bold">{t("languages")}</span>
 				<ul>
 					{ls.map((l) => {
 						return (
 							<li key={l}>
-								<Link href={`/language/${l}`}>{l}</Link>
+								<AppNavLink href={`/language/${l}`}>{l}</AppNavLink>
 							</li>
 						);
 					})}
 				</ul>
 			</div>
 			<div>
-				<select>
-					<option>all works</option>
-					<option>what&apos;s this dropdown??</option>
-				</select>
-				<div className="grid grid-cols-3">
+				<div>
+					<Select className=" w-44">
+						<SelectTrigger>all works</SelectTrigger>
+						<SelectContent></SelectContent>
+					</Select>
+				</div>
+				<PublicationGrid>
 					{pubs.map((p) => {
 						return <ClickablePublicationThumbnail key={p.signatur} publication={p} />;
 					})}
-				</div>
+				</PublicationGrid>
 			</div>
-		</div>
+		</MainContent>
 	);
 }

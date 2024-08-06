@@ -2,7 +2,9 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
+import { MainContent } from "@/components/main-content";
 import { ClickablePublicationThumbnail } from "@/components/publication-cover";
+import { PublicationGrid } from "@/components/publication-grid";
 
 import { getPublications } from "../data";
 
@@ -31,15 +33,14 @@ export default function IndexPage(_props: IndexPageProps): ReactNode {
 
 	const pubs = getPublications({ erstpublikation: true }, undefined, "RANDOM()", 0, 12);
 
+	// <section className="mx-auto grid w-full max-w-screen-lg items-start justify-items-center gap-3 px-4 py-8 text-center md:py-12">
 	return (
-		<section className="mx-auto grid w-full max-w-screen-lg items-start justify-items-center gap-3 px-4 py-8 text-center md:py-12">
-			<div className="mx-auto w-full max-w-screen-md text-pretty text-lg text-on-muted sm:text-xl">
-				<div className="grid grid-cols-3 gap-4 lg:grid-cols-4">
-					{pubs.map((p) => {
-						return <ClickablePublicationThumbnail key={p.signatur} publication={p} />;
-					})}
-				</div>
-			</div>
-		</section>
+		<MainContent className="">
+			<PublicationGrid>
+				{pubs.map((p) => {
+					return <ClickablePublicationThumbnail key={p.signatur} publication={p} />;
+				})}
+			</PublicationGrid>
+		</MainContent>
 	);
 }

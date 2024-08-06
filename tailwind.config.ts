@@ -21,6 +21,9 @@ const config = {
 				heading: "var(--font-heading, var(--font-body, ui-sans-serif)), system-ui, sans-serif",
 			},
 			colors: {
+				highlight: "#7dc4cc",
+				hover: "#7dc4cc",
+				link: "#7dc4cc",
 				neutral: {
 					"0": "white",
 					...colors.zinc,

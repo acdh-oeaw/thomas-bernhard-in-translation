@@ -22,8 +22,6 @@ logger.addFilter(ContextFilter())
 
 data = [row for row in csv.DictReader(open('thbnew.tsv'), delimiter='\t')][:-1]
 
-# id, gnd, title -- im OpenRefine ist zZt nur die gnd des *1.* Originalwerks der 
-# Publikation vermerkt!? muesste man da dann einen auto-lookup/inference machen...
 bernhardworks = {} # map key is gnd (if exists), otherwise title
 
 publishers = {}
@@ -32,6 +30,7 @@ translators = {}
 def orig(i):
     return f"contains orig. {i}"
 
+# herausgabejahr des originalwerks (lookup über lobid.org GND-Datenbank)
 def getyear(gnd):
     fn = f'gnd/{gnd}.json'
     if not os.path.isfile(fn):
@@ -233,6 +232,5 @@ alldata = {
     'translators': list(translators.values())
 }
 
-# json.dump(alldata, open('../app/data.json', 'w'), indent=2)
-json.dump(alldata, open('../app/data.json', 'w'))
+json.dump(alldata, open('../app/data.json', 'w'), indent='\t')
 

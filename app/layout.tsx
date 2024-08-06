@@ -14,13 +14,13 @@ import { Providers } from "@/app/providers";
 import { AppFooter } from "@/components/app-footer";
 import { AppHeader } from "@/components/app-header";
 import { AppLayout } from "@/components/app-layout";
-import { id, MainContent } from "@/components/main-content";
+import { id } from "@/components/main-content";
 import { SkipLink } from "@/components/skip-link";
 import { env } from "@/config/env.config";
 import { AnalyticsScript } from "@/lib/analytics-script";
 import { ColorSchemeScript } from "@/lib/color-scheme-script";
-import * as fonts from "@/lib/fonts";
-import { cn } from "@/lib/styles";
+// import * as fonts from "@/lib/fonts";
+// import { cn } from "@/lib/styles";
 
 interface LocaleLayoutProps {
 	children: ReactNode;
@@ -81,7 +81,7 @@ export default function LocaleLayout(props: LocaleLayoutProps): ReactNode {
 
 	return (
 		<html
-			className={cn(fonts.body.variable, fonts.heading.variable)}
+			// className={cn(fonts.body.variable, fonts.heading.variable)}
 			lang={locale}
 			/**
 			 * Suppressing hydration warning because we add `data-ui-color-scheme` before first paint.
@@ -117,9 +117,7 @@ export default function LocaleLayout(props: LocaleLayoutProps): ReactNode {
 				<Providers locale={locale} messages={pick(messages, ["Error"])}>
 					<AppLayout>
 						<AppHeader />
-						<MainContent className="container flex justify-center py-8">
-							<div className="mx-auto max-w-xl">{children}</div>
-						</MainContent>
+						{children}
 						<AppFooter />
 					</AppLayout>
 				</Providers>

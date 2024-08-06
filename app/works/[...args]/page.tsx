@@ -1,22 +1,16 @@
-"use client";
-// eslint-disable-next-line no-restricted-imports
-import Link from "next/link";
-import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
 
-import { getPublications, getWork, getWorks } from "@/app/data";
+// import { useEffect, useState } from "react";
+import { getPublications, getWorks } from "@/app/data";
+import { AppNavLink } from "@/components/app-nav-link";
+import { MainContent } from "@/components/main-content";
 import { ClickablePublicationThumbnail } from "@/components/publication-cover";
-import {
-	type BernhardWork,
-	type Category,
-	type Publication,
-	publicationTypes,
-} from "@/types/model";
+import { PublicationGrid } from "@/components/publication-grid";
+import { Category } from "@/types/model";
 
 interface WorkPageProps {
 	params: {
-		args: [Category, string?];
+		args: [Category?, string?];
 	};
 }
 
@@ -24,69 +18,68 @@ export default function WorkPage(props: WorkPageProps) {
 	const catt = useTranslations("BernhardCategories");
 	const _t = useTranslations("WorkPage");
 
-	const [category, _setCategory] = useState<Category>(props.params.args[0]);
-	const [workId, setWorkId] = useState<string>(props.params.args[1]);
+	const category = props.params.args[0];
+	// const [category, _setCategory] = useState<Category | undefined>(props.params.args[0]);
+	// const [workId, setWorkId] = useState<string | undefined>(props.params.args[1]);
 
 	// query result based on category
-	const [works, _setWorks] = useState<Array<BernhardWork>>(getWorks(category));
-	// query result based on id (and language?)
-	const [publications, setPublications] = useState<Array<Publication>>([]);
+	// const [works, _setWorks] = useState<Array<BernhardWork>>(getWorks(category));
+	const works = getWorks(category);
+	const publications = getPublications({ erstpublikation: true }, category, "", 0, 0);
+	// // query result based on id (and language?)
+	// const [publications, setPublications] = useState<Array<Publication>>([]);
 
-	useEffect(() => {
-		setPublications(getPublications({ erstpublikation: true }));
-	}, [workId]);
+	// useEffect(() => {
+	// 	setPublications(getPublications({ erstpublikation: true }));
+	// }, [workId]);
 
-	if ((publicationTypes as unknown as Array<string>).includes(category)) {
-		// setWorks(getWorks(category));
-		if (workId) {
-			const work = getWork(workId);
-			if (!work) {
-				return notFound();
-			}
-		}
-	}
+	//if (false) {
+	//	//publicationTypes.includes(category)) {
+	//	// setWorks(getWorks(category));
+	//	if (workId) {
+	//		const work = getWork(workId);
+	//		if (!work) {
+	//			return notFound();
+	//		}
+	//	}
+	// }
 
-	// list all categories first -- we'll need this later anyway
-	// const t = Publication.categories
-	// {([c in Publication.categories].map(e => e)}
 	return (
-		<>
-			<div className="flex gap-4 font-bold">
-				{publicationTypes.map((c) => {
+		<MainContent className="">
+			<div className="flex flex-wrap justify-center gap-4">
+				{Object.keys(Category).map((c) => {
 					return (
-						<Link key={c} href={`/works/${c}`}>
-							{c}
-						</Link>
+						<AppNavLink key={c} href={`/works/${c}`}>
+							{
+								// eslint-disable-next-line @typescript-eslint/no-explicit-any
+								catt(c as any)
+							}
+						</AppNavLink>
 					);
 				})}
 			</div>
 
-			<div className="flex">
-				<div>
-					{catt(category)}
-					<ul>
-						{works.map((w) => {
-							return (
-								<li key={w.id}>
-									<button
-										onClick={() => {
-											setWorkId(w.gnd || w.id);
-										}}
-										type="button"
-									>
-										{w.title} {w.year ? `(${String(w.year)})` : null}
-									</button>
-								</li>
-							);
-						})}
-					</ul>
-				</div>
-				<div>
-					{publications.map((p) => {
-						return <ClickablePublicationThumbnail key={p.signatur} publication={p} />;
+			<div>
+				{
+					// category ? catt(category as any) : null
+				}
+				<ul>
+					{works.map((w) => {
+						return (
+							<li key={w.id}>
+								<AppNavLink href={`/works/${w.gnd || w.id}`}>
+									{w.title} {w.year ? `(${String(w.year)})` : null}
+								</AppNavLink>
+							</li>
+						);
 					})}
-				</div>
+				</ul>
 			</div>
-		</>
+			<PublicationGrid>
+				{publications.map((p) => {
+					return <ClickablePublicationThumbnail key={p.signatur} publication={p} />;
+				})}
+			</PublicationGrid>
+		</MainContent>
 	);
 }

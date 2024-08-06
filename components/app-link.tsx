@@ -13,8 +13,9 @@ export function AppLink(props: AppLinkProps): ReactNode {
 	return (
 		<Link
 			{...rest}
+			// eslint-disable-next-line tailwindcss/no-contradicting-classname
 			className={cn(
-				"text-on-background/60 transition aria-[current]:font-medium aria-[current]:text-on-background/80 hover:text-on-background/80 focus-visible:text-on-background/80",
+				"text-link text-on-background/60 transition aria-[current]:font-medium aria-[current]:text-on-background/80 hover:text-on-background/80 focus-visible:text-on-background/80",
 				className,
 			)}
 		>

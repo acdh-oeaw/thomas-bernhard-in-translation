@@ -8,11 +8,14 @@ interface MainContentProps {
 }
 
 export function MainContent(props: MainContentProps): ReactNode {
-	const { children, className } = props;
+	const { children, className = "grid grid-cols-[25%_75%]" } = props;
 
 	return (
-		<main className={className} id={id} tabIndex={-1}>
-			{children}
+		<main className="container max-w-screen-lg p-8" id={id} tabIndex={-1}>
+			<div className={className}>{children}</div>
 		</main>
 	);
 }
+// <MainContent className="container flex justify-center py-8">
+// 	<div className="mx-auto max-w-screen-lg">{children}</div>
+// </MainContent>

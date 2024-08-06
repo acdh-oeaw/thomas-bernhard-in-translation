@@ -4,30 +4,35 @@ import type { ReactNode } from "react";
 
 import type { Publication } from "@/types/model";
 
-import { Link } from "./link";
+import { AppLink } from "./app-link";
 
 interface PublicationProps {
 	publication: Publication;
+	className?: string;
 }
 
 export function PublicationCover(props: PublicationProps): ReactNode {
 	const t = useTranslations("PublicationCover");
 	return (
-		<Image
-			alt={`${t("alt_text")} ${props.publication.title}`}
-			fill={true}
-			src={`/covers/${props.publication.signatur}.jpg`}
-			style={{ objectFit: "contain" }}
-		/>
+		<div className={`${props.className ?? "m-2 size-44"} relative`}>
+			<Image
+				alt={`${t("alt_text")} ${props.publication.title}`}
+				fill={true}
+				src={
+					props.publication.image
+						? `/covers/${props.publication.signatur}.jpg`
+						: "/assets/images/logo.svg"
+				}
+				style={{ objectFit: "contain" }}
+			/>
+		</div>
 	);
 }
 
 export function ClickablePublicationThumbnail(props: PublicationProps) {
 	return (
-		<Link href={`/publication/${props.publication.signatur}`}>
-			<div className="relative size-44 p-3">
-				<PublicationCover publication={props.publication} />
-			</div>
-		</Link>
+		<AppLink href={`/publication/${props.publication.signatur}`}>
+			<PublicationCover className={props.className} publication={props.publication} />
+		</AppLink>
 	);
 }

@@ -1,46 +1,47 @@
-import type {
-	BernhardWork,
-	Publication,
-	publicationTypes,
-	Translation,
-	Translator,
-} from "@/types/model";
+import { type BernhardWork, Category, type Publication, type Translator } from "@/types/model";
 
 import data from "./data.json";
 
 const publications = data.publications as unknown as Record<string, Publication>;
 const bernhardworks = data.bernhardworks as unknown as Array<BernhardWork>;
 const translators = data.translators as unknown as Array<Translator>;
-const translations = data.translations as unknown as Array<Translation>;
 
-const languages = Array.from(
-	new Set(
-		Object.values(publications).map((e) => {
-			return e.language;
-		}),
-	),
-).sort();
+const languages = Object.values(publications).reduce<Record<string, Record<string, Translator>>>(
+	(acc, cur) => {
+		const ts = cur.contains.flatMap((p) => {
+			return p.translators;
+		});
+		if (!(cur.language in acc)) {
+			acc[cur.language] = {};
+		}
+		ts.forEach((t) => {
+			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+			acc[cur.language]![t.name] = t;
+		});
+		return acc;
+	},
+	{},
+);
 
 export function getChildren(pub: Publication): Array<Publication> | undefined {
-	return pub.parents
-		?.flatMap((ps) => {
-			return getPublication(ps.signatur);
-		})
-		.filter((p) => {
-			return p !== undefined;
-		});
+	return pub.children?.map((p) => {
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		return getPublication(p)!;
+	});
 }
 export function getLanguages(): Array<string> {
-	return languages;
+	return Object.keys(languages);
 }
 
+// returns full shape (works, translators and children all resolved)
 export function getPublication(signatur: string): Publication | undefined {
 	return publications[signatur];
 }
 
+// returns a shallow representation of publications (foreign key indices unresolved)
 export function getPublications(
 	filter?: { [key in keyof Publication]?: Publication[key] },
-	category?: typeof publicationTypes,
+	category?: Category,
 	sort?: string,
 	offset = 0,
 	limit = 10,
@@ -49,7 +50,10 @@ export function getPublications(
 
 	if (category) {
 		pubs = pubs.filter((p) => {
-			return p.categories.includes(category);
+			return p.categories.includes(
+				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+				Object.values(Category)[Object.keys(Category).indexOf(category)]!,
+			);
 		});
 	}
 	if (filter) {
@@ -70,28 +74,46 @@ export function getPublications(
 	return limit ? pubs.slice(offset, offset + limit) : pubs.slice(offset);
 }
 
-// get 4 publications, ideally in the same language but excluding the publication
+// get 4 publications, ideally in the same language but excluding the publication itself *and* its
+// children (because they will already be listed separately anyway)
 export function getSameLanguagePublications(pub: Publication) {
+	const banned = [pub.signatur, ...(pub.children ?? [])];
 	return Object.values(publications)
 		.filter((p) => {
-			return p.language === pub.language && p.signatur !== pub.signatur;
+			// TODO maybe only/preferable only show erstpublikationen?
+			return p.language === pub.language && !banned.includes(p.signatur);
 		})
 		.sort(() => {
 			return Math.random() - 0.5;
 		})
-		.slice(0, 3);
+		.slice(0, 4);
 }
 
-export function getTranslation(id: number): Translation | undefined {
-	return translations[id - 1];
+// get the translator and all publications that have at least one translation by them in
+export function getTranslator(id: string): {
+	translator: Translator;
+	publications: Array<Publication>;
+} {
+	const tr = translators.find((t) => {
+		return t.id === id;
+	});
+	const pubs = Object.values(publications).filter((p) => {
+		return p.contains.some((t) => {
+			return t.translators.some((tr) => {
+				return tr.id === id;
+			});
+		});
+	});
+
+	return {
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		translator: tr!,
+		publications: pubs,
+	};
 }
 
-export function getTranslator(id: number): Translator | undefined {
-	return translators[id - 1];
-}
-
-export function getTranslators(): Array<Translator> | undefined {
-	return translators;
+export function getTranslators(): Record<string, Record<string, Translator>> {
+	return languages;
 }
 
 export function getWork(gndOrId: string): BernhardWork | undefined {
@@ -101,7 +123,7 @@ export function getWork(gndOrId: string): BernhardWork | undefined {
 }
 
 // get list of works but actually by way of publications of that category...
-export function getWorks(category?: typeof publicationTypes): Array<BernhardWork> {
+export function getWorks(category?: Category): Array<BernhardWork> {
 	const pubs: Array<Publication> = getPublications({}, category, undefined, 0, 0);
 	const translations = pubs.flatMap((p) => {
 		return p.contains;
