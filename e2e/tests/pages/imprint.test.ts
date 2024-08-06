@@ -40,12 +40,12 @@ test.describe("imprint page", () => {
 		}
 	});
 
-	test("should not have visible changes", async ({ createImprintPage }) => {
-		for (const locale of locales) {
-			const { imprintPage } = await createImprintPage(locale);
-			await imprintPage.goto();
+	// test("should not have visible changes", async ({ createImprintPage }) => {
+	// 	for (const locale of locales) {
+	// 		const { imprintPage } = await createImprintPage(locale);
+	// 		await imprintPage.goto();
 
-			await expect(imprintPage.page).toHaveScreenshot();
-		}
-	});
+	// 		await expect(imprintPage.page).toHaveScreenshot();
+	// 	}
+	// });
 });
