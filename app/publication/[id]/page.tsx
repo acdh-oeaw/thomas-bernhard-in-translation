@@ -1,13 +1,13 @@
 import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
-import type { ReactNode } from "react";
 
 import { getChildren, getPublication, getSameLanguagePublications } from "@/app/data";
 import { AppLink } from "@/components/app-link";
 import { BernhardWorkLink } from "@/components/bernhard-links";
+import { InlineList } from "@/components/inline-list";
 import { MainContent } from "@/components/main-content";
 import { ClickablePublicationThumbnail, PublicationCover } from "@/components/publication-cover";
-import type { Publication } from "@/types/model";
+import type { Publication, Translator } from "@/types/model";
 
 interface PublicationPageProps {
 	params: {
@@ -15,34 +15,21 @@ interface PublicationPageProps {
 	};
 }
 
-function intersperseJsx(children: Array<ReactNode>) {
-	return (
-		<>
-			{children.map((e, i) => {
-				return i === 0 ? e : <> / {e}</>;
-			})}
-		</>
-	);
-}
-
-// return a React.Component array of links to all unique translators
-function formatTranslators(pub: Publication) {
-	{
-		const uniqueTranslators = pub.contains.flatMap((translation) => {
-			// TODO filter unique and concat
-			// TODO add superscripts
-			return translation.translators;
+// extract all unique translators, and the indices of their translations within this publication
+function translatorIndices(pub: Publication): Array<[Translator, Array<number>]> {
+	return pub.contains.reduce<Array<[Translator, Array<number>]>>((acc, translation, i) => {
+		translation.translators.forEach((translator) => {
+			const tupel = acc.find((candidate) => {
+				return candidate[0].id === translator.id;
+			});
+			if (tupel === undefined) {
+				acc.push([translator, [i]]);
+			} else {
+				tupel[1].push(i);
+			}
 		});
-		return intersperseJsx(
-			uniqueTranslators.map((t) => {
-				return (
-					<AppLink key={t.id} href={`/translator/${t.id}`}>
-						{t.name}
-					</AppLink> // FIXME add commas by mapping over the JSX elements
-				);
-			}),
-		);
-	}
+		return acc;
+	}, []);
 }
 
 export default function PublicationPage(props: PublicationPageProps) {
@@ -52,6 +39,12 @@ export default function PublicationPage(props: PublicationPageProps) {
 		return notFound();
 	}
 	const later = getChildren(pub);
+	const translatorInfo = translatorIndices(pub);
+	// don't show translator/translation indices when all translations are authored by all translators
+	const showIndices = translatorInfo.some(([_t, is]) => {
+		return is.length !== pub.contains.length;
+	});
+
 	return (
 		<MainContent className="">
 			<h1 className="font-bold">{pub.title}</h1>
@@ -61,24 +54,48 @@ export default function PublicationPage(props: PublicationPageProps) {
 				<div className="grow-[2] basis-2/3">
 					<p className="italic">{pub.language}</p>
 					<p>
-						{t("translated_by")} {formatTranslators(pub)}
+						{t("translated_by")}{" "}
+						<InlineList>
+							{translatorInfo.map((t, i) => {
+								return (
+									<>
+										<AppLink key={t[0].id} href={`/translator/${t[0].id}`}>
+											{t[0].name}
+										</AppLink>
+										{showIndices ? <sup>{i + 1}</sup> : null}
+									</>
+								);
+							})}
+						</InlineList>
 					</p>
-					{/* TODO map over all works, find unique translators? */}
 					<p>{pub.year}</p>
 					<p className="italic">{t("contains")}</p>
 					<p>
-						{pub.contains
-							.map((t) => {
-								return t.title; // title of the translation
-							})
-							.join(" / ")}
+						<InlineList separator=" / ">
+							{pub.contains.map((t, itranslation) => {
+								return (
+									<>
+										{t.title}
+										<sup>
+											{showIndices
+												? translatorInfo
+														.reduce<Array<number>>((acc, [_t, is], itranslator) => {
+															return is.includes(itranslation) ? [...acc, itranslator + 1] : acc;
+														}, [])
+														.join(",")
+												: null}
+										</sup>
+									</>
+								);
+							})}
+						</InlineList>
 					</p>
 					<p>
-						{intersperseJsx(
-							pub.contains.map((t) => {
+						<InlineList separator=" / ">
+							{pub.contains.map((t) => {
 								return <BernhardWorkLink key={t.work.id} work={t.work} />;
-							}),
-						)}
+							})}
+						</InlineList>
 					</p>
 				</div>
 			</div>
