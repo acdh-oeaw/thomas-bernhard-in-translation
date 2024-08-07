@@ -36,6 +36,7 @@ export default function IndexPage(_props: IndexPageProps): ReactNode {
 	// <section className="mx-auto grid w-full max-w-screen-lg items-start justify-items-center gap-3 px-4 py-8 text-center md:py-12">
 	return (
 		<MainContent className="">
+			<h1 className="sr-only">A random sample of Thomas Bernhard translations</h1>
 			<PublicationGrid>
 				{pubs.map((p) => {
 					return <ClickablePublicationThumbnail key={p.signatur} publication={p} />;
