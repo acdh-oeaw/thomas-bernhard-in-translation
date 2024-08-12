@@ -5,11 +5,18 @@ import { AppNavLink } from "@/components/app-nav-link";
 import { MainContent } from "@/components/main-content";
 import { ClickablePublicationThumbnail } from "@/components/publication-cover";
 import { PublicationGrid } from "@/components/publication-grid";
-import { Select, SelectContent, SelectTrigger } from "@/components/ui/select";
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectPopover,
+	SelectTrigger,
+} from "@/components/ui/select";
 
 interface LanguagesPageProps {
 	language?: string;
 }
+
 export default function LanguagesPage(props: LanguagesPageProps) {
 	const t = useTranslations("LanguagesPage");
 
@@ -36,13 +43,17 @@ export default function LanguagesPage(props: LanguagesPageProps) {
 			<div>
 				<div>
 					<Select className=" w-44">
-						<SelectTrigger>all works</SelectTrigger>
-						<SelectContent></SelectContent>
+						<SelectTrigger></SelectTrigger>
+						<SelectPopover>
+							<SelectContent>
+								<SelectItem>asd</SelectItem>
+							</SelectContent>
+						</SelectPopover>
 					</Select>
 				</div>
 				<PublicationGrid>
 					{pubs.map((p) => {
-						return <ClickablePublicationThumbnail key={p.signatur} publication={p} />;
+						return <ClickablePublicationThumbnail key={p.id} publication={p} />;
 					})}
 				</PublicationGrid>
 			</div>

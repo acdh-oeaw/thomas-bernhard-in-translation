@@ -23,8 +23,8 @@ const languages = Object.values(publications).reduce<Record<string, Record<strin
 	{},
 );
 
-export function getChildren(pub: Publication): Array<Publication> | undefined {
-	return pub.children?.map((p) => {
+export function getLaterEditions(pub: Publication): Array<Publication> | undefined {
+	return pub.later?.map((p) => {
 		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 		return getPublication(p)!;
 	});
@@ -77,11 +77,11 @@ export function getPublications(
 // get 4 publications, ideally in the same language but excluding the publication itself *and* its
 // children (because they will already be listed separately anyway)
 export function getSameLanguagePublications(pub: Publication) {
-	const banned = [pub.signatur, ...(pub.children ?? [])];
+	const banned = [pub.id, ...(pub.later ?? [])];
 	return Object.values(publications)
 		.filter((p) => {
 			// TODO maybe only/preferable only show erstpublikationen?
-			return p.language === pub.language && !banned.includes(p.signatur);
+			return p.language === pub.language && !banned.includes(p.id);
 		})
 		.sort(() => {
 			return Math.random() - 0.5;

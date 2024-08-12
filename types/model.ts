@@ -1,51 +1,58 @@
 // these end up in public URLs as slugs, so come up with good names!
-// TODO singular or plural for the url?
 export enum Category {
-	prose = "prose",
-	drama = "drama & libretti",
-	poetry = "poetry",
-	letterspeechinterview = "letters, speeches, interviews",
-	adaptations = "adaptations",
 	novels = "novels",
 	novellas = "novellas & short prose",
 	autobiography = "autobiography",
 	fragments = "fragments",
+
+	drama = "drama & libretti",
+	poetry = "poetry",
+	letterspeechinterview = "letters, speeches, interviews",
+	adaptations = "adaptations",
 }
+
+export type Prose =
+	| Category.autobiography
+	| Category.fragments
+	| Category.novellas
+	| Category.novels;
 
 /** Publication contains one or more translated works. */
 export interface Publication {
-	// id: string; // FIXME signatur can work as string?
-	signatur: string;
-	erstpublikation: boolean; // TODO: what is this? -- ist das nicht eher eine eigenschaft der translation?
-	parents?: Array<Publication> | null; // TODO JSON import gives nulls instead of undefined...
-	children?: Array<string>; // FIXME temporary
-	more?: Array<Publication>; // TODO foreign keys in the OpenRefine sheet, but no data on the sub-entries?
+	id: string; // 'signatur' in openrefine
 	title: string;
-	year: number;
 	language: string;
 	contains: Array<Translation>;
-	publisher: Publisher;
 	categories: Array<Category>;
-	// "autobiography" | "drama" | "letterspeechinterview" | "novel" | "novella" | "prose"
+
+	// from openrefine: whether this publication contains at least one previously unpublished
+	// translation
+	erstpublikation: boolean;
+
+	// ids of publications which contain re-prints of some of the translations first published in this
+	// publication. this field is inferred from the 'eltern' column in openrefine.
+	later?: Array<string>;
+	year: number;
 	isbn?: string;
+	publisher: Publisher;
 	exemplar_suhrkamp_berlin: boolean;
 	exemplar_oeaw: boolean;
-	image?: Asset;
+	images?: Array<Asset>;
 }
 
 export interface Translation {
 	id: string;
+	title: string; // translated title
 	work: BernhardWork;
 	translators: Array<Translator>;
-	title: string; // translated
-	// erstpublikation: Publication; // really: id is enough!
+	// erstpublikation?: string;
 }
 
 export interface BernhardWork {
 	id: string;
-	gnd: string;
 	title: string; // german/french original
-	year: number;
+	gnd?: string;
+	year?: number; // we get the years from gnd-lookup, so no gnd => no year info
 }
 
 export interface Translator {
@@ -61,9 +68,6 @@ interface Publisher {
 }
 
 interface Asset {
-	// TODO asset filename is uniquely identified by publication signatur anyway, so actually more important
-	// to store copyright information etc?
-	id: string;
-	type: string;
-	path: string;
+	id: string; // same as filename (without extension, which is .jpg)
+	metadata?: string;
 }

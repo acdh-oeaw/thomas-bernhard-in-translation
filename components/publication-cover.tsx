@@ -19,8 +19,8 @@ export function PublicationCover(props: PublicationProps): ReactNode {
 				alt={`${t("alt_text")} ${props.publication.title}`}
 				fill={true}
 				src={
-					props.publication.image
-						? `/covers/${props.publication.signatur}.jpg`
+					props.publication.images
+						? `/covers/${props.publication.id}.jpg`
 						: "/assets/images/logo.svg"
 				}
 				style={{ objectFit: "contain" }}
@@ -31,7 +31,7 @@ export function PublicationCover(props: PublicationProps): ReactNode {
 
 export function ClickablePublicationThumbnail(props: PublicationProps) {
 	return (
-		<AppLink href={`/publication/${props.publication.signatur}`}>
+		<AppLink href={`/publication/${props.publication.id}`}>
 			<PublicationCover className={props.className} publication={props.publication} />
 		</AppLink>
 	);

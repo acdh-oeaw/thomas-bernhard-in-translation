@@ -186,12 +186,15 @@ for pub in data:
         logger.error(f"{pub['Signatur']} does not have a numeric year ('{pub['year']}')")
         year = None
 
+    assets = [ { 'id': pub['Signatur']} ] if os.path.isfile(f'../public/covers/{pub["Signatur"]}.jpg') else None 
+    if len(pub['more']):
+        assets += [ { 'id': name } for name in pub['more'].split(', ') ]
+
     publications[pub['Signatur']] = {
-            # 'id': None,
-            'signatur': pub['Signatur'],
+            'id': pub['Signatur'],
             'erstpublikation': pub['EP?'] == 'x', # means at least one translation is published first time?
             'parents': eltern,
-            'children': [],
+            'later': [],
             'more': pub['more'].split(', ') if pub['more'] else None, # TODO
             'title': pub['title'],
             'year': year,
@@ -202,7 +205,7 @@ for pub in data:
             'isbn': pub['ISBN'] or None,
             'exemplar_suhrkamp_berlin': pub['Exemplar Suhrkamp Berlin (03/2023)'].lower() == 'x',
             'exemplar_oeaw': pub['Exemplar ÖAW'].lower() == 'x',
-            'image': {} if os.path.isfile(f'../public/covers/{pub["Signatur"]}.jpg') else None
+            'images': assets
         }
 
 # redundantly store children ids in parent

@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
 
-import { getChildren, getPublication, getSameLanguagePublications } from "@/app/data";
+import { getLaterEditions, getPublication, getSameLanguagePublications } from "@/app/data";
 import { AppLink } from "@/components/app-link";
 import { BernhardWorkLink } from "@/components/bernhard-links";
 import { InlineList } from "@/components/inline-list";
@@ -38,7 +38,7 @@ export default function PublicationPage(props: PublicationPageProps) {
 	if (!pub) {
 		return notFound();
 	}
-	const later = getChildren(pub);
+	const later = getLaterEditions(pub);
 	const translatorInfo = translatorIndices(pub);
 	// don't show translator/translation indices when all translations are authored by all translators
 	const showIndices = translatorInfo.some(([_t, is]) => {
@@ -106,7 +106,7 @@ export default function PublicationPage(props: PublicationPageProps) {
 					<div className="flex">
 						{later.map((p) => {
 							return (
-								<div key={p.signatur}>
+								<div key={p.id}>
 									<ClickablePublicationThumbnail publication={p} />
 								</div>
 							);
@@ -121,9 +121,7 @@ export default function PublicationPage(props: PublicationPageProps) {
 				</h2>
 				<div className="flex">
 					{getSameLanguagePublications(pub).map((p) => {
-						return (
-							<ClickablePublicationThumbnail key={p.signatur} className="size-44" publication={p} />
-						);
+						return <ClickablePublicationThumbnail key={p.id} className="size-44" publication={p} />;
 					})}
 				</div>
 			</section>
