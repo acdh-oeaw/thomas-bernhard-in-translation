@@ -1,14 +1,29 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
+import argparse
 import csv
 import json
 from pprint import pprint
 
 from urllib.request import urlretrieve
-import os.path
 import re
 
+import os
+import os.path
+
 import logging
+
+parser = argparse.ArgumentParser(
+                    prog='tsv-to-json',
+                    description='transforms a tsv file exported from OpenRefine to JSON (and optionally imports it to typesense)')
+parser.add_argument("-output", help="optional: write transformed publications to this JSON file (default: %(default)s)")
+parser.add_argument("-typesense", action='store_true', default=False, help="import transformed publications to Typesense (default: %(default)s)")
+parser.add_argument("-env", default="../.env.local", help=".env file to be used for getting typesense server details")
+parser.add_argument("--log-level", default=logging.ERROR, type=lambda x: getattr(logging, x), help="Set the logging level (one of ERROR, WARNING, INFO, DEBUG; default: %(default)s)")
+parser.add_argument("-input", default="thbnew.tsv", help="the tsv file exported from OpenRefine (default: %(default)s)")
+
+args = parser.parse_args()
+
 thelogcount = 1
 class ContextFilter(logging.Filter):
     def filter(self, record):
@@ -16,11 +31,11 @@ class ContextFilter(logging.Filter):
         record.count = thelogcount
         thelogcount += 1
         return True
-logging.basicConfig(level=logging.WARNING, format = '%(count)-4s %(levelname)-8s %(message)s\n')
+logging.basicConfig(level=args.log_level, format = '%(count)-4s %(levelname)-8s %(message)s\n')
 logger = logging.getLogger(__name__)
 logger.addFilter(ContextFilter())
 
-data = [row for row in csv.DictReader(open('thbnew.tsv'), delimiter='\t')][:-1]
+data = [row for row in csv.DictReader(open(args.input), delimiter='\t')][:-1]
 
 bernhardworks = {} # map key is gnd (if exists), otherwise title
 
@@ -235,5 +250,27 @@ alldata = {
     'translators': list(translators.values())
 }
 
-json.dump(alldata, open('../app/data.json', 'w'), indent='\t')
+if args.output:
+    json.dump(alldata, open(args.output, 'w'), indent='\t')
 
+if args.typesense:
+    from dotenv import load_dotenv
+
+    os.chdir(os.path.dirname(__file__))
+    load_dotenv(args.env)
+
+    if 'TYPESENSE_API_KEY' in os.environ:
+        import typesense
+
+        client = typesense.Client({
+          'api_key': os.environ.get('TYPESENSE_API_KEY'),
+          'nodes': [{
+            'host': os.environ.get('TYPESENSE_HOST'),
+            'port': os.environ.get('TYPESENSE_PORT'),
+            'protocol': os.environ.get('TYPESENSE_PROTOCOL')
+          }],
+          'connection_timeout_seconds': 5
+        })
+
+        # print(client.collections['thomas-bernhard'].documents.delete({'filter_by': ''}))
+        print(client.collections['thomas-bernhard'].documents.import_(publications.values()))
