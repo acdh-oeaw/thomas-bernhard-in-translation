@@ -21,6 +21,7 @@ const client = new Client({
 	connectionTimeoutSeconds: 2,
 });
 
+// needs to match the collection name in scripts/typesense-schema.json
 const collection = client.collections("thomas-bernhard");
 
 export async function getCounts(field: string): Promise<Record<string, number>> {
@@ -48,16 +49,21 @@ export async function getCounts(field: string): Promise<Record<string, number>> 
 }
 
 export function getFaceted(
-	facet: string,
-	facetValue?: string,
+	facetFields: Array<string>,
+	search?: string,
 	page = 1,
+	sortAlphabetic = false,
 ): Promise<SearchResponse<Publication>> {
 	return collection.documents().search({
-		q: "*",
-		// facet_by: facet,
-		facet_by: `${facet}(sort_by: _alpha:asc)`,
-		filter_by: facetValue && `${facet}: ${facetValue}`,
-		max_facet_values: 1000,
+		q: search,
+		query_by: "*",
+		facet_by: facetFields
+			.map((name) => {
+				return sortAlphabetic ? `${name}(sort_by: _alpha:asc)` : name;
+			})
+			.join(),
+		// filter_by: facetValue && `${facet}: \`${facetValue}\``,
+		max_facet_values: 100,
 		page: page,
 		per_page: perPage,
 	}) as unknown as Promise<SearchResponse<Publication>>;
