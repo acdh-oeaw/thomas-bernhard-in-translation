@@ -9,15 +9,15 @@ const client = new Client({
 	nodes: [
 		{
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			host: process.env.TYPESENSE_HOST!,
+			host: process.env.NEXT_PUBLIC_TYPESENSE_HOST!,
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			port: Number(process.env.TYPESENSE_PORT!),
+			port: Number(process.env.NEXT_PUBLIC_TYPESENSE_PORT!),
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			protocol: process.env.TYPESENSE_PROTOCOL!,
+			protocol: process.env.NEXT_PUBLIC_TYPESENSE_PROTOCOL!,
 		},
 	],
 	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-	apiKey: process.env.TYPESENSE_API_KEY!,
+	apiKey: process.env.NEXT_PUBLIC_TYPESENSE_API_KEY!,
 	connectionTimeoutSeconds: 2,
 });
 
