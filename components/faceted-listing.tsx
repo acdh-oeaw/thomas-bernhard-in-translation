@@ -44,7 +44,7 @@ export async function FacetedListing(props: FacetedListingProps) {
 	});
 
 	const counts = await getCounts(props.facet);
-	const data = await getFaceted(props.facet, safeParams.facetValue, safeParams.page);
+	const data = await getFaceted([props.facet], safeParams.facetValue, safeParams.page);
 	const publications = data.hits?.map((h) => {
 		return h.document;
 	});

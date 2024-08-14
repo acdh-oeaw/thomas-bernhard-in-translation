@@ -67,7 +67,7 @@ export default function WorkPage(props: WorkPageProps) {
 					{works.map((w) => {
 						return (
 							<li key={w.id}>
-								<AppNavLink href={`/works/${w.gnd || w.id}`}>
+								<AppNavLink href={`/works/${w.gnd ?? w.id}`}>
 									{w.title} {w.year ? `(${String(w.year)})` : null}
 								</AppNavLink>
 							</li>
@@ -77,7 +77,7 @@ export default function WorkPage(props: WorkPageProps) {
 			</div>
 			<PublicationGrid>
 				{publications.map((p) => {
-					return <ClickablePublicationThumbnail key={p.signatur} publication={p} />;
+					return <ClickablePublicationThumbnail key={p.id} publication={p} />;
 				})}
 			</PublicationGrid>
 		</MainContent>
