@@ -34,8 +34,8 @@ export async function getCounts(field: string): Promise<Record<string, number>> 
 			q: "*",
 			// query_by: field,
 			group_by: field,
-			sort_by: `${field}:asc`,
 			per_page: 250, // limit for the number of groups (250 is the hard maximum for typesense)
+			sort_by: `${field}:asc`, // if you omit this it will not sort the groups, i.e. only consider the first 250 *documents*, which means only ~10 groups will come out!
 			group_limit: 1, // we're not interested in the actual documents, but gotta retrieve at least 1 per group..
 		});
 
@@ -48,9 +48,9 @@ export async function getCounts(field: string): Promise<Record<string, number>> 
 	);
 }
 
-export function getFaceted(
+export async function getFaceted(
 	facetFields: Array<string>,
-	search?: string,
+	search = "*",
 	page = 1,
 	sortAlphabetic = false,
 ): Promise<SearchResponse<Publication>> {
@@ -89,4 +89,13 @@ export async function getPublications(
 				return h.document;
 			}) as unknown as Array<Publication>;
 		});
+}
+
+// get 4 publications, ideally in the same language but excluding the publication itself *and* its
+// children (because they will already be listed separately anyway)
+export async function getSameLanguagePublications(pub: Publication) {
+	return collection.documents().search({
+		q: "*",
+		filter_by: `language: ${pub.language} && id :!= [ ${[pub.id, ...(pub.later ?? [])].join()} ]`,
+	}) as unknown as Promise<Array<Publication>>;
 }
