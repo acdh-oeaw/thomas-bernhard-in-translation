@@ -23,6 +23,10 @@ export function AppHeader(): ReactNode {
 			href: createHref({ pathname: "/translator" }),
 			label: t("links.translators"),
 		},
+		search: {
+			href: createHref({ pathname: "/instantsearch" }),
+			label: t("links.search"),
+		},
 	} satisfies Record<string, { href: LinkProps["href"]; label: string }>;
 
 	return (
