@@ -19,7 +19,7 @@ parser = argparse.ArgumentParser(
 parser.add_argument("-output", help="optional: write transformed publications to this JSON file (default: %(default)s)")
 parser.add_argument("-typesense", action='store_true', default=False, help="import transformed publications to Typesense (default: %(default)s)")
 parser.add_argument("-env", default="../.env.local", help=".env file to be used for getting typesense server details")
-parser.add_argument("--log-level", default=logging.ERROR, type=lambda x: getattr(logging, x), help="Set the logging level (one of ERROR, WARNING, INFO, DEBUG; default: %(default)s)")
+parser.add_argument("--log-level", default=logging.INFO, type=lambda x: getattr(logging, x), help="Set the logging level (one of ERROR, WARNING, INFO, DEBUG; default: %(default)s)")
 parser.add_argument("-input", default="thbnew.tsv", help="the tsv file exported from OpenRefine (default: %(default)s)")
 
 args = parser.parse_args()
@@ -254,23 +254,48 @@ if args.output:
     json.dump(alldata, open(args.output, 'w'), indent='\t')
 
 if args.typesense:
+    logging.debug(f"Loading typesense access data from {args.env}")
     from dotenv import load_dotenv
-
     os.chdir(os.path.dirname(__file__))
     load_dotenv(args.env)
 
-    if 'TYPESENSE_API_KEY' in os.environ:
-        import typesense
+    if not 'TYPESENSE_ADMIN_API_KEY' in os.environ:
+        logger.error("Couldn't find typesense database information in environment files")
+        exit(1)
 
-        client = typesense.Client({
-          'api_key': os.environ.get('TYPESENSE_API_KEY'),
-          'nodes': [{
-            'host': os.environ.get('TYPESENSE_HOST'),
-            'port': os.environ.get('TYPESENSE_PORT'),
-            'protocol': os.environ.get('TYPESENSE_PROTOCOL')
-          }],
-          'connection_timeout_seconds': 5
-        })
+    import typesense
 
-        # print(client.collections['thomas-bernhard'].documents.delete({'filter_by': ''}))
-        print(client.collections['thomas-bernhard'].documents.import_(publications.values()))
+    client = typesense.Client({
+      'api_key': os.environ.get('TYPESENSE_ADMIN_API_KEY'),
+      'nodes': [{
+        'host': os.environ.get('NEXT_PUBLIC_TYPESENSE_HOST'),
+        'port': os.environ.get('NEXT_PUBLIC_TYPESENSE_PORT'),
+        'protocol': os.environ.get('NEXT_PUBLIC_TYPESENSE_PROTOCOL')
+      }],
+      'connection_timeout_seconds': 5
+    })
+    print(os.environ.get('NEXT_PUBLIC_TYPESENSE_HOST'))
+
+    collection_name = 'thomas-bernhard' # TODO read from env?
+
+    r = client.collections[collection_name].retrieve()
+
+    if r['num_documents'] > 0:
+        logger.info(f'Clearing {r["num_documents"]} existing documents')
+        r = client.collections[collection_name].documents.delete({'filter_by': 'id :!= ""'})
+        logger.info(f'Cleared {r["num_deleted"]} documents from collection {collection_name}')
+
+    r = client.collections[collection_name].documents.import_(publications.values())
+
+    nfails = list(map(lambda d: d['success'], r)).count(False)
+    if nfails == len(publications):
+        logger.error(f"Failed to insert any of the documents. Maybe you are using an api key that only has read access to the collection?")
+        exit(1)
+    elif nfails > 0:
+        logger.error(f"{nfails} documents could not be inserted.")
+        for doc in filter(lambda d: d['success'] == False, r):
+            logger.error(doc)
+        exit(1)
+
+    logger.info("Success!")
+

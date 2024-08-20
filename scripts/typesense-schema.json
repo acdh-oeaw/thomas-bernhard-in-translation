@@ -1,0 +1,64 @@
+{
+	"name": "thomas-bernhard",
+	"fields": [
+		{
+			"name": "contains.work.title",
+			"type": "string[]",
+			"facet": true,
+			"optional": false,
+			"index": true,
+			"sort": false,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		},
+		{
+			"name": "language",
+			"type": "string",
+			"facet": true,
+			"optional": false,
+			"index": true,
+			"sort": true,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		},
+		{
+			"name": "contains.title",
+			"type": "string[]",
+			"facet": true,
+			"optional": false,
+			"index": true,
+			"sort": false,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		},
+		{
+			"name": "contains.translators.name",
+			"type": "string[]",
+			"facet": true,
+			"optional": false,
+			"index": true,
+			"sort": false,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		},
+		{
+			"name": "title",
+			"type": "string",
+			"facet": true,
+			"optional": false,
+			"index": true,
+			"sort": true,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		}
+	],
+	"default_sorting_field": "",
+	"enable_nested_fields": true,
+	"symbols_to_index": [],
+	"token_separators": []
+}
