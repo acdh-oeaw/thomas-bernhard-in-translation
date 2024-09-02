@@ -4,7 +4,7 @@ import * as v from "valibot";
 import { MainContent } from "@/components/main-content";
 import { ClickablePublicationThumbnail } from "@/components/publication-cover";
 import { PublicationGrid } from "@/components/publication-grid";
-import { getCounts, getFaceted } from "@/lib/data";
+import { getFaceted } from "@/lib/data";
 
 import { AppNavLink } from "./app-nav-link";
 
@@ -43,28 +43,26 @@ export async function FacetedListing(props: FacetedListingProps) {
 		facetValue: searchParams.get(props.facet),
 	});
 
-	const counts = await getCounts(props.facet);
 	const data = await getFaceted([props.facet], safeParams.facetValue, safeParams.page);
 	const publications = data.hits?.map((h) => {
 		return h.document;
 	});
 
-	// <PageTitle>{props.facet} listing</PageTitle>
 	return (
 		<MainContent>
 			<div>
-				{Object.entries(counts).map(([category, count]) => {
+				{data.facet_counts?.[0]?.counts.map(({ count, value }) => {
 					// ugly but only way to overwrite rather than append?
-					searchParams.set(props.facet, category);
+					searchParams.set(props.facet, value);
 					return (
-						<li key={category}>
+						<li key={value}>
 							<AppNavLink
 								href={
 									// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 									`?${searchParams}`
 								}
 							>
-								{category}
+								{value}
 							</AppNavLink>{" "}
 							({count})
 						</li>

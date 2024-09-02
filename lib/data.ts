@@ -24,30 +24,6 @@ const client = new Client({
 // needs to match the collection name in scripts/typesense-schema.json
 const collection = client.collections("thomas-bernhard");
 
-export async function getCounts(field: string): Promise<Record<string, number>> {
-	const r = await collection
-		.documents()
-		// this does not work as expected when grouping by an array field (or a nested field which has
-		// an object[] anywhere in its path) because grouping then happens by the array of values, not
-		// by individual values. for example: await getDistinct("contains.work.title")
-		.search({
-			q: "*",
-			// query_by: field,
-			group_by: field,
-			per_page: 250, // limit for the number of groups (250 is the hard maximum for typesense)
-			sort_by: `${field}:asc`, // if you omit this it will not sort the groups, i.e. only consider the first 250 *documents*, which means only ~10 groups will come out!
-			group_limit: 1, // we're not interested in the actual documents, but gotta retrieve at least 1 per group..
-		});
-
-	return Object.fromEntries<number>(
-		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-		r.grouped_hits!.map((group) => {
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			return [group.group_key[0]!, group.found!];
-		}),
-	);
-}
-
 export async function getFaceted(
 	facetFields: Array<string>,
 	search = "*",
