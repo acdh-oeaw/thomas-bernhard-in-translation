@@ -79,7 +79,10 @@
 	},
 	"SearchPage": {
 		"filter": "filter",
-		"filter_publications": "filter publications"
+		"filter_publications": "filter publications",
+		"language": "languages",
+		"work": "works",
+		"translator": "translators"
 	},
 	"TranslatorPage": {
 		"published_in": "published in"

@@ -1,6 +1,9 @@
 "use client";
+
+import type { StateMapping, UiState } from "instantsearch.js";
 import { useTranslations } from "next-intl";
-import { Configure, Hits, Pagination, RefinementList, SearchBox } from "react-instantsearch";
+import type { ReactNode } from "react";
+import { Configure, Hits, Pagination, RefinementList, SearchBox, Stats } from "react-instantsearch";
 import { InstantSearchNext } from "react-instantsearch-nextjs";
 import TypesenseInstantSearchAdapter, { type SearchClient } from "typesense-instantsearch-adapter";
 
@@ -32,6 +35,58 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 const searchClient = typesenseInstantsearchAdapter.searchClient as unknown as SearchClient;
 
+// FIXME should this also go in an env var?
+const index = "thomas-bernhard";
+
+const refinementFieldToQueryArg = {
+	language: "language",
+	"contains.work.title": "work",
+	"contains.translators.name": "translator",
+};
+
+interface RouteState {
+	q?: string;
+	page?: number;
+	language?: string;
+	work?: string;
+	translator?: string;
+}
+
+const stateMapping: StateMapping<UiState, RouteState> = {
+	stateToRoute(uiState) {
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		const indexUiState = uiState[index]!;
+		const route = {} as RouteState;
+		route.q = indexUiState.query;
+		route.page = indexUiState.page;
+		if (indexUiState.refinementList) {
+			for (const [field, value] of Object.entries(indexUiState.refinementList)) {
+				if (field in refinementFieldToQueryArg) {
+					// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+					route[refinementFieldToQueryArg[field]] = value.join(",");
+				}
+			}
+		}
+		return route;
+	},
+
+	routeToState(routeState) {
+		const uiState = {
+			[index]: {
+				query: routeState.q,
+				page: routeState.page,
+				refinementList: {},
+			},
+		} as UiState;
+		for (const [_field, queryarg] of Object.entries(refinementFieldToQueryArg)) {
+			if (queryarg in routeState) {
+				uiState[index].refinementList[_field] = routeState[queryarg]?.split(",");
+			}
+		}
+		return uiState;
+	},
+};
+
 function DefaultRefinementList({
 	attribute,
 	placeholder,
@@ -45,6 +100,7 @@ function DefaultRefinementList({
 			classNames={{
 				count: 'before:content-["("] after:content-[")"]',
 				labelText: "px-1",
+				root: "p-2",
 			}}
 			searchable={true}
 			searchablePlaceholder={placeholder}
@@ -59,29 +115,24 @@ export function InstantSearch() {
 
 	return (
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-		<InstantSearchNext indexName="thomas-bernhard" searchClient={searchClient}>
+		<InstantSearchNext indexName={index} routing={{ stateMapping }} searchClient={searchClient}>
 			<Configure hitsPerPage={12} />
+
 			<div>
-				<DefaultRefinementList attribute="language" placeholder={`${t("filter")} languages`} />
-				<DefaultRefinementList
-					attribute="contains.work.title"
-					placeholder={`${t("filter")} works`}
-				/>
-				<DefaultRefinementList
-					attribute="contains.translators.name"
-					placeholder={`${t("filter")} translators`}
-				/>
+				{Object.entries(refinementFieldToQueryArg).map<ReactNode>(([attribute, queryarg]) => {
+					return (
+						<DefaultRefinementList
+							key={attribute}
+							attribute={attribute}
+							placeholder={`${t("filter")} ${t(queryarg)}`}
+						/>
+					);
+				})}
 			</div>
+
 			<div>
 				<div className="flex place-content-between">
 					<SearchBox placeholder={t("filter_publications")} />
-					<Pagination
-						classNames={{
-							root: "float-right",
-							list: "flex gap-1",
-							noRefinementRoot: "hidden",
-						}}
-					/>
 				</div>
 				<Hits
 					classNames={{
@@ -91,6 +142,16 @@ export function InstantSearch() {
 						return <ClickablePublicationThumbnail publication={hit as unknown as Publication} />;
 					}}
 				/>
+				<div className="flex place-content-between">
+					<Stats />
+					<Pagination
+						classNames={{
+							root: "float-right",
+							list: "flex gap-1",
+							noRefinementRoot: "hidden",
+						}}
+					/>
+				</div>
 			</div>
 		</InstantSearchNext>
 	);
