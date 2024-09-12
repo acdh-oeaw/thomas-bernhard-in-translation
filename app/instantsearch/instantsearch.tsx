@@ -1,13 +1,14 @@
 "use client";
 
 import type { StateMapping, UiState } from "instantsearch.js";
-import { useTranslations } from "next-intl";
+import { type MessageKeys, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 import { Configure, Hits, Pagination, RefinementList, SearchBox, Stats } from "react-instantsearch";
 import { InstantSearchNext } from "react-instantsearch-nextjs";
 import TypesenseInstantSearchAdapter, { type SearchClient } from "typesense-instantsearch-adapter";
 
 import { ClickablePublicationThumbnail } from "@/components/publication-cover";
+import { collectionName } from "@/lib/data";
 import type { Publication } from "@/types/model";
 
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
@@ -32,55 +33,60 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
 		query_by: "title",
 	},
 });
+
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 const searchClient = typesenseInstantsearchAdapter.searchClient as unknown as SearchClient;
 
-// FIXME should this also go in an env var?
-const index = "thomas-bernhard";
-
-const refinementFieldToQueryArg = {
-	language: "language",
-	"contains.work.title": "work",
-	"contains.translators.name": "translator",
+const queryArgToRefinementField = {
+	language: "language" as const,
+	work: "contains.work.title" as const,
+	translator: "contains.translators.name" as const,
 };
 
-interface RouteState {
+type RefinementState = {
+	[Property in keyof typeof queryArgToRefinementField]: string | undefined;
+};
+
+interface SearchState {
 	q?: string;
 	page?: number;
-	language?: string;
-	work?: string;
-	translator?: string;
 }
+
+type RouteState = RefinementState & SearchState;
 
 const stateMapping: StateMapping<UiState, RouteState> = {
 	stateToRoute(uiState) {
 		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-		const indexUiState = uiState[index]!;
+		const indexUiState = uiState[collectionName]!;
 		const route = {} as RouteState;
 		route.q = indexUiState.query;
 		route.page = indexUiState.page;
 		if (indexUiState.refinementList) {
-			for (const [field, value] of Object.entries(indexUiState.refinementList)) {
-				if (field in refinementFieldToQueryArg) {
-					// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-					route[refinementFieldToQueryArg[field]] = value.join(",");
-				}
+			for (const [field, values] of Object.entries(indexUiState.refinementList)) {
+				const queryarg = Object.entries(queryArgToRefinementField).find(([_k, v]) => {
+					return v === field;
+				})?.[0];
+				route[queryarg as unknown as keyof RefinementState] = values.join(",");
 			}
 		}
 		return route;
 	},
 
-	routeToState(routeState) {
+	routeToState(routeState: RouteState) {
 		const uiState = {
-			[index]: {
+			[collectionName]: {
 				query: routeState.q,
 				page: routeState.page,
 				refinementList: {},
 			},
 		} as UiState;
-		for (const [_field, queryarg] of Object.entries(refinementFieldToQueryArg)) {
+		for (const queryarg in queryArgToRefinementField) {
 			if (queryarg in routeState) {
-				uiState[index].refinementList[_field] = routeState[queryarg]?.split(",");
+				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+				uiState[collectionName]!.refinementList![
+					queryArgToRefinementField[queryarg as keyof RefinementState]
+					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+				] = routeState[queryarg as keyof RefinementState]!.split(",");
 			}
 		}
 		return uiState;
@@ -114,22 +120,25 @@ export function InstantSearch() {
 	const t = useTranslations("SearchPage");
 
 	return (
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-		<InstantSearchNext indexName={index} routing={{ stateMapping }} searchClient={searchClient}>
+		<InstantSearchNext
+			indexName={collectionName}
+			routing={{ stateMapping }}
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+			searchClient={searchClient}
+		>
 			<Configure hitsPerPage={12} />
-
 			<div>
-				{Object.entries(refinementFieldToQueryArg).map<ReactNode>(([attribute, queryarg]) => {
+				{Object.entries(queryArgToRefinementField).map<ReactNode>(([queryarg, attribute]) => {
 					return (
 						<DefaultRefinementList
 							key={attribute}
 							attribute={attribute}
-							placeholder={`${t("filter")} ${t(queryarg)}`}
+							// eslint-disable-next-line @typescript-eslint/no-explicit-any
+							placeholder={`${t("filter")} ${t(queryarg as MessageKeys<any, any>)}`}
 						/>
 					);
 				})}
 			</div>
-
 			<div>
 				<div className="flex place-content-between">
 					<SearchBox placeholder={t("filter_publications")} />

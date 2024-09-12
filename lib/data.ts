@@ -5,7 +5,7 @@ import type { Publication } from "@/types/model";
 
 const perPage = 16;
 
-const client = new Client({
+export const client = new Client({
 	nodes: [
 		{
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -22,7 +22,9 @@ const client = new Client({
 });
 
 // needs to match the collection name in scripts/typesense-schema.json
-const collection = client.collections("thomas-bernhard");
+export const collectionName = "thomas-bernhard";
+
+const collection = client.collections(collectionName);
 
 export async function getFaceted(
 	facetFields: Array<string>,
