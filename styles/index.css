@@ -193,3 +193,8 @@ textarea {
 	--tw-prose-th-borders: var(--color-neutral-600);
 	--tw-prose-td-borders: var(--color-neutral-700);
 }
+
+.bernhard-grid {
+	/* @apply container max-w-screen-lg p-8; */
+	@apply grid grid-cols-[25%_75%];
+}

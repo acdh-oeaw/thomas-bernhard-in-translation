@@ -158,6 +158,7 @@ export function InstantSearch() {
 							root: "float-right",
 							list: "flex gap-1",
 							noRefinementRoot: "hidden",
+							selectedItem: "font-bold",
 						}}
 					/>
 				</div>

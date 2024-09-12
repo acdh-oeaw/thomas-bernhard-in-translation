@@ -8,7 +8,7 @@ interface MainContentProps {
 }
 
 export function MainContent(props: MainContentProps): ReactNode {
-	const { children, className = "grid grid-cols-[25%_75%]" } = props;
+	const { children, className = "bernhard-grid" } = props;
 
 	return (
 		<main className="container max-w-screen-lg p-8" id={id} tabIndex={-1}>
