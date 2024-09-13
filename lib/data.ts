@@ -1,8 +1,7 @@
 import { Client } from "typesense";
 import type { SearchResponse } from "typesense/lib/Typesense/Documents";
 
-import page from "@/app/(index)/page";
-import type { Publication } from "@/types/model";
+import type { Publication } from "@/lib/model";
 
 const perPage = 16;
 
@@ -59,6 +58,10 @@ export async function getFaceted(
 	}) as unknown as Promise<SearchResponse<Publication>>;
 }
 
+export async function getPublication(id: string) {
+	return collection.documents(id).retrieve() as Promise<Publication>;
+}
+
 export async function getPublications(
 	args: SearchArgs = searchDefaults,
 ): Promise<Array<Publication>> {
@@ -72,8 +75,7 @@ export async function getPublications(
 			per_page: args.per_page,
 		})
 		.then((r) => {
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			return r.hits!.map((h) => {
+			return r.hits?.map((h) => {
 				return h.document;
 			}) as unknown as Array<Publication>;
 		});
@@ -82,8 +84,13 @@ export async function getPublications(
 // get 4 publications, ideally in the same language but excluding the publication itself *and* its
 // children (because they will already be listed separately anyway)
 export async function getSameLanguagePublications(pub: Publication) {
-	return collection.documents().search({
-		q: "*",
-		filter_by: `language: ${pub.language} && id :!= [ ${[pub.id, ...(pub.later ?? [])].join()} ]`,
-	}) as unknown as Promise<Array<Publication>>;
+	return (
+		await collection.documents().search({
+			q: "*",
+			per_page: 4,
+			filter_by: `language: ${pub.language} && id :!= [ ${[pub.id, ...(pub.later ?? [])].join()} ]`,
+		})
+	).hits?.map((r) => {
+		return r.document;
+	}) as unknown as Array<Publication>;
 }

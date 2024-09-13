@@ -1,13 +1,13 @@
 import { notFound } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-import { getLaterEditions, getPublication, getSameLanguagePublications } from "@/app/data";
 import { AppLink } from "@/components/app-link";
 import { BernhardWorkLink } from "@/components/bernhard-links";
 import { InlineList } from "@/components/inline-list";
 import { MainContent } from "@/components/main-content";
 import { ClickablePublicationThumbnail, PublicationCover } from "@/components/publication-cover";
-import type { Publication, Translator } from "@/types/model";
+import { getPublication, getSameLanguagePublications } from "@/lib/data";
+import type { Publication, Translator } from "@/lib/model";
 
 interface PublicationPageProps {
 	params: {
@@ -32,13 +32,22 @@ function translatorIndices(pub: Publication): Array<[Translator, Array<number>]>
 	}, []);
 }
 
-export default function PublicationPage(props: PublicationPageProps) {
-	const t = useTranslations("PublicationPage");
-	const pub = getPublication(props.params.id);
+export default async function PublicationPage(props: PublicationPageProps) {
+	const t = await getTranslations("PublicationPage");
+	const pub = await getPublication(props.params.id);
+	// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 	if (!pub) {
 		return notFound();
 	}
-	const later = getLaterEditions(pub);
+
+	const later =
+		// TODO database should just return null instead of empty arrays wherever possible
+		pub.later?.length === 0
+			? undefined
+			: pub.later?.map((id) => {
+					return getPublication(id);
+				});
+
 	const translatorInfo = translatorIndices(pub);
 	// don't show translator/translation indices when all translations are authored by all translators
 	const showIndices = translatorInfo.some(([_t, is]) => {
@@ -104,7 +113,8 @@ export default function PublicationPage(props: PublicationPageProps) {
 				<>
 					<p className="font-bold">{t("later_editions")}</p>
 					<div className="flex">
-						{later.map((p) => {
+						{later.map(async (pp) => {
+							const p = await pp;
 							return (
 								<div key={p.id}>
 									<ClickablePublicationThumbnail publication={p} />
@@ -120,7 +130,7 @@ export default function PublicationPage(props: PublicationPageProps) {
 					{t("more_in")} {pub.language}
 				</h2>
 				<div className="flex">
-					{getSameLanguagePublications(pub).map((p) => {
+					{(await getSameLanguagePublications(pub)).map((p) => {
 						return <ClickablePublicationThumbnail key={p.id} className="size-44" publication={p} />;
 					})}
 				</div>

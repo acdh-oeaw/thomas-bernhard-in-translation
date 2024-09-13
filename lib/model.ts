@@ -1,21 +1,14 @@
 // these end up in public URLs as slugs, so come up with good names!
-export enum Category {
-	novels = "novels",
-	novellas = "novellas & short prose",
-	autobiography = "autobiography",
-	fragments = "fragments",
+export const otherCategories = [
+	"prose",
+	"drama",
+	"poetry",
+	"letterspeechinterview",
+	"adaptations",
+] as const;
+export const proseCategories = ["novels", "novellas", "autobiography", "fragments"] as const;
 
-	drama = "drama & libretti",
-	poetry = "poetry",
-	letterspeechinterview = "letters, speeches, interviews",
-	adaptations = "adaptations",
-}
-
-export type Prose =
-	| Category.autobiography
-	| Category.fragments
-	| Category.novellas
-	| Category.novels;
+export type Category = (typeof otherCategories)[number] | (typeof proseCategories)[number];
 
 /** Publication contains one or more translated works. */
 export interface Publication {

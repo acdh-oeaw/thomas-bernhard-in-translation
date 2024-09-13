@@ -9,7 +9,7 @@ import TypesenseInstantSearchAdapter, { type SearchClient } from "typesense-inst
 
 import { ClickablePublicationThumbnail } from "@/components/publication-cover";
 import { collectionName } from "@/lib/data";
-import type { Publication } from "@/types/model";
+import type { Publication } from "@/lib/model";
 
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
 	server: {

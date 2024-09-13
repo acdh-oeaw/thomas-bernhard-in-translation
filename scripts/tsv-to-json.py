@@ -201,7 +201,7 @@ for pub in data:
         logger.error(f"{pub['Signatur']} does not have a numeric year ('{pub['year']}')")
         year = None
 
-    assets = [ { 'id': pub['Signatur']} ] if os.path.isfile(f'../public/covers/{pub["Signatur"]}.jpg') else None 
+    assets = [ { 'id': pub['Signatur']} ] if os.path.isfile(f'../public/covers/{pub["Signatur"]}.jpg') else []
     if len(pub['more']):
         assets += [ { 'id': name } for name in pub['more'].split(', ') ]
 
@@ -228,10 +228,9 @@ for pub in publications.values():
     if pub['parents']:
         for par in pub['parents']:
             try:
-                publications[par]['children'].append(pub['signatur'])
+                publications[par]['later'].append(pub['id'])
             except KeyError:
-                continue
-
+                logger.warning(f"{pub['id']} was previously published in {par} but couldn't find a record for {par}")
 
 
 print(f"extracted {len(publications)} of {len(data)} publications")

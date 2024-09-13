@@ -16,15 +16,15 @@ export function AppHeader(): ReactNode {
 			label: t("links.works"),
 		},
 		languages: {
-			href: createHref({ pathname: "/language" }),
+			href: createHref({ pathname: "/languages" }),
 			label: t("links.languages"),
 		},
 		translators: {
-			href: createHref({ pathname: "/translator" }),
+			href: createHref({ pathname: "/translators" }),
 			label: t("links.translators"),
 		},
 		search: {
-			href: createHref({ pathname: "/instantsearch" }),
+			href: createHref({ pathname: "/search" }),
 			label: t("links.search"),
 		},
 	} satisfies Record<string, { href: LinkProps["href"]; label: string }>;
