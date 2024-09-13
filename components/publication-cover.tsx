@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
-import type { Publication } from "@/types/model";
+import type { Publication } from "@/lib/model";
 
 import { AppLink } from "./app-link";
 

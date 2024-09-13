@@ -1,5 +1,17 @@
-import { FacetedListing, type FacetedListingProps } from "@/components/faceted-listing";
+import { SimpleListing } from "@/components/simple-listing";
 
-export default function LanguagesPage(props: FacetedListingProps) {
-	return <FacetedListing facet="language" searchParams={props.searchParams} />;
+interface LanguagesPageProps {
+	params?: {
+		language: string;
+	};
+}
+
+export default function LanguagesPage(props: LanguagesPageProps) {
+	return (
+		<SimpleListing
+			facetingField="language"
+			facetingValue={props.params?.language}
+			path="languages"
+		/>
+	);
 }

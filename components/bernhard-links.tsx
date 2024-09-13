@@ -1,4 +1,4 @@
-import type { BernhardWork } from "@/types/model";
+import type { BernhardWork } from "@/lib/model";
 
 interface BernhardWorkProps {
 	work: BernhardWork;

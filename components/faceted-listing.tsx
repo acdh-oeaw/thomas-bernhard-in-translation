@@ -43,7 +43,7 @@ export async function FacetedListing(props: FacetedListingProps) {
 		facetValue: searchParams.get(props.facet),
 	});
 
-	const data = await getFaceted([props.facet], safeParams.facetValue, safeParams.page);
+	const data = await getFaceted(props.facet, safeParams.facetValue);
 	const publications = data.hits?.map((h) => {
 		return h.document;
 	});

@@ -1,5 +1,5 @@
-import { FacetedListing, type FacetedListingProps } from "@/components/faceted-listing";
+import TranslatorsPage from "./[id]/page";
 
-export default function TranslatorPage(props: FacetedListingProps) {
-	return <FacetedListing facet="contains.translators.name" searchParams={props.searchParams} />;
+export default function BlankTranslatorsPage() {
+	return <TranslatorsPage />;
 }

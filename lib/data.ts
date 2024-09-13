@@ -3,8 +3,6 @@ import type { SearchResponse } from "typesense/lib/Typesense/Documents";
 
 import type { Publication } from "@/lib/model";
 
-const perPage = 16;
-
 export const client = new Client({
 	nodes: [
 		{
@@ -26,6 +24,25 @@ export const collectionName = "thomas-bernhard";
 
 const collection = client.collections(collectionName);
 
+// TODO rename 'getcounts' as this is only used in SimpleListing
+export async function getFaceted(
+	facetField: string,
+	filter_by?: string,
+): Promise<SearchResponse<Publication>> {
+	return collection.documents().search({
+		q: "*",
+		query_by: "*",
+		facet_by: `${facetField}(sort_by: _alpha:asc)`,
+		filter_by: filter_by,
+		max_facet_values: 500,
+		per_page: 1, // don't really need the data
+	}) as unknown as Promise<SearchResponse<Publication>>;
+}
+
+export async function getPublication(id: string) {
+	return collection.documents(id).retrieve() as Promise<Publication>;
+}
+
 const searchDefaults = {
 	q: "*",
 	filter: {} as Partial<Publication>,
@@ -36,32 +53,6 @@ const searchDefaults = {
 };
 
 type SearchArgs = Partial<typeof searchDefaults>;
-
-export async function getFaceted(
-	facetFields: Array<string>,
-	search = "*",
-	page = 1,
-	sortAlphabetic = false,
-): Promise<SearchResponse<Publication>> {
-	return collection.documents().search({
-		q: search,
-		query_by: "*",
-		facet_by: facetFields
-			.map((name) => {
-				return sortAlphabetic ? `${name}(sort_by: _alpha:asc)` : name;
-			})
-			.join(),
-		// filter_by: facetValue && `${facet}: \`${facetValue}\``,
-		max_facet_values: 100,
-		page: page,
-		per_page: perPage,
-	}) as unknown as Promise<SearchResponse<Publication>>;
-}
-
-export async function getPublication(id: string) {
-	return collection.documents(id).retrieve() as Promise<Publication>;
-}
-
 export async function getPublications(
 	args: SearchArgs = searchDefaults,
 ): Promise<Array<Publication>> {
