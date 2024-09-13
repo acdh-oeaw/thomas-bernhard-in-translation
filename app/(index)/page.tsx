@@ -1,12 +1,10 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { getTranslations } from "next-intl/server";
-import type { ReactNode } from "react";
 
 import { MainContent } from "@/components/main-content";
 import { ClickablePublicationThumbnail } from "@/components/publication-cover";
 import { PublicationGrid } from "@/components/publication-grid";
-
-import { getPublications } from "../data";
+import { getPublications } from "@/lib/data";
 
 interface IndexPageProps extends EmptyObject {}
 
@@ -28,10 +26,10 @@ export async function generateMetadata(
 	return metadata;
 }
 
-export default function IndexPage(_props: IndexPageProps): ReactNode {
+export default async function IndexPage(_props: IndexPageProps) {
 	// const t = useTranslations("IndexPage");
 
-	const pubs = getPublications({ erstpublikation: true }, undefined, "RANDOM()", 0, 12);
+	const pubs = await getPublications();
 
 	// <section className="mx-auto grid w-full max-w-screen-lg items-start justify-items-center gap-3 px-4 py-8 text-center md:py-12">
 	return (

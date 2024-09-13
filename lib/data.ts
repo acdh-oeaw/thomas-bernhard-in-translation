@@ -1,6 +1,7 @@
 import { Client } from "typesense";
 import type { SearchResponse } from "typesense/lib/Typesense/Documents";
 
+import page from "@/app/(index)/page";
 import type { Publication } from "@/types/model";
 
 const perPage = 16;
@@ -26,6 +27,17 @@ export const collectionName = "thomas-bernhard";
 
 const collection = client.collections(collectionName);
 
+const searchDefaults = {
+	q: "*",
+	filter: {} as Partial<Publication>,
+	query_by: "title, contains.title",
+	page: 1,
+	per_page: 12,
+	sort_by: "title:desc", //"_rand:asc", // requires typesense 0.28 !
+};
+
+type SearchArgs = Partial<typeof searchDefaults>;
+
 export async function getFaceted(
 	facetFields: Array<string>,
 	search = "*",
@@ -48,18 +60,16 @@ export async function getFaceted(
 }
 
 export async function getPublications(
-	search = "*",
-	filter?: { [key in keyof Publication]?: Publication[key] },
-	page = 1,
+	args: SearchArgs = searchDefaults,
 ): Promise<Array<Publication>> {
 	return collection
 		.documents()
 		.search({
-			q: search,
-			query_by: "title, contains.title",
-			// sort_by: sort,
-			page: page,
-			per_page: perPage,
+			q: args.q,
+			query_by: args.query_by,
+			sort_by: args.sort_by,
+			page: args.page,
+			per_page: args.per_page,
 		})
 		.then((r) => {
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
