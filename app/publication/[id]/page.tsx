@@ -1,11 +1,12 @@
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 
-import { AppLink } from "@/components/app-link";
 import { BernhardWorkLink } from "@/components/bernhard-links";
 import { InlineList } from "@/components/inline-list";
+import { LanguageLink } from "@/components/language-link";
 import { MainContent } from "@/components/main-content";
 import { ClickablePublicationThumbnail, PublicationCover } from "@/components/publication-cover";
+import { TranslatorLink } from "@/components/translator-link";
 import { getPublication, getSameLanguagePublications } from "@/lib/data";
 import type { Publication, Translator } from "@/lib/model";
 
@@ -61,16 +62,16 @@ export default async function PublicationPage(props: PublicationPageProps) {
 			<div className="flex gap-8">
 				<PublicationCover className="h-96 grow basis-1/3" publication={pub} />
 				<div className="grow-[2] basis-2/3">
-					<p className="italic">{pub.language}</p>
+					<p className="italic">
+						<LanguageLink language={pub.language} />
+					</p>
 					<p>
 						{t("translated_by")}{" "}
 						<InlineList>
 							{translatorInfo.map((t, i) => {
 								return (
 									<>
-										<AppLink key={t[0].id} href={`/translator/${t[0].id}`}>
-											{t[0].name}
-										</AppLink>
+										<TranslatorLink translator={t[0]} />
 										{showIndices ? <sup>{i + 1}</sup> : null}
 									</>
 								);

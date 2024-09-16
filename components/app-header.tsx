@@ -12,7 +12,7 @@ export function AppHeader(): ReactNode {
 	const links = {
 		home: { href: createHref({ pathname: "/" }), label: t("links.home") },
 		works: {
-			href: createHref({ pathname: "/works/poetry" }),
+			href: createHref({ pathname: "/works/novels" }),
 			label: t("links.works"),
 		},
 		languages: {

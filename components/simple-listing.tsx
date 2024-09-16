@@ -21,7 +21,7 @@ export async function SimpleListing(props: SimpleListingProps) {
 					return (
 						<li key={c.value}>
 							<AppNavLink href={`/${props.path}/${c.value}`}>
-								{c.value} ({c.count})
+								{c.value}&nbsp;({c.count})
 							</AppNavLink>
 						</li>
 					);
