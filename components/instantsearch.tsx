@@ -58,8 +58,9 @@ export function InstantSearch(props: InstantSearchProps): ReactNode {
 				sort by{" "}
 				<SortBy
 					items={[
-						{ label: "title", value: "title" },
-						{ label: "year", value: "year" },
+						{ label: "title", value: `${collectionName}/sort/title:asc` },
+						{ label: "publication (newest first)", value: `${collectionName}/sort/year:desc` },
+						{ label: "publication (oldest first)", value: `${collectionName}/sort/year:asc` },
 					]}
 				/>
 			</div>
