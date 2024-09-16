@@ -43,27 +43,29 @@ export async function getPublication(id: string) {
 	return collection.documents(id).retrieve() as Promise<Publication>;
 }
 
-const searchDefaults = {
-	q: "*",
-	filter: {} as Partial<Publication>,
-	query_by: "title, contains.title",
-	page: 1,
-	per_page: 12,
-	sort_by: "title:desc", //"_rand:asc", // requires typesense 0.28 !
-};
-
-type SearchArgs = Partial<typeof searchDefaults>;
-export async function getPublications(
-	args: SearchArgs = searchDefaults,
-): Promise<Array<Publication>> {
+export async function getPublications({
+	q = "*",
+	_filter = {},
+	query_by = "title, contains.title",
+	page = 1,
+	per_page = 12,
+	sort_by = undefined,
+}: {
+	q: string;
+	_filter?: Partial<Publication>;
+	query_by?: string;
+	page?: number;
+	per_page?: number;
+	sort_by?: string;
+}): Promise<Array<Publication>> {
 	return collection
 		.documents()
 		.search({
-			q: args.q,
-			query_by: args.query_by,
-			sort_by: args.sort_by,
-			page: args.page,
-			per_page: args.per_page,
+			q: q,
+			query_by: query_by,
+			sort_by: sort_by,
+			page: page,
+			per_page: per_page,
 		})
 		.then((r) => {
 			return r.hits?.map((h) => {

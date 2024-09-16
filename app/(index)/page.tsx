@@ -29,7 +29,12 @@ export async function generateMetadata(
 export default async function IndexPage(_props: IndexPageProps) {
 	// const t = useTranslations("IndexPage");
 
-	const pubs = await getPublications();
+	const pubs = await getPublications({
+		// TODO workaround until upgrade to typesense 0.28, afterwards can just use: "_rand:asc"
+		// just look for a single random letter a-w (ASCII 65-87)
+		q: String.fromCharCode(Math.floor(65 + 22 * Math.random())),
+		sort_by: "_text_match:" + (Math.random() > 0.5 ? "asc" : "desc"),
+	});
 
 	// <section className="mx-auto grid w-full max-w-screen-lg items-start justify-items-center gap-3 px-4 py-8 text-center md:py-12">
 	return (
