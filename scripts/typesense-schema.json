@@ -2,6 +2,28 @@
 	"name": "thomas-bernhard",
 	"fields": [
 		{
+			"name": "year",
+			"type": "int32",
+			"facet": false,
+			"optional": false,
+			"index": true,
+			"sort": true,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		},
+		{
+			"name": "categories",
+			"type": "string[]",
+			"facet": true,
+			"optional": false,
+			"index": true,
+			"sort": false,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		},
+		{
 			"name": "contains.work.title",
 			"type": "string[]",
 			"facet": true,

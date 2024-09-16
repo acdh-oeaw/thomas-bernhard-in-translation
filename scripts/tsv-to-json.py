@@ -19,7 +19,7 @@ parser = argparse.ArgumentParser(
 parser.add_argument("-output", help="optional: write transformed publications to this JSON file (default: %(default)s)")
 parser.add_argument("-typesense", action='store_true', default=False, help="import transformed publications to Typesense (default: %(default)s)")
 parser.add_argument("-env", default="../.env.local", help=".env file to be used for getting typesense server details")
-parser.add_argument("--log-level", default=logging.INFO, type=lambda x: getattr(logging, x), help="Set the logging level (one of ERROR, WARNING, INFO, DEBUG; default: %(default)s)")
+parser.add_argument('-v', '--verbose', action='count', default=0, help='Increase the verbosity of the logging output: default is WARNING, use -v for INFO, -vv for DEBUG')
 parser.add_argument("-input", default="thbnew.tsv", help="the tsv file exported from OpenRefine (default: %(default)s)")
 
 args = parser.parse_args()
@@ -31,7 +31,7 @@ class ContextFilter(logging.Filter):
         record.count = thelogcount
         thelogcount += 1
         return True
-logging.basicConfig(level=args.log_level, format = '%(count)-4s %(levelname)-8s %(message)s\n')
+logging.basicConfig(level=max(10, 30 - 10*args.verbose), format = '%(count)-4s %(levelname)-8s %(message)s\n')
 logger = logging.getLogger(__name__)
 logger.addFilter(ContextFilter())
 
@@ -199,7 +199,8 @@ for pub in data:
         year = int(pub['year'])
     except ValueError:
         logger.error(f"{pub['Signatur']} does not have a numeric year ('{pub['year']}')")
-        year = None
+        # FIXME force
+        year = int(pub['year'][0:4])
 
     assets = [ { 'id': pub['Signatur']} ] if os.path.isfile(f'../public/covers/{pub["Signatur"]}.jpg') else []
     if len(pub['more']):
@@ -262,6 +263,7 @@ if args.typesense:
         logger.error("Couldn't find typesense database information in environment files")
         exit(1)
 
+    logger.info(f"connecting to {os.environ.get('NEXT_PUBLIC_TYPESENSE_HOST')}")
     import typesense
 
     client = typesense.Client({
@@ -273,7 +275,6 @@ if args.typesense:
       }],
       'connection_timeout_seconds': 5
     })
-    print(os.environ.get('NEXT_PUBLIC_TYPESENSE_HOST'))
 
     collection_name = 'thomas-bernhard' # TODO read from env?
 
