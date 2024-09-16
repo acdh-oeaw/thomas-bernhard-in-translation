@@ -3,7 +3,15 @@
 import type { StateMapping, UiState } from "instantsearch.js";
 import { type MessageKeys, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
-import { Configure, Hits, Pagination, RefinementList, SearchBox, Stats } from "react-instantsearch";
+import {
+	Configure,
+	Hits,
+	Pagination,
+	RefinementList,
+	SearchBox,
+	SortBy,
+	Stats,
+} from "react-instantsearch";
 import { InstantSearchNext } from "react-instantsearch-nextjs";
 import TypesenseInstantSearchAdapter, { type SearchClient } from "typesense-instantsearch-adapter";
 
@@ -142,6 +150,16 @@ export function InstantSearch() {
 			<div>
 				<div className="flex place-content-between">
 					<SearchBox placeholder={t("filter_publications")} />
+					<div>
+						sort by
+						<SortBy
+							items={[
+								{ label: "title", value: `${collectionName}/sort/title:asc` },
+								{ label: "publication (newest first)", value: `${collectionName}/sort/year:desc` },
+								{ label: "publication (oldest first)", value: `${collectionName}/sort/year:asc` },
+							]}
+						/>
+					</div>
 				</div>
 				<Hits
 					classNames={{
