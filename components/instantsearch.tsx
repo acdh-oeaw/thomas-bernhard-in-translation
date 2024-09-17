@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { Configure, Hits, Pagination, SortBy, Stats } from "react-instantsearch";
+import { Configure, InfiniteHits, SortBy } from "react-instantsearch";
 import { InstantSearchNext } from "react-instantsearch-nextjs";
 import TypesenseInstantSearchAdapter, { type SearchClient } from "typesense-instantsearch-adapter";
 
@@ -64,25 +64,16 @@ export function InstantSearch(props: InstantSearchProps): ReactNode {
 					]}
 				/>
 			</div>
-			<Hits
+			<InfiniteHits
 				classNames={{
 					list: "m-2 grid grid-cols-1 md:grid-cols-4",
+					disabledLoadMore: "hidden",
 				}}
 				hitComponent={({ hit }) => {
 					return <ClickablePublicationThumbnail publication={hit as unknown as Publication} />;
 				}}
+				showPrevious={false}
 			/>
-			<div className="flex place-content-between">
-				<Stats />
-				<Pagination
-					classNames={{
-						root: "float-right",
-						list: "flex gap-1",
-						noRefinementRoot: "hidden",
-						selectedItem: "font-bold",
-					}}
-				/>
-			</div>
 		</InstantSearchNext>
 	);
 }
