@@ -1,7 +1,6 @@
 import { getFaceted } from "@/lib/data";
 
 import { AppNavLink } from "./app-nav-link";
-import { InstantSearch } from "./instantsearch";
 import { MainContent } from "./main-content";
 
 export interface SimpleListingProps {
@@ -15,19 +14,16 @@ export async function SimpleListing(props: SimpleListingProps) {
 	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 	const counts = (await getFaceted(props.facetingField, props.filter_by)).facet_counts?.[0]!.counts;
 	return (
-		<MainContent>
-			<div>
-				{counts?.map((c) => {
-					return (
-						<li key={c.value}>
-							<AppNavLink href={`/${props.path}/${c.value}`}>
-								{c.value}&nbsp;({c.count})
-							</AppNavLink>
-						</li>
-					);
-				})}
-			</div>
-			<div>{props.facetingValue ? <InstantSearch faceting={props} /> : null}</div>
+		<MainContent className="grid grid-cols-[repeat(auto-fit,minmax(15rem,1fr))]">
+			{counts?.map((c) => {
+				return (
+					<div key={c.value}>
+						<AppNavLink href={`/search?${props.path}=${c.value}`}>
+							{c.value}&nbsp;({c.count})
+						</AppNavLink>
+					</div>
+				);
+			})}
 		</MainContent>
 	);
 }

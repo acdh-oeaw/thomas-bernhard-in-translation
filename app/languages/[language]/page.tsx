@@ -11,7 +11,7 @@ export default function LanguagesPage(props: LanguagesPageProps) {
 		<SimpleListing
 			facetingField="language"
 			facetingValue={props.params?.language}
-			path="languages"
+			path="language"
 		/>
 	);
 }

@@ -12,7 +12,7 @@ export default function TranslatorsPage(props: TranslatorsPageProps) {
 			facetingField="contains.translators.name"
 			// FIXME ugly
 			facetingValue={props.params ? decodeURI(props.params.id) : undefined}
-			path="translators"
+			path="translator"
 		/>
 	);
 }

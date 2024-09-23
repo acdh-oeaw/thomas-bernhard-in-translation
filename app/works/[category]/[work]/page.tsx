@@ -55,8 +55,7 @@ export default function WorksPage(props: WorksPageProps) {
 					// eslint-disable-next-line @typescript-eslint/no-explicit-any
 					`contains.work.category := ${catt(props.params?.category as any)}`
 				}
-				// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-				path={`works/${props.params?.category}`}
+				path={`work`}
 			/>
 		</div>
 	);
