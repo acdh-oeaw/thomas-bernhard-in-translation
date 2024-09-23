@@ -116,7 +116,7 @@ for pub in data:
             # did we already see this work? -- use title+gnd as unique id (graphic novels with same title..)
             if bwkey in bernhardworks:
                 bernhardworks[bwkey]['count'] = bernhardworks[bwkey]['count'] + 1
-                if len(pub_categories) < len(bernhardworks[bwkey]['category']):
+                if len(pub_categories) < len(bernhardworks[bwkey]['category']) or len(bernhardworks[bwkey]['category']) == 0:
                     for c in pub_categories:
                         if not c in bernhardworks[bwkey]['category']:
                             logger.warning(f'could be {c} which it was previously not')
@@ -127,7 +127,7 @@ for pub in data:
     - [ ] wahrscheinlicher Fix: `{pub["Signatur"]}`'s Kategorie von `{pub_categories[0]}` auf `{bernhardworks[bwkey]["category"][0]}` ändern''')
             else:
                 # new work, write even if we don't know the gnd
-                bernhardworks[bwkey] = { 'id': str(len(bernhardworks)+1), 'gnd': gnd, 'title': origt, 'category': pub_categories, 'year': getyear(gnd) if gnd else None, 'count': 1 }
+                bernhardworks[bwkey] = { 'id': str(len(bernhardworks)+1), 'gnd': gnd, 'title': origt, 'category': pub_categories, 'year': getyear(gnd) if gnd else None, 'count': 1, 'first seen': pub['Signatur'] }
 
         else:
             hadBlank = True
@@ -156,9 +156,12 @@ for pub in data:
 for k, v in bernhardworks.items():
     if len(v['category']) == 1:
         v['category'] = v['category'][0]
+    elif any(map(lambda kw: kw in v['title'], ['Brief', 'Telegramm', 'Stellungnahme'])):
+        v['category'] = 'letters, speeches, interviews'
+        logger.info(f'work category of "{v["title"]}" is unknown but it contains a keyword, assigning "{v["category"]}"')
     else:
-        print(f"{v['title']} ({v['gnd']}, {v['count']})")
-        # TODO Brief, Telegramm, Stellungnahme
+        print(f"1. {v['title']} (GND {v['gnd']}, {v['count']} Veröffentlichung(en), erstmals gesehen in [`{v['first seen']}`](https://thomas-bernhard-global.acdh-ch-dev.oeaw.ac.at/publication/{v['first seen']})): Werk-Kategorie nicht eindeutig, eine von: {', '.join(map(lambda c: '`' + c + '`', v['category']))}")
+        v['category'] = None
 
 translations = {}
 nrepublications = 0
@@ -316,7 +319,9 @@ if args.typesense:
 
     nfails = list(map(lambda d: d['success'], r)).count(False)
     if nfails == len(publications):
-        logger.error(f"Failed to insert any of the documents. Maybe you are using an api key that only has read access to the collection?")
+        if args.verbose > 0:
+            print(r)
+        logger.error(f"Failed to insert any of the documents. Either the documents don't comply with the schema of the collection, or maybe you are using an api key that only has read access to the collection? (run the script again with --verbose to see all {nfails} errors)")
         exit(1)
     elif nfails > 0:
         logger.error(f"{nfails} documents could not be inserted.")
