@@ -19,7 +19,7 @@
 	"AppHeader": {
 		"links": {
 			"home": "home",
-			"works": "explore works",
+			"works": "works",
 			"languages": "languages",
 			"search": "search",
 			"translators": "translators"

@@ -1,13 +1,13 @@
 {
 	"description": "Thomas Bernhard in translation",
-	"title": "Bernhard Global",
+	"title": "Thomas Bernhard in translation",
 	"twitter": {
 		"creator": "@acdh_oeaw",
 		"site": "@acdh_oeaw"
 	},
 	"manifest": {
 		"description": "Thomas Bernhard in translation",
-		"name": "Bernhard Global",
-		"short-name": "Bernhard Global"
+		"name": "Thomas Bernhard in translation",
+		"short-name": "Thomas Bernhard in translation"
 	}
 }

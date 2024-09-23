@@ -34,9 +34,8 @@ export function AppHeader(): ReactNode {
 			<div className="container flex items-center justify-between gap-4 py-6">
 				<div className="flex flex-col">
 					<Link className="font-bold" href="/">
-						bernhardglobal.at
+						thomas bernhard in translation
 					</Link>
-					thomas bernhard in translation
 				</div>
 				<nav aria-label={t("navigation-primary")}>
 					<ul className="flex items-center gap-4 text-sm" role="list">
