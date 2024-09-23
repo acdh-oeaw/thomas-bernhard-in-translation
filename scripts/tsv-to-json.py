@@ -16,11 +16,11 @@ import logging
 parser = argparse.ArgumentParser(
                     prog='tsv-to-json',
                     description='transforms a tsv file exported from OpenRefine to JSON (and optionally imports it to typesense)')
-parser.add_argument("-output", help="optional: write transformed publications to this JSON file (default: %(default)s)")
+parser.add_argument("-output", action='store_true', help="write transformed data JSON files in data/")
 parser.add_argument("-typesense", action='store_true', default=False, help="import transformed publications to Typesense (default: %(default)s)")
 parser.add_argument("-env", default="../.env.local", help=".env file to be used for getting typesense server details")
 parser.add_argument('-v', '--verbose', action='count', default=0, help='Increase the verbosity of the logging output: default is WARNING, use -v for INFO, -vv for DEBUG')
-parser.add_argument("-input", default="thbnew.tsv", help="the tsv file exported from OpenRefine (default: %(default)s)")
+parser.add_argument("-input", default="thb-20240923.tsv", help="the tsv file exported from OpenRefine (default: %(default)s)")
 
 args = parser.parse_args()
 
@@ -281,7 +281,10 @@ alldata = {
 }
 
 if args.output:
-    json.dump(alldata, open(args.output, 'w'), indent='\t')
+    json.dump(publications, open('data/publications.json', 'w'), indent='\t')
+    json.dump(bernhardworks, open('data/bernhardworks.json', 'w'), indent='\t')
+    json.dump(translators, open('data/translators.json', 'w'), indent='\t')
+    json.dump(translations, open('data/translations.json', 'w'), indent='\t')
 
 if args.typesense:
     logging.debug(f"Loading typesense access data from {args.env}")

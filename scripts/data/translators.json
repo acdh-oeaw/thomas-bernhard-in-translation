@@ -1,0 +1,2042 @@
+{
+	"Gedaj, Doreida": {
+		"id": "1",
+		"name": "Doreida Gedaj",
+		"gnd": "1012844331"
+	},
+	"\u01e6iryis, Sam\u012br": {
+		"id": "2",
+		"name": "Sam\u012br \u01e6iryis",
+		"gnd": "1091070733"
+	},
+	"Uribarri, Ibon": {
+		"id": "3",
+		"name": "Ibon Uribarri",
+		"gnd": "121638472"
+	},
+	"Macedo, Jos\u00e9 Marcos": {
+		"id": "4",
+		"name": "Jos\u00e9 Marcos Macedo",
+		"gnd": "136666825"
+	},
+	"Tellaroli, Sergio": {
+		"id": "5",
+		"name": "Sergio Tellaroli",
+		"gnd": "132456168"
+	},
+	"Melo, Jos\u00e9 Laurenio de": {
+		"id": "6",
+		"name": "Jos\u00e9 Laurenio de Melo",
+		"gnd": "1056367539"
+	},
+	"Hans Peter Welper": {
+		"id": "7",
+		"name": "Hans Peter Welper",
+		"gnd": null
+	},
+	"Correia, Marcelo Cordeiro": {
+		"id": "8",
+		"name": "Marcelo Cordeiro Correia",
+		"gnd": "1186818190"
+	},
+	"Gisele Ebersp\u00e4cher": {
+		"id": "9",
+		"name": "Gisele Ebersp\u00e4cher",
+		"gnd": null
+	},
+	"Paulo Rog\u00e9rio Pacheco Jr.": {
+		"id": "10",
+		"name": "Paulo Rog\u00e9rio Pacheco Jr.",
+		"gnd": null
+	},
+	"R\u00f6hrig, Christine": {
+		"id": "11",
+		"name": "Christine R\u00f6hrig",
+		"gnd": "128687894"
+	},
+	"Ana Maria Scherer": {
+		"id": "12",
+		"name": "Ana Maria Scherer",
+		"gnd": null
+	},
+	"Samir Signeu": {
+		"id": "13",
+		"name": "Samir Signeu",
+		"gnd": null
+	},
+	"Luft, Lya": {
+		"id": "14",
+		"name": "Lya Luft",
+		"gnd": "11891426X"
+	},
+	"Murdarov, Vladko": {
+		"id": "15",
+		"name": "Vladko Murdarov",
+		"gnd": "10317656X"
+	},
+	"Teocharov, Vladimir": {
+		"id": "16",
+		"name": "Vladimir Teocharov",
+		"gnd": "1332464289"
+	},
+	"Andreev, Alexander": {
+		"id": "17",
+		"name": "Alexander Andreev",
+		"gnd": "1043474846"
+	},
+	"Iliev, Ljubomir": {
+		"id": "18",
+		"name": "Ljubomir Iliev",
+		"gnd": "139444394"
+	},
+	"Ana Dimova & Students": {
+		"id": "19",
+		"name": "Ana Dimova & Students",
+		"gnd": null
+	},
+	"Karamelska, Teodora": {
+		"id": "20",
+		"name": "Teodora Karamelska",
+		"gnd": "1029621152"
+	},
+	"Krastyo Stanishev": {
+		"id": "21",
+		"name": "Krastyo Stanishev",
+		"gnd": null
+	},
+	"Ma, Wentao": {
+		"id": "22",
+		"name": "Wentao Ma",
+		"gnd": "1057987050"
+	},
+	"Gong Jie": {
+		"id": "23",
+		"name": "Gong Jie",
+		"gnd": null
+	},
+	"Zi Ma Jian": {
+		"id": "24",
+		"name": "Zi Ma Jian",
+		"gnd": null
+	},
+	"Han, Ruixiang": {
+		"id": "25",
+		"name": "Ruixiang Han",
+		"gnd": "1053037864"
+	},
+	"Liu, Wenjie": {
+		"id": "26",
+		"name": "Wenjie Liu",
+		"gnd": "116026273X"
+	},
+	"Wang, Zhongxin": {
+		"id": "27",
+		"name": "Zhongxin Wang",
+		"gnd": "1012218384"
+	},
+	"Xie, Fang": {
+		"id": "28",
+		"name": "Fang Xie",
+		"gnd": null
+	},
+	"Schnelle, Barbora": {
+		"id": "29",
+		"name": "Barbora Schnelle",
+		"gnd": "134111346"
+	},
+	"Augustov\u00e1, Zuzana": {
+		"id": "30",
+		"name": "Zuzana Augustov\u00e1",
+		"gnd": "129164100"
+	},
+	"Charv\u00e1t, Radovan": {
+		"id": "31",
+		"name": "Radovan Charv\u00e1t",
+		"gnd": "136336906"
+	},
+	"Bohumil \u0160pl\u00edchal": {
+		"id": "32",
+		"name": "Bohumil \u0160pl\u00edchal",
+		"gnd": null
+	},
+	"Pet\u0159\u00ed\u010dek, Miroslav": {
+		"id": "33",
+		"name": "Miroslav Pet\u0159\u00ed\u010dek",
+		"gnd": "114005958"
+	},
+	"Kufnerov\u00e1, Zlata": {
+		"id": "34",
+		"name": "Zlata Kufnerov\u00e1",
+		"gnd": "129638900"
+	},
+	"Hana Stavia\u0159ov\u00e1": {
+		"id": "35",
+		"name": "Hana Stavia\u0159ov\u00e1",
+		"gnd": null
+	},
+	"Dimter, Tom\u00e1\u0161": {
+		"id": "36",
+		"name": "Tom\u00e1\u0161 Dimter",
+		"gnd": "132734117"
+	},
+	"Jacobsenov\u00e1, Michaela": {
+		"id": "37",
+		"name": "Michaela Jacobsenov\u00e1",
+		"gnd": "129483176"
+	},
+	"Nekula, Marek": {
+		"id": "38",
+		"name": "Marek Nekula",
+		"gnd": "131386654"
+	},
+	"Mizerov\u00e1, Nikola": {
+		"id": "39",
+		"name": "Nikola Mizerov\u00e1",
+		"gnd": "1189349515"
+	},
+	"Novotn\u00fd, Pavel": {
+		"id": "40",
+		"name": "Pavel Novotn\u00fd",
+		"gnd": "1171453116"
+	},
+	"Balvin, Josef": {
+		"id": "41",
+		"name": "Josef Balvin",
+		"gnd": "116046775"
+	},
+	"Jaroslava B\u00edl\u00e9ho": {
+		"id": "42",
+		"name": "Jaroslava B\u00edl\u00e9ho",
+		"gnd": null
+	},
+	"Ta\u0165jana Lang\u00e1\u0161kov\u00e1": {
+		"id": "43",
+		"name": "Ta\u0165jana Lang\u00e1\u0161kov\u00e1",
+		"gnd": null
+	},
+	"Tome\u0161, Vladim\u00edr": {
+		"id": "44",
+		"name": "Vladim\u00edr Tome\u0161",
+		"gnd": "114470448"
+	},
+	"Wolfgang Spitzbard": {
+		"id": "45",
+		"name": "Wolfgang Spitzbard",
+		"gnd": "Q112365138"
+	},
+	"Daria Ullrichov\u00e1": {
+		"id": "46",
+		"name": "Daria Ullrichov\u00e1",
+		"gnd": null
+	},
+	"Cejpek, V\u00e1clav": {
+		"id": "47",
+		"name": "V\u00e1clav Cejpek",
+		"gnd": "1048022838"
+	},
+	"J\u00edlkov\u00e1, Jitka": {
+		"id": "48",
+		"name": "Jitka J\u00edlkov\u00e1",
+		"gnd": "122472446"
+	},
+	"Slez\u00e1k, Vratislav": {
+		"id": "49",
+		"name": "Vratislav Slez\u00e1k",
+		"gnd": "113652445"
+	},
+	"Jensen, Ren\u00e9 Jean": {
+		"id": "50",
+		"name": "Ren\u00e9 Jean Jensen",
+		"gnd": "131470000"
+	},
+	"Tommy Kierkegaard": {
+		"id": "51",
+		"name": "Tommy Kierkegaard",
+		"gnd": null
+	},
+	"Fauth, S\u00f8ren R.": {
+		"id": "52",
+		"name": "S\u00f8ren R. Fauth",
+		"gnd": "130646482"
+	},
+	"Karen-Maria Bille": {
+		"id": "53",
+		"name": "Karen-Maria Bille",
+		"gnd": null
+	},
+	"McLintock, David": {
+		"id": "54",
+		"name": "David McLintock",
+		"gnd": "143687727"
+	},
+	"Janeway, Carol Brown": {
+		"id": "55",
+		"name": "Carol Brown Janeway",
+		"gnd": "138370176"
+	},
+	"Reidel, James": {
+		"id": "56",
+		"name": "James Reidel",
+		"gnd": "142366803"
+	},
+	"Osers, Ewald": {
+		"id": "57",
+		"name": "Ewald Osers",
+		"gnd": "117744441"
+	},
+	"Wilkins, Sophie": {
+		"id": "58",
+		"name": "Sophie Wilkins",
+		"gnd": "Q95703843"
+	},
+	"Jack Dawson a.k.a. Mark Anderson": {
+		"id": "59",
+		"name": "Jack Dawson a.k.a. Mark Anderson",
+		"gnd": "1196980330 / 11329977X"
+	},
+	"Michael Hofmann": {
+		"id": "60",
+		"name": "Michael Hofmann",
+		"gnd": "132306174"
+	},
+	"Douglas Robertson": {
+		"id": "61",
+		"name": "Douglas Robertson",
+		"gnd": null
+	},
+	"Winston, Clara": {
+		"id": "62",
+		"name": "Clara Winston",
+		"gnd": "Q59525372"
+	},
+	"Winston, Richard": {
+		"id": "63",
+		"name": "Richard Winston",
+		"gnd": "1037208870"
+	},
+	"Stockman, Russell": {
+		"id": "64",
+		"name": "Russell Stockman",
+		"gnd": "124036007"
+	},
+	"Waugh, Peter": {
+		"id": "65",
+		"name": "Peter Waugh",
+		"gnd": null
+	},
+	"Peter Jansen": {
+		"id": "66",
+		"name": "Peter Jansen",
+		"gnd": null
+	},
+	"Northcott, Kenneth J.": {
+		"id": "67",
+		"name": "Kenneth J. Northcott",
+		"gnd": "127219501"
+	},
+	"Honegger, Gitta": {
+		"id": "68",
+		"name": "Gitta Honegger",
+		"gnd": "124619533"
+	},
+	"Oakes, Meredith": {
+		"id": "69",
+		"name": "Meredith Oakes",
+		"gnd": "138551731"
+	},
+	"Tierney, Andrea": {
+		"id": "70",
+		"name": "Andrea Tierney",
+		"gnd": "1019872926"
+	},
+	"Plaice, Neville": {
+		"id": "71",
+		"name": "Neville Plaice",
+		"gnd": "105626568X"
+	},
+	"Plaice, Stephen": {
+		"id": "72",
+		"name": "Stephen Plaice",
+		"gnd": "1171560575"
+	},
+	"Cairns, Tom": {
+		"id": "73",
+		"name": "Tom Cairns",
+		"gnd": null
+	},
+	"Eyre, Peter": {
+		"id": "74",
+		"name": "Peter Eyre",
+		"gnd": null
+	},
+	"Lindgren, Laura": {
+		"id": "75",
+		"name": "Laura Lindgren",
+		"gnd": "1036333043"
+	},
+	"Craig Kinosian": {
+		"id": "76",
+		"name": "Craig Kinosian",
+		"gnd": null
+	},
+	"Eduard Stoklosinski": {
+		"id": "77",
+		"name": "Eduard Stoklosinski",
+		"gnd": null
+	},
+	"Chalmers, Martin": {
+		"id": "78",
+		"name": "Martin Chalmers",
+		"gnd": "114173567"
+	},
+	"Josef Glowa": {
+		"id": "79",
+		"name": "Josef Glowa",
+		"gnd": null
+	},
+	"Susan Hurly-Glowa": {
+		"id": "80",
+		"name": "Susan Hurly-Glowa",
+		"gnd": null
+	},
+	"McManus, Donald Cameron": {
+		"id": "81",
+		"name": "Donald Cameron McManus",
+		"gnd": "1089326556"
+	},
+	"Michael Mitchell": {
+		"id": "82",
+		"name": "Michael Mitchell",
+		"gnd": "113837895"
+	},
+	"Searls, Damion": {
+		"id": "83",
+		"name": "Damion Searls",
+		"gnd": "132954214"
+	},
+	"Eric Williams": {
+		"id": "84",
+		"name": "Eric Williams",
+		"gnd": null
+	},
+	"Decker, Craig": {
+		"id": "85",
+		"name": "Craig Decker",
+		"gnd": "128883626"
+	},
+	"Case, Holly": {
+		"id": "86",
+		"name": "Holly Case",
+		"gnd": null
+	},
+	"Waidson, Herbert Morgan": {
+		"id": "87",
+		"name": "Herbert Morgan Waidson",
+		"gnd": "Q59628070"
+	},
+	"Siegel, Adam": {
+		"id": "88",
+		"name": "Adam Siegel",
+		"gnd": null
+	},
+	"A. Lesllie Wilson": {
+		"id": "89",
+		"name": "A. Lesllie Wilson",
+		"gnd": null
+	},
+	"Toivo Tasa": {
+		"id": "90",
+		"name": "Toivo Tasa",
+		"gnd": "Q14503060"
+	},
+	"Sirkel, Mati": {
+		"id": "91",
+		"name": "Mati Sirkel",
+		"gnd": "113737300"
+	},
+	"M\u00e4gar, Heli": {
+		"id": "92",
+		"name": "Heli M\u00e4gar",
+		"gnd": "1138306738"
+	},
+	"Sarrivaara, Olli": {
+		"id": "93",
+		"name": "Olli Sarrivaara",
+		"gnd": "137246536"
+	},
+	"Roinila, Tarja": {
+		"id": "94",
+		"name": "Tarja Roinila",
+		"gnd": "118148532"
+	},
+	"Spreng, Eberhard": {
+		"id": "95",
+		"name": "Eberhard Spreng",
+		"gnd": "114692562X"
+	},
+	"Mirsky, Daniel": {
+		"id": "96",
+		"name": "Daniel Mirsky",
+		"gnd": "1056937912"
+	},
+	"Lambrichs, Gilberte": {
+		"id": "97",
+		"name": "Gilberte Lambrichs",
+		"gnd": "127140581"
+	},
+	"Guy F. Estrangin": {
+		"id": "98",
+		"name": "Guy F. Estrangin",
+		"gnd": "127105778"
+	},
+	"Kreiss, Bernard": {
+		"id": "99",
+		"name": "Bernard Kreiss",
+		"gnd": "140640894"
+	},
+	"Porcell, Claude": {
+		"id": "100",
+		"name": "Claude Porcell",
+		"gnd": "114277966"
+	},
+	"Kohn, Albert": {
+		"id": "101",
+		"name": "Albert Kohn",
+		"gnd": "126505152"
+	},
+	"Simon, Boris": {
+		"id": "102",
+		"name": "Boris Simon",
+		"gnd": "1205565698"
+	},
+	"Turk-Meyer, Jos\u00e9e": {
+		"id": "103",
+		"name": "Jos\u00e9e Turk-Meyer",
+		"gnd": "127531399X"
+	},
+	"H\u00e9mery, Jean-Claude": {
+		"id": "104",
+		"name": "Jean-Claude H\u00e9mery",
+		"gnd": "1152034472"
+	},
+	"Kaufholz-Messmer, \u00c9liane": {
+		"id": "105",
+		"name": "\u00c9liane Kaufholz-Messmer",
+		"gnd": "141257946"
+	},
+	"Servicen, Louise": {
+		"id": "106",
+		"name": "Louise Servicen",
+		"gnd": "1036521567"
+	},
+	"Holl, Herbert": {
+		"id": "107",
+		"name": "Herbert Holl",
+		"gnd": "120991268"
+	},
+	"Han, Kza": {
+		"id": "108",
+		"name": "Kza Han",
+		"gnd": "137436971"
+	},
+	"Jean-Luc Moreau": {
+		"id": "109",
+		"name": "Jean-Luc Moreau",
+		"gnd": "123611431"
+	},
+	"Hommel, Susanne": {
+		"id": "110",
+		"name": "Susanne Hommel",
+		"gnd": "1027599265"
+	},
+	"Michel Nebenzahl": {
+		"id": "111",
+		"name": "Michel Nebenzahl",
+		"gnd": null
+	},
+	"Demet, Michel-Fran\u00e7ois": {
+		"id": "112",
+		"name": "Michel-Fran\u00e7ois Demet",
+		"gnd": "116069015"
+	},
+	"Etor\u00e9-Lortholary, Jeanne": {
+		"id": "113",
+		"name": "Jeanne Etor\u00e9-Lortholary",
+		"gnd": "137449232"
+	},
+	"Lortholary, Bernard": {
+		"id": "114",
+		"name": "Bernard Lortholary",
+		"gnd": "138972516"
+	},
+	"Petit, Dominique": {
+		"id": "115",
+		"name": "Dominique Petit",
+		"gnd": "1017918856"
+	},
+	"Edith Darnaud": {
+		"id": "116",
+		"name": "Edith Darnaud",
+		"gnd": null
+	},
+	"Eliane Kaufholz-Messmer": {
+		"id": "117",
+		"name": "Eliane Kaufholz-Messmer",
+		"gnd": "141257946"
+	},
+	"Roland Hofer-Bury": {
+		"id": "118",
+		"name": "Roland Hofer-Bury",
+		"gnd": null
+	},
+	"Jean de Meur": {
+		"id": "119",
+		"name": "Jean de Meur",
+		"gnd": null
+	},
+	"Para, Jean-Baptiste": {
+		"id": "120",
+		"name": "Jean-Baptiste Para",
+		"gnd": "14117479X"
+	},
+	"Tautou, Alexis": {
+		"id": "121",
+		"name": "Alexis Tautou",
+		"gnd": "131565587X"
+	},
+	"Hornig, Dieter": {
+		"id": "122",
+		"name": "Dieter Hornig",
+		"gnd": "109855019"
+	},
+	"Herv\u00e9 Lenormand": {
+		"id": "123",
+		"name": "Herv\u00e9 Lenormand",
+		"gnd": null
+	},
+	"W\u00f6gerbauer, Werner": {
+		"id": "124",
+		"name": "Werner W\u00f6gerbauer",
+		"gnd": "130301078"
+	},
+	"Fran\u00e7ois Joachim": {
+		"id": "125",
+		"name": "Fran\u00e7ois Joachim",
+		"gnd": null
+	},
+	"Mannoni, Olivier": {
+		"id": "126",
+		"name": "Olivier Mannoni",
+		"gnd": "136813089"
+	},
+	"Stephan, Claudia": {
+		"id": "127",
+		"name": "Claudia Stephan",
+		"gnd": null
+	},
+	"Eliane Kaufholz": {
+		"id": "128",
+		"name": "Eliane Kaufholz",
+		"gnd": "141257946"
+	},
+	"Lefebvre, Jean-Pierre": {
+		"id": "129",
+		"name": "Jean-Pierre Lefebvre",
+		"gnd": "121462609"
+	},
+	"Becerra de Becerre\u00e1, Afonso": {
+		"id": "130",
+		"name": "Afonso Becerra de Becerre\u00e1",
+		"gnd": "1033609943"
+	},
+	"Ana Contreras": {
+		"id": "131",
+		"name": "Ana Contreras",
+		"gnd": null
+	},
+	"L\u00f3pez Pato, Catuxa": {
+		"id": "132",
+		"name": "Catuxa L\u00f3pez Pato",
+		"gnd": "1046629735"
+	},
+	"Miriana\u0161vili, Maia": {
+		"id": "133",
+		"name": "Maia Miriana\u0161vili",
+		"gnd": "133964981"
+	},
+	"P\u0315an\u01f0ikije, Maia": {
+		"id": "134",
+		"name": "Maia P\u0315an\u01f0ikije",
+		"gnd": "1160330182"
+	},
+	"Natia Datuaschwili": {
+		"id": "135",
+		"name": "Natia Datuaschwili",
+		"gnd": null
+	},
+	"Kentrotis, Georgios": {
+		"id": "136",
+		"name": "Georgios Kentrotis",
+		"gnd": "137598556"
+	},
+	"Isar\u0113s, Alexandros": {
+		"id": "137",
+		"name": "Alexandros Isar\u0113s",
+		"gnd": "133548910"
+	},
+	"Yannos Perlegkas": {
+		"id": "138",
+		"name": "Yannos Perlegkas",
+		"gnd": null
+	},
+	"Ismini Theodoropoulou": {
+		"id": "139",
+		"name": "Ismini Theodoropoulou",
+		"gnd": null
+	},
+	"Giorgos Depastas": {
+		"id": "140",
+		"name": "Giorgos Depastas",
+		"gnd": null
+	},
+	"Vassilis Tomanas": {
+		"id": "141",
+		"name": "Vassilis Tomanas",
+		"gnd": null
+	},
+	"Mastorak\u0113, Tzen\u0113": {
+		"id": "142",
+		"name": "Tzen\u0113 Mastorak\u0113",
+		"gnd": "129471550"
+	},
+	"Sotiria Matziri": {
+		"id": "143",
+		"name": "Sotiria Matziri",
+		"gnd": null
+	},
+	"Dionysis Tselentis": {
+		"id": "144",
+		"name": "Dionysis Tselentis",
+		"gnd": null
+	},
+	"Dimitri Varsou": {
+		"id": "145",
+		"name": "Dimitri Varsou",
+		"gnd": null
+	},
+	"Lefteris Vogiatzis": {
+		"id": "146",
+		"name": "Lefteris Vogiatzis",
+		"gnd": null
+	},
+	"Vasilis Tsalis": {
+		"id": "147",
+		"name": "Vasilis Tsalis",
+		"gnd": null
+	},
+	"Maria Gkenkopulu": {
+		"id": "148",
+		"name": "Maria Gkenkopulu",
+		"gnd": null
+	},
+	"Spyros Moskovou": {
+		"id": "149",
+		"name": "Spyros Moskovou",
+		"gnd": null
+	},
+	"Kypri\u014dt\u0113s, Alexandros": {
+		"id": "150",
+		"name": "Alexandros Kypri\u014dt\u0113s",
+		"gnd": "12915170X"
+	},
+	"Ioanna Diamantopoulou": {
+		"id": "151",
+		"name": "Ioanna Diamantopoulou",
+		"gnd": null
+	},
+	"Christina-Panagiota Grammatikopoulou": {
+		"id": "152",
+		"name": "Christina-Panagiota Grammatikopoulou",
+		"gnd": null
+	},
+	"Zissis Sarikas": {
+		"id": "153",
+		"name": "Zissis Sarikas",
+		"gnd": null
+	},
+	"Iakovos Koperti": {
+		"id": "154",
+		"name": "Iakovos Koperti",
+		"gnd": "120990261"
+	},
+	"Theodoros Loupasakis": {
+		"id": "155",
+		"name": "Theodoros Loupasakis",
+		"gnd": null
+	},
+	"Katharina Psaltou": {
+		"id": "156",
+		"name": "Katharina Psaltou",
+		"gnd": null
+	},
+	"Seraphim Velentzas": {
+		"id": "157",
+		"name": "Seraphim Velentzas",
+		"gnd": null
+	},
+	"Markar\u0113s, Petros": {
+		"id": "158",
+		"name": "Petros Markar\u0113s",
+		"gnd": "121868338"
+	},
+	"Vasilis Poulantzas": {
+		"id": "159",
+		"name": "Vasilis Poulantzas",
+		"gnd": "Q60733190"
+	},
+	"Mirs\u1e33i, Nili": {
+		"id": "160",
+		"name": "Nili Mirs\u1e33i",
+		"gnd": "1114402494"
+	},
+	"Milstein, Avishai": {
+		"id": "161",
+		"name": "Avishai Milstein",
+		"gnd": "124219553X"
+	},
+	"Nitza Ben-Ari": {
+		"id": "162",
+		"name": "Nitza Ben-Ari",
+		"gnd": null
+	},
+	"Karmel, Avraham": {
+		"id": "163",
+		"name": "Avraham Karmel",
+		"gnd": "1114408301"
+	},
+	"Bar-\u1e24ayim, Ra\u1e25el": {
+		"id": "164",
+		"name": "Ra\u1e25el Bar-\u1e24ayim",
+		"gnd": "137916272"
+	},
+	"Judith Shargal": {
+		"id": "165",
+		"name": "Judith Shargal",
+		"gnd": null
+	},
+	"\u1e32onas, \u1e6cali": {
+		"id": "166",
+		"name": "\u1e6cali \u1e32onas",
+		"gnd": "1031842128"
+	},
+	"G\u00e1bor G\u0151rgey": {
+		"id": "167",
+		"name": "G\u00e1bor G\u0151rgey",
+		"gnd": "103313311"
+	},
+	"Attila Toronyi": {
+		"id": "168",
+		"name": "Attila Toronyi",
+		"gnd": null
+	},
+	"Tandori, Dezs\u0151": {
+		"id": "169",
+		"name": "Dezs\u0151 Tandori",
+		"gnd": "119101580"
+	},
+	"Gabriella Haj\u00f3s": {
+		"id": "170",
+		"name": "Gabriella Haj\u00f3s",
+		"gnd": null
+	},
+	"R\u00e9vai, G\u00e1bor": {
+		"id": "171",
+		"name": "G\u00e1bor R\u00e9vai",
+		"gnd": "115452141"
+	},
+	"Kukorelly, Endre": {
+		"id": "172",
+		"name": "Endre Kukorelly",
+		"gnd": "120234556"
+	},
+	"Adamik, Lajos": {
+		"id": "173",
+		"name": "Lajos Adamik",
+		"gnd": "120290863"
+	},
+	"Gy\u00f6rffy, Mikl\u00f3s": {
+		"id": "174",
+		"name": "Mikl\u00f3s Gy\u00f6rffy",
+		"gnd": "113410824"
+	},
+	"Halasi, Zolt\u00e1n": {
+		"id": "175",
+		"name": "Zolt\u00e1n Halasi",
+		"gnd": "115418989"
+	},
+	"Z. J\u00e1nos Erd\u00e9lyi": {
+		"id": "176",
+		"name": "Z. J\u00e1nos Erd\u00e9lyi",
+		"gnd": "Q124815409"
+	},
+	"Ember, M\u00e1ria": {
+		"id": "177",
+		"name": "M\u00e1ria Ember",
+		"gnd": "119379848"
+	},
+	"Tam\u00e1s Tolm\u00e1r": {
+		"id": "178",
+		"name": "Tam\u00e1s Tolm\u00e1r",
+		"gnd": null
+	},
+	"L\u0151rinczy, Attila": {
+		"id": "179",
+		"name": "Attila L\u0151rinczy",
+		"gnd": "1035422026"
+	},
+	"Teglasy, Gergely": {
+		"id": "180",
+		"name": "Gergely Teglasy",
+		"gnd": "1070048836"
+	},
+	"Sarank\u00f3, M\u00e1rta": {
+		"id": "181",
+		"name": "M\u00e1rta Sarank\u00f3",
+		"gnd": "142048941"
+	},
+	"Szijj, Ferenc": {
+		"id": "182",
+		"name": "Ferenc Szijj",
+		"gnd": "103304207"
+	},
+	"Hj\u00e1lmar Sveinsson": {
+		"id": "183",
+		"name": "Hj\u00e1lmar Sveinsson",
+		"gnd": "1032752440"
+	},
+	"\u00d3skars \u00c1rna \u00d3skarssonar": {
+		"id": "184",
+		"name": "\u00d3skars \u00c1rna \u00d3skarssonar",
+		"gnd": null
+	},
+	"Gut Bozzetti, Elsbeth": {
+		"id": "185",
+		"name": "Elsbeth Gut Bozzetti",
+		"gnd": "1019346833"
+	},
+	"Niccolini, Elisabetta": {
+		"id": "186",
+		"name": "Elisabetta Niccolini",
+		"gnd": null
+	},
+	"Enrico Arioso": {
+		"id": "187",
+		"name": "Enrico Arioso",
+		"gnd": null
+	},
+	"Rolando Zorzi": {
+		"id": "188",
+		"name": "Rolando Zorzi",
+		"gnd": null
+	},
+	"Colorni, Renata": {
+		"id": "189",
+		"name": "Renata Colorni",
+		"gnd": "112839223"
+	},
+	"Apostolo, Stefano": {
+		"id": "190",
+		"name": "Stefano Apostolo",
+		"gnd": "1211209792"
+	},
+	"Thabet, Samir": {
+		"id": "191",
+		"name": "Samir Thabet",
+		"gnd": "1141391872"
+	},
+	"Carpi, Anna Maria": {
+		"id": "192",
+		"name": "Anna Maria Carpi",
+		"gnd": "123134382"
+	},
+	"Groff, Claudio": {
+		"id": "193",
+		"name": "Claudio Groff",
+		"gnd": "112858953"
+	},
+	"Agabio, Giovanna": {
+		"id": "194",
+		"name": "Giovanna Agabio",
+		"gnd": "132354330"
+	},
+	"Enza Gini": {
+		"id": "195",
+		"name": "Enza Gini",
+		"gnd": null
+	},
+	"Gandini, Umberto": {
+		"id": "196",
+		"name": "Umberto Gandini",
+		"gnd": "114324247"
+	},
+	"Roberto Menin": {
+		"id": "197",
+		"name": "Roberto Menin",
+		"gnd": null
+	},
+	"Bernardi, Eugenio": {
+		"id": "198",
+		"name": "Eugenio Bernardi",
+		"gnd": "1017918821"
+	},
+	"Chiusano, Italo Alighiero": {
+		"id": "199",
+		"name": "Italo Alighiero Chiusano",
+		"gnd": "11936462X"
+	},
+	"Gardoncini, Alice": {
+		"id": "200",
+		"name": "Alice Gardoncini",
+		"gnd": "1272177750"
+	},
+	"Olivetti, Magda": {
+		"id": "201",
+		"name": "Magda Olivetti",
+		"gnd": "137595050"
+	},
+	"Reitani, Luigi": {
+		"id": "202",
+		"name": "Luigi Reitani",
+		"gnd": "115452141"
+	},
+	"Alessandra Rovagnati": {
+		"id": "203",
+		"name": "Alessandra Rovagnati",
+		"gnd": null
+	},
+	"Lavagetto, Andreina": {
+		"id": "204",
+		"name": "Andreina Lavagetto",
+		"gnd": "1173331999"
+	},
+	"Ruchat, Anna": {
+		"id": "205",
+		"name": "Anna Ruchat",
+		"gnd": "111625785"
+	},
+	"Grieco, Agnese": {
+		"id": "206",
+		"name": "Agnese Grieco",
+		"gnd": "172985013"
+	},
+	"Elisabetta dell\u2019Anna Ciancia": {
+		"id": "207",
+		"name": "Elisabetta dell\u2019Anna Ciancia",
+		"gnd": "123634601"
+	},
+	"Anna Calligaris": {
+		"id": "208",
+		"name": "Anna Calligaris",
+		"gnd": null
+	},
+	"Vittoria Rovelli Ruberl": {
+		"id": "209",
+		"name": "Vittoria Rovelli Ruberl",
+		"gnd": null
+	},
+	"Latini, Micaela": {
+		"id": "210",
+		"name": "Micaela Latini",
+		"gnd": "132807114"
+	},
+	"Fiorato, Pierfrancesco": {
+		"id": "211",
+		"name": "Pierfrancesco Fiorato",
+		"gnd": "1073275078"
+	},
+	"Iwashita, Masayoshi": {
+		"id": "212",
+		"name": "Masayoshi Iwashita",
+		"gnd": "114712406X"
+	},
+	"Hiroshi Yamamoto": {
+		"id": "213",
+		"name": "Hiroshi Yamamoto",
+		"gnd": "139679022"
+	},
+	"Hatsumi, Motoi": {
+		"id": "214",
+		"name": "Motoi Hatsumi",
+		"gnd": "1073619796"
+	},
+	"Yutaro Iijima": {
+		"id": "215",
+		"name": "Yutaro Iijima",
+		"gnd": null
+	},
+	"Ikeda, Nobuo": {
+		"id": "216",
+		"name": "Nobuo Ikeda",
+		"gnd": "1075348315"
+	},
+	"Takeuchi Misao": {
+		"id": "217",
+		"name": "Takeuchi Misao",
+		"gnd": null
+	},
+	"Nishikawa, Kenichi": {
+		"id": "218",
+		"name": "Kenichi Nishikawa",
+		"gnd": "1147124078"
+	},
+	"Imai, Atsushi": {
+		"id": "219",
+		"name": "Atsushi Imai",
+		"gnd": "122224868"
+	},
+	"Daisuke Higuchi": {
+		"id": "220",
+		"name": "Daisuke Higuchi",
+		"gnd": null
+	},
+	"Eri Kazuki": {
+		"id": "221",
+		"name": "Eri Kazuki",
+		"gnd": null
+	},
+	"Murgades, Josep": {
+		"id": "222",
+		"name": "Josep Murgades",
+		"gnd": "1050810910"
+	},
+	"Garrigasait, Ra\u00fcl": {
+		"id": "223",
+		"name": "Ra\u00fcl Garrigasait",
+		"gnd": "1068300116"
+	},
+	"Formosa Plans, Clara": {
+		"id": "224",
+		"name": "Clara Formosa Plans",
+		"gnd": "141993855"
+	},
+	"Farr\u00e9s, Ramon": {
+		"id": "225",
+		"name": "Ramon Farr\u00e9s",
+		"gnd": "123509556"
+	},
+	"Formosa, Feliu": {
+		"id": "226",
+		"name": "Feliu Formosa",
+		"gnd": "128450231"
+	},
+	"Fontcuberta i Gel, Joan": {
+		"id": "227",
+		"name": "Joan Fontcuberta i Gel",
+		"gnd": "130132454"
+	},
+	"Soler Horta, Anna": {
+		"id": "228",
+		"name": "Anna Soler Horta",
+		"gnd": "140013458"
+	},
+	"Eugeni Bou": {
+		"id": "229",
+		"name": "Eugeni Bou",
+		"gnd": null
+	},
+	"Roig, N\u00faria": {
+		"id": "230",
+		"name": "N\u00faria Roig",
+		"gnd": "1026759412"
+	},
+	"Puigtobella, Bernat": {
+		"id": "231",
+		"name": "Bernat Puigtobella",
+		"gnd": "1056497629"
+	},
+	"Iba\u00f1ez, Jordi": {
+		"id": "232",
+		"name": "Jordi Iba\u00f1ez",
+		"gnd": "1020429593"
+	},
+	"Bag, In won": {
+		"id": "233",
+		"name": "In won Bag",
+		"gnd": "139005625"
+	},
+	"Kim Yeon-sun": {
+		"id": "234",
+		"name": "Kim Yeon-sun",
+		"gnd": null
+	},
+	"Song Geum-bong": {
+		"id": "235",
+		"name": "Song Geum-bong",
+		"gnd": null
+	},
+	"Yun Seon-a": {
+		"id": "236",
+		"name": "Yun Seon-a",
+		"gnd": null
+	},
+	"Bae, Su a": {
+		"id": "237",
+		"name": "Su a Bae",
+		"gnd": "1022100165"
+	},
+	"Park Hui-seok": {
+		"id": "238",
+		"name": "Park Hui-seok",
+		"gnd": "130485551"
+	},
+	"Kim, Seong-Hyeon": {
+		"id": "239",
+		"name": "Seong-Hyeon Kim",
+		"gnd": null
+	},
+	"Ryu Jong-yeong": {
+		"id": "240",
+		"name": "Ryu Jong-yeong",
+		"gnd": null
+	},
+	"Ryu Eun-hui": {
+		"id": "241",
+		"name": "Ryu Eun-hui",
+		"gnd": "115744363"
+	},
+	"Cho Hyeon-cheon": {
+		"id": "242",
+		"name": "Cho Hyeon-cheon",
+		"gnd": null
+	},
+	"Gim, Yeong ok": {
+		"id": "243",
+		"name": "Yeong ok Gim",
+		"gnd": "172830494"
+	},
+	"Park Hwan-deok": {
+		"id": "244",
+		"name": "Park Hwan-deok",
+		"gnd": null
+	},
+	"Byeon, Hag-su": {
+		"id": "245",
+		"name": "Hag-su Byeon",
+		"gnd": null
+	},
+	"Bag, Yeong hui": {
+		"id": "246",
+		"name": "Yeong hui Bag",
+		"gnd": null
+	},
+	"Gim, Mi hye": {
+		"id": "247",
+		"name": "Mi hye Gim",
+		"gnd": "118134086"
+	},
+	"Chang Eun-su": {
+		"id": "248",
+		"name": "Chang Eun-su",
+		"gnd": null
+	},
+	"Stama\u0107, Truda": {
+		"id": "249",
+		"name": "Truda Stama\u0107",
+		"gnd": "1020655135"
+	},
+	"Peri\u0107, Boris": {
+		"id": "250",
+		"name": "Boris Peri\u0107",
+		"gnd": "123586763"
+	},
+	"Kne\u017eevi\u0107, Snje\u0161ka": {
+		"id": "251",
+		"name": "Snje\u0161ka Kne\u017eevi\u0107",
+		"gnd": "1017241961"
+	},
+	"Muhamedagi\u0107, Sead": {
+		"id": "252",
+		"name": "Sead Muhamedagi\u0107",
+		"gnd": "1017884579"
+	},
+	"Pranjkovi\u0107 Karas, Ana": {
+		"id": "253",
+		"name": "Ana Pranjkovi\u0107 Karas",
+		"gnd": "1091593388"
+	},
+	"Pranjkovi\u0107, Ana": {
+		"id": "254",
+		"name": "Ana Pranjkovi\u0107",
+		"gnd": "1091593388"
+	},
+	"Sinkovi\u0107, Helen": {
+		"id": "255",
+		"name": "Helen Sinkovi\u0107",
+		"gnd": "141551526"
+	},
+	"\u010cetrauskas, Teodoras": {
+		"id": "256",
+		"name": "Teodoras \u010cetrauskas",
+		"gnd": "123290376"
+	},
+	"Sodeikien\u0117, Giedr\u0117": {
+		"id": "257",
+		"name": "Giedr\u0117 Sodeikien\u0117",
+		"gnd": "1048311376"
+	},
+	"Jurgita Mikutyt\u0117": {
+		"id": "258",
+		"name": "Jurgita Mikutyt\u0117",
+		"gnd": null
+	},
+	"Lindner, Elizabeta": {
+		"id": "259",
+		"name": "Elizabeta Lindner",
+		"gnd": "140167625"
+	},
+	"Graftdijk, Thomas": {
+		"id": "260",
+		"name": "Thomas Graftdijk",
+		"gnd": "112828264"
+	},
+	"Brogt, Janine": {
+		"id": "261",
+		"name": "Janine Brogt",
+		"gnd": "1192275144"
+	},
+	"Rijnders, Gerardjan": {
+		"id": "262",
+		"name": "Gerardjan Rijnders",
+		"gnd": "1013260554"
+	},
+	"Bakx, Hans Willem": {
+		"id": "263",
+		"name": "Hans Willem Bakx",
+		"gnd": "1018015213"
+	},
+	"Engelander, Ruud": {
+		"id": "264",
+		"name": "Ruud Engelander",
+		"gnd": "1169097006"
+	},
+	"Bussink, Gerrit": {
+		"id": "265",
+		"name": "Gerrit Bussink",
+		"gnd": "11440853X"
+	},
+	"Duquesnoy, Theodor": {
+		"id": "266",
+		"name": "Theodor Duquesnoy",
+		"gnd": "1070720577"
+	},
+	"Jacob Groot": {
+		"id": "267",
+		"name": "Jacob Groot",
+		"gnd": null
+	},
+	"Bakker, Chris": {
+		"id": "268",
+		"name": "Chris Bakker",
+		"gnd": "1200664884"
+	},
+	"Bes, Gerard": {
+		"id": "269",
+		"name": "Gerard Bes",
+		"gnd": null
+	},
+	"Philip Grisel": {
+		"id": "270",
+		"name": "Philip Grisel",
+		"gnd": null
+	},
+	"Bok, Pauline de": {
+		"id": "271",
+		"name": "Pauline de Bok",
+		"gnd": "139189637"
+	},
+	"Hengel, Ria van": {
+		"id": "272",
+		"name": "Ria van Hengel",
+		"gnd": "122811682"
+	},
+	"P.P.J. Klinkenberg": {
+		"id": "273",
+		"name": "P.P.J. Klinkenberg",
+		"gnd": null
+	},
+	"Wigman, Menno": {
+		"id": "274",
+		"name": "Menno Wigman",
+		"gnd": "Q4110542"
+	},
+	"Thijs, Ger": {
+		"id": "275",
+		"name": "Ger Thijs",
+		"gnd": "Q2356157"
+	},
+	"Tom Kleijn": {
+		"id": "276",
+		"name": "Tom Kleijn",
+		"gnd": null
+	},
+	"Christope van de Loo": {
+		"id": "277",
+		"name": "Christope van de Loo",
+		"gnd": null
+	},
+	"Kan, Jeroen van": {
+		"id": "278",
+		"name": "Jeroen van Kan",
+		"gnd": "112675725X"
+	},
+	"Rob Scholten": {
+		"id": "279",
+		"name": "Rob Scholten",
+		"gnd": null
+	},
+	"Dahl, Sverre": {
+		"id": "280",
+		"name": "Sverre Dahl",
+		"gnd": "10933230X"
+	},
+	"Aasprong, Monica": {
+		"id": "281",
+		"name": "Monica Aasprong",
+		"gnd": "138392307"
+	},
+	"St\u00f8lan, Arne Hugo": {
+		"id": "282",
+		"name": "Arne Hugo St\u00f8lan",
+		"gnd": "105315626X"
+	},
+	"Fosse, Jon": {
+		"id": "283",
+		"name": "Jon Fosse",
+		"gnd": "120052547"
+	},
+	"Stub\u00f8, Eirik": {
+		"id": "284",
+		"name": "Eirik Stub\u00f8",
+		"gnd": null
+	},
+	"Nasser Ghayashi": {
+		"id": "285",
+		"name": "Nasser Ghayashi",
+		"gnd": null
+	},
+	"Abdullah Jamani": {
+		"id": "286",
+		"name": "Abdullah Jamani",
+		"gnd": null
+	},
+	"Khadijah Kazem Alilou": {
+		"id": "287",
+		"name": "Khadijah Kazem Alilou",
+		"gnd": null
+	},
+	"Ali Asghar Haddad": {
+		"id": "288",
+		"name": "Ali Asghar Haddad",
+		"gnd": "1068191961"
+	},
+	"Ra\u0161\u012bd, \u0160ahr\u016bz": {
+		"id": "289",
+		"name": "\u0160ahr\u016bz Ra\u0161\u012bd",
+		"gnd": "1081376856"
+	},
+	"Jahid Jahanshahi": {
+		"id": "290",
+		"name": "Jahid Jahanshahi",
+		"gnd": null
+	},
+	"Mousavi, Mohammad Reza": {
+		"id": "291",
+		"name": "Mohammad Reza Mousavi",
+		"gnd": null
+	},
+	"Alazreg, Abdullahi": {
+		"id": "292",
+		"name": "Abdullahi Alazreg",
+		"gnd": null
+	},
+	"Aboozar Ahangar": {
+		"id": "293",
+		"name": "Aboozar Ahangar",
+		"gnd": null
+	},
+	"Arab, Hassan": {
+		"id": "294",
+		"name": "Hassan Arab",
+		"gnd": null
+	},
+	"Zainab Armand": {
+		"id": "295",
+		"name": "Zainab Armand",
+		"gnd": null
+	},
+	"Muska\u0142a, Monika": {
+		"id": "296",
+		"name": "Monika Muska\u0142a",
+		"gnd": "141954027"
+	},
+	"Lisiecka, S\u0142awa": {
+		"id": "297",
+		"name": "S\u0142awa Lisiecka",
+		"gnd": "12857688X"
+	},
+	"B\u0142aut, S\u0142awomir": {
+		"id": "298",
+		"name": "S\u0142awomir B\u0142aut",
+		"gnd": "115162283"
+	},
+	"Ernest Dyzek": {
+		"id": "299",
+		"name": "Ernest Dyzek",
+		"gnd": null
+	},
+	"Marek Feliks Nowak": {
+		"id": "300",
+		"name": "Marek Feliks Nowak",
+		"gnd": null
+	},
+	"K\u0119dzierski, Marek": {
+		"id": "301",
+		"name": "Marek K\u0119dzierski",
+		"gnd": "120039753"
+	},
+	"Mycielska, Gabriela": {
+		"id": "302",
+		"name": "Gabriela Mycielska",
+		"gnd": "127249869"
+	},
+	"Jasku\u0142a, Zdzis\u0142aw": {
+		"id": "303",
+		"name": "Zdzis\u0142aw Jasku\u0142a",
+		"gnd": "1014069262"
+	},
+	"Wojnakowski, Ryszard": {
+		"id": "304",
+		"name": "Ryszard Wojnakowski",
+		"gnd": "124711944"
+	},
+	"Buras, Jacek St.": {
+		"id": "305",
+		"name": "Jacek St. Buras",
+		"gnd": "120362694"
+	},
+	"\u017bmij-Zieli\u0144ska, Danuta": {
+		"id": "306",
+		"name": "Danuta \u017bmij-Zieli\u0144ska",
+		"gnd": "1215107900"
+	},
+	"Matysik, Grzegorz": {
+		"id": "307",
+		"name": "Grzegorz Matysik",
+		"gnd": "1061823695"
+	},
+	"Wo\u0142kowicz, Anna": {
+		"id": "308",
+		"name": "Anna Wo\u0142kowicz",
+		"gnd": "Q117871566"
+	},
+	"Kunicki, Wojciech": {
+		"id": "309",
+		"name": "Wojciech Kunicki",
+		"gnd": "121265501"
+	},
+	"Bara\u0144czak, Stanis\u0142aw": {
+		"id": "310",
+		"name": "Stanis\u0142aw Bara\u0144czak",
+		"gnd": "119229129"
+	},
+	"Agnieszka Borkiewicz": {
+		"id": "311",
+		"name": "Agnieszka Borkiewicz",
+		"gnd": null
+	},
+	"Zbigniew Bochenek": {
+		"id": "312",
+		"name": "Zbigniew Bochenek",
+		"gnd": "Q9387781"
+	},
+	"Surowska, Barbara L.": {
+		"id": "313",
+		"name": "Barbara L. Surowska",
+		"gnd": "1089574959"
+	},
+	"Sauerland, Karol": {
+		"id": "314",
+		"name": "Karol Sauerland",
+		"gnd": "123637015"
+	},
+	"Maria Olema Malheiro": {
+		"id": "315",
+		"name": "Maria Olema Malheiro",
+		"gnd": null
+	},
+	"Almeida, Leopoldina": {
+		"id": "316",
+		"name": "Leopoldina Almeida",
+		"gnd": "138312737"
+	},
+	"Jos\u00e9 Antonio Palma Caetano": {
+		"id": "317",
+		"name": "Jos\u00e9 Antonio Palma Caetano",
+		"gnd": "110602897"
+	},
+	"Duarte, Bruno": {
+		"id": "318",
+		"name": "Bruno Duarte",
+		"gnd": "141122455"
+	},
+	"Barrento, Jo\u00e3o": {
+		"id": "319",
+		"name": "Jo\u00e3o Barrento",
+		"gnd": "121553779"
+	},
+	"Mendes, Anabela": {
+		"id": "320",
+		"name": "Anabela Mendes",
+		"gnd": "121903326X"
+	},
+	"Pimenta, Alberto": {
+		"id": "321",
+		"name": "Alberto Pimenta",
+		"gnd": "17230881X"
+	},
+	"Parreira, Francisco Lu\u00eds": {
+		"id": "322",
+		"name": "Francisco Lu\u00eds Parreira",
+		"gnd": "1234182270"
+	},
+	"Gabriela Dan\u0163i\u015f": {
+		"id": "323",
+		"name": "Gabriela Dan\u0163i\u015f",
+		"gnd": null
+	},
+	"Madritsch Marin, Florica": {
+		"id": "324",
+		"name": "Florica Madritsch Marin",
+		"gnd": "128824050"
+	},
+	"Ioan Evu": {
+		"id": "325",
+		"name": "Ioan Evu",
+		"gnd": "140531726"
+	},
+	"Theresia Haas": {
+		"id": "326",
+		"name": "Theresia Haas",
+		"gnd": null
+	},
+	"Isb\u0103\u0219escu, Mihai": {
+		"id": "327",
+		"name": "Mihai Isb\u0103\u0219escu",
+		"gnd": "133234487"
+	},
+	"Borisa Khlebnikowa": {
+		"id": "328",
+		"name": "Borisa Khlebnikowa",
+		"gnd": null
+	},
+	"Vladimira Fadeeva": {
+		"id": "329",
+		"name": "Vladimira Fadeeva",
+		"gnd": null
+	},
+	"Michael Rudnitzki": {
+		"id": "330",
+		"name": "Michael Rudnitzki",
+		"gnd": null
+	},
+	"Rita Rajt-Kowaljowa": {
+		"id": "331",
+		"name": "Rita Rajt-Kowaljowa",
+		"gnd": "1057558192"
+	},
+	"Serafima Schlapoberskaja": {
+		"id": "332",
+		"name": "Serafima Schlapoberskaja",
+		"gnd": null
+	},
+	"Baskakova, Tat\u02b9jana Aleksandrovna": {
+		"id": "333",
+		"name": "Tat\u02b9jana Aleksandrovna Baskakova",
+		"gnd": "1017399611"
+	},
+	"Jewgenija Mikhelevich": {
+		"id": "334",
+		"name": "Jewgenija Mikhelevich",
+		"gnd": null
+	},
+	"Rita Rajt-Kowaljow": {
+		"id": "335",
+		"name": "Rita Rajt-Kowaljow",
+		"gnd": "1057558192"
+	},
+	"V. Cherkasow": {
+		"id": "336",
+		"name": "V. Cherkasow",
+		"gnd": null
+	},
+	"\u0415. Gajdukowa": {
+		"id": "337",
+		"name": "\u0415. Gajdukowa",
+		"gnd": "1044377364"
+	},
+	"Alexej Ognew": {
+		"id": "338",
+		"name": "Alexej Ognew",
+		"gnd": null
+	},
+	"Anna Matveeva": {
+		"id": "339",
+		"name": "Anna Matveeva",
+		"gnd": null
+	},
+	"Paul Tropinin": {
+		"id": "340",
+		"name": "Paul Tropinin",
+		"gnd": null
+	},
+	"Kotelevskaja, Vera Vladimirovna": {
+		"id": "341",
+		"name": "Vera Vladimirovna Kotelevskaja",
+		"gnd": "1177089246"
+	},
+	"Evgenia Belorusets": {
+		"id": "342",
+		"name": "Evgenia Belorusets",
+		"gnd": "1051756766"
+	},
+	"Markin, Aleksandr": {
+		"id": "343",
+		"name": "Aleksandr Markin",
+		"gnd": "131681745"
+	},
+	"Michail Rudnizki": {
+		"id": "344",
+		"name": "Michail Rudnizki",
+		"gnd": null
+	},
+	"A. Slawinskaja": {
+		"id": "345",
+		"name": "A. Slawinskaja",
+		"gnd": null
+	},
+	"J. Dmitrijewa": {
+		"id": "346",
+		"name": "J. Dmitrijewa",
+		"gnd": null
+	},
+	"Marinko Radovi\u0107": {
+		"id": "347",
+		"name": "Marinko Radovi\u0107",
+		"gnd": null
+	},
+	"Karanovi\u0107, Sanja": {
+		"id": "348",
+		"name": "Sanja Karanovi\u0107",
+		"gnd": "1133516378"
+	},
+	"Borivoj Grujic": {
+		"id": "349",
+		"name": "Borivoj Grujic",
+		"gnd": "1078380821"
+	},
+	"A\u0107in, Jovica": {
+		"id": "350",
+		"name": "Jovica A\u0107in",
+		"gnd": "113613555"
+	},
+	"Dra\u017ei\u0107, Relja": {
+		"id": "351",
+		"name": "Relja Dra\u017ei\u0107",
+		"gnd": "141036028"
+	},
+	"Novak Guslov": {
+		"id": "352",
+		"name": "Novak Guslov",
+		"gnd": null
+	},
+	"Avramovi\u0107, Mirjana": {
+		"id": "353",
+		"name": "Mirjana Avramovi\u0107",
+		"gnd": "1227236212"
+	},
+	"Deni\u0107, Bojana": {
+		"id": "354",
+		"name": "Bojana Deni\u0107",
+		"gnd": "1016946325"
+	},
+	"Krasni, Zlatko": {
+		"id": "355",
+		"name": "Zlatko Krasni",
+		"gnd": "115835970"
+	},
+	"Dvorsk\u00fd, Juraj": {
+		"id": "356",
+		"name": "Juraj Dvorsk\u00fd",
+		"gnd": "14026289X"
+	},
+	"Jana Krej\u010dikov\u00e1": {
+		"id": "357",
+		"name": "Jana Krej\u010dikov\u00e1",
+		"gnd": null
+	},
+	"Kubica, Peter": {
+		"id": "358",
+		"name": "Peter Kubica",
+		"gnd": "102911658X"
+	},
+	"Virk, Jani": {
+		"id": "359",
+		"name": "Jani Virk",
+		"gnd": "Q4022080"
+	},
+	"Vevar, \u0160tefan": {
+		"id": "360",
+		"name": "\u0160tefan Vevar",
+		"gnd": "Q18646326"
+	},
+	"Virk, Sara Marina": {
+		"id": "361",
+		"name": "Sara Marina Virk",
+		"gnd": "101402708X"
+	},
+	"Ur\u0161ka Brodar": {
+		"id": "362",
+		"name": "Ur\u0161ka Brodar",
+		"gnd": "Q114305369"
+	},
+	"Morel, Alenka": {
+		"id": "363",
+		"name": "Alenka Morel",
+		"gnd": "1156675316"
+	},
+	"Ana Monika Pirc": {
+		"id": "364",
+		"name": "Ana Monika Pirc",
+		"gnd": null
+	},
+	"Jen\u010di\u010d, Lu\u010dka": {
+		"id": "365",
+		"name": "Lu\u010dka Jen\u010di\u010d",
+		"gnd": "115212396"
+	},
+	"Kranjc, Mojca": {
+		"id": "366",
+		"name": "Mojca Kranjc",
+		"gnd": "115835970"
+	},
+	"Katarina Marinc\u030cic\u030c": {
+		"id": "367",
+		"name": "Katarina Marinc\u030cic\u030c",
+		"gnd": "1089854382"
+	},
+	"Davorin Flis": {
+		"id": "368",
+		"name": "Davorin Flis",
+		"gnd": null
+	},
+	"Kralj, Lado": {
+		"id": "369",
+		"name": "Lado Kralj",
+		"gnd": "1043476903"
+	},
+	"Trekman, Borut": {
+		"id": "370",
+		"name": "Borut Trekman",
+		"gnd": "Q12786235"
+	},
+	"Borovnik, Silvija": {
+		"id": "371",
+		"name": "Silvija Borovnik",
+		"gnd": "1234736527"
+	},
+	"Miladinovi\u0107 Zalaznik, Mira": {
+		"id": "372",
+		"name": "Mira Miladinovi\u0107 Zalaznik",
+		"gnd": "1063226295"
+	},
+	"S\u00e1enz, Miguel": {
+		"id": "373",
+		"name": "Miguel S\u00e1enz",
+		"gnd": "113071043"
+	},
+	"Cruz Santaella, Esther": {
+		"id": "374",
+		"name": "Esther Cruz Santaella",
+		"gnd": "1165093812"
+	},
+	"Fortea, Carlos": {
+		"id": "375",
+		"name": "Carlos Fortea",
+		"gnd": "11541522X"
+	},
+	"Margarita Mizraji": {
+		"id": "376",
+		"name": "Margarita Mizraji",
+		"gnd": null
+	},
+	"Costa, Nicol\u00e1s": {
+		"id": "377",
+		"name": "Nicol\u00e1s Costa",
+		"gnd": "127221085"
+	},
+	"Fehling, Ruth": {
+		"id": "378",
+		"name": "Ruth Fehling",
+		"gnd": null
+	},
+	"Ricardo Cordchado": {
+		"id": "379",
+		"name": "Ricardo Cordchado",
+		"gnd": null
+	},
+	"Sabina Scherzer": {
+		"id": "380",
+		"name": "Sabina Scherzer",
+		"gnd": null
+	},
+	"Holmqvist, Margaretha": {
+		"id": "381",
+		"name": "Margaretha Holmqvist",
+		"gnd": "107718731"
+	},
+	"Daniel Birnbaum": {
+		"id": "382",
+		"name": "Daniel Birnbaum",
+		"gnd": "12150011X"
+	},
+	"Anders Olsson": {
+		"id": "383",
+		"name": "Anders Olsson",
+		"gnd": null
+	},
+	"Bornlid, Jan Erik": {
+		"id": "384",
+		"name": "Jan Erik Bornlid",
+		"gnd": "137299931"
+	},
+	"Freij, Lars W.": {
+		"id": "385",
+		"name": "Lars W. Freij",
+		"gnd": "107890143"
+	},
+	"Wid\u00e9n, Susanne": {
+		"id": "386",
+		"name": "Susanne Wid\u00e9n",
+		"gnd": "1018886249"
+	},
+	"Magnus Lindmann": {
+		"id": "387",
+		"name": "Magnus Lindmann",
+		"gnd": null
+	},
+	"\u00d6zg\u00fcven, Fatih": {
+		"id": "388",
+		"name": "Fatih \u00d6zg\u00fcven",
+		"gnd": "103434453"
+	},
+	"Duru, Sezer": {
+		"id": "389",
+		"name": "Sezer Duru",
+		"gnd": "135753279"
+	},
+	"Tezel, Esen": {
+		"id": "390",
+		"name": "Esen Tezel",
+		"gnd": "102948354X"
+	},
+	"T\u00fczel, Mustafa": {
+		"id": "391",
+		"name": "Mustafa T\u00fczel",
+		"gnd": null
+	},
+	"T\u00fcrk, M. Sami": {
+		"id": "392",
+		"name": "M. Sami T\u00fcrk",
+		"gnd": null
+	},
+	"Nalc\u0131o\u011flu, Ahmet U\u011fur": {
+		"id": "393",
+		"name": "Ahmet U\u011fur Nalc\u0131o\u011flu",
+		"gnd": "1187984000"
+	},
+	"Sar\u0131, Ahmet": {
+		"id": "394",
+		"name": "Ahmet Sar\u0131",
+		"gnd": "139907858"
+	},
+	"Uyan\u0131k, G\u00fcrsel": {
+		"id": "395",
+		"name": "G\u00fcrsel Uyan\u0131k",
+		"gnd": "140037438"
+	},
+	"\u00d6zt\u00fcrk Da\u011fabakan, Fatma": {
+		"id": "396",
+		"name": "Fatma \u00d6zt\u00fcrk Da\u011fabakan",
+		"gnd": "139907440"
+	},
+	"Arif \u00c7a\u011flar": {
+		"id": "397",
+		"name": "Arif \u00c7a\u011flar",
+		"gnd": null
+	},
+	"Nutku, \u00d6zdemir": {
+		"id": "398",
+		"name": "\u00d6zdemir Nutku",
+		"gnd": "107830302"
+	},
+	"Arpad, Ahmet": {
+		"id": "399",
+		"name": "Ahmet Arpad",
+		"gnd": null
+	},
+	"Murad, Efe": {
+		"id": "400",
+		"name": "Efe Murad",
+		"gnd": "1280573597"
+	},
+	"Ebru Omay": {
+		"id": "401",
+		"name": "Ebru Omay",
+		"gnd": null
+	},
+	"Nadide Amasyal\u0131": {
+		"id": "402",
+		"name": "Nadide Amasyal\u0131",
+		"gnd": null
+	},
+	"Boztepe, Kemal": {
+		"id": "403",
+		"name": "Kemal Boztepe",
+		"gnd": null
+	},
+	"Havryliv, Tymofij": {
+		"id": "404",
+		"name": "Tymofij Havryliv",
+		"gnd": "137196059"
+	},
+	"Igor Andrushchenko": {
+		"id": "405",
+		"name": "Igor Andrushchenko",
+		"gnd": null
+	},
+	"Lesya Kravchenko": {
+		"id": "406",
+		"name": "Lesya Kravchenko",
+		"gnd": null
+	},
+	"Iqb\u0101l \u1e92af\u0101r": {
+		"id": "407",
+		"name": "Iqb\u0101l \u1e92af\u0101r",
+		"gnd": null
+	},
+	"Ho\u00e0ng \u0110\u0103ng L\u00e3nh": {
+		"id": "408",
+		"name": "Ho\u00e0ng \u0110\u0103ng L\u00e3nh",
+		"gnd": null
+	}
+}
