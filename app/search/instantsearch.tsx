@@ -3,15 +3,7 @@
 import type { StateMapping, UiState } from "instantsearch.js";
 import { type MessageKeys, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
-import {
-	Configure,
-	Hits,
-	Pagination,
-	RefinementList,
-	SearchBox,
-	SortBy,
-	Stats,
-} from "react-instantsearch";
+import { Configure, Hits, RefinementList, SearchBox, SortBy } from "react-instantsearch";
 import { InstantSearchNext } from "react-instantsearch-nextjs";
 import TypesenseInstantSearchAdapter, { type SearchClient } from "typesense-instantsearch-adapter";
 
@@ -86,7 +78,6 @@ const stateMapping: StateMapping<UiState, RouteState> = {
 		const uiState = {
 			[collectionName]: {
 				query: routeState.q,
-				page: routeState.page,
 				refinementList: {},
 				sortBy: routeState.sort ? `${collectionName}/sort/${routeState.sort}` : undefined,
 			},
@@ -172,17 +163,6 @@ export function InstantSearch() {
 						return <ClickablePublicationThumbnail publication={hit as unknown as Publication} />;
 					}}
 				/>
-				<div className="flex place-content-between">
-					<Stats />
-					<Pagination
-						classNames={{
-							root: "float-right",
-							list: "flex gap-1",
-							noRefinementRoot: "hidden",
-							selectedItem: "font-bold",
-						}}
-					/>
-				</div>
 			</div>
 		</InstantSearchNext>
 	);
