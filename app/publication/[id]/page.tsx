@@ -94,16 +94,10 @@ export default async function PublicationPage(props: PublicationPageProps) {
 														}, [])
 														.join(",")
 												: null}
-										</sup>
+										</sup>{" "}
+										[<BernhardWorkLink key={t.work.id} work={t.work} />]
 									</>
 								);
-							})}
-						</InlineList>
-					</p>
-					<p>
-						<InlineList separator=" / ">
-							{pub.contains.map((t) => {
-								return <BernhardWorkLink key={t.work.id} work={t.work} />;
 							})}
 						</InlineList>
 					</p>
