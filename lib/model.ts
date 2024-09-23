@@ -51,7 +51,7 @@ export interface BernhardWork {
 
 export interface Translator {
 	id: string;
-	name: string; // TODO First Last or Last, First?
+	name: string; // "Family Name, Given Name(s)"
 	gnd?: string;
 	wikidata?: string;
 }

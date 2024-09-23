@@ -5,5 +5,5 @@ interface LanguageLinkProps {
 }
 
 export function LanguageLink(props: LanguageLinkProps) {
-	return <AppLink href={`/languages/${props.language}`}>{props.language}</AppLink>;
+	return <AppLink href={`/search?language=${props.language}`}>{props.language}</AppLink>;
 }

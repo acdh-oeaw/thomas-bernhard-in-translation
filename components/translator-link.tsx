@@ -7,5 +7,7 @@ interface TranslatorLinkProps {
 }
 
 export function TranslatorLink(props: TranslatorLinkProps) {
-	return <AppLink href={`/translators/${props.translator.name}`}>{props.translator.name}</AppLink>;
+	return (
+		<AppLink href={`/search?translator=${props.translator.name}`}>{props.translator.name}</AppLink>
+	);
 }

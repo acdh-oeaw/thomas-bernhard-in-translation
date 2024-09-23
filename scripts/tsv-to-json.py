@@ -138,13 +138,15 @@ for pub in data:
     for translatorkey in [f'translator {i}' for i in range(1, 8)]:
         if not pub[translatorkey]:
             break
-        tr = pub[translatorkey].split(', ')
-        # TODO which way to normalize first name/family name order?
-        if len(tr) == 1:
-            tr = tr[0]
+        # normalize to "family name, given name(s)" format
+        tr = pub[translatorkey]
+        if ', ' in tr:
+            logger.debug(f"{pub['Signatur']}: translator '{tr}' already in 'Family Name, Given Name(s)' format, all good")
         else:
-            logger.info(f"{pub['Signatur']}: translator '{pub[translatorkey]}' was in 'Surname, First Name' format")
-            tr = ' '.join(reversed(tr))
+            tr = tr.split(' ')
+            # FIXME this yields wrong results for Korean names, '& Students', 'Jr.',...
+            tr = f"{tr[-1]}, {' '.join(tr[:-1])}"
+            logger.info(f"{pub['Signatur']}: translator '{pub[translatorkey]}' was in 'Given Name(s) Family Name' format, flipping around to yield '{tr}'")
 
         if not pub[translatorkey] in translators:
             translators[pub[translatorkey]] = {

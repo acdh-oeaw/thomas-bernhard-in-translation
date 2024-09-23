@@ -68,7 +68,7 @@ const stateMapping: StateMapping<UiState, RouteState> = {
 				const queryarg = Object.entries(queryArgToRefinementField).find(([_k, v]) => {
 					return v === field;
 				})?.[0];
-				route[queryarg as unknown as keyof RefinementState] = values.join(",");
+				route[queryarg as unknown as keyof RefinementState] = values.join(";");
 			}
 		}
 		return route;
@@ -88,7 +88,7 @@ const stateMapping: StateMapping<UiState, RouteState> = {
 				uiState[collectionName]!.refinementList![
 					queryArgToRefinementField[queryarg as keyof RefinementState]
 					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				] = routeState[queryarg as keyof RefinementState]!.split(",");
+				] = routeState[queryarg as keyof RefinementState]!.split(";");
 			}
 		}
 		return uiState;
