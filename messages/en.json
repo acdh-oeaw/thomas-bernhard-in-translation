@@ -80,10 +80,19 @@
 	},
 	"SearchPage": {
 		"filter": "filter",
-		"filter_publications": "filter publications",
-		"language": "languages",
-		"work": "works",
-		"translator": "translators"
+		"filter_by": {
+			"category": "categories",
+			"language": "languages",
+			"translator": "translators",
+			"work": "works"
+		},
+		"query_placeholder": "filter publications",
+		"sort_by": "sort by",
+		"sort": {
+			"year:asc": "oldest to newest",
+			"year:desc": "newest to oldest",
+			"title": "title"
+		}
 	},
 	"TranslatorPage": {
 		"published_in": "published in"

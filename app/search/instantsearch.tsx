@@ -59,7 +59,7 @@ type RefinementState = {
 
 interface SearchState {
 	q?: string;
-	page?: number;
+	sort?: string;
 }
 
 type RouteState = RefinementState & SearchState;
@@ -70,7 +70,7 @@ const stateMapping: StateMapping<UiState, RouteState> = {
 		const indexUiState = uiState[collectionName]!;
 		const route = {} as RouteState;
 		route.q = indexUiState.query;
-		route.page = indexUiState.page;
+		route.sort = indexUiState.sortBy?.split("/").at(-1);
 		if (indexUiState.refinementList) {
 			for (const [field, values] of Object.entries(indexUiState.refinementList)) {
 				const queryarg = Object.entries(queryArgToRefinementField).find(([_k, v]) => {
@@ -88,6 +88,7 @@ const stateMapping: StateMapping<UiState, RouteState> = {
 				query: routeState.q,
 				page: routeState.page,
 				refinementList: {},
+				sortBy: routeState.sort ? `${collectionName}/sort/${routeState.sort}` : undefined,
 			},
 		} as UiState;
 		for (const queryarg in queryArgToRefinementField) {
@@ -151,14 +152,14 @@ export function InstantSearch() {
 			</div>
 			<div>
 				<div className="flex place-content-between">
-					<SearchBox placeholder={t("filter_publications")} />
+					<SearchBox placeholder={t("query_placeholder")} />
 					<div>
-						sort by
+						{t("sort_by")}
 						<SortBy
 							items={[
-								{ label: "title", value: `${collectionName}/sort/title:asc` },
-								{ label: "publication (newest first)", value: `${collectionName}/sort/year:desc` },
-								{ label: "publication (oldest first)", value: `${collectionName}/sort/year:asc` },
+								{ label: t("sort.year:desc"), value: `${collectionName}/sort/year:desc` },
+								{ label: t("sort.year:asc"), value: `${collectionName}/sort/year:asc` },
+								{ label: t("sort.title"), value: `${collectionName}/sort/title:asc` },
 							]}
 						/>
 					</div>
