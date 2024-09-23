@@ -16,7 +16,7 @@ export interface Publication {
 	title: string;
 	language: string;
 	contains: Array<Translation>;
-	categories: Array<Category>;
+	// categories: Array<Category>;
 
 	// from openrefine: whether this publication contains at least one previously unpublished
 	// translation
@@ -46,6 +46,7 @@ export interface BernhardWork {
 	title: string; // german/french original
 	gnd?: string;
 	year?: number; // we get the years from gnd-lookup, so no gnd => no year info
+	category?: Category;
 }
 
 export interface Translator {

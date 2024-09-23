@@ -58,7 +58,15 @@ export default async function PublicationPage(props: PublicationPageProps) {
 	return (
 		<MainContent className="">
 			<h1 className="font-bold">{pub.title}</h1>
-			<h2 className="italic">{pub.categories.join(" / ")}</h2>
+			<h2 className="italic">
+				{Array.from(
+					new Set(
+						pub.contains.flatMap((t) => {
+							return t.work.category;
+						}),
+					),
+				).join(" / ")}
+			</h2>
 			<div className="flex gap-8">
 				<PublicationCover className="h-96 grow basis-1/3" publication={pub} />
 				<div className="grow-[2] basis-2/3">

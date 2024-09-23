@@ -45,6 +45,9 @@ translators = {}
 def orig(i):
     return f"contains orig. {i}"
 
+def getcategories(pub):
+    return [c for c in (pub['category 1'].split(' \\ ') + pub['category 2'].split(' \\ ')) if len(c) and c != 'prose']
+
 # herausgabejahr des originalwerks (lookup über lobid.org GND-Datenbank)
 def getyear(gnd):
     fn = f'gnd/{gnd}.json'
@@ -95,12 +98,13 @@ for pub in data:
     # used in 2nd pass as a sanity check
     pub['origworks'] = []
     pub['Signatur'] = pub['Signatur'].strip()
+    pub_categories = getcategories(pub)
 
     hadBlank = False
     for i in range(1, 41):
         bwkey = workkey(pub, i)
         if bwkey:
-            origt = pub[orig(i)].strip(' 12345') # in chi_kurz_007 only
+            origt = pub[orig(i)].strip(' 12345').replace('\n', ' ') # in chi_kurz_007 only
             # store for 2nd pass
             pub['origworks'].append(origt)
 
@@ -112,9 +116,18 @@ for pub in data:
             # did we already see this work? -- use title+gnd as unique id (graphic novels with same title..)
             if bwkey in bernhardworks:
                 bernhardworks[bwkey]['count'] = bernhardworks[bwkey]['count'] + 1
+                if len(pub_categories) < len(bernhardworks[bwkey]['category']):
+                    for c in pub_categories:
+                        if not c in bernhardworks[bwkey]['category']:
+                            logger.warning(f'could be {c} which it was previously not')
+                    bernhardworks[bwkey]['category'] = pub_categories
+                elif len(pub_categories) == 1 and len(bernhardworks[bwkey]['category']) == 1 and pub_categories != bernhardworks[bwkey]['category']:
+                    # logger.error(f'{pub["Signatur"]}: unique publication category implies that all works inside it have category "{unique_work_category}", but the following work was already found in a publication with a different unique category: {bernhardworks[bwkey]}')
+                    print(f'''1. *{bernhardworks[bwkey]['title']}*: ist in [{pub["Signatur"]}](https://thomas-bernhard-global.acdh-ch-dev.oeaw.ac.at/publication/{pub["Signatur"]}) das als `{pub_categories[0]}` kategorisiert ist, in anderen Publikationen in denen es enthalten ist sind dagegen `{bernhardworks[bwkey]["category"][0]}`
+    - [ ] wahrscheinlicher Fix: `{pub["Signatur"]}`'s Kategorie von `{pub_categories[0]}` auf `{bernhardworks[bwkey]["category"][0]}` ändern''')
             else:
                 # new work, write even if we don't know the gnd
-                bernhardworks[bwkey] = { 'id': str(len(bernhardworks)+1), 'gnd': gnd, 'title': origt, 'year': getyear(gnd) if gnd else None, 'count': 1 }
+                bernhardworks[bwkey] = { 'id': str(len(bernhardworks)+1), 'gnd': gnd, 'title': origt, 'category': pub_categories, 'year': getyear(gnd) if gnd else None, 'count': 1 }
 
         else:
             hadBlank = True
@@ -140,6 +153,12 @@ for pub in data:
                     'gnd': pub[f'{translatorkey} GND'] or None,
                     # 'wikidata': None
                 }
+for k, v in bernhardworks.items():
+    if len(v['category']) == 1:
+        v['category'] = v['category'][0]
+    else:
+        print(f"{v['title']} ({v['gnd']}, {v['count']})")
+        # TODO Brief, Telegramm, Stellungnahme
 
 translations = {}
 nrepublications = 0
@@ -174,7 +193,7 @@ for pub in data:
                 'work': work,
                 # 'work': work['id'],
                 'translators': worktranslators, #[ t['id'] for t in worktranslators ],
-                'title': t
+                'title': t.replace('\n', ' ')
             }
         worktranslatornames = '+'.join([ t['name'] for t in worktranslators ])
         translationkey = work['title'] + worktranslatornames
@@ -183,7 +202,7 @@ for pub in data:
             nrepublications = nrepublications + 1
             newt['id'] = translations[translationkey]['id']
             if translations[translationkey] != newt:
-                logger.warning(f"{pub['Signatur']}: {worktranslatornames}'s translation of '{work['title']}' (GND: {work['gnd']}) was previously published as '{translations[translationkey]['title']}', now found translation titled '{newt['title']}'")
+                logger.info(f"{pub['Signatur']}: {worktranslatornames}'s translation of '{work['title']}' (GND: {work['gnd']}) was previously published as '{translations[translationkey]['title']}', now found translation titled '{newt['title']}'")
         else:
             newt['id'] = str(len(translations)+1)
             translations[translationkey] = newt
@@ -196,11 +215,9 @@ for pub in data:
 
     eltern = [ el.strip() for el in pub['Eltern'].split(' \\ ')] if pub['Eltern'] else None
     try:
-        year = int(pub['year'])
+        int(pub['year'])
     except ValueError:
-        logger.error(f"{pub['Signatur']} does not have a numeric year ('{pub['year']}')")
-        # FIXME force
-        year = int(pub['year'][0:4])
+        logger.warning(f"{pub['Signatur']} does not have a numeric year ('{pub['year']}')")
 
     assets = [ { 'id': pub['Signatur']} ] if os.path.isfile(f'../public/covers/{pub["Signatur"]}.jpg') else []
     if len(pub['more']):
@@ -213,16 +230,26 @@ for pub in data:
             'later': [],
             'more': pub['more'].split(', ') if pub['more'] else None, # TODO
             'title': pub['title'],
-            'year': year,
+            'year': int(pub['year'][0:4]),
+            'year_display': pub['year'],
             'language': pub['language'],
             'contains': ts,
             'publisher': publishers[pub['publisher / publication']],
-            'categories': [c for c in [c for c in pub['category 1'].split(' \\ ')] + [c for c in pub['category 2'].split(' \\ ')] if len(c) and c != 'prose'],
+            # 'categories': [c for c in [c for c in pub['category 1'].split(' \\ ')] + [c for c in pub['category 2'].split(' \\ ')] if len(c) and c != 'prose'],
             'isbn': pub['ISBN'] or None,
             'exemplar_suhrkamp_berlin': pub['Exemplar Suhrkamp Berlin (03/2023)'].lower() == 'x',
             'exemplar_oeaw': pub['Exemplar ÖAW'].lower() == 'x',
             'images': assets
         }
+
+categories = ['autobiography', 'novels', 'novellas & short prose', 'adaptations', 'poetry', 'drama & libretti', 'letters, speeches, interviews']
+# for p in publications.values():
+    # if len(p['categories']) == 0:
+        # logger.warning(f'{p["id"]} has no categories')
+    # for c in p['categories']:
+        # if not c in categories:
+            # logger.warning(f'unknown category: {c}')
+
 
 # redundantly store children ids in parent
 for pub in publications.values():

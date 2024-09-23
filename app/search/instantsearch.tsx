@@ -46,6 +46,8 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
 const searchClient = typesenseInstantsearchAdapter.searchClient as unknown as SearchClient;
 
 const queryArgToRefinementField = {
+	// the order of elements here determines the order of refinement lists in the UI
+	category: "contains.work.category" as const,
 	language: "language" as const,
 	work: "contains.work.title" as const,
 	translator: "contains.translators.name" as const,

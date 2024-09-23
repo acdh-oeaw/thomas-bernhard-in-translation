@@ -13,7 +13,18 @@
 			"stem": false
 		},
 		{
-			"name": "categories",
+			"name": "year_display",
+			"type": "string",
+			"facet": false,
+			"optional": false,
+			"index": true,
+			"sort": false,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		},
+		{
+			"name": "contains.work.category",
 			"type": "string[]",
 			"facet": true,
 			"optional": false,
@@ -79,7 +90,7 @@
 			"stem": false
 		}
 	],
-	"default_sorting_field": "",
+	"default_sorting_field": "year",
 	"enable_nested_fields": true,
 	"symbols_to_index": [],
 	"token_separators": []

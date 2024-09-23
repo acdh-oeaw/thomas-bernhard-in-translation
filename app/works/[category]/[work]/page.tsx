@@ -53,7 +53,7 @@ export default function WorksPage(props: WorksPageProps) {
 				facetingValue={props.params?.work ? decodeURI(props.params.work) : undefined}
 				filter_by={
 					// eslint-disable-next-line @typescript-eslint/no-explicit-any
-					`categories := ${catt(props.params?.category as any)}`
+					`contains.work.category := ${catt(props.params?.category as any)}`
 				}
 				// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 				path={`works/${props.params?.category}`}
