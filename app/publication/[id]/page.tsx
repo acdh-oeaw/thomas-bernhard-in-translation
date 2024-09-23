@@ -66,7 +66,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 						<LanguageLink language={pub.language} />
 					</p>
 					<p>
-						{t("translated_by")}{" "}
+						<span className="bernhard-key">{t("translated_by")}</span>{" "}
 						<InlineList>
 							{translatorInfo.map((t, i) => {
 								return (
@@ -78,8 +78,11 @@ export default async function PublicationPage(props: PublicationPageProps) {
 							})}
 						</InlineList>
 					</p>
+					<p>
+						<span className="bernhard-key">{t("publisher")}</span> {pub.publisher.name}
+					</p>
 					<p>{pub.year}</p>
-					<p className="bernhard-key">{t("contains")}</p>
+					<p className="bernhard-key">{t("contains")}:</p>
 					<p>
 						<InlineList separator=" / ">
 							{pub.contains.map((t, itranslation) => {

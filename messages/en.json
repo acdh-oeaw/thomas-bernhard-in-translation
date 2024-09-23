@@ -74,6 +74,7 @@
 	"PublicationPage": {
 		"contains": "contains",
 		"more_in": "more in",
+		"publisher": "published by",
 		"translated_by": "translated by",
 		"later_editions": "later editions"
 	},
