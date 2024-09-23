@@ -81,7 +81,7 @@ export async function getSameLanguagePublications(pub: Publication) {
 		await collection.documents().search({
 			q: "*",
 			per_page: 4,
-			filter_by: `language: ${pub.language} && id :!= [ ${[pub.id, ...(pub.later ?? [])].join()} ]`,
+			filter_by: `language: \`${pub.language}\` && id :!= [ ${[pub.id, ...(pub.later ?? [])].join()} ]`,
 		})
 	).hits?.map((r) => {
 		return r.document;
