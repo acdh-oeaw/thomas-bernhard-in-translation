@@ -3,7 +3,7 @@
 		"id": "1",
 		"gnd": "4281932-5",
 		"title": "Alte Meister. Kom\u00f6die",
-		"category": "novels",
+		"category": ["novels"],
 		"year": 1985,
 		"count": 51,
 		"first seen": "alb_001"
@@ -12,7 +12,7 @@
 		"id": "2",
 		"gnd": "4509408-1",
 		"title": "Wittgensteins Neffe",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": 1982,
 		"count": 53,
 		"first seen": "alb_002"
@@ -21,7 +21,7 @@
 		"id": "3",
 		"gnd": "4242075-1",
 		"title": "Beton",
-		"category": "novels",
+		"category": ["novels"],
 		"year": 1982,
 		"count": 47,
 		"first seen": "aze_002"
@@ -30,7 +30,7 @@
 		"id": "4",
 		"gnd": "4140749-0",
 		"title": "Verst\u00f6rung",
-		"category": "novels",
+		"category": ["novels"],
 		"year": 1967,
 		"count": 35,
 		"first seen": "aze_003"
@@ -39,7 +39,7 @@
 		"id": "5",
 		"gnd": "4280472-3",
 		"title": "Der Untergeher",
-		"category": "novels",
+		"category": ["novels"],
 		"year": 1983,
 		"count": 57,
 		"first seen": "baq_001"
@@ -48,7 +48,7 @@
 		"id": "6",
 		"gnd": "4201254-5",
 		"title": "Ausl\u00f6schung. Ein Zerfall",
-		"category": "novels",
+		"category": ["novels"],
 		"year": 1986,
 		"count": 44,
 		"first seen": "bra_001"
@@ -57,7 +57,7 @@
 		"id": "7",
 		"gnd": "4392770-1",
 		"title": "Die Ursache",
-		"category": "autobiography",
+		"category": ["autobiography"],
 		"year": 1975,
 		"count": 50,
 		"first seen": "bra_006"
@@ -66,7 +66,7 @@
 		"id": "8",
 		"gnd": "7846530-8",
 		"title": "Meine Preise. Eine Bilanz",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": 2009,
 		"count": 27,
 		"first seen": "bra_007"
@@ -75,7 +75,7 @@
 		"id": "9",
 		"gnd": "4525059-5",
 		"title": "Der Stimmenimitator",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": 1978,
 		"count": 32,
 		"first seen": "bra_008"
@@ -84,7 +84,7 @@
 		"id": "10",
 		"gnd": "4576168-1",
 		"title": "Gehen",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": 1971,
 		"count": 24,
 		"first seen": "bra_009"
@@ -93,7 +93,7 @@
 		"id": "11",
 		"gnd": "7600801-0",
 		"title": "Der Pr\u00e4sident",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": 1975,
 		"count": 14,
 		"first seen": "bra_010"
@@ -102,7 +102,7 @@
 		"id": "12",
 		"gnd": "4221007-0",
 		"title": "Heldenplatz",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": 1988,
 		"count": 30,
 		"first seen": "bra_011"
@@ -111,7 +111,7 @@
 		"id": "13",
 		"gnd": "4253712-5",
 		"title": "Der Theatermacher",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": 1984,
 		"count": 26,
 		"first seen": "bra_013"
@@ -120,7 +120,7 @@
 		"id": "14",
 		"gnd": "4447199-3",
 		"title": "Holzf\u00e4llen",
-		"category": "novels",
+		"category": ["novels"],
 		"year": 1984,
 		"count": 50,
 		"first seen": "bra_014"
@@ -129,7 +129,7 @@
 		"id": "15",
 		"gnd": "4738741-5",
 		"title": "Ja",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": 1978,
 		"count": 29,
 		"first seen": "bra_016"
@@ -138,7 +138,7 @@
 		"id": "16",
 		"gnd": "1162284560",
 		"title": "Die Ber\u00fchmten",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": 1976,
 		"count": 7,
 		"first seen": "bul_001"
@@ -147,7 +147,7 @@
 		"id": "17",
 		"gnd": "4487124-7",
 		"title": "Minetti",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": 1977,
 		"count": 22,
 		"first seen": "bul_001"
@@ -156,7 +156,7 @@
 		"id": "18",
 		"gnd": "4217797-2",
 		"title": "Vor dem Ruhestand",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": 1979,
 		"count": 20,
 		"first seen": "bul_001"
@@ -165,7 +165,7 @@
 		"id": "19",
 		"gnd": "4362534-4",
 		"title": "Am Ziel",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": null,
 		"count": 15,
 		"first seen": "bul_001"
@@ -174,7 +174,7 @@
 		"id": "20",
 		"gnd": "1123599505",
 		"title": "Einfach kompliziert",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": 1986,
 		"count": 13,
 		"first seen": "bul_001"
@@ -183,7 +183,7 @@
 		"id": "21",
 		"gnd": "4520814-1",
 		"title": "Die Jagdgesellschaft",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": 1974,
 		"count": 18,
 		"first seen": "bul_002"
@@ -192,7 +192,7 @@
 		"id": "22",
 		"gnd": "4281931-3",
 		"title": "Die Macht der Gewohnheit",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": 1974,
 		"count": 23,
 		"first seen": "bul_002"
@@ -201,7 +201,7 @@
 		"id": "23",
 		"gnd": "1123599106",
 		"title": "Der Schein tr\u00fcgt",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": null,
 		"count": 12,
 		"first seen": "bul_002"
@@ -210,7 +210,7 @@
 		"id": "24",
 		"gnd": "7659613-8",
 		"title": "Elisabeth die Zweite",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": 1987,
 		"count": 9,
 		"first seen": "bul_002"
@@ -219,7 +219,7 @@
 		"id": "25",
 		"gnd": "4493036-7",
 		"title": "Ein Fest f\u00fcr Boris",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": 1970,
 		"count": 17,
 		"first seen": "bul_003"
@@ -228,7 +228,7 @@
 		"id": "26",
 		"gnd": "1057906050",
 		"title": "Immanuel Kant",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": 1978,
 		"count": 15,
 		"first seen": "bul_003"
@@ -237,7 +237,7 @@
 		"id": "27",
 		"gnd": "4485102-9",
 		"title": "Der Ignorant und der Wahnsinnige",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": 1972,
 		"count": 12,
 		"first seen": "bul_004"
@@ -246,7 +246,7 @@
 		"id": "28",
 		"gnd": "4636697-0",
 		"title": "Der Weltverbesserer",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": 1979,
 		"count": 16,
 		"first seen": "bul_005"
@@ -255,7 +255,7 @@
 		"id": "29",
 		"gnd": "1244933007",
 		"title": "\u00dcber allen Gipfeln ist Ruh",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": 1982,
 		"count": 10,
 		"first seen": "bul_005"
@@ -264,7 +264,7 @@
 		"id": "30",
 		"gnd": "4217798-4",
 		"title": "Ritter, Dene, Voss",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": null,
 		"count": 22,
 		"first seen": "bul_005"
@@ -273,7 +273,7 @@
 		"id": "31",
 		"gnd": "108146285X",
 		"title": "Die Rosen der Ein\u00f6de (Libretto)",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": null,
 		"count": 2,
 		"first seen": "bul_006"
@@ -282,7 +282,7 @@
 		"id": "32",
 		"gnd": null,
 		"title": "K\u00f6pfe",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": null,
 		"count": 2,
 		"first seen": "bul_006"
@@ -291,7 +291,7 @@
 		"id": "33",
 		"gnd": null,
 		"title": "Die Erfundene",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": null,
 		"count": 1,
 		"first seen": "bul_006"
@@ -300,7 +300,7 @@
 		"id": "34",
 		"gnd": null,
 		"title": "Rosa",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": null,
 		"count": 2,
 		"first seen": "bul_006"
@@ -309,7 +309,7 @@
 		"id": "35",
 		"gnd": null,
 		"title": "Fr\u00fchling",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": null,
 		"count": 3,
 		"first seen": "bul_006"
@@ -318,7 +318,7 @@
 		"id": "36",
 		"gnd": null,
 		"title": "Der Berg",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": null,
 		"count": 1,
 		"first seen": "bul_006"
@@ -327,7 +327,7 @@
 		"id": "37",
 		"gnd": null,
 		"title": "A Doda",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": null,
 		"count": 5,
 		"first seen": "bul_006"
@@ -336,7 +336,7 @@
 		"id": "38",
 		"gnd": null,
 		"title": "Maiandacht",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": null,
 		"count": 6,
 		"first seen": "bul_006"
@@ -345,7 +345,7 @@
 		"id": "39",
 		"gnd": null,
 		"title": "Match",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": null,
 		"count": 5,
 		"first seen": "bul_006"
@@ -354,7 +354,7 @@
 		"id": "40",
 		"gnd": null,
 		"title": "Freispruch",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": null,
 		"count": 7,
 		"first seen": "bul_006"
@@ -363,7 +363,7 @@
 		"id": "41",
 		"gnd": null,
 		"title": "Eis",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": null,
 		"count": 7,
 		"first seen": "bul_006"
@@ -372,7 +372,7 @@
 		"id": "42",
 		"gnd": null,
 		"title": "Der deutsche Mittagstisch",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": null,
 		"count": 1,
 		"first seen": "bul_006"
@@ -381,7 +381,7 @@
 		"id": "43",
 		"gnd": null,
 		"title": "Alles oder nichts",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": null,
 		"count": 7,
 		"first seen": "bul_006"
@@ -390,7 +390,7 @@
 		"id": "44",
 		"gnd": null,
 		"title": "Claus Peymann verl\u00e4\u00dft Bochum und geht als Burgtheater\u0002direktor nach Wien",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": null,
 		"count": 1,
 		"first seen": "bul_006"
@@ -399,7 +399,7 @@
 		"id": "45",
 		"gnd": null,
 		"title": "Claus Peymann kauft sich eine Hose und geht mit mir essen",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": null,
 		"count": 3,
 		"first seen": "bul_006"
@@ -408,7 +408,7 @@
 		"id": "46",
 		"gnd": null,
 		"title": "Claus Peymann und Hermann Beil auf der Sulzwiese",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": null,
 		"count": 11,
 		"first seen": "bul_006"
@@ -417,7 +417,7 @@
 		"id": "47",
 		"gnd": "4140750-7",
 		"title": "Frost",
-		"category": "novels",
+		"category": ["novels"],
 		"year": 1963,
 		"count": 29,
 		"first seen": "bul_013"
@@ -426,7 +426,7 @@
 		"id": "48",
 		"gnd": "4209488-4",
 		"title": "Das Kalkwerk",
-		"category": "novels",
+		"category": ["novels"],
 		"year": 1970,
 		"count": 24,
 		"first seen": "bul_015"
@@ -435,7 +435,7 @@
 		"id": "49",
 		"gnd": "1158674678",
 		"title": "Der deutsche Mittagstisch",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": 1988,
 		"count": 8,
 		"first seen": "bul_016"
@@ -444,7 +444,7 @@
 		"id": "50",
 		"gnd": "4998709-4",
 		"title": "Ein Kind",
-		"category": "autobiography",
+		"category": ["autobiography"],
 		"year": 1982,
 		"count": 46,
 		"first seen": "bul_017"
@@ -453,7 +453,7 @@
 		"id": "51",
 		"gnd": "1134906285",
 		"title": "Goethe schtirbt",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 18,
 		"first seen": "bul_019"
@@ -462,7 +462,7 @@
 		"id": "52",
 		"gnd": null,
 		"title": "Montaigne",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 17,
 		"first seen": "bul_019"
@@ -471,7 +471,7 @@
 		"id": "53",
 		"gnd": null,
 		"title": "Wiedersehen",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 15,
 		"first seen": "bul_019"
@@ -480,7 +480,7 @@
 		"id": "54",
 		"gnd": null,
 		"title": "In Flammen aufgegangen",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 15,
 		"first seen": "bul_019"
@@ -489,7 +489,7 @@
 		"id": "55",
 		"gnd": "1208645420",
 		"title": "Auf der Erde und in der H\u00f6lle",
-		"category": "poetry",
+		"category": ["poetry"],
 		"year": 1957,
 		"count": 15,
 		"first seen": "bul_020"
@@ -498,7 +498,7 @@
 		"id": "56",
 		"gnd": "4998708-2",
 		"title": "Der Atem. Eine Entscheidung",
-		"category": "autobiography",
+		"category": ["autobiography"],
 		"year": 1978,
 		"count": 46,
 		"first seen": "bul_021"
@@ -507,7 +507,7 @@
 		"id": "57",
 		"gnd": "1269415670",
 		"title": "Der Hutmacher",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 2,
 		"first seen": "chi_kurz_001"
@@ -516,7 +516,7 @@
 		"id": "58",
 		"gnd": "1217488685",
 		"title": "Ereignisse",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": 1991,
 		"count": 14,
 		"first seen": "chi_kurz_004"
@@ -525,7 +525,7 @@
 		"id": "59",
 		"gnd": "4998706-9",
 		"title": "Der Keller",
-		"category": "autobiography",
+		"category": ["autobiography"],
 		"year": 1976,
 		"count": 49,
 		"first seen": "chi_kurz_007"
@@ -534,7 +534,7 @@
 		"id": "60",
 		"gnd": "7655973-7",
 		"title": "Die K\u00e4lte",
-		"category": "autobiography",
+		"category": ["autobiography"],
 		"year": 1981,
 		"count": 41,
 		"first seen": "chi_kurz_007"
@@ -543,7 +543,7 @@
 		"id": "61",
 		"gnd": null,
 		"title": "Claus Peymann verl\u00e4\u00dft Bochum und geht als Burgtheaterdirektor nach Wien",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": null,
 		"count": 9,
 		"first seen": "cze_001"
@@ -552,7 +552,7 @@
 		"id": "62",
 		"gnd": "124493318X",
 		"title": "Claus Peymann kauft sich eine Hose und geht mit mir essen",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": 1990,
 		"count": 10,
 		"first seen": "cze_002"
@@ -561,7 +561,7 @@
 		"id": "63",
 		"gnd": "105004097X",
 		"title": "In hora mortis",
-		"category": "poetry",
+		"category": ["poetry"],
 		"year": 1958,
 		"count": 18,
 		"first seen": "cze_012"
@@ -570,7 +570,7 @@
 		"id": "64",
 		"gnd": "1306442915",
 		"title": "Unter dem Eisen des Mondes",
-		"category": "poetry",
+		"category": ["poetry"],
 		"year": 1958,
 		"count": 16,
 		"first seen": "cze_012"
@@ -579,7 +579,7 @@
 		"id": "65",
 		"gnd": "4126723-0",
 		"title": "Korrektur",
-		"category": "novels",
+		"category": ["novels"],
 		"year": 1975,
 		"count": 33,
 		"first seen": "cze_013"
@@ -588,7 +588,7 @@
 		"id": "66",
 		"gnd": "1158696477",
 		"title": "Ungenach",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 13,
 		"first seen": "cze_020"
@@ -597,7 +597,7 @@
 		"id": "67",
 		"gnd": "1045328219",
 		"title": "Amras",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": 1964,
 		"count": 20,
 		"first seen": "cze_020"
@@ -606,7 +606,7 @@
 		"id": "68",
 		"gnd": "1147793611",
 		"title": "Watten",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": 1969,
 		"count": 17,
 		"first seen": "cze_020"
@@ -615,7 +615,7 @@
 		"id": "69",
 		"gnd": null,
 		"title": "Das Verbrechen eines Innsbrucker Kaufmannssohns",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 15,
 		"first seen": "cze_025"
@@ -624,7 +624,7 @@
 		"id": "70",
 		"gnd": null,
 		"title": "Der Zimmerer",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 16,
 		"first seen": "cze_025"
@@ -633,7 +633,7 @@
 		"id": "71",
 		"gnd": "1024915921",
 		"title": "Jauergg",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": 1966,
 		"count": 15,
 		"first seen": "cze_025"
@@ -642,7 +642,7 @@
 		"id": "72",
 		"gnd": null,
 		"title": "Zwei Erzieher",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 15,
 		"first seen": "cze_025"
@@ -651,7 +651,7 @@
 		"id": "73",
 		"gnd": "1140157906",
 		"title": "Die M\u00fctze",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": 1967,
 		"count": 20,
 		"first seen": "cze_025"
@@ -660,7 +660,7 @@
 		"id": "74",
 		"gnd": "1078686300",
 		"title": "Ist es eine Kom\u00f6die? Ist es eine Trag\u00f6die?",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": 1967,
 		"count": 22,
 		"first seen": "cze_025"
@@ -669,7 +669,7 @@
 		"id": "75",
 		"gnd": "7845728-2",
 		"title": "Viktor Halbnarr",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": 1966,
 		"count": 10,
 		"first seen": "cze_025"
@@ -678,7 +678,7 @@
 		"id": "76",
 		"gnd": null,
 		"title": "Attach\u00e9 an der franz\u00f6sischen Botschaft",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 16,
 		"first seen": "cze_025"
@@ -687,7 +687,7 @@
 		"id": "77",
 		"gnd": "1233642103",
 		"title": "An der Baumgrenze",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": 1967,
 		"count": 22,
 		"first seen": "cze_025"
@@ -696,7 +696,7 @@
 		"id": "78",
 		"gnd": null,
 		"title": "Midland in Stilfs",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 20,
 		"first seen": "cze_025"
@@ -705,7 +705,7 @@
 		"id": "79",
 		"gnd": null,
 		"title": "Der Wetterfleck",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 6,
 		"first seen": "cze_025"
@@ -714,7 +714,7 @@
 		"id": "80",
 		"gnd": null,
 		"title": "Am Ortler",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 14,
 		"first seen": "cze_025"
@@ -723,7 +723,7 @@
 		"id": "81",
 		"gnd": null,
 		"title": "Goethe schtirbt",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 3,
 		"first seen": "cze_025"
@@ -732,7 +732,7 @@
 		"id": "82",
 		"gnd": "1141917998",
 		"title": "Die Billigesser",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": 1980,
 		"count": 18,
 		"first seen": "cze_027"
@@ -741,7 +741,7 @@
 		"id": "83",
 		"gnd": "1214903665",
 		"title": "Der Wahrheit auf der Spur. Reden, Leserbriefe, Interviews, Feuilletons",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": 2010,
 		"count": 5,
 		"first seen": "cze_028"
@@ -750,7 +750,7 @@
 		"id": "84",
 		"gnd": "1158695977",
 		"title": "In der H\u00f6he. Rettungsversuch, Unsinn",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 11,
 		"first seen": "cze_030"
@@ -759,7 +759,7 @@
 		"id": "85",
 		"gnd": null,
 		"title": "Das rote Licht",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 2,
 		"first seen": "cze_031"
@@ -768,7 +768,7 @@
 		"id": "86",
 		"gnd": null,
 		"title": "Die Siedler",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 2,
 		"first seen": "cze_031"
@@ -777,7 +777,7 @@
 		"id": "87",
 		"gnd": null,
 		"title": "Von einem Nachmittag in einer gro\u00dfen Stadt",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 2,
 		"first seen": "cze_031"
@@ -786,7 +786,7 @@
 		"id": "88",
 		"gnd": null,
 		"title": "Von sieben Tannen und vom Schnee... Eine m\u00e4rchenhafe  Weihnachtsgeschichte",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "cze_031"
@@ -795,7 +795,7 @@
 		"id": "89",
 		"gnd": null,
 		"title": "Die verr\u00fcckte Magdalena",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 3,
 		"first seen": "cze_031"
@@ -804,7 +804,7 @@
 		"id": "90",
 		"gnd": null,
 		"title": "Letzter Wille und Testament",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "cze_031"
@@ -813,7 +813,7 @@
 		"id": "91",
 		"gnd": null,
 		"title": "Das Armenhaus von St. Laurin",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 2,
 		"first seen": "cze_031"
@@ -822,7 +822,7 @@
 		"id": "92",
 		"gnd": null,
 		"title": "Gro\u00dfer, unbegreiflicher Hunger",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 4,
 		"first seen": "cze_031"
@@ -831,7 +831,7 @@
 		"id": "93",
 		"gnd": null,
 		"title": "Wintertag im Hochgebirge",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 2,
 		"first seen": "cze_031"
@@ -840,7 +840,7 @@
 		"id": "94",
 		"gnd": null,
 		"title": "Der Untergang des Abendlandes",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 2,
 		"first seen": "cze_031"
@@ -849,7 +849,7 @@
 		"id": "95",
 		"gnd": null,
 		"title": "Die Landschaft der Mutter",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 2,
 		"first seen": "cze_031"
@@ -858,7 +858,7 @@
 		"id": "96",
 		"gnd": null,
 		"title": "Ein \u00e4lterer Mann namens August",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 2,
 		"first seen": "cze_031"
@@ -867,7 +867,7 @@
 		"id": "97",
 		"gnd": null,
 		"title": "Von einem, der auszog die Welt zu sehen",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 2,
 		"first seen": "cze_031"
@@ -876,7 +876,7 @@
 		"id": "98",
 		"gnd": null,
 		"title": "Der Schweineh\u00fcter",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 2,
 		"first seen": "cze_031"
@@ -885,7 +885,7 @@
 		"id": "99",
 		"gnd": null,
 		"title": "Der Italiener",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "cze_031"
@@ -894,7 +894,7 @@
 		"id": "100",
 		"gnd": null,
 		"title": "Der Kulterer",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "cze_031"
@@ -903,7 +903,7 @@
 		"id": "101",
 		"gnd": null,
 		"title": "Eine Zeugenaussage",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 3,
 		"first seen": "cze_035"
@@ -912,7 +912,7 @@
 		"id": "102",
 		"gnd": null,
 		"title": "Berg",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": null,
 		"count": 1,
 		"first seen": "cze_040"
@@ -921,7 +921,7 @@
 		"id": "103",
 		"gnd": null,
 		"title": "Erfundene",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": null,
 		"count": 1,
 		"first seen": "cze_040"
@@ -930,7 +930,7 @@
 		"id": "104",
 		"gnd": null,
 		"title": "Claus Peymann verl\u00e4sst Bochum und geht als Burgtheaterdirektor nach Wien",
-		"category": "drama & libretti",
+		"category": ["drama & libretti"],
 		"year": null,
 		"count": 2,
 		"first seen": "cze_041"
@@ -939,7 +939,7 @@
 		"id": "105",
 		"gnd": "1219327905",
 		"title": "Alte Meister. Kom\u00f6die. Gezeichnet von Mahler",
-		"category": "adaptations",
+		"category": ["adaptations"],
 		"year": 2012,
 		"count": 6,
 		"first seen": "cze_042"
@@ -948,7 +948,7 @@
 		"id": "106",
 		"gnd": null,
 		"title": "Von einer Katastrophe in die andere. Interview von Asta Scheib",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 1,
 		"first seen": "cze_047"
@@ -957,7 +957,7 @@
 		"id": "107",
 		"gnd": null,
 		"title": "Ich bin nur mehr kurz da. Interview von Kurt Hofmann",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 1,
 		"first seen": "cze_047"
@@ -966,7 +966,7 @@
 		"id": "108",
 		"gnd": null,
 		"title": "Aus Gespr\u00e4chen mit Kurt Hofmann",
-		"category": null,
+		"category": [],
 		"year": null,
 		"count": 1,
 		"first seen": "cze_048"
@@ -975,7 +975,7 @@
 		"id": "109",
 		"gnd": null,
 		"title": "Gedichte 1952-1957",
-		"category": "poetry",
+		"category": ["poetry"],
 		"year": null,
 		"count": 4,
 		"first seen": "eng_060"
@@ -984,7 +984,7 @@
 		"id": "110",
 		"gnd": null,
 		"title": "Psalm",
-		"category": "poetry",
+		"category": ["poetry"],
 		"year": null,
 		"count": 6,
 		"first seen": "eng_060"
@@ -993,7 +993,7 @@
 		"id": "111",
 		"gnd": "1203737297",
 		"title": "Die Irren, die H\u00e4ftlinge",
-		"category": "poetry",
+		"category": ["poetry"],
 		"year": 1962,
 		"count": 8,
 		"first seen": "eng_060"
@@ -1002,7 +1002,7 @@
 		"id": "112",
 		"gnd": "1270058894",
 		"title": "Ave Vergil",
-		"category": "poetry",
+		"category": ["poetry"],
 		"year": 1981,
 		"count": 16,
 		"first seen": "eng_060"
@@ -1011,7 +1011,7 @@
 		"id": "113",
 		"gnd": null,
 		"title": "Gedichte 1959-196",
-		"category": "poetry",
+		"category": ["poetry"],
 		"year": null,
 		"count": 4,
 		"first seen": "eng_060"
@@ -1020,7 +1020,7 @@
 		"id": "114",
 		"gnd": null,
 		"title": "Drei Tage",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 10,
 		"first seen": "eng_079"
@@ -1029,7 +1029,7 @@
 		"id": "115",
 		"gnd": "4734848-3",
 		"title": "Der Wetterfleck",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": 1969,
 		"count": 11,
 		"first seen": "eng_091"
@@ -1038,7 +1038,7 @@
 		"id": "116",
 		"gnd": "4687798-8",
 		"title": "Der Italiener",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": 1969,
 		"count": 16,
 		"first seen": "eng_092"
@@ -1047,7 +1047,7 @@
 		"id": "117",
 		"gnd": null,
 		"title": "Jean Arthur Rimbaud. Zum 100. Geburtstag",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 2,
 		"first seen": "eng_094"
@@ -1056,7 +1056,7 @@
 		"id": "118",
 		"gnd": null,
 		"title": "Andr\u00e9 M\u00fcller im Gespr\u00e4ch mit Thomas Bernhard",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 8,
 		"first seen": "eng_096"
@@ -1065,7 +1065,7 @@
 		"id": "119",
 		"gnd": null,
 		"title": "Argumente eines Winterspazierg\u00e4ngers",
-		"category": "fragments",
+		"category": ["fragments"],
 		"year": null,
 		"count": 1,
 		"first seen": "eng_099"
@@ -1074,7 +1074,7 @@
 		"id": "120",
 		"gnd": "1153801205",
 		"title": "Thomas Bernhard \u2013 Gerhard Fritsch. Der Briefwechsel",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 1,
 		"first seen": "fin_003"
@@ -1083,7 +1083,7 @@
 		"id": "121",
 		"gnd": "4444005-4",
 		"title": "Der Kulterer",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": 1974,
 		"count": 13,
 		"first seen": "fin_004"
@@ -1092,7 +1092,7 @@
 		"id": "122",
 		"gnd": null,
 		"title": "Gehen",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_016"
@@ -1101,7 +1101,7 @@
 		"id": "123",
 		"gnd": null,
 		"title": "Kurt Hofmann: Aus Gespr\u00e4chen mit Thomas Bernhard",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 7,
 		"first seen": "fra_036"
@@ -1110,7 +1110,7 @@
 		"id": "124",
 		"gnd": null,
 		"title": "Eine Begegnung. Gespr\u00e4che mit Krista Fleischmann",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 5,
 		"first seen": "fra_037"
@@ -1119,7 +1119,12 @@
 		"id": "125",
 		"gnd": null,
 		"title": "Wittgensteins Neffe",
-		"category": null,
+		"category": [
+			"letters, speeches, interviews",
+			"novels",
+			"novellas & short prose",
+			"autobiography"
+		],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_051"
@@ -1128,7 +1133,7 @@
 		"id": "126",
 		"gnd": null,
 		"title": "Mein Weltenst\u00fcck",
-		"category": "poetry",
+		"category": ["poetry"],
 		"year": null,
 		"count": 2,
 		"first seen": "fra_052"
@@ -1137,7 +1142,7 @@
 		"id": "127",
 		"gnd": null,
 		"title": "Verstreut publizierte Gedichte",
-		"category": "poetry",
+		"category": ["poetry"],
 		"year": null,
 		"count": 3,
 		"first seen": "fra_052"
@@ -1146,7 +1151,7 @@
 		"id": "128",
 		"gnd": null,
 		"title": "Ein junger Schriftsteller",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 3,
 		"first seen": "fra_059"
@@ -1155,7 +1160,7 @@
 		"id": "129",
 		"gnd": null,
 		"title": "Monologe auf Mallorca",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 4,
 		"first seen": "fra_059"
@@ -1164,7 +1169,7 @@
 		"id": "130",
 		"gnd": null,
 		"title": "Mein Gl\u00fcckliches \u00d6sterreich",
-		"category": null,
+		"category": ["drama & libretti", "letters, speeches, interviews", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_059"
@@ -1173,7 +1178,7 @@
 		"id": "131",
 		"gnd": null,
 		"title": "Mit der Klarheit nimmt die K\u00e4lte zu (Bremer Literaturpreis)",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 2,
 		"first seen": "fra_077"
@@ -1182,7 +1187,7 @@
 		"id": "132",
 		"gnd": null,
 		"title": "Der Wahrheit und dem Tod auf der Spur (Anton-Wildgans-Preis)",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 2,
 		"first seen": "fra_077"
@@ -1191,7 +1196,7 @@
 		"id": "133",
 		"gnd": null,
 		"title": "Verehrter Herr Minister, verehrte Anwesende (\u00d6sterreichischer Staatspreis)",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 4,
 		"first seen": "fra_077"
@@ -1200,7 +1205,7 @@
 		"id": "134",
 		"gnd": null,
 		"title": "Unsterblichkeit ist unm\u00f6glich. Landschaft der Kindheit",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 2,
 		"first seen": "fra_077"
@@ -1209,7 +1214,7 @@
 		"id": "135",
 		"gnd": null,
 		"title": "Nie und mit nichts fertig werden (B\u00fcchner-Preis)",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 2,
 		"first seen": "fra_077"
@@ -1218,7 +1223,7 @@
 		"id": "136",
 		"gnd": null,
 		"title": "Brief an Siegfried Unseld (excerpt)",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_078"
@@ -1227,7 +1232,7 @@
 		"id": "137",
 		"gnd": null,
 		"title": "Brief an Henning Rischbieter",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_078"
@@ -1236,7 +1241,7 @@
 		"id": "138",
 		"gnd": null,
 		"title": "Ansichten eines unverbesserlichen Weltverbesserer. Interview mit Niklas Frank",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_082"
@@ -1245,7 +1250,7 @@
 		"id": "139",
 		"gnd": null,
 		"title": "Junge K\u00f6pfe",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_083"
@@ -1254,7 +1259,7 @@
 		"id": "140",
 		"gnd": null,
 		"title": "Meine eigene Einsamkeit",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_083"
@@ -1263,7 +1268,7 @@
 		"id": "141",
 		"gnd": null,
 		"title": "Gerichtschroniken (Ein paar saure Zuckerl",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_083"
@@ -1272,7 +1277,7 @@
 		"id": "142",
 		"gnd": null,
 		"title": "Selbstmord in der Landesheilanstalt",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_083"
@@ -1281,7 +1286,7 @@
 		"id": "143",
 		"gnd": null,
 		"title": "Vielgeliebt und nie bezahlt",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_083"
@@ -1290,7 +1295,7 @@
 		"id": "144",
 		"gnd": null,
 		"title": "Gastspiel am Landesgericht",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_083"
@@ -1299,7 +1304,7 @@
 		"id": "145",
 		"gnd": null,
 		"title": "Ernestine kontra Lucie",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_083"
@@ -1308,7 +1313,7 @@
 		"id": "146",
 		"gnd": null,
 		"title": "Paris",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_083"
@@ -1317,7 +1322,7 @@
 		"id": "147",
 		"gnd": null,
 		"title": "Verfolgungswahn",
-		"category": "poetry",
+		"category": ["poetry"],
 		"year": null,
 		"count": 2,
 		"first seen": "fra_083"
@@ -1326,7 +1331,7 @@
 		"id": "148",
 		"gnd": null,
 		"title": "Zwei Briefe (1960-1963) an Annemarie Hammerstein-Siller",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_083"
@@ -1335,7 +1340,7 @@
 		"id": "149",
 		"gnd": null,
 		"title": "Telegramm vom 30. November 1960 an Michael Guttenbrunner",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_083"
@@ -1344,7 +1349,7 @@
 		"id": "150",
 		"gnd": null,
 		"title": "Ein Brief aus einem Drama",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_083"
@@ -1353,7 +1358,7 @@
 		"id": "151",
 		"gnd": null,
 		"title": "Ein Fr\u00fchling",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 2,
 		"first seen": "fra_083"
@@ -1362,7 +1367,7 @@
 		"id": "152",
 		"gnd": null,
 		"title": "Ein l\u00e4ndlicher Betr\u00fcger",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 2,
 		"first seen": "fra_083"
@@ -1371,7 +1376,7 @@
 		"id": "153",
 		"gnd": null,
 		"title": "Als Verwalter im Asyl",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 2,
 		"first seen": "fra_083"
@@ -1380,7 +1385,7 @@
 		"id": "154",
 		"gnd": null,
 		"title": "Die Frau aus Gu\u00dfwerk",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_083"
@@ -1389,7 +1394,7 @@
 		"id": "155",
 		"gnd": null,
 		"title": "Brief an Claus Peymann, 02.12.1986",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_083"
@@ -1398,7 +1403,7 @@
 		"id": "156",
 		"gnd": null,
 		"title": "In Rom",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novellas & short prose"],
 		"year": null,
 		"count": 2,
 		"first seen": "fra_083"
@@ -1407,7 +1412,7 @@
 		"id": "157",
 		"gnd": null,
 		"title": "Erkl\u00e4rung",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_083"
@@ -1416,7 +1421,7 @@
 		"id": "158",
 		"gnd": null,
 		"title": "Thomas Bernhard und Siegfried Unseld (Ausz\u00fcge)",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_083"
@@ -1425,7 +1430,7 @@
 		"id": "159",
 		"gnd": null,
 		"title": "Unseld",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_083"
@@ -1434,7 +1439,7 @@
 		"id": "160",
 		"gnd": null,
 		"title": "Leute, die ein Gespr\u00e4ch f\u00fchren wollen, sind mir verd\u00e4chtig. Interview mit Werner W\u00f6gerbauer",
-		"category": null,
+		"category": ["letters, speeches, interviews", "drama & libretti", "novellas & short prose"],
 		"year": null,
 		"count": 2,
 		"first seen": "fra_084"
@@ -1443,7 +1448,7 @@
 		"id": "161",
 		"gnd": null,
 		"title": "Brief an Christoph von Schwerin",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_084"
@@ -1452,7 +1457,7 @@
 		"id": "162",
 		"gnd": null,
 		"title": "Politische Morgenandacht",
-		"category": null,
+		"category": ["letters, speeches, interviews", "drama & libretti", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_084"
@@ -1461,7 +1466,7 @@
 		"id": "163",
 		"gnd": null,
 		"title": "Schriftstellerberuf heute. Die Kom\u00f6die der Eitelkeit",
-		"category": null,
+		"category": ["letters, speeches, interviews", "drama & libretti", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_084"
@@ -1470,7 +1475,7 @@
 		"id": "164",
 		"gnd": null,
 		"title": "Thomas Bernhard: Ein Brief an die ZEIT",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_084"
@@ -1479,7 +1484,7 @@
 		"id": "165",
 		"gnd": null,
 		"title": "Bernhards Pl\u00e4doyer. Zur Wiener Gerichtsverhandlung \u201eHolzf\u00e4llen\u201c betreffend",
-		"category": null,
+		"category": ["letters, speeches, interviews", "drama & libretti", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_084"
@@ -1488,7 +1493,7 @@
 		"id": "166",
 		"gnd": null,
 		"title": "Vranitzky. Eine Erwiderung",
-		"category": null,
+		"category": ["letters, speeches, interviews", "drama & libretti", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_084"
@@ -1497,7 +1502,7 @@
 		"id": "167",
 		"gnd": null,
 		"title": "\u201eSehr geehrter Herr Dr. Temnitschka \u2026\u201c. Brief vom 27.3.1986",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_084"
@@ -1506,7 +1511,7 @@
 		"id": "168",
 		"gnd": null,
 		"title": "\u201eMein Beitrag zur Eind\u00e4mmung der Professoreninflation \u2026\u201c. (= Schriftliche Stellungnahme am 4.4.1986 f\u00fcr Zeit im Bild, ORF)",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_084"
@@ -1515,7 +1520,7 @@
 		"id": "169",
 		"gnd": null,
 		"title": "Bernhard gegen Europalia. Kein Gastspiel des \u201eTheatermachers\u201c in Br\u00fcssel?)",
-		"category": null,
+		"category": ["letters, speeches, interviews", "drama & libretti", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_084"
@@ -1524,7 +1529,7 @@
 		"id": "170",
 		"gnd": null,
 		"title": "Die Billigesser (Auszug)",
-		"category": null,
+		"category": ["letters, speeches, interviews", "drama & libretti", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_084"
@@ -1533,7 +1538,7 @@
 		"id": "171",
 		"gnd": null,
 		"title": "Thomas Bernhard an die Redaktion des Watzmann, 1.4.198",
-		"category": null,
+		"category": ["letters, speeches, interviews", "drama & libretti", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_084"
@@ -1542,7 +1547,7 @@
 		"id": "172",
 		"gnd": null,
 		"title": "die rosen der ein\u00f6de",
-		"category": null,
+		"category": ["letters, speeches, interviews", "drama & libretti", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_084"
@@ -1551,7 +1556,7 @@
 		"id": "173",
 		"gnd": null,
 		"title": "Grand Hotel Imperial Dubrovnik (\u201eLiebe, verehrte Doktor Spiel \u2026\u201c. Brief vom 2.3.1971)",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_085"
@@ -1560,7 +1565,7 @@
 		"id": "174",
 		"gnd": null,
 		"title": "Warum f\u00fcrchte ich mein Altern",
-		"category": null,
+		"category": [],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_088"
@@ -1569,7 +1574,7 @@
 		"id": "175",
 		"gnd": null,
 		"title": "???",
-		"category": null,
+		"category": [],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_088"
@@ -1578,7 +1583,7 @@
 		"id": "176",
 		"gnd": null,
 		"title": "Im Garten der Mutter",
-		"category": null,
+		"category": [],
 		"year": null,
 		"count": 1,
 		"first seen": "fra_088"
@@ -1587,7 +1592,7 @@
 		"id": "177",
 		"gnd": null,
 		"title": "An der Baumgrenze? Der Italiener?",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "geo_008"
@@ -1596,7 +1601,7 @@
 		"id": "178",
 		"gnd": null,
 		"title": "Frost (Version C)",
-		"category": "poetry",
+		"category": ["poetry"],
 		"year": null,
 		"count": 1,
 		"first seen": "gri_028"
@@ -1605,7 +1610,7 @@
 		"id": "179",
 		"gnd": null,
 		"title": "Kurt Hofmann: Aus Gespr\u00e4chen mit Thomas Bernhard (excerpt)",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 2,
 		"first seen": "gri_031"
@@ -1614,7 +1619,7 @@
 		"id": "180",
 		"gnd": null,
 		"title": "Viktor Halbnarr",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 3,
 		"first seen": "hun_024"
@@ -1623,7 +1628,7 @@
 		"id": "181",
 		"gnd": null,
 		"title": "Beruhigung",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "hun_024"
@@ -1632,7 +1637,7 @@
 		"id": "182",
 		"gnd": null,
 		"title": "Die Frau aus dem Gu\u00dfwerk und der Mann mit dem Rucksack",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "hun_024"
@@ -1641,7 +1646,7 @@
 		"id": "183",
 		"gnd": null,
 		"title": "Ebene",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "hun_024"
@@ -1650,7 +1655,7 @@
 		"id": "184",
 		"gnd": null,
 		"title": "Von sieben Tannen und vom Schnee",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "hun_024"
@@ -1659,7 +1664,7 @@
 		"id": "185",
 		"gnd": null,
 		"title": "Das Verm\u00e4chtnis",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "hun_024"
@@ -1668,7 +1673,7 @@
 		"id": "186",
 		"gnd": null,
 		"title": "Wahnsinn",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "isl_003"
@@ -1677,7 +1682,7 @@
 		"id": "187",
 		"gnd": null,
 		"title": "Die Magd",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "isl_003"
@@ -1686,7 +1691,7 @@
 		"id": "188",
 		"gnd": null,
 		"title": "Sind Sie gern b\u00f6se? Ein Nachtgespr\u00e4ch zwischen Thomas Bernhard und Peter Hamm",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 2,
 		"first seen": "ita_001"
@@ -1695,7 +1700,7 @@
 		"id": "189",
 		"gnd": null,
 		"title": "An der Baumgrenze",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "jpn_014"
@@ -1704,7 +1709,7 @@
 		"id": "190",
 		"gnd": null,
 		"title": "Nie und mit nichts fertig werden (B\u00fcchnerpreis-Rede)",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 1,
 		"first seen": "jpn_024"
@@ -1713,7 +1718,7 @@
 		"id": "191",
 		"gnd": null,
 		"title": "Neun Psalmen",
-		"category": "poetry",
+		"category": ["poetry"],
 		"year": null,
 		"count": 1,
 		"first seen": "kat_005"
@@ -1722,7 +1727,7 @@
 		"id": "192",
 		"gnd": null,
 		"title": "Der Diktator",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "per_010"
@@ -1731,7 +1736,7 @@
 		"id": "193",
 		"gnd": null,
 		"title": "Pisa und Venedig",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "per_010"
@@ -1740,7 +1745,7 @@
 		"id": "194",
 		"gnd": null,
 		"title": "Hotel Waldhaus",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "per_010"
@@ -1749,7 +1754,7 @@
 		"id": "195",
 		"gnd": null,
 		"title": "Warnung",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "per_010"
@@ -1758,7 +1763,7 @@
 		"id": "196",
 		"gnd": null,
 		"title": "Unerf\u00fcllter Wunsch",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "per_010"
@@ -1767,7 +1772,7 @@
 		"id": "197",
 		"gnd": null,
 		"title": "Zuviel",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "per_010"
@@ -1776,7 +1781,7 @@
 		"id": "198",
 		"gnd": null,
 		"title": "Brief an Erwin Axer",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 1,
 		"first seen": "pol_044"
@@ -1785,7 +1790,7 @@
 		"id": "199",
 		"gnd": null,
 		"title": "Eine Begegnung. Gespr\u00e4che mit Krista Fleischmann (excerpt)",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 1,
 		"first seen": "pol_046"
@@ -1794,7 +1799,7 @@
 		"id": "200",
 		"gnd": null,
 		"title": "Im Tal",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novels", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "pol_047"
@@ -1803,7 +1808,7 @@
 		"id": "201",
 		"gnd": null,
 		"title": "Krieger",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novels", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "pol_047"
@@ -1812,7 +1817,7 @@
 		"id": "202",
 		"gnd": null,
 		"title": "Eine Strophe f\u00fcr Padraic Colum",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novels", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "pol_047"
@@ -1821,7 +1826,7 @@
 		"id": "203",
 		"gnd": null,
 		"title": "Geburtstagsode",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novels", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "pol_047"
@@ -1830,7 +1835,7 @@
 		"id": "204",
 		"gnd": null,
 		"title": "Morgen",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novels", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "pol_047"
@@ -1839,7 +1844,7 @@
 		"id": "205",
 		"gnd": null,
 		"title": "Beschreibung einer Familie",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novels", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "pol_047"
@@ -1848,7 +1853,7 @@
 		"id": "206",
 		"gnd": null,
 		"title": "Jetzt im Fr\u00fchling",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novels", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "pol_047"
@@ -1857,7 +1862,7 @@
 		"id": "207",
 		"gnd": null,
 		"title": "An H. W.",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novels", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "pol_047"
@@ -1866,7 +1871,7 @@
 		"id": "208",
 		"gnd": null,
 		"title": "Holzf\u00e4llen (Auszug)",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novels", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "pol_047"
@@ -1875,7 +1880,7 @@
 		"id": "209",
 		"gnd": null,
 		"title": "Der Literaturpreis der Freien und Hansestadt Bremen",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novels", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "pol_047"
@@ -1884,7 +1889,7 @@
 		"id": "210",
 		"gnd": null,
 		"title": "Ereignisse (Auswahl)",
-		"category": null,
+		"category": ["poetry", "letters, speeches, interviews", "novels", "novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "pol_047"
@@ -1893,7 +1898,7 @@
 		"id": "211",
 		"gnd": null,
 		"title": "Gedichte (selection)",
-		"category": "poetry",
+		"category": ["poetry"],
 		"year": null,
 		"count": 1,
 		"first seen": "rum_006"
@@ -1902,7 +1907,7 @@
 		"id": "212",
 		"gnd": null,
 		"title": "Drei Tage (Auszug)",
-		"category": null,
+		"category": ["letters, speeches, interviews", "drama & libretti"],
 		"year": null,
 		"count": 1,
 		"first seen": "slw_022"
@@ -1911,7 +1916,7 @@
 		"id": "213",
 		"gnd": "1210310406",
 		"title": "Thomas Bernhard \u2013 Siegfried Unseld. Der Briefwechsel (excerpt)",
-		"category": "letters, speeches, interviews",
+		"category": ["letters, speeches, interviews"],
 		"year": null,
 		"count": 1,
 		"first seen": "spa_001"
@@ -1920,7 +1925,7 @@
 		"id": "214",
 		"gnd": null,
 		"title": "Ereignisse (Auszug)",
-		"category": "novellas & short prose",
+		"category": ["novellas & short prose"],
 		"year": null,
 		"count": 1,
 		"first seen": "swe_027"

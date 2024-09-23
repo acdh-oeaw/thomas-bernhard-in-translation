@@ -89,7 +89,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 					<p>
 						<span className="bernhard-key">{t("publisher")}</span> {pub.publisher.name}
 					</p>
-					<p>{pub.year}</p>
+					<p>{pub.year_display}</p>
 					<p className="bernhard-key">{t("contains")}:</p>
 					<p>
 						<InlineList separator=" / ">

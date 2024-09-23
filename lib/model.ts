@@ -26,6 +26,7 @@ export interface Publication {
 	// publication. this field is inferred from the 'eltern' column in openrefine.
 	later?: Array<string>;
 	year: number;
+	year_display: string;
 	isbn?: string;
 	publisher: Publisher;
 	exemplar_suhrkamp_berlin: boolean;

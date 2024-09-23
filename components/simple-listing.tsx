@@ -17,7 +17,7 @@ export async function SimpleListing(props: SimpleListingProps) {
 		<MainContent className="grid grid-cols-[repeat(auto-fit,minmax(15rem,1fr))]">
 			{counts?.map((c) => {
 				return (
-					<div key={c.value}>
+					<div key={c.value} className="px-2">
 						<AppNavLink href={`/search?${props.path}=${c.value}`}>
 							{c.value}&nbsp;({c.count})
 						</AppNavLink>

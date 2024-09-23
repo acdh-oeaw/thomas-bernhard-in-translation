@@ -107,6 +107,7 @@ function DefaultRefinementList({
 			attribute={attribute}
 			classNames={{
 				count: 'before:content-["("] after:content-[")"]',
+				disabledShowMore: "hidden",
 				labelText: "px-1",
 				root: "p-2",
 			}}

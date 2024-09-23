@@ -119,12 +119,15 @@ for pub in data:
                 if len(pub_categories) < len(bernhardworks[bwkey]['category']) or len(bernhardworks[bwkey]['category']) == 0:
                     for c in pub_categories:
                         if not c in bernhardworks[bwkey]['category']:
-                            logger.warning(f'could be {c} which it was previously not')
+                            pass
+                            # logger.warning(f'could be {c} which it was previously not')
                     bernhardworks[bwkey]['category'] = pub_categories
                 elif len(pub_categories) == 1 and len(bernhardworks[bwkey]['category']) == 1 and pub_categories != bernhardworks[bwkey]['category']:
                     # logger.error(f'{pub["Signatur"]}: unique publication category implies that all works inside it have category "{unique_work_category}", but the following work was already found in a publication with a different unique category: {bernhardworks[bwkey]}')
-                    print(f'''1. *{bernhardworks[bwkey]['title']}*: ist in [{pub["Signatur"]}](https://thomas-bernhard-global.acdh-ch-dev.oeaw.ac.at/publication/{pub["Signatur"]}) das als `{pub_categories[0]}` kategorisiert ist, in anderen Publikationen in denen es enthalten ist sind dagegen `{bernhardworks[bwkey]["category"][0]}`
+                    print(f'''1. *{bernhardworks[bwkey]['title']}*: ist in [{pub["Signatur"]}](https://thomas-bernhard-global.acdh-ch-dev.oeaw.ac.at/publication/{pub["Signatur"]}) das als `{pub_categories[0]}` kategorisiert ist, in anderen Publikationen (z.B. [{bernhardworks[bwkey]['first seen']}](https://thomas-bernhard-global.acdh-ch-dev.oeaw.ac.at/publication/{bernhardworks[bwkey]['first seen']})) dagegen als `{bernhardworks[bwkey]["category"][0]}`
     - [ ] wahrscheinlicher Fix: `{pub["Signatur"]}`'s Kategorie von `{pub_categories[0]}` auf `{bernhardworks[bwkey]["category"][0]}` ändern''')
+                    # allow the contradictory entry to show up on da web?
+                    # bernhardworks[bwkey]['category'] = pub_categories
             else:
                 # new work, write even if we don't know the gnd
                 bernhardworks[bwkey] = { 'id': str(len(bernhardworks)+1), 'gnd': gnd, 'title': origt, 'category': pub_categories, 'year': getyear(gnd) if gnd else None, 'count': 1, 'first seen': pub['Signatur'] }
@@ -157,13 +160,15 @@ for pub in data:
                 }
 for k, v in bernhardworks.items():
     if len(v['category']) == 1:
-        v['category'] = v['category'][0]
-    elif any(map(lambda kw: kw in v['title'], ['Brief', 'Telegramm', 'Stellungnahme'])):
-        v['category'] = 'letters, speeches, interviews'
+        pass
+        # v['category'] = v['category'][0]
+    elif any(map(lambda kw: kw in v['title'], ['Brief', 'Gespräch', 'Telegramm', 'Stellungnahme'])):
+        v['category'] = ['letters, speeches, interviews']
         logger.info(f'work category of "{v["title"]}" is unknown but it contains a keyword, assigning "{v["category"]}"')
     else:
-        print(f"1. {v['title']} (GND {v['gnd']}, {v['count']} Veröffentlichung(en), erstmals gesehen in [`{v['first seen']}`](https://thomas-bernhard-global.acdh-ch-dev.oeaw.ac.at/publication/{v['first seen']})): Werk-Kategorie nicht eindeutig, eine von: {', '.join(map(lambda c: '`' + c + '`', v['category']))}")
-        v['category'] = None
+        print(f"""1. *{v['title']}* (GND {v['gnd']}, {v['count']} Veröffentlichung(en), erstmals gesehen in [{v['first seen']}](https://thomas-bernhard-global.acdh-ch-dev.oeaw.ac.at/publication/{v['first seen']})): Werk-Kategorie nicht eindeutig:
+    - [ ] eine von: {', '.join(map(lambda c: '`' + c + '`', v['category']))}""")
+        # v['category'] = None
 
 translations = {}
 nrepublications = 0
@@ -242,7 +247,7 @@ for pub in data:
             'publisher': publishers[pub['publisher / publication']],
             # 'categories': [c for c in [c for c in pub['category 1'].split(' \\ ')] + [c for c in pub['category 2'].split(' \\ ')] if len(c) and c != 'prose'],
             'isbn': pub['ISBN'] or None,
-            'exemplar_suhrkamp_berlin': pub['Exemplar Suhrkamp Berlin (03/2023)'].lower() == 'x',
+            'exemplar_suhrkamp_berlin': pub['Exemplar Suhrkamp Berlin (03/2023)'].lower() == 'x', # TODO handle "X (mit Vorbehalt)"
             'exemplar_oeaw': pub['Exemplar ÖAW'].lower() == 'x',
             'images': assets
         }
