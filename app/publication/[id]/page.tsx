@@ -79,7 +79,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 						</InlineList>
 					</p>
 					<p>{pub.year}</p>
-					<p className="italic">{t("contains")}</p>
+					<p className="bernhard-key">{t("contains")}</p>
 					<p>
 						<InlineList separator=" / ">
 							{pub.contains.map((t, itranslation) => {
