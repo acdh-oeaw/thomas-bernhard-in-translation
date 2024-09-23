@@ -30,7 +30,7 @@ export interface Publication {
 	publisher: Publisher;
 	exemplar_suhrkamp_berlin: boolean;
 	exemplar_oeaw: boolean;
-	images?: Array<Asset>;
+	images: Array<Asset>;
 }
 
 export interface Translation {

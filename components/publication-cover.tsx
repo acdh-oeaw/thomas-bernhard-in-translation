@@ -16,12 +16,14 @@ export function PublicationCover(props: PublicationProps): ReactNode {
 	return (
 		<div className={`${props.className ?? "m-2 size-44"} relative`}>
 			<Image
-				alt={`${t("alt_text")} ${props.publication.title}`}
+				alt={
+					`${t("alt_text")} ${props.publication.title}` // TODO adjust alt if cover is missing
+				}
 				fill={true}
 				src={
-					props.publication.images
-						? `/covers/${props.publication.id}.jpg`
-						: "/assets/images/logo.svg"
+					props.publication.images[0]
+						? `/covers/${props.publication.images[0].id}.jpg`
+						: "/covers/slw_013.jpg" // TODO create proper 'cover missing' asset
 				}
 				style={{ objectFit: "contain" }}
 			/>
