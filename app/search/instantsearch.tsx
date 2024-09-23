@@ -39,8 +39,8 @@ const searchClient = typesenseInstantsearchAdapter.searchClient as unknown as Se
 
 const queryArgToRefinementField = {
 	// the order of elements here determines the order of refinement lists in the UI
-	category: "contains.work.category" as const,
 	language: "language" as const,
+	category: "contains.work.category" as const,
 	work: "contains.work.title" as const,
 	translator: "contains.translators.name" as const,
 };
@@ -136,7 +136,7 @@ export function InstantSearch() {
 							key={attribute}
 							attribute={attribute}
 							// eslint-disable-next-line @typescript-eslint/no-explicit-any
-							placeholder={`${t("filter")} ${t(queryarg as MessageKeys<any, any>)}`}
+							placeholder={`${t("filter")} ${t(("filter_by." + queryarg) as MessageKeys<any, any>)}`}
 						/>
 					);
 				})}
