@@ -18,7 +18,7 @@ export async function SimpleListing(props: SimpleListingProps) {
 			{counts?.map((c) => {
 				return (
 					<div key={c.value} className="px-2">
-						<AppNavLink href={`/search?${props.path}=${c.value}`}>
+						<AppNavLink href={`/search?${props.path}=${encodeURI(c.value)}`}>
 							{c.value}&nbsp;({c.count})
 						</AppNavLink>
 					</div>

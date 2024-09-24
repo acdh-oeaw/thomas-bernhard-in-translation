@@ -116,7 +116,13 @@ export default function LocaleLayout(props: LocaleLayoutProps): ReactNode {
 
 				<Providers
 					locale={locale}
-					messages={pick(messages, ["Error", "SearchPage", "PublicationCover"])}
+					messages={pick(messages, [
+						"AppHeader",
+						"BernhardCategories",
+						"Error",
+						"SearchPage",
+						"PublicationCover",
+					])}
 				>
 					<AppLayout>
 						<AppHeader />

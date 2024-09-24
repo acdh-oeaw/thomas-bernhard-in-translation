@@ -91,7 +91,7 @@
 		"sort": {
 			"year:asc": "oldest to newest",
 			"year:desc": "newest to oldest",
-			"title": "title"
+			"title:asc": "publication title"
 		}
 	},
 	"TranslatorPage": {
