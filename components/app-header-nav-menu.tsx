@@ -1,34 +1,31 @@
 "use client";
 import { useTranslations } from "next-intl";
-import { type ReactNode, useId, useState } from "react";
+import { type MouseEventHandler, type ReactNode, useId, useState } from "react";
 
 import { AppNavLink } from "@/components/app-nav-link";
-import type { LinkProps } from "@/components/link";
 import { createHref } from "@/lib/create-href";
 import { otherCategories, proseCategories } from "@/lib/model";
 import { usePathname } from "@/lib/navigation";
 
 import { DisclosureButton } from "./disclosure-button";
 
+interface AppHeaderNavMenuLinkProps {
+	href: string;
+	label: string;
+	onClick: MouseEventHandler<HTMLAnchorElement>;
+}
+
+function AppHeaderNavMenuLink({ href, label, onClick }: AppHeaderNavMenuLinkProps) {
+	return (
+		<AppNavLink href={href} onClick={onClick}>
+			{label}
+		</AppNavLink>
+	);
+}
+
 export function AppHeaderNavMenu(): ReactNode {
 	const t = useTranslations("AppHeader");
 	const catt = useTranslations("BernhardCategories");
-
-	const links = {
-		home: { href: createHref({ pathname: "/" }), label: t("links.home") },
-		languages: {
-			href: createHref({ pathname: "/languages" }),
-			label: t("links.languages"),
-		},
-		translators: {
-			href: createHref({ pathname: "/translators" }),
-			label: t("links.translators"),
-		},
-		search: {
-			href: createHref({ pathname: "/search" }),
-			label: t("links.search"),
-		},
-	} satisfies Record<string, { href: LinkProps["href"]; label: string }>;
 
 	const worksMenu = useId();
 	const proseMenu = useId();
@@ -47,31 +44,59 @@ export function AppHeaderNavMenu(): ReactNode {
 			}),
 	);
 
+	const topLevelItems = {
+		home: (
+			<AppHeaderNavMenuLink
+				href={createHref({ pathname: "/" })}
+				label={t("links.home")}
+				onClick={() => {
+					setWorksMenuOpen(false);
+				}}
+			/>
+		),
+		works: (
+			<DisclosureButton
+				controls={worksMenu}
+				label={t("links.works")}
+				setState={setWorksMenuOpen}
+				state={worksMenuOpen}
+			/>
+		),
+		languages: (
+			<AppHeaderNavMenuLink
+				href={createHref({ pathname: "/languages" })}
+				label={t("links.languages")}
+				onClick={() => {
+					setWorksMenuOpen(false);
+				}}
+			/>
+		),
+		translators: (
+			<AppHeaderNavMenuLink
+				href={createHref({ pathname: "/translators" })}
+				label={t("links.translators")}
+				onClick={() => {
+					setWorksMenuOpen(false);
+				}}
+			/>
+		),
+		search: (
+			<AppHeaderNavMenuLink
+				href={createHref({ pathname: "/search" })}
+				label={t("links.search")}
+				onClick={() => {
+					setWorksMenuOpen(false);
+				}}
+			/>
+		),
+	};
+
 	return (
 		<nav aria-label={t("navigation-primary")}>
 			<ul className="flex h-10 items-center gap-4 text-sm" role="list">
-				{Object.entries(links).map(([id, link]) => {
-					return (
-						<li key={id}>
-							<AppNavLink
-								href={link.href}
-								onClick={() => {
-									setWorksMenuOpen(false);
-								}}
-							>
-								{link.label}
-							</AppNavLink>
-						</li>
-					);
+				{Object.entries(topLevelItems).map(([id, item]) => {
+					return <li key={id}>{item}</li>;
 				})}
-				<li>
-					<DisclosureButton
-						controls={worksMenu}
-						label={t("links.works")}
-						setState={setWorksMenuOpen}
-						state={worksMenuOpen}
-					/>
-				</li>
 			</ul>
 			{worksMenuOpen ? (
 				<ul className="flex h-10 items-center gap-4 text-sm" id={worksMenu} role="list">
