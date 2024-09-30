@@ -151,7 +151,7 @@ export function InstantSearch() {
 							items={[
 								{ label: t("sort.year:desc"), value: `${collectionName}/sort/year:desc` },
 								{ label: t("sort.year:asc"), value: `${collectionName}/sort/year:asc` },
-								{ label: t("sort.title"), value: `${collectionName}/sort/title:asc` },
+								{ label: t("sort.title:asc"), value: `${collectionName}/sort/title:asc` },
 							]}
 						/>
 					</div>

@@ -86,7 +86,7 @@
 			"translator": "translators",
 			"work": "works"
 		},
-		"query_placeholder": "filter publications",
+		"query_placeholder": "search publications",
 		"sort_by": "sort by",
 		"sort": {
 			"year:asc": "oldest to newest",
