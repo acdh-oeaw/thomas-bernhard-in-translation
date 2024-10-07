@@ -136,16 +136,12 @@ export function InstantSearch(props: InstantSearchProps): ReactNode {
 			searchClient={searchClient}
 		>
 			<Configure
-				filters={
-					filters
-						? Object.keys(filters)
-								.map((k) => {
-									// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-									return `${k}:= ${filters[k]!}`;
-								})
-								.join(" and ")
-						: undefined
-				}
+				filters={[
+					"erstpublikation:true",
+					...Object.entries(filters ?? {}).map(([k, v]) => {
+						return `(${k}:=\`${v}\`)`;
+					}),
+				].join(" && ")} // typesense convention, not instantsearch!
 			/>
 			<div>{children}</div>
 			<div>
