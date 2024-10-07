@@ -3,7 +3,7 @@
 import type { UiState } from "instantsearch.js";
 import { type MessageKeys, useTranslations } from "next-intl";
 import { type ReactNode, useEffect, useRef } from "react";
-import { Configure, RefinementList, SearchBox, SortBy, useInfiniteHits } from "react-instantsearch";
+import { Configure, SearchBox, SortBy, useInfiniteHits } from "react-instantsearch";
 import { InstantSearchNext } from "react-instantsearch-nextjs";
 import TypesenseInstantSearchAdapter, { type SearchClient } from "typesense-instantsearch-adapter";
 
@@ -11,14 +11,16 @@ import { ClickablePublicationThumbnail } from "@/components/publication-cover";
 import { collectionName } from "@/lib/data";
 import type { Publication } from "@/lib/model";
 
+import { InstantSearchStats } from "./instantsearch-stats";
 import { PublicationGrid } from "./publication-grid";
 
 // TODO put into props
 const sortOptions = ["year:desc", "year:asc", "title:asc"];
 
 interface InstantSearchProps {
-	queryArgToRefinementFields: Record<string, string>;
+	queryArgsToRefinementFields: Record<string, string>;
 	children?: ReactNode;
+	filters?: Record<string, string>; // ugly
 }
 
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
@@ -53,7 +55,8 @@ function InfiniteScroll(): ReactNode {
 			const observer = new IntersectionObserver((entries) => {
 				entries.forEach((entry) => {
 					if (entry.isIntersecting && !isLastPage) {
-						showMore();
+						// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+						showMore && showMore();
 					}
 				});
 			});
@@ -79,37 +82,11 @@ function InfiniteScroll(): ReactNode {
 	);
 }
 
-function DefaultRefinementList({
-	attribute,
-	placeholder,
-}: {
-	attribute: string;
-	placeholder: string;
-}) {
-	return (
-		<RefinementList
-			attribute={attribute}
-			classNames={{
-				count: 'before:content-["("] after:content-[")"]',
-				disabledShowMore: "hidden",
-				labelText: "px-1",
-				root: "p-2",
-			}}
-			limit={1000}
-			searchable={true}
-			searchablePlaceholder={placeholder}
-			// showMore={true}
-			// showMoreLimit={Infinity}
-			sortBy={["name"]}
-		/>
-	);
-}
-
 type RouteState = Record<string, string | undefined>;
 
 export function InstantSearch(props: InstantSearchProps): ReactNode {
 	const t = useTranslations("SearchPage");
-	const { children, queryArgToRefinementFields } = props;
+	const { children, filters, queryArgsToRefinementFields } = props;
 	return (
 		<InstantSearchNext
 			indexName={collectionName}
@@ -123,7 +100,7 @@ export function InstantSearch(props: InstantSearchProps): ReactNode {
 						route.sort = indexUiState.sortBy?.split("/").at(-1);
 						if (indexUiState.refinementList) {
 							for (const [field, values] of Object.entries(indexUiState.refinementList)) {
-								const queryarg = Object.entries(queryArgToRefinementFields).find(([_k, v]) => {
+								const queryarg = Object.entries(queryArgsToRefinementFields).find(([_k, v]) => {
 									return v === field;
 								})?.[0];
 								// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -141,14 +118,16 @@ export function InstantSearch(props: InstantSearchProps): ReactNode {
 								sortBy: routeState.sort ? `${collectionName}/sort/${routeState.sort}` : undefined,
 							},
 						} as UiState;
-						Object.entries(queryArgToRefinementFields).forEach(([queryArg, field]) => {
-							if (routeState[queryArg]) {
-								// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-								uiState[collectionName]!.refinementList![field] = routeState[queryArg]
-									.split(";")
-									.map(decodeURI);
-							}
-						});
+						// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+						queryArgsToRefinementFields &&
+							Object.entries(queryArgsToRefinementFields).forEach(([queryArg, field]) => {
+								if (routeState[queryArg]) {
+									// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+									uiState[collectionName]!.refinementList![field] = routeState[queryArg]
+										.split(";")
+										.map(decodeURI);
+								}
+							});
 						return uiState;
 					},
 				},
@@ -157,25 +136,21 @@ export function InstantSearch(props: InstantSearchProps): ReactNode {
 			searchClient={searchClient}
 		>
 			<Configure
-				// when the facetingValue is undefined the search will return nothing, which is fine
-				// filters={`${props.faceting.facetingField} := ${props.faceting.facetingValue}`}
-				hitsPerPage={24}
+				filters={
+					filters
+						? Object.keys(filters)
+								.map((k) => {
+									// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+									return `${k}:= ${filters[k]!}`;
+								})
+								.join(" and ")
+						: undefined
+				}
 			/>
-			<div>
-				{Object.keys(queryArgToRefinementFields).map((attribute) => {
-					return (
-						<DefaultRefinementList
-							key={attribute}
-							attribute={attribute}
-							// eslint-disable-next-line @typescript-eslint/no-explicit-any
-							placeholder={`${t("filter")} ${t(("filter_by." + attribute) as MessageKeys<any, any>)}`}
-						/>
-					);
-				})}
-				{children}
-			</div>
+			<div>{children}</div>
 			<div>
 				<div className="flex place-content-between">
+					<InstantSearchStats />
 					<SearchBox placeholder={t("query_placeholder")} />
 					sort by{" "}
 					<SortBy

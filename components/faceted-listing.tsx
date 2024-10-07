@@ -1,20 +1,24 @@
 import { MainContent } from "@/components/main-content";
 
 import { InstantSearch } from "./instantsearch";
+import { SingleRefinementList } from "./single-refinement-list";
 
 export interface FacetedListingProps {
-	queryArgToRefinementFields: Record<string, string>;
+	queryArgsToRefinementFields: Record<string, string>;
+	filters?: Record<string, string>;
 }
 
 export function FacetedListing(props: FacetedListingProps) {
-	// const data = await getFaceted(props.facet, safeParams.facetValue);
-	// const publications = data.hits?.map((h) => {
-	// return h.document;
-	// });
-
 	return (
 		<MainContent>
-			<InstantSearch queryArgToRefinementFields={props.queryArgToRefinementFields}></InstantSearch>
+			<InstantSearch
+				filters={props.filters}
+				queryArgsToRefinementFields={props.queryArgsToRefinementFields}
+			>
+				{Object.values(props.queryArgsToRefinementFields).map((attribute) => {
+					return <SingleRefinementList key={attribute} attribute={attribute} />;
+				})}
+			</InstantSearch>
 		</MainContent>
 	);
 }
