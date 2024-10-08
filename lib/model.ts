@@ -1,11 +1,5 @@
 // these end up in public URLs as slugs, so come up with good names!
-export const otherCategories = [
-	"prose",
-	"drama",
-	"poetry",
-	"letterspeechinterview",
-	"adaptations",
-] as const;
+export const otherCategories = ["drama", "poetry", "letterspeechinterview", "adaptations"] as const;
 export const proseCategories = ["novels", "novellas", "autobiography", "fragments"] as const;
 
 export type Category = (typeof otherCategories)[number] | (typeof proseCategories)[number];
