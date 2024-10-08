@@ -84,12 +84,22 @@ function InfiniteScroll(): ReactNode {
 
 type RouteState = Record<string, string | undefined>;
 
+const initialUiState = Object.fromEntries([
+	[
+		collectionName,
+		{
+			sortBy: `${collectionName}/sort/year:desc`,
+		},
+	],
+]);
+
 export function InstantSearch(props: InstantSearchProps): ReactNode {
 	const t = useTranslations("SearchPage");
 	const { children, filters, queryArgsToRefinementFields } = props;
 	return (
 		<InstantSearchNext
 			indexName={collectionName}
+			initialUiState={initialUiState}
 			routing={{
 				stateMapping: {
 					stateToRoute(uiState) {
