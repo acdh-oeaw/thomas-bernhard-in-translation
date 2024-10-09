@@ -34,7 +34,10 @@ export function PublicationCover(props: PublicationProps): ReactNode {
 export function ClickablePublicationThumbnail(props: PublicationProps) {
 	return (
 		<AppLink href={`/publication/${props.publication.id}`}>
-			<PublicationCover className={props.className} publication={props.publication} />
+			<PublicationCover
+				className="m-2 size-44 border-2 border-solid border-transparent hover:border-black"
+				publication={props.publication}
+			/>
 		</AppLink>
 	);
 }
