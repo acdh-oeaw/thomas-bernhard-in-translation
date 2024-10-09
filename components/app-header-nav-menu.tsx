@@ -44,14 +44,17 @@ export function AppHeaderNavMenu(): ReactNode {
 			}),
 	);
 
+	const closeMenus = () => {
+		setWorksMenuOpen(false);
+		setProseMenuOpen(false);
+	};
+
 	const topLevelItems = {
 		home: (
 			<AppHeaderNavMenuLink
 				href={createHref({ pathname: "/" })}
 				label={t("links.home")}
-				onClick={() => {
-					setWorksMenuOpen(false);
-				}}
+				onClick={closeMenus}
 			/>
 		),
 		works: (
@@ -66,27 +69,21 @@ export function AppHeaderNavMenu(): ReactNode {
 			<AppHeaderNavMenuLink
 				href={createHref({ pathname: "/languages" })}
 				label={t("links.languages")}
-				onClick={() => {
-					setWorksMenuOpen(false);
-				}}
+				onClick={closeMenus}
 			/>
 		),
 		translators: (
 			<AppHeaderNavMenuLink
 				href={createHref({ pathname: "/translators" })}
 				label={t("links.translators")}
-				onClick={() => {
-					setWorksMenuOpen(false);
-				}}
+				onClick={closeMenus}
 			/>
 		),
 		search: (
 			<AppHeaderNavMenuLink
 				href={createHref({ pathname: "/search" })}
 				label={t("links.search")}
-				onClick={() => {
-					setWorksMenuOpen(false);
-				}}
+				onClick={closeMenus}
 			/>
 		),
 	};
