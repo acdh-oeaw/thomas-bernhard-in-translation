@@ -3,18 +3,16 @@
 import type { UiState } from "instantsearch.js";
 import { useTranslations } from "next-intl";
 import { type ReactNode, useEffect, useRef } from "react";
-import { Configure, SearchBox, SortBy, useInfiniteHits } from "react-instantsearch";
+import { Configure, SearchBox, useInfiniteHits } from "react-instantsearch";
 import { InstantSearchNext } from "react-instantsearch-nextjs";
 import TypesenseInstantSearchAdapter, { type SearchClient } from "typesense-instantsearch-adapter";
 
 import { collectionName } from "@/lib/data";
 import type { Publication } from "@/lib/model";
 
+import { InstantSearchSortBy } from "./instantsearch-sortby";
 import { InstantSearchStats } from "./instantsearch-stats";
 import { PublicationGrid } from "./publication-grid";
-
-// TODO put into props
-const sortOptions = ["year:desc", "year:asc", "title:asc"];
 
 interface InstantSearchProps {
 	queryArgsToRefinementFields: Record<string, string>;
@@ -54,8 +52,8 @@ function InfiniteScroll(): ReactNode {
 			const observer = new IntersectionObserver((entries) => {
 				entries.forEach((entry) => {
 					if (entry.isIntersecting && !isLastPage) {
-						// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-						showMore && showMore();
+						showMore();
+						// showMore && showMore();
 					}
 				});
 			});
@@ -145,16 +143,7 @@ export function InstantSearch(props: InstantSearchProps): ReactNode {
 				<div className="flex place-content-between">
 					<InstantSearchStats />
 					<SearchBox placeholder={t("query_placeholder")} />
-					sort by{" "}
-					<SortBy
-						items={sortOptions.map((field) => {
-							return {
-								// eslint-disable-next-line @typescript-eslint/no-explicit-any
-								label: t(`sort.${field}` as MessageKeys<any, any>),
-								value: `${collectionName}/sort/${field}`,
-							};
-						})}
-					/>
+					<InstantSearchSortBy sortOptions={["year:desc", "year:asc", "title:asc"]} />
 				</div>
 				<InfiniteScroll />
 			</div>

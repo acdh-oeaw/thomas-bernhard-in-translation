@@ -90,9 +90,9 @@
 		"query_placeholder": "search publications",
 		"sort_by": "sort by",
 		"sort": {
-			"year:asc": "oldest to newest",
-			"year:desc": "newest to oldest",
-			"title:asc": "publication title"
+			"title:asc": "alphabetically",
+			"year:asc": "oldest first",
+			"year:desc": "newest first"
 		}
 	},
 	"TranslatorPage": {
