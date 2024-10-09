@@ -45,7 +45,8 @@ export default async function PublicationPage(props: PublicationPageProps) {
 		// TODO database should just return null instead of empty arrays wherever possible
 		pub.later?.length === 0
 			? undefined
-			: pub.later?.map((id) => {
+			: // array of (Publication) promises
+				pub.later?.map((id) => {
 					return getPublication(id);
 				});
 
@@ -58,7 +59,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 	return (
 		<MainContent className="">
 			<h1 className="font-bold">{pub.title}</h1>
-			<h2 className="italic">
+			<p className="pb-6 italic">
 				{Array.from(
 					new Set(
 						pub.contains.flatMap((t) => {
@@ -66,7 +67,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 						}),
 					),
 				).join(" / ")}
-			</h2>
+			</p>
 			<div className="flex gap-8">
 				<div className="relative h-96 grow basis-1/3">
 					<PublicationCover publication={pub} />
@@ -80,10 +81,10 @@ export default async function PublicationPage(props: PublicationPageProps) {
 						<InlineList>
 							{translatorInfo.map((t, i) => {
 								return (
-									<>
+									<span key={i}>
 										<TranslatorLink translator={t[0]} />
 										{showIndices ? <sup>{i + 1}</sup> : null}
-									</>
+									</span>
 								);
 							})}
 						</InlineList>
@@ -97,7 +98,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 						<InlineList separator=" / ">
 							{pub.contains.map((t, itranslation) => {
 								return (
-									<>
+									<span key={itranslation}>
 										{t.title}
 										<sup>
 											{showIndices
@@ -109,7 +110,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 												: null}
 										</sup>{" "}
 										[<BernhardWorkLink key={t.work.id} work={t.work} />]
-									</>
+									</span>
 								);
 							})}
 						</InlineList>
@@ -119,12 +120,12 @@ export default async function PublicationPage(props: PublicationPageProps) {
 
 			{later ? (
 				<>
-					<p className="font-bold">{t("later_editions")}</p>
+					<h2 className="pb-2 pt-6 font-bold">{t("later_editions")}</h2>
 					<div className="flex">
 						{later.map(async (pp) => {
 							const p = await pp;
 							return (
-								<div key={p.id}>
+								<div key={p.id} className="size-44">
 									<ClickablePublicationThumbnail publication={p} />
 								</div>
 							);
@@ -134,7 +135,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 			) : null}
 
 			<section>
-				<h2 className="font-bold">
+				<h2 className="pb-2 pt-6 font-bold">
 					{t("more_in")} {pub.language}
 				</h2>
 				<div className="flex">
