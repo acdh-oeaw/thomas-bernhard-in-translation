@@ -68,7 +68,9 @@ export default async function PublicationPage(props: PublicationPageProps) {
 				).join(" / ")}
 			</h2>
 			<div className="flex gap-8">
-				<PublicationCover className="h-96 grow basis-1/3" publication={pub} />
+				<div className="relative h-96 grow basis-1/3">
+					<PublicationCover publication={pub} />
+				</div>
 				<div className="grow-[2] basis-2/3">
 					<p className="italic">
 						<LanguageLink language={pub.language} />
@@ -137,7 +139,11 @@ export default async function PublicationPage(props: PublicationPageProps) {
 				</h2>
 				<div className="flex">
 					{(await getSameLanguagePublications(pub)).map((p) => {
-						return <ClickablePublicationThumbnail key={p.id} className="size-44" publication={p} />;
+						return (
+							<div key={p.id} className="size-44">
+								<ClickablePublicationThumbnail publication={p} />
+							</div>
+						);
 					})}
 				</div>
 			</section>

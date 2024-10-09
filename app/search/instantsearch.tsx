@@ -161,7 +161,11 @@ export function InstantSearch() {
 						list: "m-2 grid grid-cols-1 md:grid-cols-4",
 					}}
 					hitComponent={({ hit }) => {
-						return <ClickablePublicationThumbnail publication={hit as unknown as Publication} />;
+						return (
+							<li className="block size-44 p-2">
+								<ClickablePublicationThumbnail publication={hit as unknown as Publication} />
+							</li>
+						);
 					}}
 				/>
 			</div>

@@ -2,7 +2,6 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { MainContent } from "@/components/main-content";
-import { ClickablePublicationThumbnail } from "@/components/publication-cover";
 import { PublicationGrid } from "@/components/publication-grid";
 import { getPublications } from "@/lib/data";
 
@@ -40,11 +39,7 @@ export default async function IndexPage(_props: IndexPageProps) {
 	return (
 		<MainContent className="">
 			<h1 className="sr-only">A random sample of Thomas Bernhard translations</h1>
-			<PublicationGrid>
-				{pubs.map((p) => {
-					return <ClickablePublicationThumbnail key={p.id} publication={p} />;
-				})}
-			</PublicationGrid>
+			<PublicationGrid publications={pubs} />
 		</MainContent>
 	);
 }

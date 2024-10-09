@@ -1,13 +1,12 @@
 "use client";
 
 import type { UiState } from "instantsearch.js";
-import { type MessageKeys, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { type ReactNode, useEffect, useRef } from "react";
 import { Configure, SearchBox, SortBy, useInfiniteHits } from "react-instantsearch";
 import { InstantSearchNext } from "react-instantsearch-nextjs";
 import TypesenseInstantSearchAdapter, { type SearchClient } from "typesense-instantsearch-adapter";
 
-import { ClickablePublicationThumbnail } from "@/components/publication-cover";
 import { collectionName } from "@/lib/data";
 import type { Publication } from "@/lib/model";
 
@@ -73,12 +72,10 @@ function InfiniteScroll(): ReactNode {
 	}, [isLastPage, showMore]);
 
 	return (
-		<PublicationGrid>
-			{items.map((pub) => {
-				return <ClickablePublicationThumbnail key={pub.id} publication={pub} />;
-			})}
+		<>
+			<PublicationGrid publications={items} />
 			<div ref={sentinelRef} aria-hidden="true" />
-		</PublicationGrid>
+		</>
 	);
 }
 
