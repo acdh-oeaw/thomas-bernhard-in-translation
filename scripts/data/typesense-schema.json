@@ -57,6 +57,17 @@
 			"stem": false
 		},
 		{
+			"name": "contains.work.yeartitle",
+			"type": "string[]",
+			"facet": true,
+			"optional": false,
+			"index": true,
+			"sort": false,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		},
+		{
 			"name": "language",
 			"type": "string",
 			"facet": true,

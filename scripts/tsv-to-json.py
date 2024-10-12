@@ -3,7 +3,6 @@
 import argparse
 import csv
 import json
-from pprint import pprint
 
 from urllib.request import urlretrieve
 import re
@@ -159,6 +158,9 @@ for pub in data:
                     # 'wikidata': None
                 }
 for k, v in bernhardworks.items():
+    del v['count']
+    del v['first seen']
+    v['yeartitle'] = f"{v.get('year', '????')}{v['title']}"
     if len(v['category']) == 1:
         pass
         # v['category'] = v['category'][0]
@@ -169,6 +171,8 @@ for k, v in bernhardworks.items():
         print(f"""1. *{v['title']}* (GND {v['gnd']}, {v['count']} Veröffentlichung(en), erstmals gesehen in [{v['first seen']}](https://thomas-bernhard-global.acdh-ch-dev.oeaw.ac.at/publication/{v['first seen']})): Werk-Kategorie nicht eindeutig:
     - [ ] eine von: {', '.join(map(lambda c: '`' + c + '`', v['category']))}""")
         # v['category'] = None
+
+bernhardworks['???'] = {'title': "???", "gnd": None, "category": [], 'year': 'XXXX', 'yeartitle': 'XXXX???'}
 
 translations = {}
 nrepublications = 0
@@ -182,8 +186,20 @@ for pub in data:
     source = source if len(source) else pub['title']
     ts = getn(len(pub['origworks']), [ source ])
     if len(ts) != len(pub['origworks']):
-        logger.error(f"{pub['Signatur']}: found {len(ts)} translated title(s) for {len(pub['origworks'])} original works ({ts} <> {pub['origworks']})")
-        continue
+        # TODO if one of them has length 1, assume it's an overarching title
+        # logger.error(f"{pub['Signatur']}: found {len(ts)} translated title(s) for {len(pub['origworks'])} original works ({ts} <> {pub['origworks']})")
+        print(f"1. [{pub['Signatur']}](https://thomas-bernhard-global.acdh-ch-dev.oeaw.ac.at/publication/{pub['Signatur']}) has {len(ts)} translated titles for {len(pub['origworks'])} original works:")
+        printed = False
+        if len(ts) == 1 or len(pub['origworks']) == 1:
+            print(f"    - [ ] `{pub['origworks']}` <> `{ts}`")
+            printed = True
+        while len(ts) < len(pub['origworks']):
+            ts.append('???')
+        while len(ts) > len(pub['origworks']):
+            pub['origworks'].append('???')
+        if not printed:
+            for t1, t2 in zip(pub['origworks'], ts):
+                print(f'    - [ ] `{t1}` <> `{t2}`')
 
     for i, t in enumerate(ts):
         # check if translator indices have been marked on the translated title
@@ -196,7 +212,8 @@ for pub in data:
             translatorindices = [ 1 ]
         worktranslators = [ translators[pub[f'translator {tid}']] for tid in translatorindices if pub[f'translator {tid}'] ]
 
-        work = bernhardworks[workkey(pub, i+1)]
+        bwkey = workkey(pub, i+1) or '???'
+        work = bernhardworks[bwkey]
 
         newt = {
                 'id': None,

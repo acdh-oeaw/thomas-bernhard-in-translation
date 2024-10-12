@@ -1,26 +1,43 @@
 "use client";
+import type { RefinementListItem } from "instantsearch.js/es/connectors/refinement-list/connectRefinementList";
 import { useTranslations } from "next-intl";
-import { useRefinementList } from "react-instantsearch";
+import { useRefinementList, type UseRefinementListProps } from "react-instantsearch";
+
+interface SingleRefinementListProps {
+	attribute: string;
+	refinementArgs?: Partial<UseRefinementListProps>;
+}
+
+const defaultTransformItems = (items: Array<RefinementListItem>) => {
+	return items.map((item) => {
+		// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+		item.label = `${item.label} (${item.count})`;
+		return item;
+	});
+};
 
 // a refinement list that is alphabetically ordered and only allows filtering for one value
-export function SingleRefinementList({ attribute }: { attribute: string }) {
+export function SingleRefinementList(props: SingleRefinementListProps) {
 	const t = useTranslations("SearchPage");
-	const attributePath = attribute.split(".");
+	const attributePath = props.attribute.split(".");
 	// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 	const attributeKey = `filter_by.${attributePath[attributePath.length - 1]}`;
 
 	const { items, refine, searchForItems } = useRefinementList({
-		attribute: attribute,
+		attribute: props.attribute,
 		limit: 1000,
 		sortBy: ["name"],
+		transformItems: defaultTransformItems,
+		...props.refinementArgs,
 	});
+
 	return (
 		<>
 			<input
 				autoCapitalize="off"
 				autoComplete="off"
 				autoCorrect="off"
-				maxLength={512}
+				maxLength={50}
 				onChange={(event) => {
 					searchForItems(event.currentTarget.value);
 				}}
@@ -46,7 +63,7 @@ export function SingleRefinementList({ attribute }: { attribute: string }) {
 											.forEach((i) => {
 												refine(i.value);
 											});
-										// then add new one (if it wasn't previously selected)
+										// then add new one (if it wasn't already selected when onChange was triggered)
 										if (!item.isRefined) {
 											refine(item.value);
 										}
@@ -56,7 +73,7 @@ export function SingleRefinementList({ attribute }: { attribute: string }) {
 								<span
 									className={`hover:cursor-pointer ${item.isRefined ? "font-medium text-on-background/80" : "text-on-background/60"}`}
 								>
-									{item.label} ({item.count})
+									{item.label}
 								</span>
 							</label>
 						</li>

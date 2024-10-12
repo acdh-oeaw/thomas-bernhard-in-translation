@@ -84,7 +84,7 @@
 			"category": "categories",
 			"language": "languages",
 			"translator": "translators",
-			"title": "works",
+			"yeartitle": "works",
 			"work": "works"
 		},
 		"query_placeholder": "search publications",
