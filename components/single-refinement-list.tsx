@@ -46,14 +46,14 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 				spellCheck={false}
 				type="search"
 			/>
-			<ul>
+			<ol>
 				{items.map((item) => {
 					return (
 						<li key={item.label} className="py-0.5">
-							<label>
+							<label className="focus-within:outline">
 								<input
 									checked={item.isRefined}
-									className="sr-only"
+									className="size-0 focus-visible:outline-none"
 									onChange={() => {
 										// first remove ALL active refinements
 										items
@@ -79,7 +79,7 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 						</li>
 					);
 				})}
-			</ul>
+			</ol>
 		</>
 	);
 }
