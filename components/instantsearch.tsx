@@ -13,9 +13,11 @@ import type { Publication } from "@/lib/model";
 import { InstantSearchSortBy } from "./instantsearch-sortby";
 import { InstantSearchStats } from "./instantsearch-stats";
 import { PublicationGrid } from "./publication-grid";
+import { SingleRefinementDropdown } from "./single-refinement-dropdown";
 
 interface InstantSearchProps {
 	queryArgsToRefinementFields: Record<string, string>;
+	refinementDropdowns?: Array<string>;
 	children?: ReactNode;
 	filters?: Record<string, string>; // ugly
 }
@@ -143,6 +145,9 @@ export function InstantSearch(props: InstantSearchProps): ReactNode {
 				<div className="flex place-content-between">
 					<InstantSearchStats />
 					<SearchBox placeholder={t("query_placeholder")} />
+					{props.refinementDropdowns?.map((attribute) => {
+						return <SingleRefinementDropdown key={attribute} attribute={attribute} />;
+					})}
 					<InstantSearchSortBy sortOptions={["year:desc", "year:asc", "title:asc"]} />
 				</div>
 				<InfiniteScroll />

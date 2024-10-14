@@ -21,7 +21,8 @@ export default function WorksPage(props: WorksPageProps) {
 				// 'category' values in the database are stored as the english category strings, not the URL slugs
 				// eslint-disable-next-line @typescript-eslint/no-explicit-any
 				filters={{ "contains.work.category": t(props.params.category as any) }}
-				queryArgsToRefinementFields={{ work: "contains.work.yeartitle" }}
+				queryArgsToRefinementFields={{ language: "language", work: "contains.work.yeartitle" }}
+				refinementDropdowns={["language"]}
 			>
 				<SingleRefinementList
 					attribute={"contains.work.yeartitle"}
