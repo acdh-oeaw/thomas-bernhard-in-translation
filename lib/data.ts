@@ -1,21 +1,18 @@
 import { Client } from "typesense";
 import type { SearchResponse } from "typesense/lib/Typesense/Documents";
 
+import { env } from "@/config/env.config";
 import type { Publication } from "@/lib/model";
 
 export const client = new Client({
 	nodes: [
 		{
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			host: process.env.NEXT_PUBLIC_TYPESENSE_HOST!,
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			port: Number(process.env.NEXT_PUBLIC_TYPESENSE_PORT!),
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			protocol: process.env.NEXT_PUBLIC_TYPESENSE_PROTOCOL!,
+			host: env.NEXT_PUBLIC_TYPESENSE_HOST,
+			port: env.NEXT_PUBLIC_TYPESENSE_PORT,
+			protocol: env.NEXT_PUBLIC_TYPESENSE_PROTOCOL,
 		},
 	],
-	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-	apiKey: process.env.NEXT_PUBLIC_TYPESENSE_API_KEY!,
+	apiKey: env.NEXT_PUBLIC_TYPESENSE_API_KEY,
 	connectionTimeoutSeconds: 2,
 });
 

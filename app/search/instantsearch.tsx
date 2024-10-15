@@ -8,21 +8,18 @@ import { InstantSearchNext } from "react-instantsearch-nextjs";
 import TypesenseInstantSearchAdapter, { type SearchClient } from "typesense-instantsearch-adapter";
 
 import { ClickablePublicationThumbnail } from "@/components/publication-cover";
+import { env } from "@/config/env.config";
 import { collectionName } from "@/lib/data";
 import type { Publication } from "@/lib/model";
 
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
 	server: {
-		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-		apiKey: process.env.NEXT_PUBLIC_TYPESENSE_API_KEY!,
+		apiKey: env.NEXT_PUBLIC_TYPESENSE_API_KEY,
 		nodes: [
 			{
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				host: process.env.NEXT_PUBLIC_TYPESENSE_HOST!,
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				port: Number(process.env.NEXT_PUBLIC_TYPESENSE_PORT!),
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				protocol: process.env.NEXT_PUBLIC_TYPESENSE_PROTOCOL!,
+				host: env.NEXT_PUBLIC_TYPESENSE_HOST,
+				port: env.NEXT_PUBLIC_TYPESENSE_PORT,
+				protocol: env.NEXT_PUBLIC_TYPESENSE_PROTOCOL,
 			},
 		],
 	},
