@@ -1,11 +1,11 @@
 "use client";
 import type { RefinementListItem } from "instantsearch.js/es/connectors/refinement-list/connectRefinementList";
-import { useTranslations } from "next-intl";
-import { useRefinementList, type UseRefinementListProps } from "react-instantsearch";
+import { useMenu, type UseMenuProps } from "react-instantsearch";
 
 interface SingleRefinementListProps {
 	attribute: string;
-	refinementArgs?: Partial<UseRefinementListProps>;
+	allLabel?: string;
+	refinementArgs?: Partial<UseMenuProps>;
 }
 
 const defaultTransformItems = (items: Array<RefinementListItem>) => {
@@ -18,12 +18,7 @@ const defaultTransformItems = (items: Array<RefinementListItem>) => {
 
 // a refinement list that is alphabetically ordered and only allows filtering for one value
 export function SingleRefinementList(props: SingleRefinementListProps) {
-	const t = useTranslations("SearchPage");
-	const attributePath = props.attribute.split(".");
-	// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-	const attributeKey = `filter_by.${attributePath[attributePath.length - 1]}`;
-
-	const { items, refine, searchForItems } = useRefinementList({
+	const { items, refine } = useMenu({
 		attribute: props.attribute,
 		limit: 1000,
 		sortBy: ["name"],
@@ -32,54 +27,63 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 	});
 
 	return (
-		<>
-			<input
-				autoCapitalize="off"
-				autoComplete="off"
-				autoCorrect="off"
-				maxLength={50}
-				onChange={(event) => {
-					searchForItems(event.currentTarget.value);
-				}}
-				// eslint-disable-next-line @typescript-eslint/no-explicit-any
-				placeholder={`${t("filter")} ${t(attributeKey as any)}`}
-				spellCheck={false}
-				type="search"
-			/>
-			<ol>
+		<div className="sticky top-0 grid max-h-screen grid-rows-[auto_1fr]">
+			{props.allLabel ? (
+				<div className="px-2">
+					<label
+						key="all"
+						className="block py-0.5 text-right focus-within:outline focus-within:outline-2"
+					>
+						<input
+							checked={items.every((i) => {
+								return !i.isRefined;
+							})}
+							className="sr-only"
+							name="refinement"
+							onChange={() => {
+								refine("");
+							}}
+							type="radio"
+						/>
+						<span
+							className={`text-xl hover:cursor-pointer ${
+								items.every((i) => {
+									return !i.isRefined;
+								})
+									? "font-medium text-on-background/80"
+									: "text-on-background/60"
+							}`}
+						>
+							{props.allLabel}
+						</span>
+					</label>
+				</div>
+			) : null}
+			<div className="my-2 overflow-y-auto px-2">
 				{items.map((item) => {
 					return (
-						<li key={item.label} className="py-0.5">
-							<label className="focus-within:outline">
-								<input
-									checked={item.isRefined}
-									className="size-0 focus-visible:outline-none"
-									onChange={() => {
-										// first remove ALL active refinements
-										items
-											.filter((i) => {
-												return i.isRefined;
-											})
-											.forEach((i) => {
-												refine(i.value);
-											});
-										// then add new one (if it wasn't already selected when onChange was triggered)
-										if (!item.isRefined) {
-											refine(item.value);
-										}
-									}}
-									type="checkbox"
-								/>
-								<span
-									className={`hover:cursor-pointer ${item.isRefined ? "font-medium text-on-background/80" : "text-on-background/60"}`}
-								>
-									{item.label}
-								</span>
-							</label>
-						</li>
+						<label
+							key={item.label}
+							className="block py-0.5 text-right focus-within:outline focus-within:outline-2"
+						>
+							<input
+								checked={item.isRefined}
+								className="sr-only"
+								name="refinement"
+								onChange={() => {
+									refine(item.value);
+								}}
+								type="radio"
+							/>
+							<span
+								className={`hover:cursor-pointer ${item.isRefined ? "font-medium text-on-background/80" : "text-on-background/60"}`}
+							>
+								{item.label}
+							</span>
+						</label>
 					);
 				})}
-			</ol>
-		</>
+			</div>
+		</div>
 	);
 }

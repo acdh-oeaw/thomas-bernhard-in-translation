@@ -142,7 +142,7 @@ export function InstantSearch(props: InstantSearchProps): ReactNode {
 			/>
 			<div>{children}</div>
 			<div>
-				<div className="flex place-content-between">
+				<div className="flex place-content-between p-2">
 					<InstantSearchStats />
 					<SearchBox placeholder={t("query_placeholder")} />
 					{props.refinementDropdowns?.map((attribute) => {
