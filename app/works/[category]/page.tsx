@@ -13,17 +13,18 @@ interface WorksPageProps {
 }
 
 export default function WorksPage(props: WorksPageProps) {
-	const t = useTranslations("BernhardCategories");
+	const ct = useTranslations("BernhardCategories");
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const categoryLabel = t(props.params.category as any);
+	const categoryLabel = ct(props.params.category as any);
+	const t = useTranslations("SearchPage");
 
 	return (
 		<MainContent>
 			<InstantSearch
 				// 'category' values in the database are stored as the english category strings, not the URL slugs
 				filters={{ "contains.work.category": categoryLabel }}
-				queryArgsToRefinementFields={{ language: "language", work: "contains.work.yeartitle" }}
-				refinementDropdowns={["language"]}
+				queryArgsToMenuFields={{ language: "language", work: "contains.work.yeartitle" }}
+				refinementDropdowns={{ language: `${t("all")} ${t("filter_by.language")}` }}
 			>
 				<SingleRefinementList
 					allLabel={categoryLabel}

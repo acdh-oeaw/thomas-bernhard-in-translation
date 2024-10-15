@@ -16,8 +16,8 @@ import { PublicationGrid } from "./publication-grid";
 import { SingleRefinementDropdown } from "./single-refinement-dropdown";
 
 interface InstantSearchProps {
-	queryArgsToRefinementFields: Record<string, string>;
-	refinementDropdowns?: Array<string>;
+	queryArgsToMenuFields: Record<string, string>;
+	refinementDropdowns?: Record<string, string>;
 	children?: ReactNode;
 	filters?: Record<string, string>; // ugly
 }
@@ -83,7 +83,7 @@ type RouteState = Record<string, string | undefined>;
 
 export function InstantSearch(props: InstantSearchProps): ReactNode {
 	const t = useTranslations("SearchPage");
-	const { children, filters, queryArgsToRefinementFields } = props;
+	const { children, filters, queryArgsToMenuFields } = props;
 	return (
 		<InstantSearchNext
 			indexName={collectionName}
@@ -95,13 +95,13 @@ export function InstantSearch(props: InstantSearchProps): ReactNode {
 						const route = {} as RouteState;
 						route.q = indexUiState.query && encodeURI(indexUiState.query);
 						route.sort = indexUiState.sortBy?.split("/").at(-1);
-						if (indexUiState.refinementList) {
-							for (const [field, values] of Object.entries(indexUiState.refinementList)) {
-								const queryarg = Object.entries(queryArgsToRefinementFields).find(([_k, v]) => {
+						if (indexUiState.menu) {
+							for (const [field, value] of Object.entries(indexUiState.menu)) {
+								const queryarg = Object.entries(queryArgsToMenuFields).find(([_k, v]) => {
 									return v === field;
 								})?.[0];
 								// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-								route[queryarg!] = values.map(encodeURI).join(";");
+								route[queryarg!] = encodeURI(value);
 							}
 						}
 						return route;
@@ -111,18 +111,17 @@ export function InstantSearch(props: InstantSearchProps): ReactNode {
 						const uiState = {
 							[collectionName]: {
 								query: routeState.q && decodeURI(routeState.q),
+								menu: {},
 								refinementList: {},
 								sortBy: routeState.sort ? `${collectionName}/sort/${routeState.sort}` : undefined,
 							},
 						} as UiState;
 						// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-						queryArgsToRefinementFields &&
-							Object.entries(queryArgsToRefinementFields).forEach(([queryArg, field]) => {
+						queryArgsToMenuFields &&
+							Object.entries(queryArgsToMenuFields).forEach(([queryArg, field]) => {
 								if (routeState[queryArg]) {
 									// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-									uiState[collectionName]!.refinementList![field] = routeState[queryArg]
-										.split(";")
-										.map(decodeURI);
+									uiState[collectionName]!.menu![field] = decodeURI(routeState[queryArg]);
 								}
 							});
 						return uiState;
@@ -139,15 +138,25 @@ export function InstantSearch(props: InstantSearchProps): ReactNode {
 						return `(${k}:=\`${v}\`)`;
 					}),
 				].join(" && ")} // typesense convention, not instantsearch!
+				hitsPerPage={30}
 			/>
-			<div>{children}</div>
+			<div className="p-2">{children}</div>
 			<div>
 				<div className="flex place-content-between p-2">
 					<InstantSearchStats />
 					<SearchBox placeholder={t("query_placeholder")} />
-					{props.refinementDropdowns?.map((attribute) => {
-						return <SingleRefinementDropdown key={attribute} attribute={attribute} />;
-					})}
+					{props.refinementDropdowns
+						? Object.keys(props.refinementDropdowns).map((attribute) => {
+								return (
+									<SingleRefinementDropdown
+										key={attribute}
+										// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+										allLabel={props.refinementDropdowns![attribute]!}
+										attribute={attribute}
+									/>
+								);
+							})
+						: null}
 					<InstantSearchSortBy sortOptions={["year:desc", "year:asc", "title:asc"]} />
 				</div>
 				<InfiniteScroll />

@@ -79,6 +79,7 @@
 		"later_editions": "later editions"
 	},
 	"SearchPage": {
+		"all": "all",
 		"filter": "search",
 		"filter_by": {
 			"category": "categories",
