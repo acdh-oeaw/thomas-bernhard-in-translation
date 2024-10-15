@@ -14,6 +14,7 @@ import { InstantSearchSortBy } from "./instantsearch-sortby";
 import { InstantSearchStats } from "./instantsearch-stats";
 import { PublicationGrid } from "./publication-grid";
 import { SingleRefinementDropdown } from "./single-refinement-dropdown";
+import { Button } from "./ui/button";
 
 interface InstantSearchProps {
 	queryArgsToMenuFields: Record<string, string>;
@@ -74,7 +75,19 @@ function InfiniteScroll(): ReactNode {
 	return (
 		<>
 			<PublicationGrid publications={items} />
-			<div ref={sentinelRef} aria-hidden="true" />
+			{isLastPage ? (
+				<hr className="m-auto mt-8 w-1/3" />
+			) : (
+				<div ref={sentinelRef} className="text-center">
+					<Button
+						onPress={() => {
+							showMore();
+						}}
+					>
+						load more results
+					</Button>
+				</div>
+			)}
 		</>
 	);
 }
