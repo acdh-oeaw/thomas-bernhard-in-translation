@@ -7,6 +7,7 @@ import { Configure, SearchBox, useInfiniteHits } from "react-instantsearch";
 import { InstantSearchNext } from "react-instantsearch-nextjs";
 import TypesenseInstantSearchAdapter, { type SearchClient } from "typesense-instantsearch-adapter";
 
+import { env } from "@/config/env.config";
 import { collectionName } from "@/lib/data";
 import type { Publication } from "@/lib/model";
 
@@ -24,16 +25,12 @@ interface InstantSearchProps {
 
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
 	server: {
-		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-		apiKey: process.env.NEXT_PUBLIC_TYPESENSE_API_KEY!,
+		apiKey: env.NEXT_PUBLIC_TYPESENSE_API_KEY,
 		nodes: [
 			{
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				host: process.env.NEXT_PUBLIC_TYPESENSE_HOST!,
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				port: Number(process.env.NEXT_PUBLIC_TYPESENSE_PORT!),
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				protocol: process.env.NEXT_PUBLIC_TYPESENSE_PROTOCOL!,
+				host: env.NEXT_PUBLIC_TYPESENSE_HOST,
+				port: env.NEXT_PUBLIC_TYPESENSE_PORT,
+				protocol: env.NEXT_PUBLIC_TYPESENSE_PROTOCOL,
 			},
 		],
 	},

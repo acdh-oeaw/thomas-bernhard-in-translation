@@ -34,11 +34,25 @@ export const env = createEnv({
 				v.integer(),
 				v.minValue(1),
 			),
+			NEXT_PUBLIC_TYPESENSE_API_KEY: v.pipe(v.string(), v.nonEmpty()),
+			NEXT_PUBLIC_TYPESENSE_HOST: v.pipe(v.string(), v.nonEmpty()),
+			NEXT_PUBLIC_TYPESENSE_PORT: v.pipe(
+				v.string(),
+				v.transform(Number),
+				v.number(),
+				v.integer(),
+				v.minValue(1),
+			),
+			NEXT_PUBLIC_TYPESENSE_PROTOCOL: v.pipe(v.string(), v.nonEmpty()),
 		});
 
 		return v.parse(Schema, input);
 	},
 	environment: {
+		NEXT_PUBLIC_TYPESENSE_API_KEY: process.env.NEXT_PUBLIC_TYPESENSE_API_KEY,
+		NEXT_PUBLIC_TYPESENSE_HOST: process.env.NEXT_PUBLIC_TYPESENSE_HOST,
+		NEXT_PUBLIC_TYPESENSE_PORT: process.env.NEXT_PUBLIC_TYPESENSE_PORT,
+		NEXT_PUBLIC_TYPESENSE_PROTOCOL: process.env.NEXT_PUBLIC_TYPESENSE_PROTOCOL,
 		BUILD_MODE: process.env.BUILD_MODE,
 		BUNDLE_ANALYZER: process.env.BUNDLE_ANALYZER,
 		NEXT_PUBLIC_APP_BASE_URL: process.env.NEXT_PUBLIC_APP_BASE_URL,
