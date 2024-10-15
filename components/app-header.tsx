@@ -8,7 +8,7 @@ import { AppHeaderNavMenu } from "./app-header-nav-menu";
 export function AppHeader(): ReactNode {
 	return (
 		<header className="border-b">
-			<div className="container flex items-center justify-between gap-4 py-6">
+			<div className="container flex items-start justify-between gap-4 py-6">
 				<div className="flex flex-col">
 					<Link className="font-bold" href="/">
 						thomas bernhard in translation
