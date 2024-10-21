@@ -89,11 +89,18 @@
 			"work": "works"
 		},
 		"query_placeholder": "search publications",
+		"result": "publication",
+		"results": "publications",
+		"show_more": "show more results",
 		"sort_by": "sort by",
 		"sort": {
 			"title:asc": "alphabetically",
 			"year:asc": "oldest first",
 			"year:desc": "newest first"
+		},
+		"view": {
+			"cover": "cover view",
+			"table": "table view"
 		}
 	},
 	"TranslatorPage": {

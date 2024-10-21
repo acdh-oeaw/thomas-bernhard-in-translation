@@ -10,7 +10,7 @@ interface PublicationGridProps {
 
 export function PublicationGrid(props: PublicationGridProps): ReactNode {
 	return (
-		<ul className="m-2 grid h-fit grid-cols-1 justify-items-center md:grid-cols-4">
+		<ol className="m-2 grid h-fit grid-cols-1 justify-items-center md:grid-cols-4">
 			{props.publications.map((pub) => {
 				return (
 					<li key={pub.id} className="block size-44 p-2">
@@ -18,6 +18,6 @@ export function PublicationGrid(props: PublicationGridProps): ReactNode {
 					</li>
 				);
 			})}
-		</ul>
+		</ol>
 	);
 }

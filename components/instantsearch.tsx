@@ -2,19 +2,18 @@
 
 import type { UiState } from "instantsearch.js";
 import { useTranslations } from "next-intl";
-import { type ReactNode, useEffect, useRef } from "react";
-import { Configure, SearchBox, useInfiniteHits } from "react-instantsearch";
+import { type ReactNode, useState } from "react";
+import { Configure, SearchBox } from "react-instantsearch";
 import { InstantSearchNext } from "react-instantsearch-nextjs";
 import TypesenseInstantSearchAdapter, { type SearchClient } from "typesense-instantsearch-adapter";
 
 import { collectionName } from "@/lib/data";
-import type { Publication } from "@/lib/model";
 
+import { InfiniteScroll } from "./instantsearch-infinitescroll";
+import { PaginatedTable } from "./instantsearch-paginated-table";
 import { InstantSearchSortBy } from "./instantsearch-sortby";
 import { InstantSearchStats } from "./instantsearch-stats";
-import { PublicationGrid } from "./publication-grid";
 import { SingleRefinementDropdown } from "./single-refinement-dropdown";
-import { Button } from "./ui/button";
 
 interface InstantSearchProps {
 	queryArgsToMenuFields: Record<string, string>;
@@ -46,57 +45,13 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 const searchClient = typesenseInstantsearchAdapter.searchClient as unknown as SearchClient;
 
-function InfiniteScroll(): ReactNode {
-	const { items, isLastPage, showMore } = useInfiniteHits<Publication>();
-	const sentinelRef = useRef(null);
-	useEffect(() => {
-		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-		if (sentinelRef.current !== null) {
-			const observer = new IntersectionObserver((entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting && !isLastPage) {
-						showMore();
-						// showMore && showMore();
-					}
-				});
-			});
-
-			observer.observe(sentinelRef.current);
-
-			return () => {
-				observer.disconnect();
-			};
-		}
-		return () => {
-			return null;
-		};
-	}, [isLastPage, showMore]);
-
-	return (
-		<>
-			<PublicationGrid publications={items} />
-			{isLastPage ? (
-				<hr className="m-auto mt-8 w-1/3" />
-			) : (
-				<div ref={sentinelRef} className="text-center">
-					<Button
-						onPress={() => {
-							showMore();
-						}}
-					>
-						load more results
-					</Button>
-				</div>
-			)}
-		</>
-	);
-}
-
 type RouteState = Record<string, string | undefined>;
 
 export function InstantSearch(props: InstantSearchProps): ReactNode {
 	const t = useTranslations("SearchPage");
 	const { children, filters, queryArgsToMenuFields } = props;
+
+	const [view, setView] = useState<"covers" | "table">("covers");
 	return (
 		<InstantSearchNext
 			indexName={collectionName}
@@ -171,8 +126,18 @@ export function InstantSearch(props: InstantSearchProps): ReactNode {
 							})
 						: null}
 					<InstantSearchSortBy sortOptions={["year:desc", "year:asc", "title:asc"]} />
+					<label>
+						<input
+							checked={view === "table"}
+							onChange={(e) => {
+								setView(e.target.checked ? "table" : "covers");
+							}}
+							type="checkbox"
+						/>{" "}
+						<span>{t("view.table")}</span>
+					</label>
 				</div>
-				<InfiniteScroll />
+				{view === "covers" ? <InfiniteScroll /> : <PaginatedTable />}
 			</div>
 		</InstantSearchNext>
 	);
