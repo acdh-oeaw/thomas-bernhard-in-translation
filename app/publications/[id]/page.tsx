@@ -80,10 +80,10 @@ export default async function PublicationPage(props: PublicationPageProps) {
 							<LanguageLink language={pub.language} />
 						</NameValue>
 						<NameValue name={t("translated_by")}>
-							<InlineList>
+							<InlineList separator=" / ">
 								{translatorInfo.map((t, i) => {
 									return (
-										<span key={i}>
+										<span key={i} className="text-nowrap">
 											<TranslatorLink translator={t[0]} />
 											{showIndices ? <sup>{i + 1}</sup> : null}
 										</span>

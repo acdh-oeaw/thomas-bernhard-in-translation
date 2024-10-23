@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 
 import type { Publication } from "@/lib/model";
 
-import { AppLink } from "./app-link";
+import { PublicationLink } from "./publication-link";
 
 interface PublicationCoverProps {
 	publication: Publication;
@@ -29,14 +29,14 @@ export function PublicationCover(props: PublicationCoverProps): ReactNode {
 
 export function ClickablePublicationThumbnail(props: PublicationCoverProps) {
 	return (
-		<AppLink
+		<PublicationLink
 			className="relative block h-full object-contain hover:outline"
-			href={`/publication/${props.publication.id}`}
+			publication={props.publication}
 		>
 			<PublicationCover publication={props.publication} />
 			<span className="sr-only">
 				{props.publication.title} ({props.publication.year})
 			</span>
-		</AppLink>
+		</PublicationLink>
 	);
 }
