@@ -10,6 +10,8 @@ import { TranslatorLink } from "@/components/translator-link";
 import { getPublication, getSameLanguagePublications } from "@/lib/data";
 import type { Publication, Translator } from "@/lib/model";
 
+import { NameValue, PublicationDetails } from "./PublicationDetails";
+
 interface PublicationPageProps {
 	params: {
 		id: string;
@@ -73,28 +75,26 @@ export default async function PublicationPage(props: PublicationPageProps) {
 					<PublicationCover publication={pub} />
 				</div>
 				<div className="grow-[2] basis-2/3">
-					<p className="italic">
-						<LanguageLink language={pub.language} />
-					</p>
-					<p>
-						<span className="bernhard-key">{t("translated_by")}</span>{" "}
-						<InlineList>
-							{translatorInfo.map((t, i) => {
-								return (
-									<span key={i}>
-										<TranslatorLink translator={t[0]} />
-										{showIndices ? <sup>{i + 1}</sup> : null}
-									</span>
-								);
-							})}
-						</InlineList>
-					</p>
-					<p>
-						<span className="bernhard-key">{t("publisher")}</span> {pub.publisher.name}
-					</p>
-					<p>{pub.year_display}</p>
-					<p className="bernhard-key">{t("contains")}:</p>
-					<p>
+					<PublicationDetails>
+						<NameValue name="language">
+							<LanguageLink language={pub.language} />
+						</NameValue>
+						<NameValue name={t("translated_by")}>
+							<InlineList>
+								{translatorInfo.map((t, i) => {
+									return (
+										<span key={i}>
+											<TranslatorLink translator={t[0]} />
+											{showIndices ? <sup>{i + 1}</sup> : null}
+										</span>
+									);
+								})}
+							</InlineList>
+						</NameValue>
+						<NameValue name={t("publisher")}>{pub.publisher.name}</NameValue>
+						<NameValue name={t("year")}>{pub.year_display}</NameValue>
+					</PublicationDetails>
+					<NameValue name={t("contains")}>
 						<InlineList separator=" / ">
 							{pub.contains.map((t, itranslation) => {
 								return (
@@ -114,7 +114,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 								);
 							})}
 						</InlineList>
-					</p>
+					</NameValue>
 				</div>
 			</div>
 
@@ -125,7 +125,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 						{later.map(async (pp) => {
 							const p = await pp;
 							return (
-								<div key={p.id} className="size-44">
+								<div key={p.id} className="size-44 p-4">
 									<ClickablePublicationThumbnail publication={p} />
 								</div>
 							);
@@ -141,7 +141,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 				<div className="flex">
 					{(await getSameLanguagePublications(pub)).map((p) => {
 						return (
-							<div key={p.id} className="size-44">
+							<div key={p.id} className="size-44 p-4">
 								<ClickablePublicationThumbnail publication={p} />
 							</div>
 						);
