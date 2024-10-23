@@ -195,7 +195,7 @@ textarea {
 }
 
 .bernhard-key {
-	@apply italic;
+	@apply italic pt-4 uppercase text-gray-400 text-xs;
 }
 
 .bernhard-grid {
