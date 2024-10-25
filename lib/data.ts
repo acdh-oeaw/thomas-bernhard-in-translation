@@ -45,14 +45,14 @@ export async function getPublication(id: string) {
 
 export async function getPublications({
 	q = "*",
-	_filter = {},
+	filter_by = "",
 	query_by = "title, contains.title",
 	page = 1,
 	per_page = 12,
 	sort_by = undefined,
 }: {
 	q: string;
-	_filter?: Partial<Publication>;
+	filter_by: string;
 	query_by?: string;
 	page?: number;
 	per_page?: number;
@@ -63,6 +63,7 @@ export async function getPublications({
 		.search({
 			q: q,
 			query_by: query_by,
+			filter_by: filter_by,
 			sort_by: sort_by,
 			page: page,
 			per_page: per_page,

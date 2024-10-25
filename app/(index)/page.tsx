@@ -29,6 +29,9 @@ export default async function IndexPage(_props: IndexPageProps) {
 	// const t = useTranslations("IndexPage");
 
 	const pubs = await getPublications({
+		// filter non-erstpublikationen and missing cover assets
+		filter_by: "erstpublikation:true && has_image:true",
+
 		// TODO workaround until upgrade to typesense 0.28, afterwards can just use: "_rand:asc"
 		// just look for a single random letter a-w (ASCII 65-87)
 		q: String.fromCharCode(Math.floor(65 + 22 * Math.random())),
