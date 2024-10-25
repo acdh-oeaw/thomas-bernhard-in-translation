@@ -59,9 +59,9 @@ export default async function PublicationPage(props: PublicationPageProps) {
 	});
 
 	return (
-		<MainContent className="">
-			<h1 className="font-bold">{pub.title}</h1>
-			<p className="pb-6 italic">
+		<MainContent className="m-auto max-w-fit">
+			<h1 className="text-3xl font-bold">{pub.title}</h1>
+			<p className="py-3 italic">
 				{Array.from(
 					new Set(
 						pub.contains.flatMap((t) => {
@@ -74,7 +74,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 				<div className="relative h-96 grow basis-1/3">
 					<PublicationCover publication={pub} />
 				</div>
-				<div className="grow-[2] basis-2/3">
+				<div className="max-w-prose grow-[2] basis-2/3">
 					<PublicationDetails>
 						<NameValue name="language">
 							<LanguageLink language={pub.language} />
