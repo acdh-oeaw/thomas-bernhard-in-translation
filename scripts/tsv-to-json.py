@@ -2,6 +2,7 @@
 
 import argparse
 import csv
+from collections import Counter
 import json
 
 from urllib.request import urlretrieve
@@ -19,7 +20,7 @@ parser.add_argument("-output", action='store_true', help="write transformed data
 parser.add_argument("-typesense", action='store_true', default=False, help="import transformed publications to Typesense (default: %(default)s)")
 parser.add_argument("-env", default="../.env.local", help=".env file to be used for getting typesense server details")
 parser.add_argument('-v', '--verbose', action='count', default=0, help='Increase the verbosity of the logging output: default is WARNING, use -v for INFO, -vv for DEBUG')
-parser.add_argument("-input", default="thb-20241012.tsv", help="the tsv file exported from OpenRefine (default: %(default)s)")
+parser.add_argument("-input", default="thb-20241024.tsv", help="the tsv file exported from OpenRefine (default: %(default)s)")
 
 args = parser.parse_args()
 
@@ -74,7 +75,7 @@ def getn(n, ss):
 
         els = s.split('. ')
         if len(els) == n:
-            # TODO message about delimiter?
+            logger.info(f'delimiter in {s} is . instead of /')
             return els
         elif len(els) > len(best):
             best = els
@@ -86,11 +87,10 @@ def getn(n, ss):
 
     return best
 
+# use gnd as key if it's available, otherwise fall back to title..
 def workkey(pub, i):
-    if i <= 10:
-        return pub[f'original_{i}_GND'] or pub[orig(i)]
-    else:
-        return pub[orig(i)]
+    prel = pub[f'original_{i}_GND'] if f'original_{i}_GND' in pub else None
+    return prel or pub[orig(i)]
 
 # first pass -- extract bernhardworks, publishers and translators
 for pub in data:
@@ -103,18 +103,17 @@ for pub in data:
     for i in range(1, 41):
         bwkey = workkey(pub, i)
         if bwkey:
-            origt = pub[orig(i)].strip(' 12345').replace('\n', ' ') # in chi_kurz_007 only
+            origt = pub[orig(i)].replace('\n', ' ')
             # store for 2nd pass
             pub['origworks'].append(origt)
 
             if hadBlank:
                 logger.warning(f"{pub['Signatur']} has empty orig followed by non-empty orig {i}")
 
-            gnd = pub[f"original_{i}_GND"] or None if i <= 10 else None
+            gnd = pub[f"original_{i}_GND"] or None if f"original_{i}_GND" in pub else None
 
-            # did we already see this work? -- use title+gnd as unique id (graphic novels with same title..)
             if bwkey in bernhardworks:
-                bernhardworks[bwkey]['count'] = bernhardworks[bwkey]['count'] + 1
+                bernhardworks[bwkey]['titles'].append(origt)
                 if len(pub_categories) < len(bernhardworks[bwkey]['category']) or len(bernhardworks[bwkey]['category']) == 0:
                     for c in pub_categories:
                         if not c in bernhardworks[bwkey]['category']:
@@ -129,7 +128,7 @@ for pub in data:
                     # bernhardworks[bwkey]['category'] = pub_categories
             else:
                 # new work, write even if we don't know the gnd
-                bernhardworks[bwkey] = { 'id': str(len(bernhardworks)+1), 'gnd': gnd, 'title': origt, 'category': pub_categories, 'year': getyear(gnd) if gnd else None, 'count': 1, 'first seen': pub['Signatur'] }
+                bernhardworks[bwkey] = { 'gnd': gnd, 'titles': [origt], 'category': pub_categories, 'year': getyear(gnd) if gnd else None, 'first seen': pub['Signatur'] }
 
         else:
             hadBlank = True
@@ -162,10 +161,21 @@ for pub in data:
                     'gnd': pub[f'{translatorkey} GND'] or None,
                     # 'wikidata': None
                 }
-for k, v in bernhardworks.items():
-    del v['count']
+bernhardworks = {k: v for k, v in sorted(bernhardworks.items(), key=lambda kv: kv[1]['year'] or 9999)}
+
+# infer unique categories and assign chronological ids
+for i, (k, v) in enumerate(bernhardworks.items()):
     del v['first seen']
-    v['yeartitle'] = f"{v.get('year', '????')}{v['title']}"
+    v['title'] = Counter(v['titles']).most_common(1)[0][0]
+    v['short_title'] = v['title']
+    v['id'] = str(i+1)
+    if '(' in v['title']:
+        # cut off before '()'
+        v['short_title'] = v['title'].split(' (')[0]
+    del v['titles']
+    v['yeartitle'] = f"{v.get('year', '????')}{v['short_title']}"
+    if v['title'] == v['short_title']:
+        v['short_title'] = None
     if len(v['category']) == 1:
         pass
         # v['category'] = v['category'][0]
@@ -272,7 +282,8 @@ for pub in data:
             'isbn': pub['ISBN'] or None,
             'exemplar_suhrkamp_berlin': pub['Exemplar Suhrkamp Berlin (03/2023)'].lower() == 'x', # TODO handle "X (mit Vorbehalt)"
             'exemplar_oeaw': pub['Exemplar ÖAW'].lower() == 'x',
-            'images': assets
+            'images': assets,
+            'has_image': assets != [],
         }
 
 categories = ['autobiography', 'novels', 'novellas & short prose', 'adaptations', 'poetry', 'drama & libretti', 'letters, speeches, interviews']

@@ -2,10 +2,15 @@ import type { BernhardWork } from "@/lib/model";
 
 interface BernhardWorkProps {
 	work: BernhardWork;
+	display_title?: string;
 	className?: string;
 }
 
 export function BernhardWorkLink(props: BernhardWorkProps) {
-	// return <AppNavLink href={`/work/${props.work.id}`}>{props.work.title}</AppNavLink>;
-	return props.work.title;
+	return props.display_title ?? props.work.title;
+	// return (
+	// 	<AppNavLink href={`/works/${props.work.id}`}>
+	// 		{props.display_title ?? props.work.title}
+	// 	</AppNavLink>
+	// );
 }

@@ -6,14 +6,13 @@ export type Category = (typeof otherCategories)[number] | (typeof proseCategorie
 
 /** Publication contains one or more translated works. */
 export interface Publication {
-	id: string; // 'signatur' in openrefine
+	id: string;
+	signatur: string;
 	title: string;
 	language: string;
 	contains: Array<Translation>;
-	// categories: Array<Category>;
 
-	// from openrefine: whether this publication contains at least one previously unpublished
-	// translation
+	// whether this publication contains at least one previously unpublished translation
 	erstpublikation: boolean;
 
 	// ids of publications which contain re-prints of some of the translations first published in this
@@ -26,12 +25,17 @@ export interface Publication {
 	exemplar_suhrkamp_berlin: boolean;
 	exemplar_oeaw: boolean;
 	images: Array<Asset>;
+	has_image: boolean; // workaround for https://github.com/typesense/typesense/issues/790
 }
 
 export interface Translation {
 	id: string;
-	title: string; // translated title
+	title: string; // translated title,
 	work: BernhardWork;
+
+	// the original work title of a translation might deviate from the canonical title of the original
+	// work, e.g. adding '(Auswahl)' etc).
+	work_display_title?: string;
 	translators: Array<Translator>;
 	// erstpublikation?: string;
 }
@@ -39,8 +43,9 @@ export interface Translation {
 export interface BernhardWork {
 	id: string;
 	title: string; // german/french original
+	short_title?: string; // abbreviated title, commonly used for letters
 	gnd?: string;
-	year?: number; // we get the years from gnd-lookup, so no gnd => no year info
+	year?: number;
 	category?: Category;
 }
 

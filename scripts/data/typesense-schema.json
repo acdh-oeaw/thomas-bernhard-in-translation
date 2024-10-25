@@ -13,6 +13,17 @@
 			"stem": false
 		},
 		{
+			"name": "has_image",
+			"type": "bool",
+			"facet": false,
+			"optional": false,
+			"index": true,
+			"sort": false,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		},
+		{
 			"name": "year",
 			"type": "int32",
 			"facet": false,

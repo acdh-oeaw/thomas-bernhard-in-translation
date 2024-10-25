@@ -109,7 +109,13 @@ export default async function PublicationPage(props: PublicationPageProps) {
 														.join(",")
 												: null}
 										</sup>{" "}
-										[<BernhardWorkLink key={t.work.id} work={t.work} />]
+										[
+										<BernhardWorkLink
+											key={t.work.id}
+											display_title={t.work_display_title}
+											work={t.work}
+										/>
+										]
 									</span>
 								);
 							})}
