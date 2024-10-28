@@ -122,7 +122,7 @@ export function InstantSearch(props: InstantSearchProps): ReactNode {
 								);
 							})
 						: null}
-					<InstantSearchSortBy sortOptions={["year:desc", "year:asc", "title:asc"]} />
+					<InstantSearchSortBy sortOptions={["year:asc", "year:desc", "title:asc"]} />
 					<label>
 						<input
 							checked={view === "table"}
