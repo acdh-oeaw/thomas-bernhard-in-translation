@@ -90,8 +90,8 @@
 			"work": "works"
 		},
 		"query_placeholder": "search publications",
-		"result": "publication",
-		"results": "publications",
+		"result": "{count, plural, =1 {# publication} other {# publications}}",
+		"result_other": "publications",
 		"show_more": "show more results",
 		"sort_by": "sort by",
 		"sort": {

@@ -6,9 +6,5 @@ export function InstantSearchStats(): ReactNode {
 	const t = useTranslations("SearchPage");
 	const stats = useStats();
 	// https://www.algolia.com/doc/api-reference/widgets/stats/react/#hook
-	return (
-		<>
-			{stats.nbHits} {stats.nbHits === 1 ? t("result") : t("results")}
-		</>
-	);
+	return <>{t("result", { count: stats.nbHits })}</>;
 }
