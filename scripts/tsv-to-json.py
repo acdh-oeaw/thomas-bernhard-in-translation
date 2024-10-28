@@ -20,7 +20,7 @@ parser.add_argument("-output", action='store_true', help="write transformed data
 parser.add_argument("-typesense", action='store_true', default=False, help="import transformed publications to Typesense (default: %(default)s)")
 parser.add_argument("-env", default="../.env.local", help=".env file to be used for getting typesense server details")
 parser.add_argument('-v', '--verbose', action='count', default=0, help='Increase the verbosity of the logging output: default is WARNING, use -v for INFO, -vv for DEBUG')
-parser.add_argument("-input", default="thb-20241024.tsv", help="the tsv file exported from OpenRefine (default: %(default)s)")
+parser.add_argument("-input", default="thb-20241028.tsv", help="the tsv file exported from OpenRefine (default: %(default)s)")
 
 args = parser.parse_args()
 
@@ -87,10 +87,13 @@ def getn(n, ss):
 
     return best
 
+def origtitle(pub, i):
+    return pub[orig(i)].replace('\n', ' ')
+
 # use gnd as key if it's available, otherwise fall back to title..
 def workkey(pub, i):
     prel = pub[f'original_{i}_GND'] if f'original_{i}_GND' in pub else None
-    return prel or pub[orig(i)]
+    return prel or origtitle(pub, i)
 
 # first pass -- extract bernhardworks, publishers and translators
 for pub in data:
@@ -103,7 +106,7 @@ for pub in data:
     for i in range(1, 41):
         bwkey = workkey(pub, i)
         if bwkey:
-            origt = pub[orig(i)].replace('\n', ' ')
+            origt = origtitle(pub, i)
             # store for 2nd pass
             pub['origworks'].append(origt)
 
@@ -165,27 +168,26 @@ bernhardworks = {k: v for k, v in sorted(bernhardworks.items(), key=lambda kv: k
 
 # infer unique categories and assign chronological ids
 for i, (k, v) in enumerate(bernhardworks.items()):
-    del v['first seen']
     v['title'] = Counter(v['titles']).most_common(1)[0][0]
     v['short_title'] = v['title']
     v['id'] = str(i+1)
     if '(' in v['title']:
         # cut off before '()'
         v['short_title'] = v['title'].split(' (')[0]
-    del v['titles']
     v['yeartitle'] = f"{v.get('year', '????')}{v['short_title']}"
     if v['title'] == v['short_title']:
         v['short_title'] = None
     if len(v['category']) == 1:
-        pass
-        # v['category'] = v['category'][0]
+        v['category'] = v['category'][0]
     elif any(map(lambda kw: kw in v['title'], ['Brief', 'Gespräch', 'Telegramm', 'Stellungnahme'])):
-        v['category'] = ['letters, speeches, interviews']
+        v['category'] = 'letters, speeches, interviews'
         logger.info(f'work category of "{v["title"]}" is unknown but it contains a keyword, assigning "{v["category"]}"')
     else:
-        print(f"""1. *{v['title']}* (GND {v['gnd']}, {v['count']} Veröffentlichung(en), erstmals gesehen in [{v['first seen']}](https://thomas-bernhard-global.acdh-ch-dev.oeaw.ac.at/publication/{v['first seen']})): Werk-Kategorie nicht eindeutig:
+        print(f"""1. *{v['title']}* (GND {v['gnd']}, {len(v['titles'])} Veröffentlichung(en), erstmals gesehen in [{v['first seen']}](https://thomas-bernhard-global.acdh-ch-dev.oeaw.ac.at/publication/{v['first seen']})): Werk-Kategorie nicht eindeutig:
     - [ ] eine von: {', '.join(map(lambda c: '`' + c + '`', v['category']))}""")
-        # v['category'] = None
+        v['category'] = None
+    del v['titles']
+    del v['first seen']
 
 bernhardworks['???'] = {'title': "???", "gnd": None, "category": [], 'year': 'XXXX', 'yeartitle': 'XXXX???'}
 
@@ -218,7 +220,6 @@ for pub in data:
 
     for i, t in enumerate(ts):
         # check if translator indices have been marked on the translated title
-        # TODO chi_kurz_007 has indices on the originals...
         match = re.search('(.*?[^\d])((?:\d\+)*\d)$', t)
         if match:
             t = match.group(1)
@@ -238,6 +239,10 @@ for pub in data:
                 'translators': worktranslators, #[ t['id'] for t in worktranslators ],
                 'title': t.replace('\n', ' ')
             }
+        if pub[orig(i+1)] != work['title']:
+            logger.info(f'{pub["Signatur"]} #{i+1}: adding custom work display title ("{pub[orig(i+1)]}") which differs from canonical title ("{work["title"]}")')
+            newt['work_display_title'] = pub[orig(i+1)]
+
         worktranslatornames = '+'.join([ t['name'] for t in worktranslators ])
         translationkey = work['title'] + worktranslatornames
 
