@@ -91,7 +91,9 @@ export default async function PublicationPage(props: PublicationPageProps) {
 								})}
 							</InlineList>
 						</NameValue>
-						<NameValue name={t("publisher")}>{pub.publisher.name}</NameValue>
+						<NameValue name={t("publisher")}>
+							{pub.publisher} {pub.publication_details}
+						</NameValue>
 						<NameValue name={t("year")}>{pub.year_display}</NameValue>
 					</PublicationDetails>
 					<NameValue name={t("contains")}>

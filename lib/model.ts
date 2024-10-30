@@ -21,11 +21,14 @@ export interface Publication {
 	year: number;
 	year_display: string;
 	isbn?: string;
-	publisher: Publisher;
+	publisher: string;
+	// misc info that varies between publications of the same publisher
+	// prime example: issue/page details when the 'publisher' is a periodical/magazine
+	publication_details?: string;
 	exemplar_suhrkamp_berlin: boolean;
 	exemplar_oeaw: boolean;
 	images: Array<Asset>;
-	has_image: boolean; // workaround for https://github.com/typesense/typesense/issues/790
+	has_image: boolean; // redundant, derived from 'images' (workaround for https://github.com/typesense/typesense/issues/790)
 }
 
 export interface Translation {
@@ -54,11 +57,6 @@ export interface Translator {
 	name: string; // "Family Name, Given Name(s)"
 	gnd?: string;
 	wikidata?: string;
-}
-
-interface Publisher {
-	id: string;
-	name: string;
 }
 
 interface Asset {
