@@ -24,7 +24,7 @@ parser.add_argument(
 )
 parser.add_argument(
     "-input",
-    default="thb-20241028.tsv",
+    default="thb-20241031.tsv",
     help="the tsv file exported from OpenRefine (default: %(default)s)",
 )
 
@@ -53,7 +53,7 @@ logger.addFilter(ContextFilter())
 def sort_and_add_ids(dct):
     dct = {k: v for k, v in sorted(dct.items(), key=lambda kv: kv[1]["year"] or 9999)}
     for i, (_, v) in enumerate(dct.items()):
-        v["id"] = str(i + 1)
+        v["id"] = i + 1
     return dct
 
 
@@ -112,14 +112,35 @@ def getn(n, ss):
     return best
 
 
+def yes_no_maybe(val):
+    if val == "":
+        return "no"
+    elif val.lower() == "x":
+        return "yes"
+    else:
+        return "maybe"
+
+
 def origtitle(pub, i):
     return pub[orig(i)].replace("\n", " ")
 
 
-# use gnd as key if it's available, otherwise fall back to title..
+def bwkeytitle(pub, i):
+    return (
+        origtitle(pub, i)
+        .replace("verlässt", "verläßt")
+        .replace(" (Auszug)", "")
+        .replace(" (excerpt)", "")
+        .replace(" (Büchner-Preis)", "")
+        .replace(" (Büchnerpreis-Rede)", "")
+        .replace("... Eine märchenhafe  Weihnachtsgeschichte", "")
+    )
+
+
+# use gnd as key if it's available, otherwise fall back to (sanitized) title..
 def workkey(pub, i):
     prel = pub[f"original_{i}_GND"] if f"original_{i}_GND" in pub else None
-    return prel or origtitle(pub, i)
+    return prel or bwkeytitle(pub, i)
 
 
 # first pass -- extract bernhardworks and translators
@@ -205,6 +226,7 @@ for pub in data:
 
         if pub[translatorkey] not in translators:
             translators[pub[translatorkey]] = {
+                "id": len(translators) + 1,
                 "name": tr,
                 "gnd": pub[f"{translatorkey} GND"] or None,
                 # 'wikidata': None
@@ -215,12 +237,10 @@ bernhardworks = sort_and_add_ids(bernhardworks)
 # infer unique categories
 for k, v in bernhardworks.items():
     v["title"] = Counter(v["titles"]).most_common(1)[0][0]
-    v["short_title"] = v["title"]
+    v["short_title"] = ""
     if "(" in v["title"]:
-        # cut off before '()'
+        # cut off before '()' # FIXME bwkey should be the shortened thing
         v["short_title"] = v["title"].split(" (")[0]
-    if v["title"] == v["short_title"]:
-        v["short_title"] = None
     if len(v["category"]) == 1:
         v["category"] = v["category"][0]
     elif any(
@@ -240,19 +260,11 @@ for k, v in bernhardworks.items():
     del v["titles"]
     del v["first seen"]
 
-bernhardworks["???"] = {
-    "title": "???",
-    "gnd": None,
-    "category": [],
-    "year": "XXXX",
-}
-
 translations = {}
-nrepublications = 0
 publications = {}
 
-# second pass to create publications after all the other entities have ids
-for pub in data:
+# second pass to create publications
+for pub in sorted(data, key=lambda v: v["year"]):
     # zuerst translation extrahieren (könnte bereits existieren von früherer
     # publikation!)
     source = pub["contains transl. (wenn leer identisch mit 'title')"]
@@ -260,7 +272,7 @@ for pub in data:
     ts = getn(len(pub["origworks"]), [source])
     if len(ts) != len(pub["origworks"]):
         # print(f"1. [{pub['Signatur']}](https://thomas-bernhard-global.acdh-ch-dev.oeaw.ac.at/publication/{pub['Signatur']}) has {len(ts)} translated titles for {len(pub['origworks'])} original works:")
-        logger.error(
+        logger.warning(
             f"{pub['Signatur']}: found {len(ts)} translated title(s) for {len(pub['origworks'])} original works ({ts} <> {pub['origworks']})"
         )
         if len(ts) == 1:
@@ -268,12 +280,7 @@ for pub in data:
         elif len(pub["origworks"]) == 1:
             ts = [" / ".join(ts)]
         else:
-            while len(ts) < len(pub["origworks"]):
-                ts.append("???")
-            while len(ts) > len(pub["origworks"]):
-                pub["origworks"].append("???")
-        # for t1, t2 in zip(pub['origworks'], ts):
-        #     print(f'    - [ ] `{t1}` <> `{t2}`')
+            logging.fatal("can't recover")
 
     for i, t in enumerate(ts):
         # check if translator indices have been marked on the translated title
@@ -292,7 +299,7 @@ for pub in data:
             if pub[f"translator {tid}"]
         ]
 
-        bwkey = workkey(pub, i + 1) or "???"
+        bwkey = workkey(pub, i + 1)
         work = bernhardworks[bwkey]
 
         newt = {
@@ -311,21 +318,17 @@ for pub in data:
         translationkey = work["title"] + worktranslatornames
 
         if translationkey in translations:
-            nrepublications = nrepublications + 1
             newt["id"] = translations[translationkey]["id"]
             if translations[translationkey] != newt:
                 logger.info(
                     f"{pub['Signatur']}: {worktranslatornames}'s translation of '{work['title']}' (GND: {work['gnd']}) was previously published as '{translations[translationkey]['title']}', now found translation titled '{newt['title']}'"
                 )
         else:
-            newt["id"] = str(len(translations) + 1)
+            newt["id"] = len(translations) + 1
             translations[translationkey] = newt
         ts[i] = translations[translationkey]
 
-    eltern = (
-        [el.strip() for el in pub["Eltern"].split(" \\ ")] if pub["Eltern"] else None
-    )
-    # TODO incorporate info from column "rev. translation, originally published as"
+    eltern = [el.strip() for el in pub["Eltern"].split(" \\ ")] if pub["Eltern"] else []
 
     try:
         int(pub["year"])
@@ -335,28 +338,26 @@ for pub in data:
         )
 
     assets = (
-        [{"id": pub["Signatur"]}]
+        pub["Signatur"]
         if os.path.isfile(f'../public/covers/{pub["Signatur"]}.jpg')
-        else []
+        else ""
     )
     if len(pub["more"]):
-        assets += [{"id": name} for name in pub["more"].split(", ")]
+        assets += " " + " ".join([name for name in pub["more"].split(", ")])
 
     publisher = pub["publisher / publication"]
-    publication_details = None
-    # split publisher into leading string + first occurrence of a digit (or 'S. {digit}')
+    publication_details = ""
+    # split publisher into initial string followed by first occurrence of a leading digit (or 'S. {digit}')
     mt = re.match(r"^(.+?),? ((?:S\. ?)?\d.*)$", pub["publisher / publication"])
     if mt is not None:
         publisher = mt.group(1)
         publication_details = mt.group(2)
 
     publications[pub["Signatur"]] = {
+        "id": len(publications) + 1,
         "signatur": pub["Signatur"],
-        "erstpublikation": pub["EP?"]
-        == "x",  # means at least one translation is published first time?
+        "erstpublikation": pub["EP?"].lower() == "x",
         "parents": eltern,
-        "later": [],
-        "more": pub["more"].split(", ") if pub["more"] else None,  # TODO
         "title": pub["title"],
         "year": int(pub["year"][0:4]),
         "year_display": pub["year"],
@@ -364,39 +365,24 @@ for pub in data:
         "contains": ts,
         "publisher": publisher,
         "publication_details": publication_details,
-        # 'categories': [c for c in [c for c in pub['category 1'].split(' \\ ')] + [c for c in pub['category 2'].split(' \\ ')] if len(c) and c != 'prose'],
-        "isbn": pub["ISBN"] or None,
-        "exemplar_suhrkamp_berlin": pub["Exemplar Suhrkamp Berlin (03/2023)"].lower()
-        == "x",  # TODO handle "X (mit Vorbehalt)"
-        "exemplar_oeaw": pub["Exemplar ÖAW"].lower() == "x",
+        "isbn": pub["ISBN"],
+        "exemplar_suhrkamp_berlin": yes_no_maybe(
+            pub["Exemplar Suhrkamp Berlin (03/2023)"]
+        ),
+        "exemplar_oeaw": yes_no_maybe(pub["Exemplar ÖAW"]),
+        "original_publication": pub["rev. translation, originally published as"],
+        "zusatzinfos": pub["zusatzinfos"],
         "images": assets,
-        "has_image": assets != [],
     }
 
-categories = [
-    "autobiography",
-    "novels",
-    "novellas & short prose",
-    "adaptations",
-    "poetry",
-    "drama & libretti",
-    "letters, speeches, interviews",
-]
-for w in bernhardworks.values():
-    if w["category"] and w["category"] not in categories:
-        logger.warning(f"{w['title']}: unknown category {w['category']}")
+# replace nested objects with relation ids before dumping
+for t in translations.values():
+    t["work"] = t["work"]["id"]
+    t["translators"] = [tr["id"] for tr in t["translators"]]
 
-
-# redundantly store children ids in parent
 for pub in publications.values():
-    if pub["parents"]:
-        for par in pub["parents"]:
-            try:
-                publications[par]["later"].append(pub["signatur"])
-            except KeyError:
-                logger.warning(
-                    f"{pub['signatur']} was previously published in {par} but couldn't find a record for {par}"
-                )
+    pub["contains"] = [t["id"] for t in pub["contains"]]
+    pub["parents"] = [publications[t]["id"] for t in pub["parents"]]
 
 
 def dump_dict(dct, name):
@@ -408,10 +394,7 @@ def dump_dict(dct, name):
     json.dump(vs, open(f"data/{name}.json", "w"), indent="\t")
 
 
-# TODO replace nested objects with relation ids before dumping
-
-publications = sort_and_add_ids(publications)
-dump_dict(publications, "publications")
-dump_dict(translations, "translations")
-dump_dict(bernhardworks, "bernhardworks")
-dump_dict(translators, "translators")
+dump_dict(publications, "Publikation")
+dump_dict(translations, "Übersetzung")
+dump_dict(bernhardworks, "BernhardWerk")
+dump_dict(translators, "Übersetzer")

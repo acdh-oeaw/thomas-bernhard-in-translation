@@ -6,6 +6,7 @@ import { InlineList } from "@/components/inline-list";
 import { LanguageLink } from "@/components/language-link";
 import { MainContent } from "@/components/main-content";
 import { ClickablePublicationThumbnail, PublicationCover } from "@/components/publication-cover";
+import { PublisherLink } from "@/components/publisher-link";
 import { TranslatorLink } from "@/components/translator-link";
 import { getPublication, getSameLanguagePublications } from "@/lib/data";
 import type { Publication, Translator } from "@/lib/model";
@@ -92,7 +93,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 							</InlineList>
 						</NameValue>
 						<NameValue name={t("publisher")}>
-							{pub.publisher} {pub.publication_details}
+							<PublisherLink publisher={pub.publisher} /> {pub.publication_details}
 						</NameValue>
 						<NameValue name={t("year")}>{pub.year_display}</NameValue>
 					</PublicationDetails>

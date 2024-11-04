@@ -4,6 +4,8 @@ export const proseCategories = ["novels", "novellas", "autobiography", "fragment
 
 export type Category = (typeof otherCategories)[number] | (typeof proseCategories)[number];
 
+export type YesNoMaybe = "maybe" | "no" | "yes";
+
 /** Publication contains one or more translated works. */
 export interface Publication {
 	id: string;
@@ -21,12 +23,15 @@ export interface Publication {
 	year: number;
 	year_display: string;
 	isbn?: string;
-	publisher: string;
+	publisher: Publisher;
+
 	// misc info that varies between publications of the same publisher
 	// prime example: issue/page details when the 'publisher' is a periodical/magazine
 	publication_details?: string;
-	exemplar_suhrkamp_berlin: boolean;
-	exemplar_oeaw: boolean;
+	original_publication?: string;
+	zusatzinfos?: string;
+	exemplar_suhrkamp_berlin: YesNoMaybe;
+	exemplar_oeaw: YesNoMaybe;
 	images: Array<Asset>;
 	has_image: boolean; // redundant, derived from 'images' (workaround for https://github.com/typesense/typesense/issues/790)
 }
@@ -57,6 +62,11 @@ export interface Translator {
 	name: string; // "Family Name, Given Name(s)"
 	gnd?: string;
 	wikidata?: string;
+}
+
+export interface Publisher {
+	id: string;
+	name: string;
 }
 
 interface Asset {
