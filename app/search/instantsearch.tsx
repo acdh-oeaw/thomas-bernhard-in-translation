@@ -53,19 +53,25 @@ interface SearchState {
 
 type RouteState = RefinementState & SearchState;
 
+const initialUiState = {
+	collectionName: {
+		sortBy: `${collectionName}/sort/year:desc`,
+	},
+};
+
 const stateMapping: StateMapping<UiState, RouteState> = {
 	stateToRoute(uiState) {
 		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 		const indexUiState = uiState[collectionName]!;
 		const route = {} as RouteState;
-		route.q = indexUiState.query;
+		route.q = indexUiState.query && encodeURI(indexUiState.query);
 		route.sort = indexUiState.sortBy?.split("/").at(-1);
 		if (indexUiState.refinementList) {
 			for (const [field, values] of Object.entries(indexUiState.refinementList)) {
 				const queryarg = Object.entries(queryArgToRefinementField).find(([_k, v]) => {
 					return v === field;
 				})?.[0];
-				route[queryarg as unknown as keyof RefinementState] = values.join(";");
+				route[queryarg as unknown as keyof RefinementState] = values.map(encodeURI).join(";");
 			}
 		}
 		return route;
@@ -74,7 +80,7 @@ const stateMapping: StateMapping<UiState, RouteState> = {
 	routeToState(routeState: RouteState) {
 		const uiState = {
 			[collectionName]: {
-				query: routeState.q,
+				query: routeState.q && decodeURI(routeState.q),
 				refinementList: {},
 				sortBy: routeState.sort ? `${collectionName}/sort/${routeState.sort}` : undefined,
 			},
@@ -85,7 +91,7 @@ const stateMapping: StateMapping<UiState, RouteState> = {
 				uiState[collectionName]!.refinementList![
 					queryArgToRefinementField[queryarg as keyof RefinementState]
 					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				] = routeState[queryarg as keyof RefinementState]!.split(";");
+				] = routeState[queryarg as keyof RefinementState]!.split(";").map(decodeURI);
 			}
 		}
 		return uiState;
@@ -122,6 +128,7 @@ export function InstantSearch() {
 	return (
 		<InstantSearchNext
 			indexName={collectionName}
+			initialUiState={initialUiState}
 			routing={{ stateMapping }}
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 			searchClient={searchClient}

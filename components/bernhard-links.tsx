@@ -1,5 +1,7 @@
 import type { BernhardWork } from "@/lib/model";
 
+import { AppNavLink } from "./app-nav-link";
+
 interface BernhardWorkProps {
 	work: BernhardWork;
 	display_title?: string;
@@ -7,10 +9,11 @@ interface BernhardWorkProps {
 }
 
 export function BernhardWorkLink(props: BernhardWorkProps) {
-	return props.display_title ?? props.work.title;
-	// return (
-	// 	<AppNavLink href={`/works/${props.work.id}`}>
-	// 		{props.display_title ?? props.work.title}
-	// 	</AppNavLink>
-	// );
+	return (
+		<AppNavLink
+			href={`/works/${props.work.category ?? ""}/${(props.work.year ?? "") as string}${props.work.title}`}
+		>
+			{props.display_title ?? props.work.title}
+		</AppNavLink>
+	);
 }

@@ -29,7 +29,7 @@ export async function getFaceted(
 	return collection.documents().search({
 		q: "*",
 		query_by: "*",
-		facet_by: `${facetField}(sort_by: _alpha:asc)`,
+		facet_by: `${facetField}(sort_by: _alpha:asc)`, //,contains.translators.id(sort_by: _alpha:asc)`,
 		filter_by: filter_by,
 		max_facet_values: 500,
 		per_page: 1, // don't really need the data

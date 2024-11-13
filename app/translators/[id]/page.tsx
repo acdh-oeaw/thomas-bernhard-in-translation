@@ -1,4 +1,4 @@
-import { SimpleListing } from "@/components/simple-listing";
+import { InstantSearch } from "@/components/instantsearch";
 
 interface TranslatorsPageProps {
 	params?: {
@@ -7,12 +7,5 @@ interface TranslatorsPageProps {
 }
 
 export default function TranslatorsPage(props: TranslatorsPageProps) {
-	return (
-		<SimpleListing
-			facetingField="contains.translators.name"
-			// FIXME ugly
-			facetingValue={props.params ? decodeURI(props.params.id) : undefined}
-			path="translator"
-		/>
-	);
+	return <InstantSearch>{props.params}</InstantSearch>;
 }

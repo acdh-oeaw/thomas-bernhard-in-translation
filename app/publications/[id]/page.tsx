@@ -72,7 +72,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 				).join(" / ")}
 			</p>
 			<div className="flex gap-8">
-				<div className="relative h-96 grow basis-1/3">
+				<div className="relative h-96 min-w-44 grow basis-1/3">
 					<PublicationCover publication={pub} />
 				</div>
 				<div className="max-w-prose grow-[2] basis-2/3">

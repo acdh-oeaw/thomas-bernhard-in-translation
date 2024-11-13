@@ -17,7 +17,7 @@ import { InstantSearchStats } from "./instantsearch-stats";
 import { SingleRefinementDropdown } from "./single-refinement-dropdown";
 
 interface InstantSearchProps {
-	queryArgsToMenuFields: Record<string, string>;
+	queryArgsToMenuFields?: Record<string, string>;
 	refinementDropdowns?: Record<string, string>;
 	children?: ReactNode;
 	filters?: Record<string, string>; // ugly
