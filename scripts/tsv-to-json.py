@@ -24,7 +24,7 @@ parser.add_argument(
 )
 parser.add_argument(
     "-input",
-    default="thb-20241031.tsv",
+    default="thb-20241113.tsv",
     help="the tsv file exported from OpenRefine (default: %(default)s)",
 )
 
@@ -112,13 +112,13 @@ def getn(n, ss):
     return best
 
 
-def yes_no_maybe(val):
+def yes_no_whatever(val):
     if val == "":
-        return "no"
+        return "nein"
     elif val.lower() == "x":
-        return "yes"
+        return "ja"
     else:
-        return "maybe"
+        return val
 
 
 def origtitle(pub, i):
@@ -155,6 +155,11 @@ for pub in data:
         bwkey = workkey(pub, i)
         if bwkey:
             origt = origtitle(pub, i)
+            # TODO also count brackets in translated title
+            if origt.count("(") != origt.count(")"):
+                logger.warning(
+                    f'{pub["Signatur"]}: unmatched parentheses in original work title "{origt}"'
+                )
             # store for 2nd pass
             pub["origworks"].append(origt)
 
@@ -236,7 +241,25 @@ bernhardworks = sort_and_add_ids(bernhardworks)
 
 # infer unique categories
 for k, v in bernhardworks.items():
-    v["title"] = Counter(v["titles"]).most_common(1)[0][0]
+    title_counter = Counter(v["titles"])
+    # print(title_counter)
+    v["title"] = title_counter.most_common(1)[0][0]
+    if any(
+        (
+            v["title"].startswith(prefix)
+            for prefix in [
+                "Watten",
+                "Der Keller",
+                "Minetti",
+                "Der Atem",
+                "Die Kälte",
+                "Die Rosen",
+            ]
+        )
+    ):
+        # choose 2nd most frequent
+        v["title"] = title_counter.most_common(2)[1][0]
+
     v["short_title"] = ""
     if "(" in v["title"]:
         # cut off before '()' # FIXME bwkey should be the shortened thing
@@ -307,6 +330,7 @@ for pub in sorted(data, key=lambda v: v["year"]):
             # 'work': work['id'],
             "translators": worktranslators,  # [ t['id'] for t in worktranslators ],
             "title": t.replace("\n", " "),
+            "work_display_title": "",
         }
         if pub[orig(i + 1)] != work["title"]:
             logger.info(
@@ -330,12 +354,14 @@ for pub in sorted(data, key=lambda v: v["year"]):
 
     eltern = [el.strip() for el in pub["Eltern"].split(" \\ ")] if pub["Eltern"] else []
 
+    year_display = pub["year"]
     try:
-        int(pub["year"])
+        year = int(pub["year"])
+        # year parsing succeeded, no need to store string representation
+        year_display = ""
     except ValueError:
-        logger.warning(
-            f"{pub['Signatur']} does not have a numeric year ('{pub['year']}')"
-        )
+        logger.info(f"{pub['Signatur']} does not have a numeric year ('{pub['year']}')")
+        year = int(pub["year"][0:4])
 
     assets = (
         pub["Signatur"]
@@ -343,7 +369,10 @@ for pub in sorted(data, key=lambda v: v["year"]):
         else ""
     )
     if len(pub["more"]):
-        assets += " " + " ".join([name for name in pub["more"].split(", ")])
+        if " \\ " in pub["more"]:
+            assets += " " + " ".join([name for name in pub["more"].split(" \\ ")])
+        else:
+            assets += " " + " ".join([name for name in pub["more"].split(", ")])
 
     publisher = pub["publisher / publication"]
     publication_details = ""
@@ -359,17 +388,17 @@ for pub in sorted(data, key=lambda v: v["year"]):
         "erstpublikation": pub["EP?"].lower() == "x",
         "parents": eltern,
         "title": pub["title"],
-        "year": int(pub["year"][0:4]),
-        "year_display": pub["year"],
+        "year": year,
+        "year_display": year_display,
         "language": pub["language"],
         "contains": ts,
         "publisher": publisher,
         "publication_details": publication_details,
         "isbn": pub["ISBN"],
-        "exemplar_suhrkamp_berlin": yes_no_maybe(
+        "exemplar_suhrkamp_berlin": yes_no_whatever(
             pub["Exemplar Suhrkamp Berlin (03/2023)"]
         ),
-        "exemplar_oeaw": yes_no_maybe(pub["Exemplar ÖAW"]),
+        "exemplar_oeaw": yes_no_whatever(pub["Exemplar ÖAW"]),
         "original_publication": pub["rev. translation, originally published as"],
         "zusatzinfos": pub["zusatzinfos"],
         "images": assets,
@@ -398,3 +427,11 @@ dump_dict(publications, "Publikation")
 dump_dict(translations, "Übersetzung")
 dump_dict(bernhardworks, "BernhardWerk")
 dump_dict(translators, "Übersetzer")
+
+# # dump duplications where the order of contains does not follow the ascending ids
+# for p in publications.values():
+#     cur = p["contains"][0]
+#     for nxt in p["contains"]:
+#         if nxt < cur:
+#             print(p)
+#         cur = nxt
