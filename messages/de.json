@@ -1,4 +1,15 @@
 {
+	"BernhardCategories": {
+		"adaptations": "adaptations",
+		"autobiography": "autobiography",
+		"drama": "drama & libretti",
+		"fragments": "fragments",
+		"letterspeechinterview": "letters, speeches, interviews",
+		"novellas": "novellas & short prose",
+		"novels": "novels",
+		"prose": "prose",
+		"poetry": "poetry"
+	},
 	"AppFooter": {
 		"links": {
 			"imprint": "Impressum"
@@ -7,9 +18,14 @@
 	},
 	"AppHeader": {
 		"links": {
-			"home": "Startseite"
+			"home": "Startseite",
+			"works": "Werke",
+			"languages": "Sprachen",
+			"search": "Suche",
+			"translators": "Übersetzer"
 		},
-		"navigation-primary": "Primär"
+		"navigation-primary": "Primär",
+		"title": "Thomas Bernhard in translation"
 	},
 	"ColorSchemeSwitcher": {
 		"change-color-scheme": "Farbschema ändern",
