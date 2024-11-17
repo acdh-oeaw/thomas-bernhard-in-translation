@@ -1,0 +1,141 @@
+{
+	"name": "SET IN .env FILE NOT HERE",
+	"fields": [
+		{
+			"name": "erstpublikation",
+			"type": "bool",
+			"facet": false,
+			"optional": false,
+			"index": true,
+			"sort": false,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		},
+		{
+			"name": "has_image",
+			"type": "bool",
+			"facet": false,
+			"optional": false,
+			"index": true,
+			"sort": false,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		},
+		{
+			"name": "year",
+			"type": "int32",
+			"facet": false,
+			"optional": false,
+			"index": true,
+			"sort": true,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		},
+		{
+			"name": "signatur",
+			"type": "string",
+			"facet": false,
+			"optional": false,
+			"index": true,
+			"sort": false,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		},
+		{
+			"name": "year_display",
+			"type": "string",
+			"facet": false,
+			"optional": false,
+			"index": true,
+			"sort": false,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		},
+		{
+			"name": "contains.work.category",
+			"type": "string[]",
+			"facet": true,
+			"optional": true,
+			"index": true,
+			"sort": false,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		},
+		{
+			"name": "contains.work.title",
+			"type": "string[]",
+			"facet": true,
+			"optional": false,
+			"index": true,
+			"sort": false,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		},
+		{
+			"name": "contains.work.yeartitle",
+			"type": "string[]",
+			"facet": true,
+			"optional": false,
+			"index": true,
+			"sort": false,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		},
+		{
+			"name": "language",
+			"type": "string",
+			"facet": true,
+			"optional": false,
+			"index": true,
+			"sort": true,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		},
+		{
+			"name": "contains.title",
+			"type": "string[]",
+			"facet": true,
+			"optional": false,
+			"index": true,
+			"sort": false,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		},
+		{
+			"name": "contains.translators.name",
+			"type": "string[]",
+			"facet": true,
+			"optional": true,
+			"index": true,
+			"sort": false,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		},
+		{
+			"name": "title",
+			"type": "string",
+			"facet": true,
+			"optional": false,
+			"index": true,
+			"sort": true,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		}
+	],
+	"default_sorting_field": "year",
+	"enable_nested_fields": true,
+	"symbols_to_index": [],
+	"token_separators": []
+}
