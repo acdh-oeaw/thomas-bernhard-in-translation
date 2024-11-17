@@ -18,7 +18,7 @@
 	},
 	"AppHeader": {
 		"links": {
-			"home": "Startseite",
+			"home": "Start",
 			"works": "Werke",
 			"languages": "Sprachen",
 			"search": "Suche",
@@ -66,5 +66,17 @@
 			"title": "Seite nicht gefunden"
 		},
 		"title": "Seite nicht gefunden"
+	},
+	"PublicationCover": {
+		"alt_text": "Bucheinband von"
+	},
+	"PublicationPage": {
+		"contains": "enthält Übersetzungen",
+		"language": "Sprache",
+		"more_in": "mehr auf",
+		"publisher": "Herausgeber",
+		"translated_by": "übersetzt von",
+		"later_editions": "spätere Editionen",
+		"year": "Veröffentlichungsjahr"
 	}
 }

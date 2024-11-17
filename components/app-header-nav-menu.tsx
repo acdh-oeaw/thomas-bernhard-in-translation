@@ -17,7 +17,7 @@ interface AppHeaderNavMenuLinkProps {
 
 function AppHeaderNavMenuLink({ href, label, onClick }: AppHeaderNavMenuLinkProps) {
 	return (
-		<AppNavLink href={href} onClick={onClick}>
+		<AppNavLink className="lowercase" href={href} onClick={onClick}>
 			{label}
 		</AppNavLink>
 	);

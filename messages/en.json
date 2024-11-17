@@ -66,5 +66,17 @@
 			"title": "Page not found"
 		},
 		"title": "Page not found"
+	},
+	"PublicationCover": {
+		"alt_text": "Book cover of"
+	},
+	"PublicationPage": {
+		"contains": "contains translations",
+		"language": "language",
+		"more_in": "more in",
+		"publisher": "published by",
+		"translated_by": "contains translations by",
+		"later_editions": "later editions",
+		"year": "publication year"
 	}
 }

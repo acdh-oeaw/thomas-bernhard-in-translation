@@ -10,8 +10,8 @@ interface DisclosureButtonProps {
 
 export function DisclosureButton(props: DisclosureButtonProps): ReactNode {
 	const className = props.state
-		? "text-link transition font-medium text-on-background/80"
-		: "text-link text-on-background/60 transition hover:text-on-background/80 focus-visible:text-on-background/80";
+		? "text-link lowercase transition font-medium text-on-background/80"
+		: "text-link lowercase text-on-background/60 transition hover:text-on-background/80 focus-visible:text-on-background/80";
 	return (
 		<button
 			aria-controls={props.controls}
