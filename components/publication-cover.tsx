@@ -1,8 +1,7 @@
-// eslint-disable-next-line no-restricted-imports
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
+import { Image } from "@/components/image";
 import type { Publication } from "@/lib/model";
 
 import { PublicationLink } from "./publication-link";

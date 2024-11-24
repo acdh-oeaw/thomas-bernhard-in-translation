@@ -2,13 +2,12 @@
 /* eslint-disable @next/next/no-img-element */
 
 import NextImage, { type ImageProps as NextImageProps } from "next/image";
-import type { ReactNode } from "react";
 
 import { getImageDimensions } from "@/lib/get-image-dimensions";
 
 interface ImageProps extends Omit<NextImageProps, "loader"> {}
 
-export async function Image(props: ImageProps): Promise<ReactNode> {
+export async function Image(props: ImageProps) {
 	const { alt = "", decoding = "async", fill, height, loading = "lazy", src, width } = props;
 
 	const dimensions =
