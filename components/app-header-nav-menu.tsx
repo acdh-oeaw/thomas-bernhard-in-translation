@@ -109,6 +109,7 @@ export function AppHeaderNavMenu(): ReactNode {
 						return (
 							<AppNavLink
 								key={c}
+								className="lowercase"
 								href={`/works/${c}`}
 								onClick={() => {
 									setProseMenuOpen(false);
@@ -124,7 +125,7 @@ export function AppHeaderNavMenu(): ReactNode {
 				<ul className="flex h-10 items-center gap-4 text-sm" id={proseMenu} role="list">
 					{proseCategories.map((c) => {
 						return (
-							<AppNavLink key={c} href={`/works/${c}`}>
+							<AppNavLink key={c} className="lowercase" href={`/works/${c}`}>
 								{catt(c)}
 							</AppNavLink>
 						);

@@ -1,14 +1,14 @@
 {
 	"BernhardCategories": {
-		"adaptations": "adaptations",
-		"autobiography": "autobiography",
-		"drama": "drama & libretti",
-		"fragments": "fragments",
-		"letterspeechinterview": "letters, speeches, interviews",
-		"novellas": "novellas & short prose",
-		"novels": "novels",
-		"prose": "prose",
-		"poetry": "poetry"
+		"adaptations": "Adaptionen",
+		"autobiography": "Autobiografie",
+		"drama": "Drama & Libretti",
+		"fragments": "Fragmente",
+		"letterspeechinterview": "Briefe, Reden, Interviews",
+		"novellas": "Novellen & kurze Prosa",
+		"novels": "Romane",
+		"prose": "Prosa",
+		"poetry": "Poesie"
 	},
 	"AppFooter": {
 		"links": {
@@ -25,7 +25,7 @@
 			"translators": "Übersetzer"
 		},
 		"navigation-primary": "Primär",
-		"title": "Thomas Bernhard in translation"
+		"title": "Thomas Bernhard Online"
 	},
 	"ColorSchemeSwitcher": {
 		"change-color-scheme": "Farbschema ändern",
@@ -46,9 +46,8 @@
 		"title": "Impressum"
 	},
 	"IndexPage": {
-		"badge": "ACDH-CH frontend team",
-		"lead-in": "Dies ist eine mit Next.js 14 erstellte Startervorlage. Sie umfasst Internationalisierung, Dark Mode und End-to-End-Tests.",
-		"title": "Anwendungs-Template"
+		"lead-in": "",
+		"title": "Thomas Bernhard Online"
 	},
 	"Loading": {
 		"loading": "Laden"
