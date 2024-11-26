@@ -27,7 +27,7 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
 		],
 	},
 	additionalSearchParameters: {
-		query_by: "title",
+		query_by: "title,contains.title,contains.work.title,contains.translators.name,publisher",
 	},
 });
 

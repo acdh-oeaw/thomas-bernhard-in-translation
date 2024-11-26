@@ -10,12 +10,12 @@ function FilterMenu(props: { attribute: string }) {
 	const t = useTranslations("SearchPage");
 	return (
 		<>
-			<span className="text-lg font-medium">
+			<div className="text-right text-lg font-medium">
 				{
 					// eslint-disable-next-line @typescript-eslint/no-explicit-any
 					t(props.attribute.replaceAll(".", "_") as any)
 				}
-			</span>
+			</div>
 			<Menu
 				attribute={props.attribute}
 				classNames={{
@@ -40,9 +40,9 @@ function FilterMenu(props: { attribute: string }) {
 	);
 }
 
-export default function InstantSearchPage() {
+export default function SearchPage() {
 	return (
-		<MainContent>
+		<MainContent className="mx-auto w-screen max-w-screen-lg p-6">
 			<InstantSearchView
 				queryArgsToMenuFields={{
 					// the order of elements here determines the order of refinement lists in the UI
