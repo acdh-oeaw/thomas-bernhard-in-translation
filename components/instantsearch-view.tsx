@@ -29,7 +29,7 @@ export function InstantSearchView(props: InstantSearchProps): ReactNode {
 			<div className="grid grid-cols-[25%_75%] p-2">
 				<div className="mr-10">{props.children}</div>
 				<div>
-					<div className="flex place-content-between items-center p-2">
+					<div className="flex place-content-between items-center">
 						<InstantSearchStats />
 						<SearchBox placeholder={t("query_placeholder")} />
 						{props.refinementDropdowns
