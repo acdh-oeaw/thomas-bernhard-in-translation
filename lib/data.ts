@@ -44,3 +44,35 @@ export async function getSameLanguagePublications(pub: Publication) {
 		return r.document;
 	}) as unknown as Array<Publication>;
 }
+
+export async function getPublications({
+	q = "*",
+	filter_by = "",
+	query_by = "title, contains.title",
+	page = 1,
+	per_page = 12,
+	sort_by = undefined,
+}: {
+	q: string;
+	filter_by: string;
+	query_by?: string;
+	page?: number;
+	per_page?: number;
+	sort_by?: string;
+}): Promise<Array<Publication>> {
+	return collection
+		.documents()
+		.search({
+			q: q,
+			query_by: query_by,
+			filter_by: filter_by,
+			sort_by: sort_by,
+			page: page,
+			per_page: per_page,
+		})
+		.then((r) => {
+			return r.hits?.map((h) => {
+				return h.document;
+			}) as unknown as Array<Publication>;
+		});
+}
