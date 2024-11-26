@@ -81,7 +81,7 @@ export function AppHeaderNavMenu(): ReactNode {
 		),
 		search: (
 			<AppHeaderNavMenuLink
-				href={createHref({ pathname: "/publications" })}
+				href={createHref({ pathname: "/search" })}
 				label={t("links.search")}
 				onClick={closeMenus}
 			/>

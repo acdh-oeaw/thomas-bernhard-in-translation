@@ -49,6 +49,34 @@
 		"lead-in": "",
 		"title": "Thomas Bernhard Online"
 	},
+	"InstantSearch": {
+		"all": "all",
+		"filter": "search",
+		"filter_by": {
+			"category": "categories",
+			"language": "languages",
+			"translator": "translators",
+			"yeartitle": "works",
+			"work": "works"
+		},
+		"query_placeholder": "filter publications",
+		"result": "{count, plural, =1 {# publication} other {# publications}}",
+		"result_other": "publications",
+		"show_more": "show more results",
+		"sort_by": "sort by",
+		"sort": {
+			"title:asc": "alphabetically",
+			"year:asc": "oldest first",
+			"year:desc": "newest first"
+		},
+		"view": {
+			"cover": "cover view",
+			"table": "detail view"
+		}
+	},
+	"LanguagesPage": {
+		"all languages": "languages"
+	},
 	"Loading": {
 		"loading": "Loading"
 	},
@@ -77,5 +105,14 @@
 		"translated_by": "contains translations by",
 		"later_editions": "later editions",
 		"year": "publication year"
+	},
+	"SearchPage": {
+		"contains_translators_name": "translators",
+		"contains_work_category": "category",
+		"contains_work_short_title": "works",
+		"language": "languages"
+	},
+	"TranslatorsPage": {
+		"all translators": "languages"
 	}
 }

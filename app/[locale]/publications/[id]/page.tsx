@@ -38,6 +38,7 @@ function translatorIndices(pub: Publication): Array<[Translator, Array<number>]>
 
 export default async function PublicationPage(props: PublicationPageProps) {
 	const t = await getTranslations("PublicationPage");
+	const ct = await getTranslations("BernhardCategories");
 	const pub = await getPublication(props.params.id);
 	if (!pub) {
 		return notFound();
@@ -57,14 +58,19 @@ export default async function PublicationPage(props: PublicationPageProps) {
 	return (
 		<MainContent className="m-auto max-w-fit">
 			<h1 className="text-3xl font-bold">{pub.title}</h1>
-			<p className="py-3 italic">
+			<p className="py-3 lowercase italic">
 				{Array.from(
 					new Set(
 						pub.contains.flatMap((t) => {
 							return t.work.category;
 						}),
 					),
-				).join(" / ")}
+				)
+					.map((cat) => {
+						// eslint-disable-next-line @typescript-eslint/no-explicit-any
+						return ct(cat as any);
+					})
+					.join(" / ")}
 			</p>
 			<div className="flex gap-8">
 				<div className="relative h-96 min-w-44 grow basis-1/3">

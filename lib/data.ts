@@ -15,6 +15,7 @@ export const client = new Client({
 	connectionTimeoutSeconds: 2,
 });
 
+export const collectionName = env.NEXT_PUBLIC_TYPESENSE_COLLECTION_NAME;
 const collection = client.collections(env.NEXT_PUBLIC_TYPESENSE_COLLECTION_NAME);
 
 export async function getPublication(id: string) {
