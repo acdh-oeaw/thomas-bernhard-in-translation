@@ -5,10 +5,10 @@
 		"drama": "Drama & Libretti",
 		"fragments": "Fragmente",
 		"letterspeechinterview": "Briefe, Reden, Interviews",
-		"novellas": "Novellen & kurze Prosa",
+		"novellas": "Novellen & Kurzprosa",
 		"novels": "Romane",
 		"prose": "Prosa",
-		"poetry": "Poesie"
+		"poetry": "Lyrik"
 	},
 	"AppFooter": {
 		"links": {
@@ -22,10 +22,10 @@
 			"works": "Werke",
 			"languages": "Sprachen",
 			"search": "Suche",
-			"translators": "Übersetzer"
+			"translators": "Übersetzer:innen"
 		},
 		"navigation-primary": "Primär",
-		"title": "Thomas Bernhard Online"
+		"title": "Thomas Bernhard in Translation"
 	},
 	"ColorSchemeSwitcher": {
 		"change-color-scheme": "Farbschema ändern",
@@ -47,7 +47,7 @@
 	},
 	"IndexPage": {
 		"lead-in": "",
-		"title": "Thomas Bernhard Online"
+		"title": "Thomas Bernhard in Translation"
 	},
 	"InstantSearch": {
 		"all": "alle",
@@ -55,7 +55,7 @@
 		"filter_by": {
 			"category": "Kategorie",
 			"language": "Sprachen",
-			"translator": "Übersetzer",
+			"translator": "Übersetzer:innen",
 			"work": "Werk",
 			"yeartitle": "Werk"
 		},
@@ -101,13 +101,13 @@
 		"contains": "enthält Übersetzungen",
 		"language": "Sprache",
 		"more_in": "mehr auf",
-		"publisher": "Herausgeber",
+		"publisher": "Verlag / Publikation",
 		"translated_by": "übersetzt von",
 		"later_editions": "spätere Editionen",
 		"year": "Veröffentlichungsjahr"
 	},
 	"SearchPage": {
-		"contains_translators_name": "Übersetzer",
+		"contains_translators_name": "Übersetzer:in",
 		"contains_work_category": "Kategorie",
 		"contains_work_short_title": "Werk",
 		"language": "Sprache"

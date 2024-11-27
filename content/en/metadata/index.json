@@ -1,13 +1,13 @@
 {
-	"description": "ACDH-CH Application template",
-	"title": "ACDH-CH App",
+	"description": "Thomas Bernhard in Translation",
+	"title": "Thomas Bernhard in Translation",
 	"twitter": {
 		"creator": "@acdh_oeaw",
 		"site": "@acdh_oeaw"
 	},
 	"manifest": {
-		"description": "ACDH-CH Application template",
-		"name": "ACDH-CH App",
-		"short-name": "ACDH-CH App"
+		"description": "Thomas Bernhard in Translation",
+		"name": "Thomas Bernhard in Translation",
+		"short-name": "Thomas Bernhard in Translation"
 	}
 }
