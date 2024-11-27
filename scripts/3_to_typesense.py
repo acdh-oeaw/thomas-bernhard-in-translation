@@ -72,10 +72,12 @@ def merge_changes(orig, changed, field_names):
                 e2[f] = e2[f]["value"]
             elif isinstance(e1[f], int):
                 e2[f] = int(e2[f])
+
             if e1[f] != e2[f]:  # TODO check types and force original numbers
                 logging.info(
                     f"integrating manual change to field {f}: '{e1[f]}' > '{e2[f]}'"
                 )
+                e1[f] = e2[f]
 
 
 # for publication: title, year, year_display, publisher, publication_details, exemplar_...
@@ -101,9 +103,29 @@ for i, t in enumerate(translators):
     # add 1-indexed translator ids to allow links to translator pages
     t["id"] = i + 1
 
+
+categories = {
+    "adaptations": "adaptations",
+    "autobiography": "autobiography",
+    "drama & libretti": "drama",
+    "fragments": "fragments",
+    "letters, speeches, interviews": "letterspeechinterview",
+    "novellas & short prose": "novellas",
+    "novels": "novels",
+    "prose": "prose",
+    "poetry": "poetry",
+}
+
 for i, w in enumerate(works):
     # add 1-indexed bernhard work ids to allow links to work ids
     w["id"] = i + 1
+    if not w["short_title"]:
+        w["short_title"] = w["title"]
+
+    w["category"] = categories[w["category"]] if w["category"] else "fragments"
+
+    # helper field for the faceted listing by work
+    w["yeartitle"] = f'{w["category"]}${w["year"]}${w["short_title"]}'
 
 for t in translations:
     t["work"] = works[t["work"] - 1]
@@ -114,7 +136,9 @@ for i, pub in enumerate(publications):
     pub["id"] = str(i + 1)
     pub["contains"] = [translations[t_id - 1] for t_id in pub["contains"]]
 
-    pub["images"] = [{"id": img} for img in pub["images"].split(" ")]
+    pub["images"] = (
+        [{"id": img} for img in pub["images"].split(" ")] if len(pub["images"]) else []
+    )
     pub["has_image"] = len(pub["images"]) > 0
     if not pub["year_display"]:
         pub["year_display"] = str(pub["year"])

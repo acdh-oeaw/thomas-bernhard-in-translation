@@ -68,6 +68,28 @@
 			"stem": false
 		},
 		{
+			"name": "contains.work.short_title",
+			"type": "string[]",
+			"facet": true,
+			"optional": false,
+			"index": true,
+			"sort": false,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		},
+		{
+			"name": "publisher",
+			"type": "string",
+			"facet": false,
+			"optional": false,
+			"index": true,
+			"sort": false,
+			"infix": false,
+			"locale": "",
+			"stem": false
+		},
+		{
 			"name": "contains.work.title",
 			"type": "string[]",
 			"facet": true,
