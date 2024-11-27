@@ -21,7 +21,15 @@ export default function LanguagesPage(props: LanguagesPageProps) {
 				queryArgsToMenuFields={{ language: "language" }}
 				// refinementDropdowns={{ language: `${t("all")} ${t("filter_by.language")}` }}
 			>
-				<SingleRefinementList allLabel={t("all languages")} attribute={"language"} />
+				<SingleRefinementList
+					allLabel={t("all languages")}
+					attribute={"language"}
+					refinementArgs={{
+						transformItems: (items) => {
+							return items;
+						},
+					}}
+				/>
 			</InstantSearchView>
 		</MainContent>
 	);
