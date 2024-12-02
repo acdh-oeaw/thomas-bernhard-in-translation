@@ -10,7 +10,7 @@ function FilterMenu(props: { attribute: string }) {
 	const t = useTranslations("SearchPage");
 	return (
 		<>
-			<div className="text-right text-lg font-medium">
+			<div className="mt-4 text-right text-lg font-medium">
 				{
 					// TODO if count == 0, hide altogether
 					// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -29,14 +29,13 @@ function FilterMenu(props: { attribute: string }) {
 					showMore: "text-sm pb-4 text-[--color-link]",
 				}}
 				showMore={true}
-				showMoreLimit={100}
+				showMoreLimit={50}
 				sortBy={["isRefined", "count", "name"]}
-				// TODO pass translations
-				// translations={{
-				// showMoreButtonText({ isShowingMore }) {
-				// return t(isShowingMore ? 'show less' : 'show more')
-				// },
-				// }}
+				translations={{
+					showMoreButtonText({ isShowingMore }) {
+						return t(isShowingMore ? "show less" : "show more");
+					},
+				}}
 			/>
 		</>
 	);

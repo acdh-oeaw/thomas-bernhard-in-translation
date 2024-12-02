@@ -110,7 +110,9 @@
 		"contains_translators_name": "Übersetzer:in",
 		"contains_work_category": "Kategorie",
 		"contains_work_short_title": "Werk",
-		"language": "Sprache"
+		"language": "Sprache",
+		"show less": "weniger anzeigen",
+		"show more": "mehr anzeigen"
 	},
 	"TranslatorsPage": {
 		"all languages": "alle Sprachen"

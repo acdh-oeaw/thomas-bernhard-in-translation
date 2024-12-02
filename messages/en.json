@@ -110,7 +110,9 @@
 		"contains_translators_name": "translators",
 		"contains_work_category": "category",
 		"contains_work_short_title": "works",
-		"language": "languages"
+		"language": "languages",
+		"show less": "show less",
+		"show more": "show more"
 	},
 	"TranslatorsPage": {
 		"all languages": "all languages"
