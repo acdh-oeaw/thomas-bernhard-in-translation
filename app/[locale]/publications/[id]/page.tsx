@@ -45,6 +45,11 @@ export default async function PublicationPage(props: PublicationPageProps) {
 	}
 
 	// array of (Publication) promises
+	const earlier = pub.parents?.map((id) => {
+		return getPublication(id);
+	});
+
+	// array of (Publication) promises
 	const later = pub.later?.map((id) => {
 		return getPublication(id);
 	});
@@ -72,7 +77,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 					})
 					.join(" / ")}
 			</p>
-			<div className="flex gap-8">
+			<div className="flex gap-8 py-8">
 				<div className="relative h-96 min-w-44 grow basis-1/3">
 					<PublicationCover publication={pub} />
 				</div>
@@ -128,9 +133,25 @@ export default async function PublicationPage(props: PublicationPageProps) {
 				</div>
 			</div>
 
+			{earlier ? (
+				<>
+					<h2 className="pt-10 font-bold">{t("earlier_editions")}</h2>
+					<div className="flex">
+						{earlier.map(async (pp) => {
+							const p = await pp;
+							return (
+								<div key={p!.id} className="size-44 p-4">
+									<ClickablePublicationThumbnail publication={p!} />
+								</div>
+							);
+						})}
+					</div>
+				</>
+			) : null}
+
 			{later ? (
 				<>
-					<h2 className="pb-2 pt-6 font-bold">{t("later_editions")}</h2>
+					<h2 className="pt-10 font-bold">{t("later_editions")}</h2>
 					<div className="flex">
 						{later.map(async (pp) => {
 							const p = await pp;
@@ -145,7 +166,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 			) : null}
 
 			<section>
-				<h2 className="pb-2 pt-6 font-bold">
+				<h2 className="pt-10 font-bold">
 					{t("more_in")} {pub.language}
 				</h2>
 				<div className="flex">

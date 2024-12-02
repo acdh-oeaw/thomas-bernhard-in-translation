@@ -18,6 +18,7 @@ export interface Publication {
 
 	// ids of publications which contain re-prints of some of the translations first published in this
 	// publication. this field is inferred from the 'eltern' column in openrefine.
+	parents?: Array<string>;
 	later?: Array<string>;
 	year: number;
 	year_display?: string;

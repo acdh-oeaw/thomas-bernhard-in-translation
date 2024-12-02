@@ -68,23 +68,35 @@ translator_changes = load_json("from_baserow", "Übersetzer").values()
 def merge_changes(orig, changed, field_names):
     for e1, e2 in zip(orig, changed):
         for f in field_names:
-            if isinstance(e2[f], dict):
-                e2[f] = e2[f]["value"]
-            elif isinstance(e1[f], int):
-                e2[f] = int(e2[f])
+            try:
+                if isinstance(e2[f], dict):
+                    e2[f] = e2[f]["value"]
+                elif isinstance(e1[f], int):
+                    e2[f] = int(e2[f])
 
-            if e1[f] != e2[f]:  # TODO check types and force original numbers
-                logging.info(
-                    f"integrating manual change to field {f}: '{e1[f]}' > '{e2[f]}'"
-                )
-                e1[f] = e2[f]
+                if e1[f] != e2[f]:  # TODO check types and force original numbers
+                    logging.info(
+                        f"integrating manual change to field {f}: '{e1[f]}' > '{e2[f]}'"
+                    )
+                    e1[f] = e2[f]
+            except KeyError:
+                if e2[f]:
+                    logging.info(f"adding new field {f} with value '{e2[f]}'")
+                    e1[f] = e2[f]
 
 
 # for publication: title, year, year_display, publisher, publication_details, exemplar_...
 merge_changes(
     publications,
     publication_changes,
-    ["title", "year", "year_display", "publisher", "publication_details"],
+    [
+        "title",
+        "short_title",
+        "year",
+        "year_display",
+        "publisher",
+        "publication_details",
+    ],
 )
 merge_changes(translations, translation_changes, ["title", "work_display_title"])
 merge_changes(works, work_changes, ["title", "short_title", "year", "category", "gnd"])
@@ -137,6 +149,9 @@ for t in translations:
 
 for i, pub in enumerate(publications):
     pub["id"] = str(i + 1)
+    if not w["short_title"]:
+        w["short_title"] = w["title"]
+
     pub["contains"] = [translations[t_id - 1] for t_id in pub["contains"]]
 
     pub["images"] = (
@@ -152,7 +167,7 @@ for i, pub in enumerate(publications):
         else:
             publications[pid - 1]["later"] = [i + 1]
 
-    del_empty_strings(pub, ["publication_details"])
+    del_empty_strings(pub, ["parents", "publication_details"])
 
     # trim data a little
     del pub["exemplar_suhrkamp_berlin"]
