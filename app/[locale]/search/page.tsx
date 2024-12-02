@@ -12,6 +12,7 @@ function FilterMenu(props: { attribute: string }) {
 		<>
 			<div className="text-right text-lg font-medium">
 				{
+					// TODO if count == 0, hide altogether
 					// eslint-disable-next-line @typescript-eslint/no-explicit-any
 					t(props.attribute.replaceAll(".", "_") as any)
 				}
@@ -29,7 +30,7 @@ function FilterMenu(props: { attribute: string }) {
 				}}
 				showMore={true}
 				showMoreLimit={100}
-				sortBy={["count", "name"]}
+				sortBy={["isRefined", "count", "name"]}
 				// TODO pass translations
 				// translations={{
 				// showMoreButtonText({ isShowingMore }) {
@@ -53,13 +54,16 @@ export default function SearchPage() {
 					translator: "contains.translators.name" as const,
 				}}
 			>
-				<FilterMenu attribute="language" />
 				<FilterMenu attribute="contains.work.short_title" />
 
+				<FilterMenu attribute="language" />
+
 				{
-					// TODO pass transform
+					// FIXME when changing the query removes a refinement from the list, that refinement
+				// should become inactive!? otherwise it's not clear that it's still toggled...
+				// TODO pass transform
+				// <FilterMenu attribute="contains.work.category" />
 				}
-				<FilterMenu attribute="contains.work.category" />
 
 				<FilterMenu attribute="contains.translators.name" />
 			</InstantSearchView>
