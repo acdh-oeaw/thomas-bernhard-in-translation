@@ -31,7 +31,7 @@ function TranslatorsList() {
 						<div className="columns-4">
 							{groups[key]!.map((item: MenuItem, i: number) => {
 								return (
-									<div key={i}>
+									<div key={i} className="pt-1.5">
 										<TranslatorLink translatorName={item.label} />
 									</div>
 								);
@@ -48,9 +48,16 @@ export default function TranslatorsPage() {
 	const t = useTranslations("TranslatorsPage");
 	return (
 		<MainContent className="mx-auto w-screen max-w-screen-lg p-6">
-			<InstantSearch queryArgsToMenuFields={{ language: "language" }}>
+			<InstantSearch
+				filters="contains.has_translators:true"
+				queryArgsToMenuFields={{ language: "language" }}
+			>
 				<div className="float-right w-60">
-					<SingleRefinementDropdown allLabel={t("all languages")} attribute={"language"} />
+					<SingleRefinementDropdown
+						allLabel={t("all languages")}
+						attribute={"language"}
+						refinementArgs={{ transformItems: undefined }}
+					/>
 				</div>
 				<TranslatorsList />
 			</InstantSearch>

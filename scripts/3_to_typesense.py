@@ -130,6 +130,9 @@ for i, w in enumerate(works):
 for t in translations:
     t["work"] = works[t["work"] - 1]
     t["translators"] = [translators[t_id - 1] for t_id in t["translators"]]
+    # work around https://typesense.org/docs/guide/tips-for-searching-common-types-of-data.html#searching-for-null-or-empty-values
+    # for the /translators page
+    t["has_translators"] = len(t["translators"]) != 0
     del_empty_strings(t, ["work_display_title"])
 
 for i, pub in enumerate(publications):

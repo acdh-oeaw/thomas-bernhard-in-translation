@@ -21,7 +21,7 @@ export default function WorksPage(props: WorksPageProps) {
 	return (
 		<MainContent className="mx-auto w-screen max-w-screen-xl">
 			<InstantSearchView
-				filters={{ "contains.work.category": props.params.id_or_category }}
+				filters={`contains.work.category:${props.params.id_or_category}`}
 				queryArgsToMenuFields={{ language: "language", work: "contains.work.yeartitle" }}
 				refinementDropdowns={{ language: `${t("all")} ${t("filter_by.language")}` }}
 			>

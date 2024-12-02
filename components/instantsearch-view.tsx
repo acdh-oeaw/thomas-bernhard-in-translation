@@ -15,7 +15,7 @@ interface InstantSearchProps {
 	queryArgsToMenuFields: Record<string, string>;
 	refinementDropdowns?: Record<string, string>;
 	children?: ReactNode;
-	filters?: Record<string, string>; // ugly
+	filters?: string;
 }
 
 export function InstantSearchView(props: InstantSearchProps): ReactNode {

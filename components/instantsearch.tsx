@@ -12,7 +12,7 @@ import { collectionName } from "@/lib/data";
 interface InstantSearchProps {
 	queryArgsToMenuFields: Record<string, string>;
 	children?: ReactNode;
-	filters?: Record<string, string>; // ugly
+	filters?: string;
 }
 
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
@@ -38,6 +38,10 @@ type RouteState = Record<string, string | undefined>;
 
 export function InstantSearch(props: InstantSearchProps): ReactNode {
 	const { children, filters, queryArgsToMenuFields } = props;
+	const filter = filters
+		? // '&&' is typesense convention, not instantsearch!
+			`erstpublikation:true && ${filters}`
+		: "erstpublikation:true";
 	return (
 		<InstantSearchNext
 			indexName={collectionName}
@@ -82,15 +86,7 @@ export function InstantSearch(props: InstantSearchProps): ReactNode {
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 			searchClient={searchClient}
 		>
-			<Configure
-				filters={[
-					"erstpublikation:true",
-					...Object.entries(filters ?? {}).map(([k, v]) => {
-						return `(${k}:=\`${v}\`)`;
-					}),
-				].join(" && ")} // typesense convention, not instantsearch!
-				hitsPerPage={30}
-			/>
+			<Configure filters={filter} hitsPerPage={30} />
 			{children}
 		</InstantSearchNext>
 	);
