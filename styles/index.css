@@ -208,3 +208,63 @@ textarea {
 	/* @apply container max-w-screen-lg p-8; */
 	@apply grid grid-cols-[25%_75%];
 }
+
+.react-aria-Switch {
+	display: flex;
+	gap: 0.571rem;
+	align-items: center;
+	color: var(--color-primary);
+	font-size: 1.143rem;
+	forced-color-adjust: none;
+
+	.indicator {
+		width: 2.2rem;
+		border: 2px solid var(--color-primary);
+		border-radius: 1.143rem;
+		background: var(--color-background);
+		transition: all 200ms;
+
+		&::before {
+			content: "";
+			display: block;
+			width: 0.857rem;
+			height: 0.857rem;
+			margin: 0.143rem;
+			border-radius: 16px;
+			background: var(--color-on-background);
+			transition: all 200ms;
+		}
+	}
+
+	&[data-focus-visible] .indicator {
+		outline: 2px solid var(--color-focus-ring);
+		outline-offset: 2px;
+	}
+
+	&[data-pressed] .indicator {
+		border-color: var(--color-muted);
+
+		&::before {
+			background: var(--color-on-muted);
+		}
+	}
+
+	&[data-selected] {
+		.indicator {
+			border-color: var(--color-primary);
+			background: var(--color-primary);
+
+			&::before {
+				background: var(--color-background);
+				transform: translateX(100%);
+			}
+		}
+
+		&[data-pressed] {
+			.indicator {
+				border-color: var(--highlight-background-pressed);
+				background: var(--highlight-background-pressed);
+			}
+		}
+	}
+}

@@ -1,7 +1,9 @@
 "use client";
 
+import { LayoutGrid, LayoutList } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { type ReactNode, useState } from "react";
+import { Switch } from "react-aria-components";
 import { SearchBox } from "react-instantsearch";
 
 import { InstantSearch } from "./instantsearch";
@@ -22,7 +24,7 @@ export function InstantSearchView(props: InstantSearchProps): ReactNode {
 	const t = useTranslations("InstantSearch");
 
 	// TODO encode current state in URL
-	const [view, setView] = useState<"covers" | "table">("covers");
+	const [view, setView] = useState<"covers" | "detail">("covers");
 
 	return (
 		<InstantSearch filters={props.filters} queryArgsToMenuFields={props.queryArgsToMenuFields}>
@@ -44,16 +46,17 @@ export function InstantSearchView(props: InstantSearchProps): ReactNode {
 								})
 							: null}
 						<InstantSearchSortBy sortOptions={["year:asc", "year:desc", "title:asc"]} />
-						<label>
-							<input
-								checked={view === "table"}
-								onChange={(e) => {
-									setView(e.target.checked ? "table" : "covers");
-								}}
-								type="checkbox"
-							/>{" "}
-							<span>{t("view.table")}</span>
-						</label>
+						<Switch
+							isSelected={view === "detail"}
+							onChange={(isSelected) => {
+								setView(isSelected ? "detail" : "covers");
+							}}
+						>
+							<LayoutGrid size={18} />
+							<div className="indicator" />
+							<LayoutList size={18} />
+							<span className="sr-only">{t("view.table")}</span>
+						</Switch>
 					</div>
 					{view === "covers" ? <InfiniteScroll /> : <PaginatedTable />}
 				</div>

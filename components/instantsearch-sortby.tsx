@@ -1,3 +1,4 @@
+import { ArrowDownAZ, ArrowDownUp, CalendarArrowDown, CalendarArrowUp } from "lucide-react";
 import { type MessageKeys, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 import { Label } from "react-aria-components";
@@ -11,16 +12,16 @@ interface InstantSearchSortByProps {
 	sortOptions: Array<string>;
 }
 
-function SortIcon(props: {field: string | undefined, size: number}): ReactNode {
-	switch (props.field?.split('/')[2]) {
-		case 'year:desc':
-			return <CalendarArrowUp size={props.size} /> // alternatively: ClockArrow?
-		case 'year:asc':
-		return <CalendarArrowDown size={props.size}/>
-		case 'title:asc':
-			return <ArrowDownAZ size={props.size}/>
+function SortIcon(props: { field: string | undefined; size: number }): ReactNode {
+	switch (props.field?.split("/")[2]) {
+		case "year:desc":
+			return <CalendarArrowUp size={props.size} />; // alternatively: ClockArrow?
+		case "year:asc":
+			return <CalendarArrowDown size={props.size} />;
+		case "title:asc":
+			return <ArrowDownAZ size={props.size} />;
 		default:
-		return <ArrowDownUp size={props.size}/>
+			return <ArrowDownUp size={props.size} />;
 	}
 }
 
@@ -53,9 +54,14 @@ export function InstantSearchSortBy(props: InstantSearchSortByProps): ReactNode 
 			<Label className="sr-only">sort order</Label>
 			<SelectTrigger>
 				{
-					<SortIcon field={sortByItems.find(({value}) => {
-						return value === currentRefinement;
-					})?.value} size={20} />
+					<SortIcon
+						field={
+							sortByItems.find(({ value }) => {
+								return value === currentRefinement;
+							})?.value
+						}
+						size={20}
+					/>
 				}
 			</SelectTrigger>
 			<SelectPopover>

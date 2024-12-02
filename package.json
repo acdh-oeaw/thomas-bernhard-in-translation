@@ -128,6 +128,9 @@
 		"pre-commit": "pnpm exec lint-staged"
 	},
 	"stylelint": {
-		"extends": "@acdh-oeaw/stylelint-config"
+		"extends": "@acdh-oeaw/stylelint-config",
+		"rules": {
+			"selector-class-pattern": null
+		}
 	}
 }

@@ -60,9 +60,9 @@ export default function SearchPage() {
 
 				{
 					// FIXME when changing the query removes a refinement from the list, that refinement
-				// should become inactive!? otherwise it's not clear that it's still toggled...
-				// TODO pass transform
-				// <FilterMenu attribute="contains.work.category" />
+					// should become inactive!? otherwise it's not clear that it's still toggled...
+					// TODO pass transform
+					// <FilterMenu attribute="contains.work.category" />
 				}
 
 				<FilterMenu attribute="contains.translators.name" />
