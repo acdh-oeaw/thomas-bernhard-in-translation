@@ -11,6 +11,19 @@ interface InstantSearchSortByProps {
 	sortOptions: Array<string>;
 }
 
+function SortIcon(props: {field: string | undefined, size: number}): ReactNode {
+	switch (props.field?.split('/')[2]) {
+		case 'year:desc':
+			return <CalendarArrowUp size={props.size} /> // alternatively: ClockArrow?
+		case 'year:asc':
+		return <CalendarArrowDown size={props.size}/>
+		case 'title:asc':
+			return <ArrowDownAZ size={props.size}/>
+		default:
+		return <ArrowDownUp size={props.size}/>
+	}
+}
+
 export function InstantSearchSortBy(props: InstantSearchSortByProps): ReactNode {
 	const t = useTranslations("InstantSearch");
 
@@ -40,9 +53,9 @@ export function InstantSearchSortBy(props: InstantSearchSortByProps): ReactNode 
 			<Label className="sr-only">sort order</Label>
 			<SelectTrigger>
 				{
-					sortByItems.find(({ value }) => {
+					<SortIcon field={sortByItems.find(({value}) => {
 						return value === currentRefinement;
-					})?.label
+					})?.value} size={20} />
 				}
 			</SelectTrigger>
 			<SelectPopover>
@@ -50,7 +63,8 @@ export function InstantSearchSortBy(props: InstantSearchSortByProps): ReactNode 
 					{options.map((o) => {
 						return (
 							<SelectItem key={o.value} id={o.value} textValue={o.label}>
-								{o.label}
+								<SortIcon field={o.value} size={20} />
+								<span className="sr-only">{o.label}</span>
 							</SelectItem>
 						);
 					})}
