@@ -3,10 +3,18 @@ import type { ReactNode } from "react";
 interface InlineListProps {
 	children: Array<ReactNode>;
 	separator: string;
+	limit?: number;
 }
 
 export function InlineList(props: InlineListProps): ReactNode {
-	const { children, separator } = props;
+	const { children, limit, separator } = props;
+
+	const andMore = limit && children.length > limit;
+	if (andMore) {
+		const overhead = 1 + children.length - limit;
+		// eslint-disable-next-line @typescript-eslint/no-floating-promises
+		children.splice(limit - 1, overhead, `+ ${overhead.toString()} more`);
+	}
 
 	return (
 		<ol>

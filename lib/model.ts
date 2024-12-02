@@ -9,6 +9,7 @@ export interface Publication {
 	id: number;
 	signatur: string;
 	title: string;
+	short_title?: string;
 	language: string;
 	contains: Array<Translation>;
 

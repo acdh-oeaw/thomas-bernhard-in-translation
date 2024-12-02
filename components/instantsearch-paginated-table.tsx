@@ -18,26 +18,37 @@ function TableRow({ hit }: { hit: Hit<Publication> }) {
 			}),
 		),
 	];
+	const workTitles = hit.contains.map((tr) => {
+		return tr.work.title;
+	});
 	return (
-		<div className="flex flex-row items-center">
-			<div className="mr-4 h-36 w-20">
+		<div className="grid grid-cols-[12rem_1fr] items-center gap-2 px-4 py-6">
+			<div className="size-44">
 				<ClickablePublicationThumbnail publication={hit} />
 			</div>
 			<div className="flex flex-col">
 				<div className="text-xl">
 					<PublicationLink publication={hit} /> ({hit.year_display})
 				</div>
-				<div>{hit.language}</div>
 				<div>
-					<InlineList separator=" / ">
-						{translators.slice(0, 3).map((tr, i) => {
+					<InlineList limit={3} separator=" / ">
+						{workTitles.map((wt, i) => {
+							return (
+								<span key={i} className="italic">
+									{wt}
+								</span>
+							);
+						})}
+					</InlineList>
+				</div>
+				<div>
+					<InlineList limit={3} separator=" / ">
+						{translators.map((tr, i) => {
 							return <span key={i}>{tr}</span>;
 						})}
 					</InlineList>
-					{
-						// TODO add '...' when more than 3
-					}
 				</div>
+				<div>{hit.language}</div>
 			</div>
 		</div>
 	);

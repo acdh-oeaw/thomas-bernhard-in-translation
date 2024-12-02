@@ -30,7 +30,7 @@ export function PublicationCover(props: PublicationCoverProps): ReactNode {
 export function ClickablePublicationThumbnail(props: PublicationCoverProps) {
 	return (
 		<PublicationLink
-			className="relative block h-full object-contain hover:outline"
+			className="relative block size-full object-contain hover:outline"
 			publication={props.publication}
 		>
 			<PublicationCover publication={props.publication} />

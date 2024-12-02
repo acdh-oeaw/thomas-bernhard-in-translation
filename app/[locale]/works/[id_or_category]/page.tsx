@@ -19,7 +19,7 @@ export default function WorksPage(props: WorksPageProps) {
 	const t = useTranslations("InstantSearch");
 
 	return (
-		<MainContent className="mx-auto w-screen max-w-screen-xl">
+		<MainContent>
 			<InstantSearchView
 				filters={`contains.work.category:${props.params.id_or_category}`}
 				queryArgsToMenuFields={{ language: "language", work: "contains.work.yeartitle" }}

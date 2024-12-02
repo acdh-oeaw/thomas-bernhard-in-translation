@@ -56,7 +56,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 	});
 
 	return (
-		<MainContent className="mx-auto w-screen max-w-screen-lg p-6">
+		<MainContent>
 			<h1 className="text-3xl font-bold">{pub.title}</h1>
 			<p className="py-3 lowercase italic">
 				{Array.from(

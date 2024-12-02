@@ -11,7 +11,7 @@ export function MainContent(props: MainContentProps): ReactNode {
 	const { children, className } = props;
 
 	return (
-		<main className={className} id={id} tabIndex={-1}>
+		<main className={className ?? "mx-auto w-screen max-w-screen-lg p-6"} id={id} tabIndex={-1}>
 			{children}
 		</main>
 	);

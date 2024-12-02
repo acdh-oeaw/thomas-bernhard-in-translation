@@ -51,7 +51,7 @@ export default async function IndexPage(props: IndexPageProps) {
 		sort_by: "_text_match:" + (Math.random() > 0.5 ? "asc" : "desc"),
 	});
 	return (
-		<MainContent className="container py-8">
+		<MainContent>
 			<section className="mx-auto grid w-full max-w-screen-lg items-start justify-items-center gap-3 px-4 py-8 text-center md:py-12">
 				<h1 className="sr-only">{t("title")}</h1>
 				<div className="mx-auto w-full max-w-screen-md text-pretty text-lg text-on-muted sm:text-xl">
