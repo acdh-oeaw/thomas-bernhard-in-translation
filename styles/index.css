@@ -24,6 +24,9 @@ body {
 
 /* stylelint-disable-next-line no-duplicate-selectors */
 :root {
+	--color-link: theme("colors.slate.500");
+	--color-link-active: theme("colors.slate.900");
+	--color-link-hover: theme("colors.slate.700");
 	--color-background: theme("colors.neutral.0");
 	--color-on-background: theme("colors.neutral.950");
 	--color-surface: theme("colors.neutral.0");
@@ -54,6 +57,9 @@ body {
 }
 
 :root[data-ui-color-scheme="dark"] {
+	--color-link: theme("colors.slate.400");
+	--color-link-active: theme("colors.slate.100");
+	--color-link-hover: theme("colors.slate.300");
 	--color-background: theme("colors.neutral.950");
 	--color-on-background: theme("colors.neutral.50");
 	--color-surface: theme("colors.neutral.950");

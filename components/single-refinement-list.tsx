@@ -49,8 +49,8 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 								items.every((i) => {
 									return !i.isRefined;
 								})
-									? "font-medium text-on-background/80"
-									: "text-on-background/60"
+									? "font-medium text-[--color-link-active]"
+									: "text-[--color-link]"
 							}`}
 						>
 							{props.allLabel}
@@ -63,7 +63,7 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 					return (
 						<label
 							key={item.label}
-							className="block py-0.5 text-right focus-within:outline focus-within:outline-2"
+							className="block py-1 text-right focus-within:outline focus-within:outline-2"
 						>
 							<input
 								checked={item.isRefined}
@@ -75,7 +75,7 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 								type="radio"
 							/>
 							<span
-								className={`hover:cursor-pointer ${item.isRefined ? "font-medium text-on-background/80" : "text-on-background/60"}`}
+								className={`hover:cursor-pointer ${item.isRefined ? "font-medium text-[--color-link-active]" : "text-[--color-link]"}`}
 							>
 								{item.label}
 							</span>

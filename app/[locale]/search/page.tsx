@@ -22,9 +22,10 @@ function FilterMenu(props: { attribute: string }) {
 					count: 'before:content-["("] after:content-[")"]',
 					disabledShowMore: "hidden",
 					label: "px-1",
+					list: "text-[--color-link]",
 					root: "py-2 text-right",
-					selectedItem: "font-bold",
-					showMore: "text-sm pb-4",
+					selectedItem: "font-bold text-[--color-link-active]",
+					showMore: "text-sm pb-4 text-[--color-link]",
 				}}
 				showMore={true}
 				showMoreLimit={100}

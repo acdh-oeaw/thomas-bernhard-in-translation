@@ -14,7 +14,7 @@ export function AppLink(props: AppLinkProps): ReactNode {
 		<Link
 			{...rest}
 			className={cn(
-				"text-on-background/60 transition aria-[current]:font-medium aria-[current]:text-on-background/80 hover:text-on-background/80 focus-visible:text-on-background/80",
+				"text-[--color-link] transition aria-[current]:font-medium aria-[current]:text-[--color-link-active] hover:text-[--color-link-hover] focus-visible:text-[--color-link-hover]",
 				className,
 			)}
 		>
