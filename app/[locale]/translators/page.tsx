@@ -46,6 +46,7 @@ function TranslatorsList() {
 
 export default function TranslatorsPage() {
 	const t = useTranslations("TranslatorsPage");
+	const tl = useTranslations("Languages");
 	return (
 		<MainContent className="mx-auto w-screen max-w-screen-lg p-6">
 			<InstantSearch
@@ -56,7 +57,20 @@ export default function TranslatorsPage() {
 					<SingleRefinementDropdown
 						allLabel={t("all languages")}
 						attribute={"language"}
-						refinementArgs={{ transformItems: undefined }}
+						className="lowercase"
+						refinementArgs={{
+							transformItems: (items) => {
+								return items
+									.map((item) => {
+										// eslint-disable-next-line @typescript-eslint/no-explicit-any
+										item.label = tl(item.label as any);
+										return item;
+									})
+									.sort((a, b) => {
+										return a.label.localeCompare(b.label);
+									});
+							},
+						}}
 					/>
 				</div>
 				<TranslatorsList />

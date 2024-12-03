@@ -1,12 +1,16 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Menu } from "react-instantsearch";
+import { Menu, type MenuProps } from "react-instantsearch";
 
 import { InstantSearchView } from "@/components/instantsearch-view";
 import { MainContent } from "@/components/main-content";
 
-function FilterMenu(props: { attribute: string }) {
+function FilterMenu(props: {
+	attribute: string;
+	className?: string;
+	transformItems?: MenuProps["transformItems"];
+}) {
 	const t = useTranslations("SearchPage");
 	return (
 		<>
@@ -22,7 +26,7 @@ function FilterMenu(props: { attribute: string }) {
 				classNames={{
 					count: 'before:content-["("] after:content-[")"]',
 					disabledShowMore: "hidden",
-					label: "px-1",
+					label: `px-1 ${props.className ? props.className : ""}`,
 					list: "text-[--color-link]",
 					root: "py-2 text-right",
 					selectedItem: "font-bold text-[--color-link-active]",
@@ -31,6 +35,7 @@ function FilterMenu(props: { attribute: string }) {
 				showMore={true}
 				showMoreLimit={50}
 				sortBy={["isRefined", "count", "name"]}
+				transformItems={props.transformItems}
 				translations={{
 					showMoreButtonText({ isShowingMore }) {
 						return t(isShowingMore ? "show less" : "show more");
@@ -42,6 +47,7 @@ function FilterMenu(props: { attribute: string }) {
 }
 
 export default function SearchPage() {
+	const tl = useTranslations("Languages");
 	return (
 		<MainContent className="mx-auto w-screen max-w-screen-lg p-6">
 			<InstantSearchView
@@ -55,7 +61,17 @@ export default function SearchPage() {
 			>
 				<FilterMenu attribute="contains.work.short_title" />
 
-				<FilterMenu attribute="language" />
+				<FilterMenu
+					attribute="language"
+					className="lowercase"
+					transformItems={(items) => {
+						return items.map((item) => {
+							// eslint-disable-next-line @typescript-eslint/no-explicit-any
+							item.label = tl(item.label as any);
+							return item;
+						});
+					}}
+				/>
 
 				{
 					// FIXME when changing the query removes a refinement from the list, that refinement

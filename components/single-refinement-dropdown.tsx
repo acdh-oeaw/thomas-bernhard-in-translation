@@ -9,6 +9,7 @@ interface SingleRefinementDropdownProps {
 	attribute: string;
 	allLabel: string;
 	refinementArgs?: Partial<UseMenuProps>;
+	className?: string;
 }
 
 const defaultTransformItems = (items: Array<RefinementListItem>) => {
@@ -21,8 +22,6 @@ const defaultTransformItems = (items: Array<RefinementListItem>) => {
 
 // a refinement dropdown that is alphabetically ordered
 export function SingleRefinementDropdown(props: SingleRefinementDropdownProps) {
-	// const t = useTranslations("SearchPage");
-
 	const { items, refine } = useMenu({
 		attribute: props.attribute,
 		limit: 1000,
@@ -39,19 +38,24 @@ export function SingleRefinementDropdown(props: SingleRefinementDropdownProps) {
 			}}
 		>
 			<Label className="sr-only">sort order</Label>
-			<SelectTrigger>
+			<SelectTrigger className={props.className}>
 				{items.find((i) => {
 					return i.isRefined;
-				})?.value ?? props.allLabel}
+				})?.label ?? props.allLabel}
 			</SelectTrigger>
 			<SelectPopover>
 				<SelectContent>
-					<SelectItem key={"all"} id={"all"} textValue={props.allLabel}>
+					<SelectItem key={"all"} className="lowercase" id={"all"} textValue={props.allLabel}>
 						{props.allLabel}
 					</SelectItem>
 					{items.map((o) => {
 						return (
-							<SelectItem key={o.value} id={o.value} textValue={o.label}>
+							<SelectItem
+								key={o.value}
+								className={props.className}
+								id={o.value}
+								textValue={o.label}
+							>
 								{o.label}
 							</SelectItem>
 						);

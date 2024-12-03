@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 import { AppLink } from "./app-link";
 
 interface LanguageLinkProps {
@@ -5,5 +7,13 @@ interface LanguageLinkProps {
 }
 
 export function LanguageLink(props: LanguageLinkProps) {
-	return <AppLink href={`/languages?language=${props.language}`}>{props.language}</AppLink>;
+	const t = useTranslations("Languages");
+	return (
+		<AppLink className="lowercase" href={`/languages?language=${props.language}`}>
+			{
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				t(props.language as any)
+			}
+		</AppLink>
+	);
 }

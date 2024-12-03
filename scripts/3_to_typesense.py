@@ -147,12 +147,58 @@ for t in translations:
     t["has_translators"] = len(t["translators"]) != 0
     del_empty_strings(t, ["work_display_title"])
 
+languages = {
+    "albanian": "sq",
+    "arabic": "ar",
+    "azerbaijani": "az",
+    "basque": "eu",
+    "bulgarian": "bg",
+    "catalan": "ca",
+    "chinese (simpl.)": "zh_hans",
+    "croatian": "hr",
+    "czech": "cs",
+    "danish": "da",
+    "dutch": "nl",
+    "english": "en",
+    "estonian": "et",
+    "farsi": "fa",
+    "finnish": "fi",
+    "french": "fr",
+    "galician": "gl",
+    "georgian": "ka",
+    "greek": "el",
+    "hebrew": "he",
+    "hungarian": "hu",
+    "icelandic": "is",
+    "italian": "it",
+    "japanese": "ja",
+    "korean": "ko",
+    "lithuanian": "lt",
+    "macedonian": "mk",
+    "norwegian": "no",
+    "polish": "pl",
+    "portuguese": "pt_pt",
+    "portuguese (brazil)": "pt_br",
+    "romanian": "ro",
+    "russian": "ru",
+    "serbian": "sr",
+    "slovak": "sk",
+    "slovenian": "sl",
+    "spanish": "es",
+    "swedish": "sv",
+    "turkish": "tr",
+    "ukrainian": "uk",
+    "urdu": "ur",
+    "vietnamese": "vi",
+}
+
 for i, pub in enumerate(publications):
     pub["id"] = str(i + 1)
     if not w["short_title"]:
         w["short_title"] = w["title"]
 
     pub["contains"] = [translations[t_id - 1] for t_id in pub["contains"]]
+    pub["language"] = languages[pub["language"]]
 
     pub["images"] = (
         [{"id": img} for img in pub["images"].split(" ")] if len(pub["images"]) else []
@@ -167,7 +213,7 @@ for i, pub in enumerate(publications):
         else:
             publications[pid - 1]["later"] = [i + 1]
 
-    del_empty_strings(pub, ["parents", "publication_details"])
+    del_empty_strings(pub, ["isbn", "parents", "publication_details"])
 
     # trim data a little
     del pub["exemplar_suhrkamp_berlin"]
@@ -203,7 +249,7 @@ try:
 except ObjectNotFound:
     logging.info(f"collection '{collection_name}' does not exist yet, creating")
     schema = json.load(open("typesense-schema.json"))
-    schema["collection_name"] = collection_name
+    schema["name"] = collection_name
     create = client.collections.create(schema)
     r = client.collections[collection_name].retrieve()
 

@@ -123,6 +123,7 @@ export default function LocaleLayout(props: LocaleLayoutProps): ReactNode {
 						"BernhardCategories",
 						"Error",
 						"InstantSearch",
+						"Languages",
 						"LanguagesPage",
 						"PublicationCover",
 						"SearchPage",
