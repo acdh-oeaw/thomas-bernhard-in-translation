@@ -6,7 +6,7 @@ import { useSortBy } from "react-instantsearch";
 
 import { collectionName } from "@/lib/data";
 
-import { Select, SelectContent, SelectItem, SelectPopover, SelectTrigger } from "./ui/select";
+import { Select, SelectContent, SelectItem, SelectPopover, SelectTrigger } from "../ui/select";
 
 interface InstantSearchSortByProps {
 	sortOptions: Array<string>;

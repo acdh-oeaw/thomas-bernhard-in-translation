@@ -4,8 +4,8 @@ import { useInfiniteHits } from "react-instantsearch";
 
 import type { Publication } from "@/lib/model";
 
-import { PublicationGrid } from "./publication-grid";
-import { Button } from "./ui/button";
+import { PublicationGrid } from "../publication-grid";
+import { Button } from "../ui/button";
 
 export function InfiniteScroll(): ReactNode {
 	const t = useTranslations("InstantSearch");

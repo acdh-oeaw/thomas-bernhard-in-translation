@@ -5,7 +5,7 @@ import type { MenuItem } from "instantsearch.js/es/connectors/menu/connectMenu";
 import { useTranslations } from "next-intl";
 import { useMenu } from "react-instantsearch";
 
-import { InstantSearch } from "@/components/instantsearch";
+import { InstantSearchProvider } from "@/components/instantsearch/instantsearchprovider";
 import { MainContent } from "@/components/main-content";
 import { SingleRefinementDropdown } from "@/components/single-refinement-dropdown";
 import { TranslatorLink } from "@/components/translator-link";
@@ -49,7 +49,7 @@ export default function TranslatorsPage() {
 	const tl = useTranslations("Languages");
 	return (
 		<MainContent className="mx-auto w-screen max-w-screen-lg p-6">
-			<InstantSearch
+			<InstantSearchProvider
 				filters="contains.has_translators:true"
 				queryArgsToMenuFields={{ language: "language" }}
 			>
@@ -74,7 +74,7 @@ export default function TranslatorsPage() {
 					/>
 				</div>
 				<TranslatorsList />
-			</InstantSearch>
+			</InstantSearchProvider>
 		</MainContent>
 	);
 }

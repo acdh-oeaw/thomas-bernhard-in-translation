@@ -9,7 +9,7 @@ import TypesenseInstantSearchAdapter, { type SearchClient } from "typesense-inst
 import { env } from "@/config/env.config";
 import { collectionName } from "@/lib/data";
 
-interface InstantSearchProps {
+interface InstantSearchProviderProps {
 	queryArgsToMenuFields: Record<string, string>;
 	children?: ReactNode;
 	filters?: string;
@@ -36,7 +36,7 @@ const searchClient = typesenseInstantsearchAdapter.searchClient as unknown as Se
 
 type RouteState = Record<string, string | undefined>;
 
-export function InstantSearch(props: InstantSearchProps): ReactNode {
+export function InstantSearchProvider(props: InstantSearchProviderProps): ReactNode {
 	const { children, filters, queryArgsToMenuFields } = props;
 	const filter = filters
 		? // '&&' is typesense convention, not instantsearch!

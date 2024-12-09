@@ -6,11 +6,11 @@ import { type ReactNode, useState } from "react";
 import { Switch } from "react-aria-components";
 import { SearchBox } from "react-instantsearch";
 
-import { InstantSearch } from "./instantsearch";
-import { InfiniteScroll } from "./instantsearch-infinitescroll";
-import { PaginatedTable } from "./instantsearch-paginated-table";
-import { InstantSearchSortBy } from "./instantsearch-sortby";
-import { InstantSearchStats } from "./instantsearch-stats";
+import { InfiniteScroll } from "./instantsearch/infinitescroll";
+import { InstantSearchProvider } from "./instantsearch/instantsearchprovider";
+import { PaginatedTable } from "./instantsearch/paginated-table";
+import { InstantSearchSortBy } from "./instantsearch/sortby";
+import { InstantSearchStats } from "./instantsearch/stats";
 import { SingleRefinementDropdown } from "./single-refinement-dropdown";
 
 interface InstantSearchProps {
@@ -27,7 +27,10 @@ export function InstantSearchView(props: InstantSearchProps): ReactNode {
 	const [view, setView] = useState<"covers" | "detail">("covers");
 
 	return (
-		<InstantSearch filters={props.filters} queryArgsToMenuFields={props.queryArgsToMenuFields}>
+		<InstantSearchProvider
+			filters={props.filters}
+			queryArgsToMenuFields={props.queryArgsToMenuFields}
+		>
 			<div className="grid grid-cols-[25%_75%] p-2">
 				<div className="mr-10">{props.children}</div>
 				<div>
@@ -61,6 +64,6 @@ export function InstantSearchView(props: InstantSearchProps): ReactNode {
 					{view === "covers" ? <InfiniteScroll /> : <PaginatedTable />}
 				</div>
 			</div>
-		</InstantSearch>
+		</InstantSearchProvider>
 	);
 }

@@ -5,9 +5,9 @@ import { Hits } from "react-instantsearch";
 
 import type { Publication } from "@/lib/model";
 
-import { InlineList } from "./inline-list";
-import { ClickablePublicationThumbnail } from "./publication-cover";
-import { PublicationLink } from "./publication-link";
+import { InlineList } from "../inline-list";
+import { ClickablePublicationThumbnail } from "../publication-cover";
+import { PublicationLink } from "../publication-link";
 
 function TableRow({ hit }: { hit: Hit<Publication> }) {
 	const lt = useTranslations("Languages");
