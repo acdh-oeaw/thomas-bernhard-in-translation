@@ -32,7 +32,7 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 				<div className="px-2">
 					<label
 						key="all"
-						className={`block py-0.5 text-right focus-within:outline focus-within:outline-2 ${props.className ? props.className : ""}`}
+						className={`block text-right focus-within:outline focus-within:outline-2 ${props.className ? props.className : ""}`}
 					>
 						<input
 							checked={items.every((i) => {
@@ -64,7 +64,7 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 					return (
 						<label
 							key={item.label}
-							className={`block py-0.5 text-right focus-within:outline focus-within:outline-2 ${props.className ? props.className : ""}`}
+							className={`block py-1 text-right leading-tight focus-within:outline focus-within:outline-2 ${props.className ? props.className : ""}`}
 						>
 							<input
 								checked={item.isRefined}

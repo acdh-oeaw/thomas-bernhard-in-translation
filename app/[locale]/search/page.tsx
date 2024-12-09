@@ -26,6 +26,7 @@ function FilterMenu(props: {
 				classNames={{
 					count: 'before:content-["("] after:content-[")"]',
 					disabledShowMore: "hidden",
+					item: "leading-tight py-1",
 					label: `px-1 ${props.className ? props.className : ""}`,
 					list: "text-[--color-link]",
 					root: "py-2 text-right",
@@ -33,7 +34,7 @@ function FilterMenu(props: {
 					showMore: "text-sm pb-4 text-[--color-link]",
 				}}
 				showMore={true}
-				showMoreLimit={50}
+				showMoreLimit={25}
 				sortBy={["isRefined", "count", "name"]}
 				transformItems={props.transformItems}
 				translations={{
