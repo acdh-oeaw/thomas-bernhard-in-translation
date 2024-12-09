@@ -1,4 +1,5 @@
 import type { Hit } from "instantsearch.js";
+import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 import { Hits } from "react-instantsearch";
 
@@ -9,6 +10,7 @@ import { ClickablePublicationThumbnail } from "./publication-cover";
 import { PublicationLink } from "./publication-link";
 
 function TableRow({ hit }: { hit: Hit<Publication> }) {
+	const lt = useTranslations("Languages");
 	const translators = [
 		...new Set(
 			hit.contains.flatMap((tr) => {
@@ -48,7 +50,12 @@ function TableRow({ hit }: { hit: Hit<Publication> }) {
 						})}
 					</InlineList>
 				</div>
-				<div>{hit.language}</div>
+				<div className="lowercase">
+					{
+						// eslint-disable-next-line @typescript-eslint/no-explicit-any
+						lt(hit.language as any)
+					}
+				</div>
 			</div>
 		</div>
 	);
