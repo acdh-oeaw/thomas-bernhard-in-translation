@@ -62,5 +62,7 @@ function TableRow({ hit }: { hit: Hit<Publication> }) {
 }
 
 export function PaginatedTable(): ReactNode {
-	return <Hits hitComponent={TableRow} />;
+	return (
+		<Hits classNames={{ root: "absolute h-full overflow-y-auto w-full" }} hitComponent={TableRow} />
+	);
 }

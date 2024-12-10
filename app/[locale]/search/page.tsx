@@ -50,7 +50,7 @@ function FilterMenu(props: {
 export default function SearchPage() {
 	const tl = useTranslations("Languages");
 	return (
-		<MainContent className="mx-auto w-screen max-w-screen-lg p-6">
+		<MainContent className="mx-auto h-full w-screen max-w-screen-lg p-6">
 			<InstantSearchView
 				queryArgsToMenuFields={{
 					// the order of elements here determines the order of refinement lists in the UI
@@ -60,28 +60,30 @@ export default function SearchPage() {
 					translator: "contains.translators.name" as const,
 				}}
 			>
-				<FilterMenu attribute="contains.work.short_title" />
+				<div className="absolute h-full overflow-y-auto pr-5">
+					<FilterMenu attribute="contains.work.short_title" />
 
-				<FilterMenu
-					attribute="language"
-					className="lowercase"
-					transformItems={(items) => {
-						return items.map((item) => {
-							// eslint-disable-next-line @typescript-eslint/no-explicit-any
-							item.label = tl(item.label as any);
-							return item;
-						});
-					}}
-				/>
+					<FilterMenu
+						attribute="language"
+						className="lowercase"
+						transformItems={(items) => {
+							return items.map((item) => {
+								// eslint-disable-next-line @typescript-eslint/no-explicit-any
+								item.label = tl(item.label as any);
+								return item;
+							});
+						}}
+					/>
 
-				{
-					// FIXME when changing the query removes a refinement from the list, that refinement
-					// should become inactive!? otherwise it's not clear that it's still toggled...
-					// TODO pass transform
-					// <FilterMenu attribute="contains.work.category" />
-				}
+					{
+						// FIXME when changing the query removes a refinement from the list, that refinement
+						// should become inactive!? otherwise it's not clear that it's still toggled...
+						// TODO pass transform
+						// <FilterMenu attribute="contains.work.category" />
+					}
 
-				<FilterMenu attribute="contains.translators.name" />
+					<FilterMenu attribute="contains.translators.name" />
+				</div>
 			</InstantSearchView>
 		</MainContent>
 	);

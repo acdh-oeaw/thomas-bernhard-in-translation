@@ -35,7 +35,7 @@ export function InfiniteScroll(): ReactNode {
 	}, [isLastPage, showMore]);
 
 	return (
-		<>
+		<div className="absolute grid h-full grid-rows-[1fr_auto] overflow-y-auto">
 			<PublicationGrid publications={items} />
 			{isLastPage ? (
 				<hr className="m-auto mt-8 w-1/3" />
@@ -50,6 +50,6 @@ export function InfiniteScroll(): ReactNode {
 					</Button>
 				</div>
 			)}
-		</>
+		</div>
 	);
 }
