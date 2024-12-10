@@ -39,6 +39,7 @@ function translatorIndices(pub: Publication): Array<[Translator, Array<number>]>
 export default async function PublicationPage(props: PublicationPageProps) {
 	const t = await getTranslations("PublicationPage");
 	const ct = await getTranslations("BernhardCategories");
+	const lt = await getTranslations("Languages");
 	const pub = await getPublication(props.params.id);
 	if (!pub) {
 		return notFound();
@@ -167,7 +168,11 @@ export default async function PublicationPage(props: PublicationPageProps) {
 
 			<section>
 				<h2 className="pt-10 font-bold">
-					{t("more_in")} {pub.language}
+					{t("more_in")}{" "}
+					{
+						// eslint-disable-next-line @typescript-eslint/no-explicit-any
+						lt(pub.language as any)
+					}
 				</h2>
 				<div className="flex">
 					{(await getSameLanguagePublications(pub)).map((p) => {
