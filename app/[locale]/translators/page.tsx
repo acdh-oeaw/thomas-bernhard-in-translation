@@ -6,8 +6,8 @@ import { useTranslations } from "next-intl";
 import { useMenu } from "react-instantsearch";
 
 import { InstantSearchProvider } from "@/components/instantsearch/instantsearchprovider";
+import { SingleRefinementDropdown } from "@/components/instantsearch/single-refinement-dropdown";
 import { MainContent } from "@/components/main-content";
-import { SingleRefinementDropdown } from "@/components/single-refinement-dropdown";
 import { TranslatorLink } from "@/components/translator-link";
 
 function TranslatorsList() {

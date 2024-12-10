@@ -27,7 +27,7 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 	});
 
 	return (
-		<div className="sticky top-0 grid max-h-screen grid-rows-[auto_1fr]">
+		<div className="mr-10 grid h-full grid-rows-[auto_1fr]">
 			{props.allLabel ? (
 				<div className="px-2">
 					<label
@@ -59,7 +59,7 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 					</label>
 				</div>
 			) : null}
-			<div className="my-2 overflow-y-auto px-2">
+			<div className="my-2 h-full px-2">
 				{items.map((item) => {
 					return (
 						<label

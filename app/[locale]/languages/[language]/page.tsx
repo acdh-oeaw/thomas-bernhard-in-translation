@@ -2,9 +2,9 @@
 
 import { useTranslations } from "next-intl";
 
+import { SingleRefinementList } from "@/components/instantsearch/single-refinement-list";
 import { InstantSearchView } from "@/components/instantsearch-view";
 import { MainContent } from "@/components/main-content";
-import { SingleRefinementList } from "@/components/single-refinement-list";
 
 interface LanguagesPageProps {
 	params?: {

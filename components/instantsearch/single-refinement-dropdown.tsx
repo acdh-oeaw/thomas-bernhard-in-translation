@@ -3,7 +3,7 @@ import type { RefinementListItem } from "instantsearch.js/es/connectors/refineme
 import { Label } from "react-aria-components";
 import { useMenu, type UseMenuProps } from "react-instantsearch";
 
-import { Select, SelectContent, SelectItem, SelectPopover, SelectTrigger } from "./ui/select";
+import { Select, SelectContent, SelectItem, SelectPopover, SelectTrigger } from "../ui/select";
 
 interface SingleRefinementDropdownProps {
 	attribute: string;
