@@ -1,3 +1,4 @@
+import { cn } from "@acdh-oeaw/style-variants";
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
@@ -7,6 +8,7 @@ import type { Publication } from "@/lib/model";
 import { PublicationLink } from "./publication-link";
 
 interface PublicationCoverProps {
+	className?: string;
 	publication: Publication;
 }
 
@@ -14,15 +16,19 @@ export function PublicationCover(props: PublicationCoverProps): ReactNode {
 	const t = useTranslations("PublicationCover");
 	return (
 		<Image
-			alt={props.publication.images[0] ? `${t("alt_text")} ${props.publication.title}` : ""}
-			className="object-contain"
-			fill={true}
-			sizes={"88rem"}
+			alt={props.publication.has_image ? `${t("alt_text")} ${props.publication.title}` : ""}
+			className={cn(
+				"m-auto h-full w-auto max-w-full border border-gray-400 object-contain",
+				props.className,
+			)}
+			height={0}
+			sizes="100vw"
 			src={
-				props.publication.images[0]
-					? `/covers/${props.publication.images[0].id.toString()}.jpg`
+				props.publication.has_image
+					? `/covers/${props.publication.images[0]!.id.toString()}.jpg`
 					: "/covers/cover_missing.jpg"
 			}
+			width={0}
 		/>
 	);
 }

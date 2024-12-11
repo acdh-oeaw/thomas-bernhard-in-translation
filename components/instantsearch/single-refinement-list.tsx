@@ -28,7 +28,7 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 	});
 
 	return (
-		<div className="absolute mr-10 grid h-full grid-rows-[auto_1fr] overflow-y-auto">
+		<div className="absolute grid h-full grid-rows-[auto_1fr] overflow-y-auto">
 			{props.allLabel ? (
 				<div className="mt-1 px-2">
 					<label
@@ -70,7 +70,7 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 						<label
 							key={item.label}
 							className={cn(
-								"block py-1 text-right leading-tight focus-within:outline focus-within:outline-2",
+								"block pb-2 text-right leading-tight focus-within:outline focus-within:outline-2",
 								props.className,
 							)}
 						>

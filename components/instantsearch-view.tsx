@@ -31,8 +31,8 @@ export function InstantSearchView(props: InstantSearchProps): ReactNode {
 			filters={props.filters}
 			queryArgsToMenuFields={props.queryArgsToMenuFields}
 		>
-			<div className="grid h-full grid-cols-[25%_75%] p-2">
-				<div className="relative mr-10 h-full">{props.children}</div>
+			<div className="grid h-full grid-cols-[12rem_1fr] gap-6 p-2">
+				<div className="relative h-full">{props.children}</div>
 				<div className="h-full">
 					<div className="flex place-content-between items-center">
 						<InstantSearchStats />
@@ -61,7 +61,7 @@ export function InstantSearchView(props: InstantSearchProps): ReactNode {
 							<span className="sr-only">{t("view.table")}</span>
 						</Switch>
 					</div>
-					<div className="relative h-full">
+					<div className="relative size-full">
 						{view === "covers" ? <InfiniteScroll /> : <PaginatedTable />}
 					</div>
 				</div>

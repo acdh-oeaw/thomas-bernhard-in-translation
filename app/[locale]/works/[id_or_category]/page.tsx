@@ -27,7 +27,7 @@ export default function WorksPage(props: WorksPageProps) {
 			queryArgsToMenuFields={{ language: "language", work: "contains.work.yeartitle" }}
 		>
 			<MainContent>
-				<div className="grid h-full grid-cols-[25%_75%] p-2">
+				<div className="grid h-full grid-cols-[25%_75%] gap-6 p-2">
 					<div className="relative h-full">
 						<SingleRefinementList
 							allLabel={categoryLabel}

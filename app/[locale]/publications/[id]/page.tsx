@@ -78,11 +78,11 @@ export default async function PublicationPage(props: PublicationPageProps) {
 					})
 					.join(" / ")}
 			</p>
-			<div className="flex gap-8 py-8">
-				<div className="relative h-96 min-w-44 grow basis-1/3">
-					<PublicationCover publication={pub} />
+			<div className="gap-8 py-8 md:grid md:grid-cols-[1fr_2fr]">
+				<div className="relative mt-4 h-full">
+					<PublicationCover className="object-left-top" publication={pub} />
 				</div>
-				<div className="max-w-prose grow-[2] basis-2/3">
+				<div className="max-w-prose">
 					<PublicationDetails>
 						<NameValue name={t("language")}>
 							<LanguageLink language={pub.language} />

@@ -27,7 +27,7 @@ function FilterMenu(props: {
 				classNames={{
 					count: 'before:content-["("] after:content-[")"]',
 					disabledShowMore: "hidden",
-					item: "leading-tight py-1 hover:text-[--color-link-hover]",
+					item: "leading-tight pb-2 hover:text-[--color-link-hover]",
 					label: cn("px-1", props.className),
 					list: "text-[--color-link]",
 					root: "py-2 text-right",
