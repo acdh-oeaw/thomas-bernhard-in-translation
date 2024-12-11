@@ -70,7 +70,7 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 						<label
 							key={item.label}
 							className={cn(
-								"block pb-2 text-right leading-tight focus-within:outline focus-within:outline-2",
+								"block py-1 text-right leading-tight focus-within:outline focus-within:outline-2",
 								props.className,
 							)}
 						>
