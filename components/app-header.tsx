@@ -11,18 +11,16 @@ import { LocaleSwitcher } from "./locale-switcher";
 export function AppHeader(): ReactNode {
 	const t = useTranslations("AppHeader");
 	return (
-		<header className="mx-auto w-screen max-w-screen-lg border-b">
-			<div className="container flex items-start justify-between gap-4 py-6">
-				<div className="mt-2 flex flex-col">
-					<Link className="font-bold lowercase" href={createHref({})}>
-						{t("title")}
-					</Link>
-				</div>
-				<AppHeaderNavMenu />
-				<div className="flex items-center gap-4">
-					<ColorSchemeSwitcher />
-					<LocaleSwitcher />
-				</div>
+		<header className="mx-auto grid w-screen max-w-screen-xl grid-cols-[auto_1fr_auto] gap-4 border-b p-6">
+			<div className="mr-20 mt-2 flex flex-col">
+				<Link className="font-bold lowercase" href={createHref({})}>
+					{t("title")}
+				</Link>
+			</div>
+			<AppHeaderNavMenu />
+			<div className="flex items-center gap-4">
+				<ColorSchemeSwitcher />
+				<LocaleSwitcher />
 			</div>
 		</header>
 	);
