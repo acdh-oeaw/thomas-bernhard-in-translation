@@ -24,7 +24,7 @@ export function Results(props: ResultsProps): ReactNode {
 
 	return (
 		<div className="grid h-full grid-rows-[auto_1fr] overflow-y-auto">
-			<div className="flex place-content-between items-center">
+			<div className="mt-1 flex place-content-between items-center">
 				<InstantSearchStats />
 				<SearchBox placeholder={t("query_placeholder")} />
 				<InstantSearchSortBy sortOptions={["year:asc", "year:desc", "title:asc"]} />

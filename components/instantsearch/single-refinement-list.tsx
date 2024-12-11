@@ -1,4 +1,5 @@
 "use client";
+import { cn } from "@acdh-oeaw/style-variants";
 import type { RefinementListItem } from "instantsearch.js/es/connectors/refinement-list/connectRefinementList";
 import { useMenu, type UseMenuProps } from "react-instantsearch";
 
@@ -29,10 +30,13 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 	return (
 		<div className="absolute mr-10 grid h-full grid-rows-[auto_1fr] overflow-y-auto">
 			{props.allLabel ? (
-				<div className="px-2">
+				<div className="mt-1 px-2">
 					<label
 						key="all"
-						className={`block text-right focus-within:outline focus-within:outline-2 ${props.className ? props.className : ""}`}
+						className={cn(
+							"block text-right focus-within:outline focus-within:outline-2",
+							props.className,
+						)}
 					>
 						<input
 							checked={items.every((i) => {
@@ -46,13 +50,14 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 							type="radio"
 						/>
 						<span
-							className={`text-xl hover:cursor-pointer ${
+							className={cn(
+								"text-xl hover:cursor-pointer hover:text-[--color-link-hover]",
 								items.every((i) => {
 									return !i.isRefined;
 								})
 									? "font-medium text-[--color-link-active]"
-									: "text-[--color-link]"
-							}`}
+									: "text-[--color-link]",
+							)}
 						>
 							{props.allLabel}
 						</span>
@@ -64,7 +69,10 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 					return (
 						<label
 							key={item.label}
-							className={`block py-1 text-right leading-tight focus-within:outline focus-within:outline-2 ${props.className ? props.className : ""}`}
+							className={cn(
+								"block py-1 text-right leading-tight focus-within:outline focus-within:outline-2",
+								props.className,
+							)}
 						>
 							<input
 								checked={item.isRefined}
@@ -76,7 +84,10 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 								type="radio"
 							/>
 							<span
-								className={`hover:cursor-pointer ${item.isRefined ? "font-medium text-[--color-link-active]" : "text-[--color-link]"}`}
+								className={cn(
+									"hover:cursor-pointer hover:text-[--color-link-hover]",
+									item.isRefined ? "font-medium text-[--color-link-active]" : "text-[--color-link]",
+								)}
 							>
 								{item.label}
 							</span>

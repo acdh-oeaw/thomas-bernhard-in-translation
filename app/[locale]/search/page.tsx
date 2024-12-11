@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@acdh-oeaw/style-variants";
 import { useTranslations } from "next-intl";
 import { Menu, type MenuProps } from "react-instantsearch";
 
@@ -26,12 +27,12 @@ function FilterMenu(props: {
 				classNames={{
 					count: 'before:content-["("] after:content-[")"]',
 					disabledShowMore: "hidden",
-					item: "leading-tight py-1",
-					label: `px-1 ${props.className ? props.className : ""}`,
+					item: "leading-tight py-1 hover:text-[--color-link-hover]",
+					label: cn("px-1", props.className),
 					list: "text-[--color-link]",
 					root: "py-2 text-right",
 					selectedItem: "font-bold text-[--color-link-active]",
-					showMore: "text-sm pb-4 text-[--color-link]",
+					showMore: "text-sm pb-4 text-[--color-link] hover:text-[--color-link-hover]",
 				}}
 				showMore={true}
 				showMoreLimit={25}
