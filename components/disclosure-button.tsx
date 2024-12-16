@@ -19,6 +19,7 @@ export function DisclosureButton(props: DisclosureButtonProps): ReactNode {
 			aria-expanded={props.state}
 			className={className}
 			onClick={() => {
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-call
 				props.setState(true);
 			}}
 			type="button"

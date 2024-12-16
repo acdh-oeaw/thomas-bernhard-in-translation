@@ -119,7 +119,7 @@ test("should serve an open-graph image", async ({ createIndexPage, request }) =>
 		await expect(indexPage.page.locator('meta[property="og:image"]')).toHaveAttribute(
 			"content",
 			expect.stringContaining(
-				String(createUrl({ baseUrl: env.NEXT_PUBLIC_APP_BASE_URL, pathname: imagePath })) + `?`,
+				`${createUrl({ baseUrl: env.NEXT_PUBLIC_APP_BASE_URL, pathname: imagePath })}?`,
 			),
 		);
 

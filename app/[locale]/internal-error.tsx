@@ -12,6 +12,7 @@ interface InternalErrorProps {
 }
 
 /** `React.lazy` requires default export. */
+// eslint-disable-next-line import-x/no-default-export
 export default function InternalError(props: InternalErrorProps): ReactNode {
 	const { error, reset } = props;
 

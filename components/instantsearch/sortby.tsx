@@ -20,6 +20,7 @@ function SortIcon(props: { field: string | undefined; size: number }): ReactNode
 			return <CalendarArrowDown size={props.size} />;
 		case "title:asc":
 			return <ArrowDownAZ size={props.size} />;
+		case undefined:
 		default:
 			return <ArrowDownUp size={props.size} />;
 	}

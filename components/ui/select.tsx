@@ -14,7 +14,6 @@ import {
 	type ListBoxProps as AriaListBoxProps,
 	Popover as AriaPopover,
 	type PopoverProps as AriaPopoverProps,
-	Section as AriaSection,
 	Select as AriaSelect,
 	SelectValue as AriaSelectValue,
 	type SelectValueProps as AriaSelectValueProps,
@@ -23,8 +22,6 @@ import {
 } from "react-aria-components";
 
 export const Select = AriaSelect;
-
-export const SelectSection = AriaSection;
 
 export const SelectCollection = AriaCollection;
 

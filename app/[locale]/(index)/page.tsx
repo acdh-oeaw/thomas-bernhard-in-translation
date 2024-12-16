@@ -1,5 +1,5 @@
 import type { Metadata, ResolvingMetadata } from "next";
-import { getTranslations, unstable_setRequestLocale as setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { MainContent } from "@/components/main-content";
 import { PublicationGrid } from "@/components/publication-grid";
@@ -48,7 +48,7 @@ export default async function IndexPage(props: IndexPageProps) {
 		// TODO workaround until upgrade to typesense 0.28, afterwards can just use: "_rand:asc"
 		// just look for a single random letter a-w (ASCII 65-87)
 		q: String.fromCharCode(Math.floor(65 + 22 * Math.random())),
-		sort_by: "_text_match:" + (Math.random() > 0.5 ? "asc" : "desc"),
+		sort_by: `_text_match:${Math.random() > 0.5 ? "asc" : "desc"}`,
 	});
 	return (
 		<MainContent>
