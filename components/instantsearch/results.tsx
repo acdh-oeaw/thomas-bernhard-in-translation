@@ -24,12 +24,24 @@ export function Results(props: ResultsProps): ReactNode {
 
 	return (
 		<div className="grid h-full grid-rows-[auto_1fr] overflow-y-auto">
-			<div className="mt-1 flex place-content-between items-center">
-				<InstantSearchStats />
-				<SearchBox placeholder={t("query_placeholder")} />
+			<div className="flex place-content-between items-center gap-6 py-3 pl-1 pr-6">
+				<SearchBox
+					className="pr-4"
+					placeholder={t("query_placeholder")}
+					resetIconComponent={() => {
+						return null;
+					}}
+					submitIconComponent={() => {
+						return null;
+					}}
+				/>
+				<span className="grow">
+					<InstantSearchStats />
+				</span>
 				<InstantSearchSortBy sortOptions={["year:asc", "year:desc", "title:asc"]} />
 				{props.children}
 				<Switch
+					className="react-aria-Switch"
 					isSelected={view === "detail"}
 					onChange={(isSelected) => {
 						setView(isSelected ? "detail" : "covers");

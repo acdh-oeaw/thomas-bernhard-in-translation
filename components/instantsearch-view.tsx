@@ -31,12 +31,14 @@ export function InstantSearchView(props: InstantSearchProps): ReactNode {
 			filters={props.filters}
 			queryArgsToMenuFields={props.queryArgsToMenuFields}
 		>
-			<div className="grid h-full grid-cols-[12rem_1fr] gap-6 p-2">
+			<div className="grid h-full grid-cols-[12rem_1fr] gap-6 px-2">
 				<div className="relative h-full">{props.children}</div>
 				<div className="h-full">
-					<div className="flex place-content-between items-center">
-						<InstantSearchStats />
+					<div className="flex place-content-between items-center gap-6">
 						<SearchBox placeholder={t("query_placeholder")} />
+						<span className="grow">
+							<InstantSearchStats />
+						</span>
 						{props.refinementDropdowns
 							? Object.keys(props.refinementDropdowns).map((attribute) => {
 									return (

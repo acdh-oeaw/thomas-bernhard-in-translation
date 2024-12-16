@@ -57,7 +57,7 @@ export default function TranslatorsPage() {
 					<SingleRefinementDropdown
 						allLabel={t("all languages")}
 						attribute={"language"}
-						className="lowercase"
+						itemClassName="lowercase"
 						refinementArgs={{
 							transformItems: (items) => {
 								return items

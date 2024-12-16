@@ -64,13 +64,13 @@ export function InstantSearchSortBy(props: InstantSearchSortByProps): ReactNode 
 					/>
 				}
 			</SelectTrigger>
-			<SelectPopover>
+			<SelectPopover className="w-fit">
 				<SelectContent>
 					{options.map((o) => {
 						return (
-							<SelectItem key={o.value} id={o.value} textValue={o.label}>
+							<SelectItem key={o.value} className="gap-2" id={o.value} textValue={o.label}>
 								<SortIcon field={o.value} size={20} />
-								<span className="sr-only">{o.label}</span>
+								<span>{o.label}</span>
 							</SelectItem>
 						);
 					})}

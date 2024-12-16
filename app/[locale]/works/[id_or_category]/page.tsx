@@ -27,7 +27,7 @@ export default function WorksPage(props: WorksPageProps) {
 			queryArgsToMenuFields={{ language: "language", work: "contains.work.yeartitle" }}
 		>
 			<MainContent>
-				<div className="grid h-full grid-cols-[25%_75%] gap-6 p-2">
+				<div className="grid h-full grid-cols-[25%_75%] gap-6 px-2">
 					<div className="relative h-full">
 						<SingleRefinementList
 							allLabel={categoryLabel}
@@ -53,6 +53,7 @@ export default function WorksPage(props: WorksPageProps) {
 						<SingleRefinementDropdown
 							allLabel={`${t("all")} ${t("filter_by.language")}`}
 							attribute={"language"}
+							className="min-w-40"
 							refinementArgs={{
 								transformItems: (items: Array<RefinementListItem>) => {
 									return items

@@ -1,4 +1,5 @@
 "use client";
+import { cn } from "@acdh-oeaw/style-variants";
 import type { RefinementListItem } from "instantsearch.js/es/connectors/refinement-list/connectRefinementList";
 import { Label } from "react-aria-components";
 import { useMenu, type UseMenuProps } from "react-instantsearch";
@@ -10,6 +11,7 @@ interface SingleRefinementDropdownProps {
 	allLabel: string;
 	refinementArgs?: Partial<UseMenuProps>;
 	className?: string;
+	itemClassName?: string;
 }
 
 const defaultTransformItems = (items: Array<RefinementListItem>) => {
@@ -38,21 +40,30 @@ export function SingleRefinementDropdown(props: SingleRefinementDropdownProps) {
 			}}
 		>
 			<Label className="sr-only">sort order</Label>
-			<SelectTrigger className={props.className}>
+			<SelectTrigger
+				className={(defaultClassName) => {
+					return cn(defaultClassName, props.className, props.itemClassName);
+				}}
+			>
 				{items.find((i) => {
 					return i.isRefined;
 				})?.label ?? props.allLabel}
 			</SelectTrigger>
 			<SelectPopover>
 				<SelectContent>
-					<SelectItem key={"all"} className="lowercase" id={"all"} textValue={props.allLabel}>
+					<SelectItem
+						key={"all"}
+						className={props.itemClassName}
+						id={"all"}
+						textValue={props.allLabel}
+					>
 						{props.allLabel}
 					</SelectItem>
 					{items.map((o) => {
 						return (
 							<SelectItem
 								key={o.value}
-								className={props.className}
+								className={props.itemClassName}
 								id={o.value}
 								textValue={o.label}
 							>

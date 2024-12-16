@@ -28,7 +28,7 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 	});
 
 	return (
-		<div className="absolute grid h-full grid-rows-[auto_1fr] overflow-y-auto">
+		<div className="absolute grid size-full grid-rows-[auto_1fr] overflow-y-auto">
 			{props.allLabel ? (
 				<div className="mt-1 px-2">
 					<label
@@ -52,11 +52,11 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 						<span
 							className={cn(
 								"text-xl hover:cursor-pointer hover:text-[--color-link-hover]",
-								items.every((i) => {
-									return !i.isRefined;
+								items.some((i) => {
+									return i.isRefined;
 								})
-									? "font-medium text-[--color-link-active]"
-									: "text-[--color-link]",
+									? "text-[--color-link]"
+									: "text-[--color-link-active]",
 							)}
 						>
 							{props.allLabel}
@@ -70,7 +70,7 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 						<label
 							key={item.label}
 							className={cn(
-								"block py-1 text-right leading-tight focus-within:outline focus-within:outline-2",
+								"block p-1 text-right leading-tight focus-within:outline focus-within:outline-2",
 								props.className,
 							)}
 						>
@@ -86,7 +86,7 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 							<span
 								className={cn(
 									"hover:cursor-pointer hover:text-[--color-link-hover]",
-									item.isRefined ? "font-medium text-[--color-link-active]" : "text-[--color-link]",
+									item.isRefined ? "text-[--color-link-active]" : "text-[--color-link]",
 								)}
 							>
 								{item.label}
