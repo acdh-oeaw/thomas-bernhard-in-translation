@@ -62,7 +62,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 	});
 
 	return (
-		<MainContent>
+		<MainContent className="mx-auto w-fit max-w-fit p-4">
 			<h1 className="text-3xl font-bold">{pub.title}</h1>
 			<p className="py-3 lowercase italic">
 				{Array.from(
@@ -78,11 +78,11 @@ export default async function PublicationPage(props: PublicationPageProps) {
 					})
 					.join(" / ")}
 			</p>
-			<div className="gap-8 py-8 md:grid md:grid-cols-[1fr_2fr]">
-				<div className="relative mt-4 h-full">
+			<div className="m-auto justify-center gap-8 py-8 md:flex md:flex-row">
+				<div className="relative mt-4 h-full grow basis-1 md:max-w-[30vw]">
 					<PublicationCover className="object-left-top" publication={pub} />
 				</div>
-				<div className="max-w-prose">
+				<div className="max-w-prose grow basis-1">
 					<PublicationDetails>
 						<NameValue name={t("language")}>
 							<LanguageLink language={pub.language} />
@@ -137,7 +137,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 			{earlier ? (
 				<>
 					<h2 className="pt-10 font-bold">{t("earlier_editions")}</h2>
-					<div className="flex">
+					<div className="flex flex-wrap">
 						{earlier.map(async (pp) => {
 							const p = await pp;
 							return (
@@ -153,7 +153,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 			{later ? (
 				<>
 					<h2 className="pt-10 font-bold">{t("later_editions")}</h2>
-					<div className="flex">
+					<div className="flex flex-wrap">
 						{later.map(async (pp) => {
 							const p = await pp;
 							return (

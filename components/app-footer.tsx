@@ -13,7 +13,7 @@ export function AppFooter(): ReactNode {
 	} satisfies Record<string, { href: LinkProps["href"]; label: string }>;
 
 	return (
-		<footer className="m-auto w-screen max-w-screen-xl border-t">
+		<footer className="m-auto w-full max-w-screen-xl border-t">
 			<div className="container flex items-center justify-between gap-4 p-6">
 				<nav aria-label={t("navigation-secondary")}>
 					<ul className="flex items-center gap-4 text-sm" role="list">
