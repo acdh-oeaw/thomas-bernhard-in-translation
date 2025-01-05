@@ -18,7 +18,11 @@ export default function LanguagesPage(props: LanguagesPageProps) {
 	const tl = useTranslations("Languages");
 	return (
 		<MainContent>
-			<InstantSearchView queryArgsToMenuFields={{ language: "language" }}>
+			<InstantSearchView
+				pageName="languages"
+				pathnameField="language"
+				// queryArgsToMenuFields={{ language: "language" }}
+			>
 				<SingleRefinementList
 					allLabel={t("all languages")}
 					attribute={"language"}

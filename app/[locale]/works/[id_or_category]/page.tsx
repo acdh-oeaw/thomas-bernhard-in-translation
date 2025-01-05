@@ -2,10 +2,10 @@
 import type { RefinementListItem } from "instantsearch.js/es/connectors/refinement-list/connectRefinementList";
 import { useTranslations } from "next-intl";
 
-import { InstantSearchProvider } from "@/components/instantsearch/instantsearchprovider";
 import { Results } from "@/components/instantsearch/results";
 import { SingleRefinementDropdown } from "@/components/instantsearch/single-refinement-dropdown";
 import { SingleRefinementList } from "@/components/instantsearch/single-refinement-list";
+import { ThomasBernhardInstantSearchProvider } from "@/components/instantsearch/thomas-bernhard/thomasbernhard-instantsearchprovider";
 import { MainContent } from "@/components/main-content";
 
 interface WorksPageProps {
@@ -22,7 +22,7 @@ export default function WorksPage(props: WorksPageProps) {
 	const tl = useTranslations("Languages");
 
 	return (
-		<InstantSearchProvider
+		<ThomasBernhardInstantSearchProvider
 			filters={`contains.work.category:${props.params.id_or_category}`}
 			queryArgsToMenuFields={{ language: "language", work: "contains.work.yeartitle" }}
 		>
@@ -71,6 +71,6 @@ export default function WorksPage(props: WorksPageProps) {
 					</Results>
 				</div>
 			</MainContent>
-		</InstantSearchProvider>
+		</ThomasBernhardInstantSearchProvider>
 	);
 }

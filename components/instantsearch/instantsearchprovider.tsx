@@ -1,43 +1,39 @@
 "use client";
 
 import type { UiState } from "instantsearch.js";
+// eslint-disable-next-line no-restricted-imports
+import singletonRouter from "next/router";
 import type { ReactNode } from "react";
 import { Configure } from "react-instantsearch";
 import { InstantSearchNext } from "react-instantsearch-nextjs";
-import TypesenseInstantSearchAdapter, { type SearchClient } from "typesense-instantsearch-adapter";
+import { createInstantSearchRouterNext } from "react-instantsearch-router-nextjs";
+import type { SearchClient } from "typesense-instantsearch-adapter";
 
-import { env } from "@/config/env.config";
-import { collectionName } from "@/lib/data";
-
-interface InstantSearchProviderProps {
-	queryArgsToMenuFields: Record<string, string>;
+export interface InstantSearchProviderProps {
 	children?: ReactNode;
+	collectionName: string;
+	pageName?: string;
+	pathnameField?: string;
+	queryArgsToMenuFields?: Record<string, string>;
+	defaultSort?: string;
 	filters?: string;
+	searchClient: SearchClient;
 }
-
-const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
-	server: {
-		apiKey: env.NEXT_PUBLIC_TYPESENSE_API_KEY,
-		nodes: [
-			{
-				host: env.NEXT_PUBLIC_TYPESENSE_HOST,
-				port: env.NEXT_PUBLIC_TYPESENSE_PORT,
-				protocol: env.NEXT_PUBLIC_TYPESENSE_PROTOCOL,
-			},
-		],
-	},
-	additionalSearchParameters: {
-		query_by: "title,contains.title,contains.work.title,contains.translators.name,publisher",
-	},
-});
-
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-const searchClient = typesenseInstantsearchAdapter.searchClient as unknown as SearchClient;
 
 type RouteState = Record<string, string | undefined>;
 
 export function InstantSearchProvider(props: InstantSearchProviderProps): ReactNode {
-	const { children, filters, queryArgsToMenuFields } = props;
+	const {
+		children,
+		collectionName,
+		filters,
+		defaultSort,
+		pageName,
+		pathnameField,
+		queryArgsToMenuFields,
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+		searchClient,
+	} = props;
 	const filter = filters
 		? // '&&' is typesense convention, not instantsearch!
 			`erstpublikation:true && ${filters}`
@@ -46,40 +42,88 @@ export function InstantSearchProvider(props: InstantSearchProviderProps): ReactN
 		<InstantSearchNext
 			indexName={collectionName}
 			routing={{
-				stateMapping: {
-					stateToRoute(uiState: UiState) {
-						const indexUiState = uiState[collectionName]!;
-						const route = {} as RouteState;
-						route.q = indexUiState.query && encodeURI(indexUiState.query);
-						route.sort = indexUiState.sortBy?.split("/").at(-1);
-						if (indexUiState.menu) {
-							for (const [field, value] of Object.entries(indexUiState.menu)) {
-								const queryarg = Object.entries(queryArgsToMenuFields).find(([_k, v]) => {
-									return v === field;
-								})?.[0];
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+				router: createInstantSearchRouterNext({
+					// https://github.com/algolia/instantsearch/tree/master/packages/react-instantsearch-router-nextjs
+					singletonRouter,
+					routerOptions: {
+						// eslint-disable-next-line @typescript-eslint/no-unused-vars
+						createURL({ location }) {
+							// this function doesn't get called for some reason
+							return `/en/languages/dummy`;
+						},
+						parseURL({ qsModule, location }) {
+							const queryArgs = qsModule.parse(location.search.slice(1));
 
-								route[queryarg!] = encodeURI(value);
+							if (queryArgs.query) {
+								queryArgs.query = decodeURIComponent(queryArgs.query as string);
 							}
-						}
-						return route;
-					},
 
+							if (pageName) {
+								// trim leading and trailing slashes
+								const parts = location.pathname.replace(/^\/+|\/+$/gm, "").split("/");
+								if (parts.at(-1) !== pageName) {
+									// the last element is not the expected page name, assume it's the value of the
+									// pathnameField
+									queryArgs[pathnameField ?? pageName] = parts.at(-1);
+								}
+							}
+							return queryArgs as UiState;
+						},
+					},
+					// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				}) as any,
+				stateMapping: {
 					routeToState(routeState: RouteState) {
+						if (!("sort" in routeState)) {
+							routeState.sort = defaultSort;
+						}
 						const uiState = {
 							[collectionName]: {
 								query: routeState.q && decodeURI(routeState.q),
 								menu: {},
-								refinementList: {},
-								sortBy: routeState.sort ? `${collectionName}/sort/${routeState.sort}` : undefined,
+								// refinementList: {},
+								sortBy: routeState.sort && `${collectionName}/sort/${routeState.sort}`,
 							},
 						} as UiState;
-
-						Object.entries(queryArgsToMenuFields).forEach(([queryArg, field]) => {
-							if (routeState[queryArg]) {
-								uiState[collectionName]!.menu![field] = decodeURI(routeState[queryArg]);
-							}
-						});
+						if (queryArgsToMenuFields) {
+							Object.entries(queryArgsToMenuFields).forEach(([queryArg, field]) => {
+								if (routeState[queryArg]) {
+									uiState[collectionName]!.menu![field] = decodeURI(routeState[queryArg]);
+								}
+							});
+						}
+						if (pathnameField && routeState[pathnameField]) {
+							uiState[collectionName]!.menu![pathnameField] = routeState[pathnameField];
+						}
 						return uiState;
+					},
+					stateToRoute: (uiState: UiState) => {
+						const indexUiState = uiState[collectionName]!;
+						const route = {} as RouteState;
+						if (indexUiState.query) {
+							route.q = encodeURI(indexUiState.query);
+						}
+						if (indexUiState.sortBy) {
+							const sortBy = indexUiState.sortBy.split("/").at(-1);
+							if (sortBy !== defaultSort) {
+								route.sort = sortBy;
+							}
+						}
+						if (indexUiState.menu) {
+							if (queryArgsToMenuFields) {
+								for (const [field, value] of Object.entries(indexUiState.menu)) {
+									const queryarg = Object.entries(queryArgsToMenuFields).find(([_k, v]) => {
+										return v === field;
+									})?.[0];
+									route[queryarg!] = encodeURI(value);
+								}
+							}
+							if (pathnameField && pathnameField in indexUiState.menu) {
+								route[pathnameField] = indexUiState.menu[pathnameField];
+							}
+						}
+						return route;
 					},
 				},
 			}}

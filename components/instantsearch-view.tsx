@@ -7,30 +7,27 @@ import { Switch } from "react-aria-components";
 import { SearchBox } from "react-instantsearch";
 
 import { InfiniteScroll } from "./instantsearch/infinitescroll";
-import { InstantSearchProvider } from "./instantsearch/instantsearchprovider";
 import { PaginatedTable } from "./instantsearch/paginated-table";
 import { SingleRefinementDropdown } from "./instantsearch/single-refinement-dropdown";
 import { InstantSearchSortBy } from "./instantsearch/sortby";
 import { InstantSearchStats } from "./instantsearch/stats";
+import {
+	ThomasBernhardInstantSearchProvider,
+	type ThomasBernhardInstantSearchProviderProps,
+} from "./instantsearch/thomas-bernhard/thomasbernhard-instantsearchprovider";
 
-interface InstantSearchProps {
-	queryArgsToMenuFields: Record<string, string>;
+interface InstantSearchViewProps extends Partial<ThomasBernhardInstantSearchProviderProps> {
 	refinementDropdowns?: Record<string, string>;
-	children?: ReactNode;
-	filters?: string;
 }
 
-export function InstantSearchView(props: InstantSearchProps): ReactNode {
+export function InstantSearchView(props: InstantSearchViewProps): ReactNode {
 	const t = useTranslations("InstantSearch");
 
 	// TODO encode current state in URL
 	const [view, setView] = useState<"covers" | "detail">("covers");
 
 	return (
-		<InstantSearchProvider
-			filters={props.filters}
-			queryArgsToMenuFields={props.queryArgsToMenuFields}
-		>
+		<ThomasBernhardInstantSearchProvider {...props}>
 			<div className="grid h-full grid-cols-[12rem_1fr] gap-6 px-2">
 				<div className="relative h-full">{props.children}</div>
 				<div className="h-full">
@@ -68,6 +65,6 @@ export function InstantSearchView(props: InstantSearchProps): ReactNode {
 					</div>
 				</div>
 			</div>
-		</InstantSearchProvider>
+		</ThomasBernhardInstantSearchProvider>
 	);
 }
