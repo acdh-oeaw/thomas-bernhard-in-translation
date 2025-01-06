@@ -89,7 +89,7 @@ export function AppHeaderNavMenu(): ReactNode {
 	};
 
 	return (
-		<nav aria-label={t("navigation-primary")}>
+		<nav aria-label={t("navigation-primary")} className="flex flex-col justify-center">
 			<ul className="flex items-center gap-6 text-sm" role="list">
 				{Object.entries(topLevelItems).map(([id, item]) => {
 					return <li key={id}>{item}</li>;

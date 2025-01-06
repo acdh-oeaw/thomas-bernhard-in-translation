@@ -137,7 +137,8 @@ for i, w in enumerate(works):
     w["category"] = categories[w["category"]] if w["category"] else "fragments"
 
     # helper field for the faceted listing by work
-    w["yeartitle"] = f'{w["category"]}${w["year"]}${w["short_title"]}'
+    # w["yeartitle"] = f'{w["category"]}_{w["year"]}_{w["short_title"].replace(" ", "_")}'
+    w["yeartitle"] = f'{w["category"]}_{w["year"]}_{w["short_title"]}'
 
 for t in translations:
     t["work"] = works[t["work"] - 1]

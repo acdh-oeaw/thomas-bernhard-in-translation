@@ -11,8 +11,8 @@ import { LocaleSwitcher } from "./locale-switcher";
 export function AppHeader(): ReactNode {
 	const t = useTranslations("AppHeader");
 	return (
-		<header className="mx-auto grid w-full max-w-screen-xl auto-cols-auto grid-flow-col gap-4 border-b p-6">
-			<div className="mr-20 mt-2 flex flex-col">
+		<header className="mx-auto grid w-full max-w-screen-xl auto-cols-auto grid-flow-col gap-6 border-b p-6">
+			<div className="flex flex-col justify-center">
 				<Link className="font-bold lowercase" href={createHref({})}>
 					{t("title")}
 				</Link>

@@ -46,7 +46,7 @@ export default function WorksPage(props: WorksPageProps) {
 											return item.label.startsWith(props.params.category);
 										})
 										.map((item) => {
-											const [year, title] = item.label.split("_");
+											const [_category, year, title] = item.label.split("_");
 											item.label = Number.isNaN(parseInt(year!)) ? title! : `${title!} (${year!})`;
 											return item;
 										});
