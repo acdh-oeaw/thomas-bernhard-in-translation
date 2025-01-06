@@ -40,14 +40,9 @@ export function InstantSearchSortBy(props: InstantSearchSortByProps): ReactNode 
 	const { currentRefinement, options, refine } = useSortBy({
 		items: sortByItems,
 	});
-	// enforce initial sort
-	if (currentRefinement === collectionName) {
-		refine(`${collectionName}/sort/${props.sortOptions[0]!}`);
-	}
-
 	return (
 		<Select
-			defaultSelectedKey={sortByItems[0]?.value}
+			defaultSelectedKey={currentRefinement}
 			onSelectionChange={(selected) => {
 				refine(selected as string);
 			}}

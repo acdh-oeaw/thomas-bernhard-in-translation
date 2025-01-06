@@ -10,21 +10,26 @@ import { MainContent } from "@/components/main-content";
 
 interface WorksPageProps {
 	params: {
-		id_or_category: string;
+		category: string;
 	};
 }
 
 export default function WorksPage(props: WorksPageProps) {
 	const ct = useTranslations("BernhardCategories");
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const categoryLabel = ct(props.params.id_or_category as any);
+	const categoryLabel = ct(props.params.category as any);
+	// TODO validate category
 	const t = useTranslations("InstantSearch");
 	const tl = useTranslations("Languages");
 
+	// TODO get id -> year+title dictionaries from backend
+
 	return (
 		<ThomasBernhardInstantSearchProvider
-			filters={`contains.work.category:${props.params.id_or_category}`}
-			queryArgsToMenuFields={{ language: "language", work: "contains.work.yeartitle" }}
+			filters={`contains.work.category:=${props.params.category}`}
+			// pageName={props.params.category} // hack
+			// pathnameField="contains.work.yeartitle"
+			queryArgsToMenuFields={{ work: "contains.work.yeartitle", language: "language" }}
 		>
 			<MainContent>
 				<div className="grid h-full grid-cols-[25%_75%] gap-6 px-2">
@@ -38,10 +43,10 @@ export default function WorksPage(props: WorksPageProps) {
 								transformItems: (items: Array<RefinementListItem>) => {
 									return items
 										.filter((item) => {
-											return item.label.startsWith(props.params.id_or_category);
+											return item.label.startsWith(props.params.category);
 										})
 										.map((item) => {
-											const [_cat, year, title] = item.label.split("$");
+											const [year, title] = item.label.split("_");
 											item.label = Number.isNaN(parseInt(year!)) ? title! : `${title!} (${year!})`;
 											return item;
 										});

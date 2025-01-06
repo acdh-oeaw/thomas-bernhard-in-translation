@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { Configure } from "react-instantsearch";
 import TypesenseInstantSearchAdapter, { type SearchClient } from "typesense-instantsearch-adapter";
 
 import { env } from "@/config/env.config";
@@ -28,13 +29,16 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
 const searchClient = typesenseInstantsearchAdapter.searchClient as unknown as SearchClient;
 
 export interface ThomasBernhardInstantSearchProviderProps
-	extends Partial<InstantSearchProviderProps> {}
+	extends Partial<InstantSearchProviderProps> {
+	filters?: string;
+	hitsPerPage?: number;
+}
 
 export function ThomasBernhardInstantSearchProvider(
 	props: ThomasBernhardInstantSearchProviderProps,
 ): ReactNode {
-	const { children, filters } = props;
-	const _filter = filters
+	const { children, filters, hitsPerPage = 30 } = props;
+	const filter = filters
 		? // '&&' is typesense convention, not instantsearch!
 			`erstpublikation:true && ${filters}`
 		: "erstpublikation:true";
@@ -46,6 +50,7 @@ export function ThomasBernhardInstantSearchProvider(
 			searchClient={searchClient}
 			{...props}
 		>
+			<Configure filters={filter} hitsPerPage={hitsPerPage} />
 			{children}
 		</InstantSearchProvider>
 	);
