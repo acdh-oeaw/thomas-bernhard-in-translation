@@ -1,11 +1,8 @@
 "use client";
 
 import type { UiState } from "instantsearch.js";
-// eslint-disable-next-line no-restricted-imports
-import singletonRouter from "next/router";
 import type { ReactNode } from "react";
 import { InstantSearchNext } from "react-instantsearch-nextjs";
-import { createInstantSearchRouterNext } from "react-instantsearch-router-nextjs";
 import type { SearchClient } from "typesense-instantsearch-adapter";
 
 export interface InstantSearchProviderProps {
@@ -35,48 +32,43 @@ export function InstantSearchProvider(props: InstantSearchProviderProps): ReactN
 		<InstantSearchNext
 			indexName={collectionName}
 			routing={{
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-				router: createInstantSearchRouterNext({
-					// https://github.com/algolia/instantsearch/tree/master/packages/react-instantsearch-router-nextjs
-					singletonRouter,
-					routerOptions: {
-						createURL({ location, routeState, qsModule }) {
-							// BUG this function never gets called
-							const parts = location.pathname.split("/");
-							if (pageName) {
-								if (parts.at(-1) !== pageName) {
-									parts.pop();
-								}
-								// TODO also remove value if not in routestate
-								if (pathnameField && pathnameField in routeState) {
-									parts.push(routeState[pathnameField] as string);
-									// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-									delete routeState[pathnameField];
-								}
+				router: {
+					// "The difference here is that routing.router takes the same options as the historyRouter."
+					createURL({ location, routeState, qsModule }) {
+						const parts = location.pathname.split("/");
+						if (pageName) {
+							if (parts.at(-1) !== pageName) {
+								parts.pop();
 							}
-							return `${parts.join("/")}?${qsModule.stringify(routeState)}`;
-						},
-						parseURL({ qsModule, location }) {
-							const queryArgs = qsModule.parse(location.search.slice(1));
+							if (pathnameField && routeState[pathnameField]) {
+								parts.push(routeState[pathnameField]);
 
-							if (queryArgs.query) {
-								queryArgs.query = decodeURIComponent(queryArgs.query as string);
+								// remove field from state so it isn't also added to queryargs
+								// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+								delete routeState[pathnameField];
 							}
-
-							if (pageName) {
-								// trim leading and trailing slashes
-								const parts = location.pathname.replace(/^\/+|\/+$/gm, "").split("/");
-								if (parts.at(-1) !== pageName) {
-									// the last element is not the expected page name, assume it's the value of the
-									// pathnameField
-									queryArgs[pathnameField ?? pageName] = parts.at(-1);
-								}
-							}
-							return queryArgs as UiState;
-						},
+						}
+						return `${parts.join("/")}?${qsModule.stringify(routeState)}`;
 					},
-					// eslint-disable-next-line @typescript-eslint/no-explicit-any
-				}) as any,
+					parseURL({ qsModule, location }) {
+						const queryArgs = qsModule.parse(location.search.slice(1));
+
+						if (queryArgs.query) {
+							queryArgs.query = decodeURIComponent(queryArgs.query as string);
+						}
+
+						if (pageName) {
+							// trim leading and trailing slashes
+							const parts = location.pathname.replace(/^\/+|\/+$/gm, "").split("/");
+							if (parts.at(-1) !== pageName) {
+								// the last element is not the expected page name, assume it's the value of the
+								// pathnameField
+								queryArgs[pathnameField ?? pageName] = parts.at(-1);
+							}
+						}
+						return queryArgs as RouteState;
+					},
+				},
 				stateMapping: {
 					routeToState(routeState: RouteState) {
 						if (!("sort" in routeState)) {
@@ -105,6 +97,9 @@ export function InstantSearchProvider(props: InstantSearchProviderProps): ReactN
 					stateToRoute: (uiState: UiState) => {
 						const indexUiState = uiState[collectionName]!;
 						const route = {} as RouteState;
+						if (pathnameField) {
+							route[pathnameField] = undefined;
+						}
 						if (indexUiState.query) {
 							route.q = encodeURI(indexUiState.query);
 						}
@@ -123,7 +118,7 @@ export function InstantSearchProvider(props: InstantSearchProviderProps): ReactN
 									route[queryarg!] = encodeURI(value);
 								}
 							}
-							if (pathnameField && pathnameField in indexUiState.menu) {
+							if (pathnameField) {
 								route[pathnameField] = indexUiState.menu[pathnameField];
 							}
 						}
