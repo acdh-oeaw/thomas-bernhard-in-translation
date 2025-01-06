@@ -90,13 +90,17 @@ export function AppHeaderNavMenu(): ReactNode {
 
 	return (
 		<nav aria-label={t("navigation-primary")}>
-			<ul className="flex h-10 items-center gap-4 text-sm" role="list">
+			<ul className="flex items-center gap-6 text-sm" role="list">
 				{Object.entries(topLevelItems).map(([id, item]) => {
 					return <li key={id}>{item}</li>;
 				})}
 			</ul>
 			{worksMenuOpen ? (
-				<ul className="flex h-10 items-center gap-4 text-sm" id={worksMenu} role="list">
+				<ul
+					className="mt-4 flex items-center gap-6 text-center text-sm leading-4"
+					id={worksMenu}
+					role="list"
+				>
 					<li>
 						<DisclosureButton
 							controls={proseMenu}
@@ -122,7 +126,11 @@ export function AppHeaderNavMenu(): ReactNode {
 				</ul>
 			) : null}
 			{worksMenuOpen && proseMenuOpen ? (
-				<ul className="flex h-10 items-center gap-4 text-sm" id={proseMenu} role="list">
+				<ul
+					className="mt-4 flex items-center gap-6 text-center text-sm leading-4"
+					id={proseMenu}
+					role="list"
+				>
 					{proseCategories.map((c) => {
 						return (
 							<AppNavLink key={c} className="lowercase" href={`/works/${c}`}>
