@@ -53,6 +53,9 @@ importers:
       react-instantsearch-nextjs:
         specifier: ^0.3.20
         version: 0.3.20(next@14.2.20(@babel/core@7.26.0)(@playwright/test@1.49.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-instantsearch@7.13.9(algoliasearch@5.13.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+      react-instantsearch-router-nextjs:
+        specifier: ^7.13.9
+        version: 7.13.9(algoliasearch@5.13.0)(next@14.2.20(@babel/core@7.26.0)(@playwright/test@1.49.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       react-schemaorg:
         specifier: ^2.0.0
         version: 2.0.0(react@18.3.1)(schema-dts@1.1.2(typescript@5.7.2))(typescript@5.7.2)
@@ -1574,6 +1577,9 @@ packages:
   caniuse-lite@1.0.30001689:
     resolution: {integrity: sha512-CmeR2VBycfa+5/jOfnp/NpWPGd06nf1XYiefUvhXFfZE4GkRc9jv+eGPS4nT558WS/8lYCzV8SlANCIPvbWP1g==}
 
+  caniuse-lite@1.0.30001690:
+    resolution: {integrity: sha512-5ExiE3qQN6oF8Clf8ifIDcMRCRE/dMGcETG/XGMD8/XiXm6HXQgQTh1yZYLXXpSOsEUlJm1Xr7kGULZTuGtP/w==}
+
   chalk@4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
     engines: {node: '>=10'}
@@ -1769,8 +1775,8 @@ packages:
     resolution: {integrity: sha512-cgwlv/1iFQiFnU96XXgROh8xTeetsnJiDsTc7TYCLFd9+/WNkIqPTxiM/8pSd8VIrhXGTf1Ny1q1hquVqDJB5w==}
     engines: {node: '>= 4'}
 
-  domutils@3.1.0:
-    resolution: {integrity: sha512-H78uMmQtI2AhgDJjWeQmHwJJ2bLPD3GMmO7Zja/ZZh84wkm+4ut+IUnUdRa8uCGX88DiVx1j6FRe1XfxEgjEZA==}
+  domutils@3.2.1:
+    resolution: {integrity: sha512-xWXmuRnN9OMP6ptPd2+H0cCbcYBULa5YDTbMm/2lvkWvNA3O4wcW+GvzooqBuNM8yy6pl3VIAeJTUUWUbfI5Fw==}
 
   dotenv-expand@11.0.7:
     resolution: {integrity: sha512-zIHwmZPRshsCdpMDyVsqGmgyP0yT8GAgXUnkdAoJisxvf33k7yO6OuoKmcTGuXPWSsm8Oh88nZicRLA9Y0rUeA==}
@@ -1790,8 +1796,8 @@ packages:
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
-  electron-to-chromium@1.5.73:
-    resolution: {integrity: sha512-8wGNxG9tAG5KhGd3eeA0o6ixhiNdgr0DcHWm85XPCphwZgD1lIEoi6t3VERayWao7SF7AAZTw6oARGJeVjH8Kg==}
+  electron-to-chromium@1.5.76:
+    resolution: {integrity: sha512-CjVQyG7n7Sr+eBXE86HIulnL5N8xZY1sgmOPGuq/F0Rr0FJq63lg0kEtOIDfZBk44FnDLf6FUJ+dsJcuiUDdDQ==}
 
   emoji-regex@10.4.0:
     resolution: {integrity: sha512-EC+0oUMY1Rqm4O6LLrgjtYDvcVYTy7chDnM4Q7030tP4Kwj3u/pR6gP9ygnp2CJMK5Gq+9Q2oqmrFJAz01DXjw==}
@@ -1905,8 +1911,8 @@ packages:
     peerDependencies:
       eslint: '>=8.40.0'
 
-  eslint-plugin-react-compiler@19.0.0-beta-201e55d-20241215:
-    resolution: {integrity: sha512-KTOMW6Z4Eg2r5BPT/BncbwPswfuVH9KPPDVszOTQFXGNlxhExL8IZoSE3blYxk4e0wFDbCcAwe4UlTauQ8lIww==}
+  eslint-plugin-react-compiler@19.0.0-beta-55955c9-20241229:
+    resolution: {integrity: sha512-KsE6bQrNvtPDbMb9EolZ2C+Z2/uv2Y5cAUgN+pzbriXjKlf1FkbgiyE153m2mIT6gEZq2OrtFvX7uJj5IrNQlg==}
     engines: {node: ^14.17.0 || ^16.0.0 || >= 18.0.0}
     peerDependencies:
       eslint: '>=7'
@@ -2949,6 +2955,11 @@ packages:
       next: '>= 13.4 < 15'
       react-instantsearch: '>= 7.1.0 < 8'
 
+  react-instantsearch-router-nextjs@7.13.9:
+    resolution: {integrity: sha512-uJ8LBERBr6+sXqauYOlLiVDgv9i+THrV5m6Ioa3VaiSXXy1DrDERhjnNpiBU3c7djR/4xRy6ydSNuNrM5/z8Uw==}
+    peerDependencies:
+      next: '>= 9 && < 15'
+
   react-instantsearch@7.13.9:
     resolution: {integrity: sha512-UlllLY5blY7PaRVKMHw3gg42iR3Wwtp7g4833Vq2OqcYX4blaxUuveY8O2vEvAiQYek+MQgXqrkHTLHU4DvuiQ==}
     peerDependencies:
@@ -3538,7 +3549,7 @@ snapshots:
       eslint-config-prettier: 9.1.0(eslint@9.17.0(jiti@1.21.6))
       eslint-plugin-jsx-a11y: 6.10.2(eslint@9.17.0(jiti@1.21.6))
       eslint-plugin-react: 7.37.2(eslint@9.17.0(jiti@1.21.6))
-      eslint-plugin-react-compiler: 19.0.0-beta-201e55d-20241215(eslint@9.17.0(jiti@1.21.6))
+      eslint-plugin-react-compiler: 19.0.0-beta-55955c9-20241229(eslint@9.17.0(jiti@1.21.6))
       eslint-plugin-react-hooks: 5.1.0(eslint@9.17.0(jiti@1.21.6))
     transitivePeerDependencies:
       - eslint
@@ -5402,8 +5413,8 @@ snapshots:
 
   browserslist@4.24.3:
     dependencies:
-      caniuse-lite: 1.0.30001689
-      electron-to-chromium: 1.5.73
+      caniuse-lite: 1.0.30001690
+      electron-to-chromium: 1.5.76
       node-releases: 2.0.19
       update-browserslist-db: 1.1.1(browserslist@4.24.3)
 
@@ -5433,6 +5444,8 @@ snapshots:
   camelcase-css@2.0.1: {}
 
   caniuse-lite@1.0.30001689: {}
+
+  caniuse-lite@1.0.30001690: {}
 
   chalk@4.1.2:
     dependencies:
@@ -5610,7 +5623,7 @@ snapshots:
     dependencies:
       domelementtype: 2.3.0
 
-  domutils@3.1.0:
+  domutils@3.2.1:
     dependencies:
       dom-serializer: 2.0.0
       domelementtype: 2.3.0
@@ -5632,7 +5645,7 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  electron-to-chromium@1.5.73: {}
+  electron-to-chromium@1.5.76: {}
 
   emoji-regex@10.4.0: {}
 
@@ -5828,7 +5841,7 @@ snapshots:
       eslint: 9.17.0(jiti@1.21.6)
       globals: 13.24.0
 
-  eslint-plugin-react-compiler@19.0.0-beta-201e55d-20241215(eslint@9.17.0(jiti@1.21.6)):
+  eslint-plugin-react-compiler@19.0.0-beta-55955c9-20241229(eslint@9.17.0(jiti@1.21.6)):
     dependencies:
       '@babel/core': 7.26.0
       '@babel/parser': 7.26.3
@@ -6200,7 +6213,7 @@ snapshots:
     dependencies:
       domelementtype: 2.3.0
       domhandler: 5.0.3
-      domutils: 3.1.0
+      domutils: 3.2.1
       entities: 4.5.0
 
   human-signals@5.0.0: {}
@@ -6956,6 +6969,15 @@ snapshots:
     dependencies:
       next: 14.2.20(@babel/core@7.26.0)(@playwright/test@1.49.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-instantsearch: 7.13.9(algoliasearch@5.13.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+
+  react-instantsearch-router-nextjs@7.13.9(algoliasearch@5.13.0)(next@14.2.20(@babel/core@7.26.0)(@playwright/test@1.49.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1):
+    dependencies:
+      instantsearch.js: 4.75.6(algoliasearch@5.13.0)
+      next: 14.2.20(@babel/core@7.26.0)(@playwright/test@1.49.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react-instantsearch-core: 7.13.9(algoliasearch@5.13.0)(react@18.3.1)
+    transitivePeerDependencies:
+      - algoliasearch
+      - react
 
   react-instantsearch@7.13.9(algoliasearch@5.13.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:

@@ -4,7 +4,6 @@ import type { UiState } from "instantsearch.js";
 // eslint-disable-next-line no-restricted-imports
 import singletonRouter from "next/router";
 import type { ReactNode } from "react";
-import { Configure } from "react-instantsearch";
 import { InstantSearchNext } from "react-instantsearch-nextjs";
 import { createInstantSearchRouterNext } from "react-instantsearch-router-nextjs";
 import type { SearchClient } from "typesense-instantsearch-adapter";
@@ -16,7 +15,6 @@ export interface InstantSearchProviderProps {
 	pathnameField?: string;
 	queryArgsToMenuFields?: Record<string, string>;
 	defaultSort?: string;
-	filters?: string;
 	searchClient: SearchClient;
 }
 
@@ -26,7 +24,6 @@ export function InstantSearchProvider(props: InstantSearchProviderProps): ReactN
 	const {
 		children,
 		collectionName,
-		filters,
 		defaultSort,
 		pageName,
 		pathnameField,
@@ -34,10 +31,6 @@ export function InstantSearchProvider(props: InstantSearchProviderProps): ReactN
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 		searchClient,
 	} = props;
-	const filter = filters
-		? // '&&' is typesense convention, not instantsearch!
-			`erstpublikation:true && ${filters}`
-		: "erstpublikation:true";
 	return (
 		<InstantSearchNext
 			indexName={collectionName}
@@ -47,10 +40,21 @@ export function InstantSearchProvider(props: InstantSearchProviderProps): ReactN
 					// https://github.com/algolia/instantsearch/tree/master/packages/react-instantsearch-router-nextjs
 					singletonRouter,
 					routerOptions: {
-						// eslint-disable-next-line @typescript-eslint/no-unused-vars
-						createURL({ location }) {
-							// this function doesn't get called for some reason
-							return `/en/languages/dummy`;
+						createURL({ location, routeState, qsModule }) {
+							// BUG this function never gets called
+							const parts = location.pathname.split("/");
+							if (pageName) {
+								if (parts.at(-1) !== pageName) {
+									parts.pop();
+								}
+								// TODO also remove value if not in routestate
+								if (pathnameField && pathnameField in routeState) {
+									parts.push(routeState[pathnameField] as string);
+									// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+									delete routeState[pathnameField];
+								}
+							}
+							return `${parts.join("/")}?${qsModule.stringify(routeState)}`;
 						},
 						parseURL({ qsModule, location }) {
 							const queryArgs = qsModule.parse(location.search.slice(1));
@@ -130,7 +134,6 @@ export function InstantSearchProvider(props: InstantSearchProviderProps): ReactN
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 			searchClient={searchClient}
 		>
-			<Configure filters={filter} hitsPerPage={30} />
 			{children}
 		</InstantSearchNext>
 	);
