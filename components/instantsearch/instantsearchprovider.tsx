@@ -40,6 +40,7 @@ export function InstantSearchProvider(props: InstantSearchProviderProps): ReactN
 							if (parts.at(-1) !== pageName) {
 								parts.pop();
 							}
+							// don't add value if it is undefined
 							if (pathnameField && routeState[pathnameField]) {
 								parts.push(routeState[pathnameField]);
 
@@ -48,7 +49,8 @@ export function InstantSearchProvider(props: InstantSearchProviderProps): ReactN
 								delete routeState[pathnameField];
 							}
 						}
-						return `${parts.join("/")}?${qsModule.stringify(routeState)}`;
+						const qa = qsModule.stringify(routeState);
+						return parts.join("/") + (qa && `?${qa}`);
 					},
 					parseURL({ qsModule, location }) {
 						const queryArgs = qsModule.parse(location.search.slice(1));
