@@ -1,4 +1,4 @@
-import { ArrowDownAZ, ArrowDownUp, CalendarArrowDown, CalendarArrowUp } from "lucide-react";
+import { ArrowUpDown, type LucideIcon } from "lucide-react";
 import { type MessageKeys, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 import { Label } from "react-aria-components";
@@ -9,27 +9,13 @@ import { collectionName } from "@/lib/data";
 import { Select, SelectContent, SelectItem, SelectPopover, SelectTrigger } from "../ui/select";
 
 interface InstantSearchSortByProps {
-	sortOptions: Array<string>;
-}
-
-function SortIcon(props: { field: string | undefined; size: number }): ReactNode {
-	switch (props.field?.split("/")[2]) {
-		case "year:desc":
-			return <CalendarArrowUp size={props.size} />; // alternatively: ClockArrow?
-		case "year:asc":
-			return <CalendarArrowDown size={props.size} />;
-		case "title:asc":
-			return <ArrowDownAZ size={props.size} />;
-		case undefined:
-		default:
-			return <ArrowDownUp size={props.size} />;
-	}
+	sortOptions: Record<string, LucideIcon>;
 }
 
 export function InstantSearchSortBy(props: InstantSearchSortByProps): ReactNode {
 	const t = useTranslations("InstantSearch");
 
-	const sortByItems = props.sortOptions.map((field) => {
+	const sortByItems = Object.keys(props.sortOptions).map((field) => {
 		return {
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			label: t(`sort.${field}` as MessageKeys<any, any>),
@@ -40,6 +26,12 @@ export function InstantSearchSortBy(props: InstantSearchSortByProps): ReactNode 
 	const { currentRefinement, options, refine } = useSortBy({
 		items: sortByItems,
 	});
+
+	const getIcon = (value: string): LucideIcon => {
+		return props.sortOptions[value.split("/")[2]!] ?? ArrowUpDown;
+	};
+
+	const SelectedIcon = getIcon(currentRefinement);
 	return (
 		<Select
 			defaultSelectedKey={currentRefinement}
@@ -49,23 +41,15 @@ export function InstantSearchSortBy(props: InstantSearchSortByProps): ReactNode 
 		>
 			<Label className="sr-only">sort order</Label>
 			<SelectTrigger>
-				{
-					<SortIcon
-						field={
-							sortByItems.find(({ value }) => {
-								return value === currentRefinement;
-							})?.value
-						}
-						size={20}
-					/>
-				}
+				<SelectedIcon size={20} />
 			</SelectTrigger>
 			<SelectPopover className="w-fit">
 				<SelectContent>
 					{options.map((o) => {
+						const Icon = getIcon(o.value);
 						return (
 							<SelectItem key={o.value} className="gap-2" id={o.value} textValue={o.label}>
-								<SortIcon field={o.value} size={20} />
+								<Icon size={20} />
 								<span>{o.label}</span>
 							</SelectItem>
 						);

@@ -20,14 +20,20 @@ interface InstantSearchViewProps extends Partial<ThomasBernhardInstantSearchProv
 	refinementDropdowns?: Record<string, string>;
 }
 
+const sortOptions = {
+	"year:desc": CalendarArrowUp,
+	"year:asc": CalendarArrowDown,
+	"title:asc": ArrowDownAZ,
+};
+
 export function InstantSearchView(props: InstantSearchViewProps): ReactNode {
 	const t = useTranslations("InstantSearch");
 
-	// TODO encode current state in URL
+	// TODO encode current view state in URL
 	const [view, setView] = useState<"covers" | "detail">("covers");
 
 	return (
-		<ThomasBernhardInstantSearchProvider {...props}>
+		<ThomasBernhardInstantSearchProvider defaultSort={Object.keys(sortOptions)[0]} {...props}>
 			<div className="grid h-full grid-cols-[12rem_1fr] gap-6 px-2">
 				<div className="relative h-full">{props.children}</div>
 				<div className="h-full">
@@ -47,7 +53,7 @@ export function InstantSearchView(props: InstantSearchViewProps): ReactNode {
 									);
 								})
 							: null}
-						<InstantSearchSortBy sortOptions={["year:asc", "year:desc", "title:asc"]} />
+						<InstantSearchSortBy sortOptions={sortOptions} />
 						<Switch
 							isSelected={view === "detail"}
 							onChange={(isSelected) => {
