@@ -33,6 +33,8 @@ export function InstantSearchProvider(props: InstantSearchProviderProps): ReactN
 			indexName={collectionName}
 			routing={{
 				router: {
+					// FIXME without pageName the url rewriter eats up queryargs?
+
 					// "The difference here is that routing.router takes the same options as the historyRouter."
 					createURL({ location, routeState, qsModule }) {
 						const parts = location.pathname.split("/");

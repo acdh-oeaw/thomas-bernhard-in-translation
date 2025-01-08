@@ -10,11 +10,7 @@ interface BernhardWorkProps {
 
 export function BernhardWorkLink(props: BernhardWorkProps) {
 	return (
-		<AppNavLink
-			href={encodeURI(
-				`/works/${props.work.category!}?work=${props.work.category!}$${props.work.year ? props.work.year.toString() : "None"}$${props.work.short_title!}`,
-			)}
-		>
+		<AppNavLink href={encodeURI(`/works/${props.work.category!}/${props.work.id.toString()}`)}>
 			{props.display_title ?? props.work.title}
 		</AppNavLink>
 	);

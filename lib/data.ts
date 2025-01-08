@@ -1,7 +1,7 @@
 import { Client } from "typesense";
 
 import { env } from "@/config/env.config";
-import type { Publication } from "@/lib/model";
+import type { BernhardWork, Category, Publication } from "@/lib/model";
 
 export const client = new Client({
 	nodes: [
@@ -76,4 +76,26 @@ export async function getPublications({
 				return h.document;
 			}) as unknown as Array<Publication>;
 		});
+}
+
+export async function getWorks(category: Category): Promise<Record<number, BernhardWork>> {
+	const x = await collection.documents().search({
+		q: "*",
+		filter_by: `contains.work.category:${category}`,
+		per_page: 250, // hard maximum
+	});
+	const works = x.hits?.reduce((accumulator: Record<number, BernhardWork>, hit) => {
+		const pub = hit.document as Publication;
+		pub.contains
+			.filter((translation) => {
+				return translation.work.category === category;
+			})
+			.forEach((translation) => {
+				if (!(translation.work.id in accumulator)) {
+					accumulator[translation.work.id] = translation.work;
+				}
+			});
+		return accumulator;
+	}, {});
+	return works!;
 }

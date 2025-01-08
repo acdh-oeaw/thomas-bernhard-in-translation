@@ -1,6 +1,12 @@
 "use client";
 
-import { LayoutGrid, LayoutList } from "lucide-react";
+import {
+	ArrowDownAZ,
+	CalendarArrowDown,
+	CalendarArrowUp,
+	LayoutGrid,
+	LayoutList,
+} from "lucide-react";
 import { useTranslations } from "next-intl";
 import { type ReactNode, useState } from "react";
 import { Switch } from "react-aria-components";
@@ -15,6 +21,12 @@ interface ResultsProps {
 	className?: string;
 	children?: ReactNode;
 }
+
+const sortOptions = {
+	"year:asc": CalendarArrowDown,
+	"year:desc": CalendarArrowUp,
+	"title:asc": ArrowDownAZ,
+};
 
 export function Results(props: ResultsProps): ReactNode {
 	const t = useTranslations("InstantSearch");
@@ -38,7 +50,7 @@ export function Results(props: ResultsProps): ReactNode {
 				<span className="grow">
 					<InstantSearchStats />
 				</span>
-				<InstantSearchSortBy sortOptions={["year:asc", "year:desc", "title:asc"]} />
+				<InstantSearchSortBy sortOptions={sortOptions} />
 				{props.children}
 				<Switch
 					className="react-aria-Switch"

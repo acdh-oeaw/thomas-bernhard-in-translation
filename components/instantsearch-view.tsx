@@ -1,6 +1,12 @@
 "use client";
 
-import { LayoutGrid, LayoutList } from "lucide-react";
+import {
+	ArrowDownAZ,
+	CalendarArrowDown,
+	CalendarArrowUp,
+	LayoutGrid,
+	LayoutList,
+} from "lucide-react";
 import { useTranslations } from "next-intl";
 import { type ReactNode, useState } from "react";
 import { Switch } from "react-aria-components";
@@ -21,8 +27,8 @@ interface InstantSearchViewProps extends Partial<ThomasBernhardInstantSearchProv
 }
 
 const sortOptions = {
-	"year:desc": CalendarArrowUp,
 	"year:asc": CalendarArrowDown,
+	"year:desc": CalendarArrowUp,
 	"title:asc": ArrowDownAZ,
 };
 
