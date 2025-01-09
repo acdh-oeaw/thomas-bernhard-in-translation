@@ -139,6 +139,8 @@ for i, w in enumerate(works):
 for t in translations:
     t["work"] = works[t["work"] - 1]
     t["translators"] = [translators[t_id - 1] for t_id in t["translators"]]
+    if "MISSING" in t["title"]:
+        t["title"] = "???"
     # work around https://typesense.org/docs/guide/tips-for-searching-common-types-of-data.html#searching-for-null-or-empty-values
     # for the /translators page
     t["has_translators"] = len(t["translators"]) != 0
@@ -194,7 +196,11 @@ for i, pub in enumerate(publications):
     if not w["short_title"]:
         w["short_title"] = w["title"]
 
-    pub["contains"] = [translations[t_id - 1] for t_id in pub["contains"]]
+    pub["contains"] = [
+        translations[t_id - 1]
+        for t_id in pub["contains"]
+        if "MISSING" not in translations[t_id - 1]["work"]["title"]
+    ]
     pub["language"] = languages[pub["language"]]
 
     pub["images"] = (
@@ -252,10 +258,10 @@ except ObjectNotFound:
 
 
 if r["num_documents"] > 0:
-    logging.info(f'Clearing {r["num_documents"]} existing documents')
+    logging.info(f"Clearing {r['num_documents']} existing documents")
     r = client.collections[collection_name].documents.delete({"filter_by": 'id :!= ""'})
     logging.info(
-        f'Cleared {r["num_deleted"]} documents from collection {collection_name}'
+        f"Cleared {r['num_deleted']} documents from collection {collection_name}"
     )
 
 logging.info(f"importing {len(publications)} documents")
