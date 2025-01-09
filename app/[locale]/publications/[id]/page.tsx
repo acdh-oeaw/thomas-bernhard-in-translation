@@ -63,7 +63,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 
 	return (
 		<MainContent className="mx-auto w-fit max-w-fit p-4">
-			<h1 className="text-3xl font-bold">{pub.title}</h1>
+			<h1 className="max-w-screen-lg text-3xl font-bold">{pub.title}</h1>
 			<p className="py-3 lowercase italic">
 				{Array.from(
 					new Set(
@@ -88,16 +88,20 @@ export default async function PublicationPage(props: PublicationPageProps) {
 							<LanguageLink language={pub.language} />
 						</NameValue>
 						<NameValue name={t("translated_by")}>
-							<InlineList separator=" / ">
-								{translatorInfo.map((t, i) => {
-									return (
-										<span key={i} className="text-nowrap">
-											<TranslatorLink translator={t[0]} />
-											{showIndices ? <sup>{i + 1}</sup> : null}
-										</span>
-									);
-								})}
-							</InlineList>
+							{translatorInfo.length ? (
+								<InlineList separator=" / ">
+									{translatorInfo.map((t, i) => {
+										return (
+											<span key={i} className="text-nowrap">
+												<TranslatorLink translator={t[0]} />
+												{showIndices ? <sup>{i + 1}</sup> : null}
+											</span>
+										);
+									})}
+								</InlineList>
+							) : (
+								<span className="italic">{t("unknown")}</span>
+							)}
 						</NameValue>
 						<NameValue name={t("publisher")}>
 							<PublisherLink publisher={pub.publisher} /> {pub.publication_details}
