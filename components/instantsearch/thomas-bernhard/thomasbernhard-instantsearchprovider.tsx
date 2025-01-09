@@ -38,10 +38,9 @@ export function ThomasBernhardInstantSearchProvider(
 	props: ThomasBernhardInstantSearchProviderProps,
 ): ReactNode {
 	const { children, filters, hitsPerPage = 30 } = props;
-	const filter = filters
-		? // '&&' is typesense convention, not instantsearch!
-			`erstpublikation:true && ${filters}`
-		: "erstpublikation:true";
+
+	// '&&' is typesense convention, not instantsearch!
+	const filter = `erstpublikation:true ${filters ? `&& ${filters}` : ""}`;
 	return (
 		<InstantSearchProvider
 			collectionName={collectionName}

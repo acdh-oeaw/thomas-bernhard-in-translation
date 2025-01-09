@@ -6,6 +6,7 @@ import { useMenu, type UseMenuProps } from "react-instantsearch";
 interface SingleRefinementListProps {
 	attribute: string;
 	allLabel?: string;
+	pathname?: string;
 	refinementArgs?: Partial<UseMenuProps>;
 	className?: string;
 }
