@@ -136,7 +136,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 
 			{earlier ? (
 				<>
-					<h2 className="pt-10 font-bold">{t("earlier_editions")}</h2>
+					<h2 className="pt-10 font-bold lowercase">{t("earlier_editions")}</h2>
 					<div className="flex flex-wrap">
 						{earlier.map(async (pp) => {
 							const p = await pp;
@@ -152,7 +152,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 
 			{later ? (
 				<>
-					<h2 className="pt-10 font-bold">{t("later_editions")}</h2>
+					<h2 className="pt-10 font-bold lowercase">{t("later_editions")}</h2>
 					<div className="flex flex-wrap">
 						{later.map(async (pp) => {
 							const p = await pp;
@@ -167,7 +167,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 			) : null}
 
 			<section>
-				<h2 className="pt-10 font-bold">
+				<h2 className="pt-10 font-bold lowercase">
 					{t("more_in")}{" "}
 					{
 						// eslint-disable-next-line @typescript-eslint/no-explicit-any
