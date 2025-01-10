@@ -33,13 +33,12 @@ export function InstantSearchProvider(props: InstantSearchProviderProps): ReactN
 			indexName={collectionName}
 			routing={{
 				router: {
-					// FIXME without pageName the url rewriter eats up queryargs?
-
 					// "The difference here is that routing.router takes the same options as the historyRouter."
 					createURL({ location, routeState, qsModule }) {
 						const parts = location.pathname.split("/");
 						if (pageName) {
-							if (parts.at(-1) !== pageName) {
+							const splitPageName = pageName.split("/");
+							if (parts.at(-1) !== splitPageName.at(-1)) {
 								parts.pop();
 							}
 							// don't add value if it is undefined
@@ -64,7 +63,8 @@ export function InstantSearchProvider(props: InstantSearchProviderProps): ReactN
 						if (pageName) {
 							// trim leading and trailing slashes
 							const parts = location.pathname.replace(/^\/+|\/+$/gm, "").split("/");
-							if (parts.at(-1) !== pageName) {
+							const splitPageName = pageName.split("/");
+							if (parts.at(-1) !== splitPageName.at(-1)) {
 								// the last element is not the expected page name, assume it's the value of the
 								// pathnameField
 								queryArgs[pathnameField ?? pageName] = parts.at(-1);
@@ -101,9 +101,9 @@ export function InstantSearchProvider(props: InstantSearchProviderProps): ReactN
 					stateToRoute: (uiState: UiState) => {
 						const indexUiState = uiState[collectionName]!;
 						const route = {} as RouteState;
-						if (pathnameField) {
-							route[pathnameField] = undefined;
-						}
+						// if (pathnameField) {
+						// 	route[pathnameField] = undefined;
+						// }
 						if (indexUiState.query) {
 							route.q = encodeURI(indexUiState.query);
 						}
@@ -119,7 +119,9 @@ export function InstantSearchProvider(props: InstantSearchProviderProps): ReactN
 									const queryarg = Object.entries(queryArgsToMenuFields).find(([_k, v]) => {
 										return v === field;
 									})?.[0];
-									route[queryarg!] = encodeURI(value);
+									if (queryarg) {
+										route[queryarg] = encodeURI(value);
+									}
 								}
 							}
 							if (pathnameField) {

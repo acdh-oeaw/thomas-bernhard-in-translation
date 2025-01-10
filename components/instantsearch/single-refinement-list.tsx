@@ -1,6 +1,8 @@
 "use client";
 import { cn } from "@acdh-oeaw/style-variants";
+import type { MenuItem } from "instantsearch.js/es/connectors/menu/connectMenu";
 import type { RefinementListItem } from "instantsearch.js/es/connectors/refinement-list/connectRefinementList";
+import type { ReactNode } from "react";
 import { useMenu, type UseMenuProps } from "react-instantsearch";
 
 interface SingleRefinementListProps {
@@ -18,25 +20,64 @@ const defaultTransformItems = (items: Array<RefinementListItem>) => {
 	});
 };
 
+interface MenuItemProps {
+	className?: string;
+	item: MenuItem;
+	refine: (value: string) => void;
+	// pathname?: string;
+}
+
+function MenuItem(props: MenuItemProps): ReactNode {
+	const { className, item, refine } = props;
+	return (
+		<label
+			key={item.label}
+			className={cn(
+				"block p-1 text-right leading-tight focus-within:outline focus-within:outline-2",
+				className,
+			)}
+		>
+			<input
+				checked={item.isRefined}
+				className="sr-only"
+				name="refinement"
+				onChange={() => {
+					refine(item.value);
+				}}
+				type="radio"
+			/>
+			<span
+				className={cn(
+					"hover:cursor-pointer hover:text-[--color-link-hover]",
+					item.isRefined ? "text-[--color-link-active]" : "text-[--color-link]",
+				)}
+			>
+				{item.label}
+			</span>
+		</label>
+	);
+}
+
 // a refinement list that is alphabetically ordered and only allows filtering for one value
 export function SingleRefinementList(props: SingleRefinementListProps) {
+	const { attribute, allLabel, refinementArgs, className } = props;
 	const { items, refine } = useMenu({
-		attribute: props.attribute,
+		attribute: attribute,
 		limit: 1000,
 		sortBy: ["name"],
 		transformItems: defaultTransformItems,
-		...props.refinementArgs,
+		...refinementArgs,
 	});
 
 	return (
 		<div className="absolute grid size-full grid-rows-[auto_1fr] overflow-y-auto">
-			{props.allLabel ? (
+			{allLabel ? (
 				<div className="mt-1 px-2">
 					<label
 						key="all"
 						className={cn(
 							"block text-right focus-within:outline focus-within:outline-2",
-							props.className,
+							className,
 						)}
 					>
 						<input
@@ -60,7 +101,7 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 									: "text-[--color-link-active]",
 							)}
 						>
-							{props.allLabel}
+							{allLabel}
 						</span>
 					</label>
 				</div>
@@ -68,31 +109,14 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 			<div className="h-full p-2">
 				{items.map((item) => {
 					return (
-						<label
-							key={item.label}
-							className={cn(
-								"block p-1 text-right leading-tight focus-within:outline focus-within:outline-2",
-								props.className,
-							)}
-						>
-							<input
-								checked={item.isRefined}
-								className="sr-only"
-								name="refinement"
-								onChange={() => {
-									refine(item.value);
-								}}
-								type="radio"
-							/>
-							<span
-								className={cn(
-									"hover:cursor-pointer hover:text-[--color-link-hover]",
-									item.isRefined ? "text-[--color-link-active]" : "text-[--color-link]",
-								)}
-							>
-								{item.label}
-							</span>
-						</label>
+						<MenuItem
+							key={item.value}
+							className={className}
+							// createURL={createURL}
+							item={item}
+							// pathname={pathname}
+							refine={refine}
+						/>
 					);
 				})}
 			</div>
