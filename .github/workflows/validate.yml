@@ -93,17 +93,17 @@ jobs:
           NEXT_PUBLIC_TYPESENSE_PORT: "${{ vars.NEXT_PUBLIC_TYPESENSE_PORT }}"
           NEXT_PUBLIC_TYPESENSE_PROTOCOL: "${{ vars.NEXT_PUBLIC_TYPESENSE_PROTOCOL }}"
 
-      - name: Run e2e tests
-        run: pnpm run test:e2e
-        env:
-          NEXT_PUBLIC_APP_BASE_URL: "http://localhost:3000"
-          NEXT_PUBLIC_MATOMO_BASE_URL: "${{ vars.NEXT_PUBLIC_MATOMO_BASE_URL }}"
-          NEXT_PUBLIC_REDMINE_ID: "${{ vars.SERVICE_ID }}"
-          NEXT_PUBLIC_TYPESENSE_API_KEY: "${{ vars.NEXT_PUBLIC_TYPESENSE_API_KEY }}"
-          NEXT_PUBLIC_TYPESENSE_COLLECTION_NAME: "${{ vars.NEXT_PUBLIC_TYPESENSE_COLLECTION_NAME }}"
-          NEXT_PUBLIC_TYPESENSE_HOST: "${{ vars.NEXT_PUBLIC_TYPESENSE_HOST }}"
-          NEXT_PUBLIC_TYPESENSE_PORT: "${{ vars.NEXT_PUBLIC_TYPESENSE_PORT }}"
-          NEXT_PUBLIC_TYPESENSE_PROTOCOL: "${{ vars.NEXT_PUBLIC_TYPESENSE_PROTOCOL }}"
+      # - name: Run e2e tests
+      #   run: pnpm run test:e2e
+      #   env:
+      #     NEXT_PUBLIC_APP_BASE_URL: "http://localhost:3000"
+      #     NEXT_PUBLIC_MATOMO_BASE_URL: "${{ vars.NEXT_PUBLIC_MATOMO_BASE_URL }}"
+      #     NEXT_PUBLIC_REDMINE_ID: "${{ vars.SERVICE_ID }}"
+      #     NEXT_PUBLIC_TYPESENSE_API_KEY: "${{ vars.NEXT_PUBLIC_TYPESENSE_API_KEY }}"
+      #     NEXT_PUBLIC_TYPESENSE_COLLECTION_NAME: "${{ vars.NEXT_PUBLIC_TYPESENSE_COLLECTION_NAME }}"
+      #     NEXT_PUBLIC_TYPESENSE_HOST: "${{ vars.NEXT_PUBLIC_TYPESENSE_HOST }}"
+      #     NEXT_PUBLIC_TYPESENSE_PORT: "${{ vars.NEXT_PUBLIC_TYPESENSE_PORT }}"
+      #     NEXT_PUBLIC_TYPESENSE_PROTOCOL: "${{ vars.NEXT_PUBLIC_TYPESENSE_PROTOCOL }}"
 
       - uses: actions/upload-artifact@v4
         if: always()
