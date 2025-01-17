@@ -101,9 +101,9 @@ export function InstantSearchProvider(props: InstantSearchProviderProps): ReactN
 					stateToRoute: (uiState: UiState) => {
 						const indexUiState = uiState[collectionName]!;
 						const route = {} as RouteState;
-						// if (pathnameField) {
-						// 	route[pathnameField] = undefined;
-						// }
+						if (pathnameField) {
+							route[pathnameField] = undefined;
+						}
 						if (indexUiState.query) {
 							route.q = encodeURI(indexUiState.query);
 						}
