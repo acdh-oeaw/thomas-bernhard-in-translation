@@ -45,24 +45,13 @@ export function WorksPage(props: WorksPageProps) {
 				.filter((item) => {
 					return item.value in works;
 				})
-				.sort((a, b) => {
-					const ya = works[a.value]!.year;
-					const yb = works[b.value]!.year;
-					if (!ya) {
-						return 1;
-					} else if (!yb) {
-						return -1;
-					} else {
-						return ya - yb;
-					}
-				})
 				.map((item) => {
 					const work = works[item.value]!;
 					item.label = work.short_title ?? work.title;
-					if (work.year) {
-						item.label += ` (${work.year.toString()})`;
-					}
 					return item;
+				})
+				.sort((a, b) => {
+					return a.label.localeCompare(b.label);
 				})
 		);
 	};
