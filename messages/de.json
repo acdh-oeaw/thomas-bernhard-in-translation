@@ -49,6 +49,9 @@
 		"lead-in": "",
 		"title": "Thomas Bernhard in Translation"
 	},
+	"InlineList": {
+		"and_x_more": "+ noch {x, number}"
+	},
 	"InstantSearch": {
 		"all": "alle",
 		"filter": "Suche",
