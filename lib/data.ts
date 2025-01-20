@@ -83,6 +83,7 @@ export async function getWorks(category: Category): Promise<Record<number, Bernh
 		q: "*",
 		filter_by: `contains.work.category:${category}`,
 		per_page: 250, // hard maximum
+		include_fields: "contains.work",
 	});
 	const works = x.hits?.reduce((accumulator: Record<number, BernhardWork>, hit) => {
 		const pub = hit.document as Publication;
