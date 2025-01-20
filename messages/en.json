@@ -4,7 +4,7 @@
 		"autobiography": "autobiography",
 		"drama": "drama & libretti",
 		"fragments": "fragments",
-		"letterspeechinterview": "letters, speeches, interviews",
+		"letterspeechinterview": "letters, speeches, interviews & other writings",
 		"novellas": "novellas & short prose",
 		"novels": "novels",
 		"prose": "prose",
@@ -19,6 +19,7 @@
 	"AppHeader": {
 		"links": {
 			"home": "home",
+			"about": "about this page",
 			"works": "works",
 			"languages": "languages",
 			"search": "search",
