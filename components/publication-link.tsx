@@ -13,7 +13,7 @@ interface PublicationLinkProps {
 export function PublicationLink(props: PublicationLinkProps) {
 	return (
 		<AppLink className={props.className} href={`/publications/${props.publication.id.toString()}`}>
-			{props.children ?? props.publication.short_title ?? props.publication.title}
+			{props.children ?? props.publication.short_title}
 		</AppLink>
 	);
 }
