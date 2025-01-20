@@ -51,7 +51,7 @@ export function InstantSearchProvider(props: InstantSearchProviderProps): ReactN
 							}
 						}
 						const qa = qsModule.stringify(routeState);
-						return parts.join("/") + (qa && `?${qa}`);
+						return location.origin + parts.join("/") + (qa && `?${qa}`);
 					},
 					parseURL({ qsModule, location }) {
 						const queryArgs = qsModule.parse(location.search.slice(1));
