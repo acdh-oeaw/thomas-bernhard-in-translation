@@ -35,8 +35,7 @@ export function WorksPage(props: WorksPageProps) {
 						<SingleRefinementList
 							allLabel={ct(category)}
 							attribute={"contains.work.id"}
-							// pathname={`/works/${category}`}
-							// format as title (year) instead of showing facet count
+							className="lowercase"
 							refinementArgs={{
 								transformItems: (items: Array<RefinementListItem>) => {
 									return (
