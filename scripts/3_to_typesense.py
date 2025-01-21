@@ -193,8 +193,8 @@ languages = {
 
 for i, pub in enumerate(publications):
     pub["id"] = str(i + 1)
-    if not w["short_title"]:
-        w["short_title"] = w["title"]
+    if "short_title" not in pub:
+        pub["short_title"] = pub["title"]
 
     pub["contains"] = [
         translations[t_id - 1]
