@@ -57,13 +57,6 @@ export function AppHeaderNavMenu(): ReactNode {
 				onClick={closeMenus}
 			/>
 		),
-		about: (
-			<AppHeaderNavMenuLink
-				href={createHref({ pathname: "/about" })}
-				label={t("links.about")}
-				onClick={closeMenus}
-			/>
-		),
 		works: (
 			<DisclosureButton
 				controls={worksMenu}
@@ -83,6 +76,13 @@ export function AppHeaderNavMenu(): ReactNode {
 			<AppHeaderNavMenuLink
 				href={createHref({ pathname: "/translators" })}
 				label={t("links.translators")}
+				onClick={closeMenus}
+			/>
+		),
+		about: (
+			<AppHeaderNavMenuLink
+				href={createHref({ pathname: "/about" })}
+				label={t("links.about")}
 				onClick={closeMenus}
 			/>
 		),
