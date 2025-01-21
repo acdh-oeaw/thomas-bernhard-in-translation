@@ -4,11 +4,11 @@
 		"autobiography": "autobiography",
 		"drama": "drama & libretti",
 		"fragments": "fragments",
-		"letterspeechinterview": "letters, speeches, interviews & other writings",
 		"novellas": "novellas & short prose",
 		"novels": "novels",
-		"prose": "prose",
-		"poetry": "poetry"
+		"other": "letters, speeches, interviews & other writings",
+		"poetry": "poetry",
+		"prose": "prose"
 	},
 	"AppFooter": {
 		"links": {

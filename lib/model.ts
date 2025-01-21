@@ -1,5 +1,5 @@
 // these end up in public URLs as slugs, so come up with good names!
-export const otherCategories = ["drama", "poetry", "letterspeechinterview", "adaptations"] as const;
+export const otherCategories = ["drama", "poetry", "other", "adaptations"] as const;
 export const proseCategories = ["novels", "novellas", "autobiography", "fragments"] as const;
 export const bernhardCategories = [...otherCategories, ...proseCategories] as const;
 

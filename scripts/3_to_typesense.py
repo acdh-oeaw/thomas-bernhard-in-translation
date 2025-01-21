@@ -121,7 +121,7 @@ categories = {
     "autobiography": "autobiography",
     "drama & libretti": "drama",
     "fragments": "fragments",
-    "letters, speeches, interviews": "letterspeechinterview",
+    "letters, speeches, interviews": "other",
     "novellas & short prose": "novellas",
     "novels": "novels",
     "prose": "prose",
