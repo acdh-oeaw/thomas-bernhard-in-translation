@@ -9,11 +9,11 @@ on:
   pull_request:
     branches:
       - main
-      - dev
+      - develop
   push:
     branches:
       - main
-      - dev
+      - develop
 
 jobs:
   validate:
