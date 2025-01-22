@@ -76,7 +76,7 @@ export function SingleRefinementList(props: SingleRefinementListProps) {
 					<label
 						key="all"
 						className={cn(
-							"block text-right focus-within:outline focus-within:outline-2",
+							"block text-right lowercase focus-within:outline focus-within:outline-2",
 							className,
 						)}
 					>
