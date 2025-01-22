@@ -31,6 +31,22 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Derive environment from git ref
+        id: environment
+        run: |
+          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            ENVIRONMENT="production"
+            APP_NAME_SUFFIX=""
+          elif [ "${{ github.ref }}" = "refs/heads/develop" ]; then
+            ENVIRONMENT="development"
+            APP_NAME_SUFFIX="-development"
+          else
+            exit 1
+          fi
+
+          echo "ENVIRONMENT=$ENVIRONMENT" >> $GITHUB_OUTPUT
+          echo "APP_NAME_SUFFIX=$APP_NAME_SUFFIX" >> $GITHUB_OUTPUT
+
       # Necessary because `actions/setup-node` does not yet support `corepack`.
       # @see https://github.com/actions/setup-node/issues/531
       - name: Install pnpm
