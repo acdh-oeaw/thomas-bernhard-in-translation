@@ -35,7 +35,6 @@ export function WorksPage(props: WorksPageProps) {
 						<SingleRefinementList
 							allLabel={ct(category)}
 							attribute={"contains.work.id"}
-							className="lowercase"
 							refinementArgs={{
 								transformItems: (items: Array<RefinementListItem>) => {
 									return (

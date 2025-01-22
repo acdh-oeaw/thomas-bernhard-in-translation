@@ -1,4 +1,4 @@
-# About this Page
+# About this page
 
 In other languages, said Thomas Bernhard, known as the ›master of exaggeration‹, his works are »unrecognizable. A translated book is like a corpse, mangled beyond recognition by a car. You can pick up the debris, but it’s no use anymore.« (W22.2: 300). Bernhard became a figure of world literature precisely because this ›debris work‹ was tirelessly carried out ever since in 1967 the French and Serbian translations of his debut novel Frost laid the foundation for his ongoing international impact.
 
