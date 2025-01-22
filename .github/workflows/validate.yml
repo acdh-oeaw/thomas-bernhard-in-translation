@@ -46,17 +46,16 @@ jobs:
 
   validate:
     name: Validate
+    needs: [env]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 60
     environment:
       name: "${{ needs.env.outputs.environment }}"
-
     strategy:
       fail-fast: true
       matrix:
         node-version: [22.x]
         os: [ubuntu-latest]
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
