@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 # type: ignore
-import logging
-from dotenv import load_dotenv
-import json
 import argparse
+import json
+import logging
 import os
+import sys
+
+from dotenv import load_dotenv
 import typesense
 from typesense.exceptions import ObjectNotFound
 
@@ -25,6 +27,19 @@ parser.add_argument(
     help="Increase the verbosity of the logging output: default is WARNING, use -v for INFO, -vv for DEBUG",
 )
 
+output = parser.add_mutually_exclusive_group(required=True)
+
+output.add_argument(
+    "--typesense", "-t", action="store_true", help="write the merged data to typesense"
+)
+
+output.add_argument(
+    "--json",
+    "-j",
+    action="store_true",
+    help="write the merged data to json files in the data-final/ directory",
+)
+
 args = parser.parse_args()
 
 logging.basicConfig(
@@ -33,19 +48,12 @@ logging.basicConfig(
 )
 
 
-logging.debug(f"Loading typesense access data from {args.env}")
-os.chdir(os.path.dirname(__file__))
-load_dotenv(args.env)
-
-
 def fatal(msg):
     logging.fatal(msg)
     exit(1)
 
 
-logging.info(
-    "step 1: accumulate relational data into a typesense-ready nested structure"
-)
+logging.info("accumulating relational data into a typesense-ready nested structure")
 
 
 def load_json(dirname, filename):
@@ -102,13 +110,17 @@ merge_changes(translations, translation_changes, ["title", "work_display_title"]
 merge_changes(works, work_changes, ["title", "short_title", "year", "category", "gnd"])
 merge_changes(translators, translator_changes, ["name", "gnd"])
 
-# create nested structures
-
 
 def del_empty_strings(o, field_names):
     for f in field_names:
         if not o[f]:
             del o[f]
+
+
+def null_empty_strings(o, field_names):
+    for f in field_names:
+        if not o[f]:
+            o[f] = None
 
 
 for i, t in enumerate(translators):
@@ -131,20 +143,26 @@ categories = {
 for i, w in enumerate(works):
     # add 1-indexed bernhard work ids to allow links to work ids
     w["id"] = i + 1
-    if not w["short_title"]:
-        w["short_title"] = w["title"]
-
     w["category"] = categories[w["category"]] if w["category"] else "fragments"
 
-for t in translations:
-    t["work"] = works[t["work"] - 1]
-    t["translators"] = [translators[t_id - 1] for t_id in t["translators"]]
+    if not w["short_title"]:
+        w["short_title"] = w["title"] if args.typesense else None
+    null_empty_strings(w, ["gnd"])
+
+
+for i, t in enumerate(translations):
+    t["id"] = i + 1
     if "MISSING" in t["title"]:
         t["title"] = "???"
-    # work around https://typesense.org/docs/guide/tips-for-searching-common-types-of-data.html#searching-for-null-or-empty-values
-    # for the /translators page
-    t["has_translators"] = len(t["translators"]) != 0
-    del_empty_strings(t, ["work_display_title"])
+    null_empty_strings(t, ["work_display_title"])
+
+    if args.typesense:
+        # create nested structures
+        t["work"] = works[t["work"] - 1]
+        t["translators"] = [translators[t_id - 1] for t_id in t["translators"]]
+        # work around https://typesense.org/docs/guide/tips-for-searching-common-types-of-data.html#searching-for-null-or-empty-values
+        # for the /translators page
+        t["has_translators"] = len(t["translators"]) != 0
 
 languages = {
     "albanian": "sq",
@@ -192,23 +210,26 @@ languages = {
 }
 
 for i, pub in enumerate(publications):
-    pub["id"] = str(i + 1)
-    if "short_title" not in pub:
-        pub["short_title"] = pub["title"]
-
-    pub["contains"] = [
-        translations[t_id - 1]
-        for t_id in pub["contains"]
-        if "MISSING" not in translations[t_id - 1]["work"]["title"]
-    ]
+    pub["id"] = i + 1
     pub["language"] = languages[pub["language"]]
+
+    if "short_title" not in pub:
+        pub["short_title"] = pub["title"] if args.typesense else None
+
+    if args.typesense:
+        # create nested structures
+        pub["contains"] = [
+            translations[t_id - 1]
+            for t_id in pub["contains"]
+            if "MISSING" not in translations[t_id - 1]["work"]["title"]
+        ]
+        pub["has_image"] = len(pub["images"]) > 0
+        if not pub["year_display"]:
+            pub["year_display"] = str(pub["year"])
 
     pub["images"] = (
         [{"id": img} for img in pub["images"].split(" ")] if len(pub["images"]) else []
     )
-    pub["has_image"] = len(pub["images"]) > 0
-    if not pub["year_display"]:
-        pub["year_display"] = str(pub["year"])
 
     for pid in pub["parents"]:
         if "later" in publications[pid - 1]:
@@ -217,6 +238,7 @@ for i, pub in enumerate(publications):
             publications[pid - 1]["later"] = [i + 1]
 
     del_empty_strings(pub, ["isbn", "parents", "publication_details"])
+    null_empty_strings(pub, ["year_display"])
 
     # trim data a little
     del pub["exemplar_suhrkamp_berlin"]
@@ -224,7 +246,41 @@ for i, pub in enumerate(publications):
     del pub["original_publication"]
     del pub["zusatzinfos"]
 
-logging.info("step 2: insert nested documents into typesense")
+if args.json:
+    logging.info("removing orphans before json writeout")
+    for t in translations:
+        if all([t["id"] not in p["contains"] for p in publications]):
+            logging.info(f"deleting orphaned translation #{t['id']}")
+    for w in works:
+        if all([t["id"] != t["work"] for t in translations]):
+            logging.info(f"deleting orphaned work #{t['id']}")
+    for i, tr in enumerate(translators):
+        if all([tr["id"] not in t["translators"] for t in translations]):
+            logging.info(f"deleting orphaned translator #{tr['id']}")
+            del translators[i]
+
+    logging.info("writing json to data-final/")
+
+    def dump_relational(name, data):
+        with open(f"data-final/{name}.json", "w") as file:
+            file.write(json.dumps(data, indent=4))
+
+    dump_relational("publications", publications)
+    dump_relational("translations", translations)
+    dump_relational("works", works)
+    dump_relational("translators", translators)
+    sys.exit(0)
+
+
+logging.info(f"loading typesense access data from {args.env}")
+os.chdir(os.path.dirname(__file__))
+load_dotenv(args.env)
+
+# for typesense
+for pub in publications:
+    pub["id"] = str(pub["id"])
+
+logging.info("inserting nested documents into typesense")
 
 if "TYPESENSE_ADMIN_API_KEY" not in os.environ:
     fatal("Couldn't find typesense database information in environment files")

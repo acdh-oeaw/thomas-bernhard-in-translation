@@ -10,7 +10,11 @@ export interface Publication {
 	id: number;
 	signatur: string;
 	title: string;
+
+	// if unset, short_title is the same as title
 	short_title: string;
+
+	// language tag according to https://www.rfc-editor.org/rfc/rfc5646.html -- see messages scripts/3_merge_data.py or messages/*.json for the list of codes used
 	language: string;
 	contains: Array<Translation>;
 
@@ -36,7 +40,7 @@ export interface Publication {
 
 export interface Translation {
 	id: number;
-	title: string; // translated title,
+	title: string; // title of the translation
 	work: BernhardWork;
 
 	// the original work title of a translation might deviate from the canonical title of the original work, e.g. adding '(Auswahl)' etc.
@@ -46,8 +50,12 @@ export interface Translation {
 
 export interface BernhardWork {
 	id: number;
-	title: string; // german/french original
-	short_title: string; // abbreviated title, commonly used for letters
+
+	// canonical title of the german/french original
+	title: string;
+
+	// abbreviated title, commonly used for letters. if unset, short_title is the same as title
+	short_title: string;
 	year?: number;
 	category?: Category;
 }
