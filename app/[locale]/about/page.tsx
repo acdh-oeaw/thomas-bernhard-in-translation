@@ -1,6 +1,7 @@
 import { join } from "node:path";
 
 import { notFound } from "next/navigation";
+import rehypeExternalLinks from "rehype-external-links";
 import toHtml from "rehype-stringify";
 import fromMarkdown from "remark-parse";
 import toHast from "remark-rehype";
@@ -14,7 +15,11 @@ import forschungsstelle from "@/public/assets/images/forschungsstelle.png";
 import itbg from "@/public/assets/images/itbg.png";
 import suhrkamp from "@/public/assets/images/suhrkamp.png";
 
-const processor = unified().use(fromMarkdown).use(toHast).use(toHtml);
+const processor = unified()
+	.use(fromMarkdown)
+	.use(toHast)
+	.use(rehypeExternalLinks, { target: "_blank" })
+	.use(toHtml);
 
 interface AboutPageProps {
 	params: {
