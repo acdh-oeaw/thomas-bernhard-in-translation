@@ -53,9 +53,6 @@ importers:
       react-instantsearch-nextjs:
         specifier: ^0.3.20
         version: 0.3.20(next@14.2.20(@babel/core@7.26.0)(@playwright/test@1.49.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-instantsearch@7.13.9(algoliasearch@5.13.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
-      react-instantsearch-router-nextjs:
-        specifier: ^7.13.9
-        version: 7.13.9(algoliasearch@5.13.0)(next@14.2.20(@babel/core@7.26.0)(@playwright/test@1.49.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       react-schemaorg:
         specifier: ^2.0.0
         version: 2.0.0(react@18.3.1)(schema-dts@1.1.2(typescript@5.7.2))(typescript@5.7.2)
@@ -3116,11 +3113,6 @@ packages:
     peerDependencies:
       next: '>= 13.4 < 15'
       react-instantsearch: '>= 7.1.0 < 8'
-
-  react-instantsearch-router-nextjs@7.13.9:
-    resolution: {integrity: sha512-uJ8LBERBr6+sXqauYOlLiVDgv9i+THrV5m6Ioa3VaiSXXy1DrDERhjnNpiBU3c7djR/4xRy6ydSNuNrM5/z8Uw==}
-    peerDependencies:
-      next: '>= 9 && < 15'
 
   react-instantsearch@7.13.9:
     resolution: {integrity: sha512-UlllLY5blY7PaRVKMHw3gg42iR3Wwtp7g4833Vq2OqcYX4blaxUuveY8O2vEvAiQYek+MQgXqrkHTLHU4DvuiQ==}
@@ -7423,15 +7415,6 @@ snapshots:
     dependencies:
       next: 14.2.20(@babel/core@7.26.0)(@playwright/test@1.49.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-instantsearch: 7.13.9(algoliasearch@5.13.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-
-  react-instantsearch-router-nextjs@7.13.9(algoliasearch@5.13.0)(next@14.2.20(@babel/core@7.26.0)(@playwright/test@1.49.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1):
-    dependencies:
-      instantsearch.js: 4.75.6(algoliasearch@5.13.0)
-      next: 14.2.20(@babel/core@7.26.0)(@playwright/test@1.49.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react-instantsearch-core: 7.13.9(algoliasearch@5.13.0)(react@18.3.1)
-    transitivePeerDependencies:
-      - algoliasearch
-      - react
 
   react-instantsearch@7.13.9(algoliasearch@5.13.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
