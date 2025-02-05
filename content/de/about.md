@@ -8,7 +8,7 @@ Im Fokus der Webseite stehen die von Bernhard bemängelten »scheußliche[n] Ums
 
 *thomas bernhard in translation* ist ein an der [Forschungsstelle Thomas Bernhard](https://www.oeaw.ac.at/acdh/research/literary-textual-studies/research/authors-editions/ftb-thomas-bernhard-research-centre) (Abteilung Literatur- und Textwissenschaft, ACDH-CH) realisiertes Kooperationsprojekt mit der [Internationalen Thomas Bernhard Gesellschaft](https://thomasbernhard.at/internationale-thomas-bernhard-gesellschaft/) (ITBG) und dem [Suhrkamp Verlag](https://www.suhrkamp.de/). Das Projektteam bedankt sich herzlich für die Unterstützung bei Nora Mercurio und der Abteilung Rechte & Lizenzen Suhrkamp, beim Residenz Verlag, bei Peter Fabjan, Anny Fabjan und der Thomas Bernhard Nachlassverwaltung.
 
-**Projektbetreuung und -vermittlung**: Juliane Werner (Forschungsstelle Thomas Bernhard, Internationale Thomas Bernhard Gesellschaft)
+**Projektbetreuung und -vermittlung**: Juliane Werner (Österreichische Akademie der Wissenschaften, Internationale Thomas Bernhard Gesellschaft)
 
 **Projektidee und -konzept**: Nina Selzer (Suhrkamp Verlag)
 

@@ -8,7 +8,7 @@ The website highlights what Bernhard referred to as the »hideous covers« (W22.
 
 *thomas bernhard in translation* is a collaborative project realized at the [Thomas Bernhard Research Center](https://www.oeaw.ac.at/acdh/research/literary-textual-studies/research/authors-editions/ftb-thomas-bernhard-research-centre) (Research Unit: Literary & Textual Studies, ACDH-CH) in cooperation with the [International Thomas Bernhard Society](https://thomasbernhard.at/internationale-thomas-bernhard-gesellschaft/) (ITBG) and [Suhrkamp Verlag](https://www.suhrkamp.de/). The project team would like to thank Nora Mercurio and the Suhrkamp Rights & Licensing Department, Residenz Verlag, Peter Fabjan, Anny Fabjan, and the Thomas Bernhard Estate for their support.
 
-**Project Coordination and Supervision**: Juliane Werner (Thomas Bernhard Research Center, International Thomas Bernhard Society)
+**Project Coordination and Supervision**: Juliane Werner (Austrian Academy of Sciences, International Thomas Bernhard Society)
 
 **Project Idea and Concept**: Nina Selzer (Suhrkamp Verlag)
 
