@@ -34,16 +34,20 @@ export default async function AboutPage(props: AboutPageProps) {
 				<section dangerouslySetInnerHTML={{ __html: String(result) }} className="prose" />
 				<div className="flex flex-row flex-wrap items-center justify-center">
 					<div className="mt-3 flex flex-col items-center gap-3">
-						<Image alt="Suhrkamp Verlag Logo" className="w-44 max-w-full" src={suhrkamp} />
+						<Image
+							alt="Suhrkamp Verlag Logo"
+							className="w-44 max-w-full dark:invert"
+							src={suhrkamp}
+						/>
 						<Image
 							alt="Internationale Thomas Bernhard Gesellschaft Logo"
-							className="w-80 max-w-full"
+							className="w-80 max-w-full dark:invert"
 							src={itbg}
 						/>
-					</div>{" "}
+					</div>
 					<Image
 						alt="Forschungsstelle Thomas Bernhard Logo"
-						className="w-52 max-w-full"
+						className="w-52 max-w-full dark:invert"
 						src={forschungsstelle}
 					/>
 				</div>
