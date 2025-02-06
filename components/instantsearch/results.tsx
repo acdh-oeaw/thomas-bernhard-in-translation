@@ -6,11 +6,13 @@ import {
 	CalendarArrowUp,
 	LayoutGrid,
 	LayoutList,
+	Search,
+	X,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { type ReactNode, useState } from "react";
-import { Switch } from "react-aria-components";
-import { SearchBox } from "react-instantsearch";
+import { Button, Input, Label, Switch, TextField } from "react-aria-components";
+import { useSearchBox } from "react-instantsearch";
 
 import { InfiniteScroll } from "./infinitescroll";
 import { PaginatedTable } from "./paginated-table";
@@ -34,20 +36,37 @@ export function Results(props: ResultsProps): ReactNode {
 	// TODO encode current state in URL
 	const [view, setView] = useState<"covers" | "detail">("covers");
 
+	const { query, refine } = useSearchBox();
+
 	return (
 		<div className="grid h-full grid-rows-[auto_1fr] overflow-y-auto">
-			<div className="flex place-content-between items-center gap-6 py-3 pl-1 pr-6">
-				<SearchBox
-					className="pr-4"
-					placeholder={t("query_placeholder")}
-					resetIconComponent={() => {
-						return null;
-					}}
-					submitIconComponent={() => {
-						return null;
-					}}
-				/>
-				<span className="grow">
+			<div className="flex flex-wrap place-content-between items-center justify-end gap-6 py-3 pl-1 pr-6">
+				<div className="flex flex-row items-center">
+					<TextField
+						onChange={(v) => {
+							refine(v);
+						}}
+						value={query}
+					>
+						<Label className="sr-only">{t("query_label")}</Label>
+						<Input
+							className="mr-3 rounded-sm border-2 p-1 pl-2"
+							placeholder={t("query_placeholder")}
+						/>
+					</TextField>
+					{query === "" ? (
+						<Search size={20} />
+					) : (
+						<Button
+							onPress={() => {
+								refine("");
+							}}
+						>
+							<X size={20} />
+						</Button>
+					)}
+				</div>
+				<span className="ml-5 grow">
 					<InstantSearchStats />
 				</span>
 				<InstantSearchSortBy sortOptions={sortOptions} />

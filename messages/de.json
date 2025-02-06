@@ -63,7 +63,8 @@
 			"work": "Werk",
 			"yeartitle": "Werk"
 		},
-		"query_placeholder": "Publikationen filtern",
+		"query_label": "Ergebnisse durchsuchen",
+		"query_placeholder": "Ergebnisse durchsuchen",
 		"result": "{count, plural, =1 {# Publikation} other {# Publikationen}}",
 		"result_other": "Publikationen",
 		"show_more": "mehr",
