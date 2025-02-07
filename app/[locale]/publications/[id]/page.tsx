@@ -100,7 +100,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 									})}
 								</InlineList>
 							) : (
-								<span className="italic">{t("unknown")}</span>
+								<span className="italic">{t("translators_unknown")}</span>
 							)}
 						</NameValue>
 						<NameValue name={t("publisher")}>
@@ -110,10 +110,14 @@ export default async function PublicationPage(props: PublicationPageProps) {
 					</PublicationDetails>
 					<NameValue name={t("contains")}>
 						<InlineList separator=" / ">
-							{pub.contains.map((t, itranslation) => {
+							{pub.contains.map((tr, itranslation) => {
 								return (
 									<span key={itranslation}>
-										{t.title}
+										{tr.title ? (
+											tr.title
+										) : (
+											<span className="italic">{t("translation_title_unknown")}</span>
+										)}
 										<sup>
 											{showIndices
 												? translatorInfo
@@ -125,9 +129,9 @@ export default async function PublicationPage(props: PublicationPageProps) {
 										</sup>{" "}
 										[
 										<BernhardWorkLink
-											key={t.work.id}
-											display_title={t.work_display_title}
-											work={t.work}
+											key={tr.work.id}
+											display_title={tr.work_display_title}
+											work={tr.work}
 										/>
 										]
 									</span>

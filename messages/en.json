@@ -155,7 +155,8 @@
 		"translated_by": "contains translations by",
 		"earlier_editions": "earlier publications",
 		"later_editions": "later editions",
-		"unknown": "unknown",
+		"translators_unknown": "unknown",
+		"translation_title_unknown": "translation title unknown",
 		"year": "publication year"
 	},
 	"SearchPage": {

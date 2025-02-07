@@ -153,7 +153,7 @@ for i, w in enumerate(works):
 for i, t in enumerate(translations):
     t["id"] = i + 1
     if "MISSING" in t["title"]:
-        t["title"] = "???"
+        t["title"] = ""
     null_empty_strings(t, ["work_display_title"])
 
     if args.typesense:

@@ -155,7 +155,8 @@
 		"translated_by": "übersetzt von",
 		"earlier_editions": "frühere Editionen",
 		"later_editions": "spätere Editionen",
-		"unknown": "unbekannt",
+		"translators_unknown": "Übersetzer:innen unbekannt",
+		"translation_title_unknown": "Übersetzungstitel unbekannt",
 		"year": "Veröffentlichungsjahr"
 	},
 	"SearchPage": {
