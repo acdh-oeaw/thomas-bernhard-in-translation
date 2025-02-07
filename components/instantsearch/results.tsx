@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { type ReactNode, useState } from "react";
-import { Button, Input, Label, Switch, TextField } from "react-aria-components";
+import { Button, Input, Label, SearchField, Switch } from "react-aria-components";
 import { useSearchBox } from "react-instantsearch";
 
 import { InfiniteScroll } from "./infinitescroll";
@@ -41,31 +41,29 @@ export function Results(props: ResultsProps): ReactNode {
 	return (
 		<div className="grid h-full grid-rows-[auto_1fr] overflow-y-auto">
 			<div className="flex flex-wrap place-content-between items-center justify-end gap-6 py-3 pl-1 pr-6">
-				<div className="flex flex-row items-center">
-					<TextField
-						onChange={(v) => {
-							refine(v);
+				<SearchField
+					// vertically align clear button
+					className="flex items-center"
+					onChange={(v) => {
+						refine(v);
+					}}
+					value={query}
+				>
+					<Search size={20} />
+					<Label className="sr-only">{t("query_label")}</Label>
+					<Input
+						className="mx-2 rounded-sm border-2 p-1 pl-2"
+						placeholder={t("query_placeholder")}
+					/>
+					<Button
+						onPress={() => {
+							refine("");
 						}}
-						value={query}
 					>
-						<Label className="sr-only">{t("query_label")}</Label>
-						<Input
-							className="mr-3 rounded-sm border-2 p-1 pl-2"
-							placeholder={t("query_placeholder")}
-						/>
-					</TextField>
-					{query === "" ? (
-						<Search size={20} />
-					) : (
-						<Button
-							onPress={() => {
-								refine("");
-							}}
-						>
-							<X size={20} />
-						</Button>
-					)}
-				</div>
+						<span className="sr-only">{t("clear_query")}</span>
+						<X className="not-sr-only" size={20} />
+					</Button>
+				</SearchField>
 				<span className="ml-5 grow">
 					<InstantSearchStats />
 				</span>
