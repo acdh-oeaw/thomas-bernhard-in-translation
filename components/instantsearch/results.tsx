@@ -39,7 +39,7 @@ export function Results(props: ResultsProps): ReactNode {
 	const { query, refine } = useSearchBox();
 
 	return (
-		<div className="grid h-full grid-rows-[auto_1fr] overflow-y-auto">
+		<div className="grid h-full grid-rows-[auto_1fr]">
 			<div className="flex flex-wrap place-content-between items-center justify-end gap-6 py-3 pl-1 pr-6">
 				<SearchField
 					// vertically align clear button
@@ -82,7 +82,9 @@ export function Results(props: ResultsProps): ReactNode {
 					<span className="sr-only">{t("view.table")}</span>
 				</Switch>
 			</div>
-			<div className="relative">{view === "covers" ? <InfiniteScroll /> : <PaginatedTable />}</div>
+			<div className="relative overflow-y-auto">
+				{view === "covers" ? <InfiniteScroll /> : <PaginatedTable />}
+			</div>
 		</div>
 	);
 }

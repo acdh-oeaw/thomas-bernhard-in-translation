@@ -35,10 +35,10 @@ export function InfiniteScroll(): ReactNode {
 	}, [isLastPage, showMore]);
 
 	return (
-		<div className="absolute grid size-full grid-rows-[1fr_auto] overflow-y-auto">
+		<div className="absolute grid w-full grid-rows-[1fr_auto]">
 			<PublicationGrid publications={items} />
 			{isLastPage ? (
-				<hr className="m-auto mt-8 w-1/3" />
+				<hr className="mx-auto my-12 w-1/4 border-[--color-primary]" />
 			) : (
 				<div ref={sentinelRef} className="text-center">
 					<Button

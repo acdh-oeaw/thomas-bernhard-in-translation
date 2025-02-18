@@ -79,7 +79,7 @@ function TBPagination(): ReactNode {
 export function PaginatedTable(): ReactNode {
 	const { items } = useHits<Publication>();
 	return (
-		<div className="absolute size-full overflow-y-auto">
+		<div className="absolute w-full">
 			<TBPagination />
 			{items.map((item) => {
 				return <TableRow key={item.id} hit={item} />;
