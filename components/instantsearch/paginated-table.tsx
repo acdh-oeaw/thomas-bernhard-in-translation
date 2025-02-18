@@ -1,7 +1,7 @@
 import type { Hit } from "instantsearch.js";
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
-import { Hits } from "react-instantsearch";
+import { Pagination, useHits } from "react-instantsearch";
 
 import type { Publication } from "@/lib/model";
 
@@ -61,8 +61,30 @@ function TableRow({ hit }: { hit: Hit<Publication> }) {
 	);
 }
 
-export function PaginatedTable(): ReactNode {
+function TBPagination(): ReactNode {
 	return (
-		<Hits classNames={{ root: "absolute h-full overflow-y-auto w-full" }} hitComponent={TableRow} />
+		<Pagination
+			classNames={{
+				disabledItem: "text-[--color-on-secondary] bg-[--color-secondary]",
+				item: "min-w-10 mx-0.5 text-[--color-link]",
+				link: "border text-center inline-block py-1 px-2 rounded w-full",
+				list: "flex",
+				root: "w-fit self-center justify-self-center my-1",
+				selectedItem: "text-[--color-primary] border border-[--color-focus-ring] rounded",
+			}}
+		/>
+	);
+}
+
+export function PaginatedTable(): ReactNode {
+	const { items } = useHits<Publication>();
+	return (
+		<div className="absolute size-full overflow-y-auto">
+			<TBPagination />
+			{items.map((item) => {
+				return <TableRow key={item.id} hit={item} />;
+			})}
+			<TBPagination />
+		</div>
 	);
 }

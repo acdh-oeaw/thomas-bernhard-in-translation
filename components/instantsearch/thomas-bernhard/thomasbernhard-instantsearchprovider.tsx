@@ -37,7 +37,7 @@ export interface ThomasBernhardInstantSearchProviderProps
 export function ThomasBernhardInstantSearchProvider(
 	props: ThomasBernhardInstantSearchProviderProps,
 ): ReactNode {
-	const { children, filters, hitsPerPage = 30 } = props;
+	const { children, filters, hitsPerPage = 20 } = props;
 
 	// '&&' is typesense convention, not instantsearch!
 	const filter = `erstpublikation:true ${filters ? `&& ${filters}` : ""}`;
