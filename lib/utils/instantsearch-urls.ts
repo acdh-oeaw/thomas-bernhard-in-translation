@@ -63,8 +63,9 @@ export function instantSearchNextAbbreviatedStateMapping(
 			}
 			const uiState = {
 				[collectionName]: {
-					query: routeToState.q && decodeURI(routeToState.q),
 					menu: {},
+					page: routeToState.page && decodeURI(routeToState.page),
+					query: routeToState.q && decodeURI(routeToState.q),
 					// refinementList: {},
 					sortBy: routeToState.sort && `${collectionName}/sort/${routeToState.sort}`,
 				},
@@ -89,6 +90,9 @@ export function instantSearchNextAbbreviatedStateMapping(
 			}
 			if (indexUiState.query) {
 				route.q = encodeURI(indexUiState.query);
+			}
+			if (indexUiState.page) {
+				route.page = encodeURI(indexUiState.page.toString());
 			}
 			if (indexUiState.sortBy) {
 				const sortBy = indexUiState.sortBy.split("/").at(-1);
