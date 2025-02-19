@@ -10,9 +10,11 @@ import {
 	X,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { type ReactNode, useState } from "react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 import { Button, Input, Label, SearchField, Switch } from "react-aria-components";
-import { useSearchBox } from "react-instantsearch";
+import { useHits, useSearchBox } from "react-instantsearch";
+
+import type { Publication } from "@/lib/model";
 
 import { InfiniteScroll } from "./infinitescroll";
 import { PaginatedTable } from "./paginated-table";
@@ -35,6 +37,17 @@ export function Results(props: ResultsProps): ReactNode {
 
 	// TODO encode current state in URL
 	const [view, setView] = useState<"covers" | "detail">("covers");
+
+	// scroll to top on query/language/page change
+	const top = useRef<HTMLDivElement>(null);
+	const { results } = useHits<Publication>();
+	useEffect(() => {
+		if (view === "covers" && results?.page) {
+			// don't scroll up if the new results are just an expansion of the infinitescroll
+			return;
+		}
+		top.current?.scrollIntoView();
+	}, [results, view]);
 
 	const { query, refine } = useSearchBox();
 
@@ -83,6 +96,7 @@ export function Results(props: ResultsProps): ReactNode {
 				</Switch>
 			</div>
 			<div className="relative overflow-y-auto">
+				<div ref={top} className="not-sr-only"></div>
 				{view === "covers" ? <InfiniteScroll /> : <PaginatedTable />}
 			</div>
 		</div>
