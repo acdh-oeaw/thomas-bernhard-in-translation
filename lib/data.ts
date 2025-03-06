@@ -18,7 +18,7 @@ export const client = new Client({
 export const collectionName = env.NEXT_PUBLIC_TYPESENSE_COLLECTION_NAME;
 const collection = client.collections(env.NEXT_PUBLIC_TYPESENSE_COLLECTION_NAME);
 
-export async function getPublication(id: string) {
+export async function getPublication(id: string): Promise<Publication | null> {
 	if (Number.isNaN(Number(id))) {
 		// signatur
 		const result = await collection.documents().search({
@@ -33,13 +33,18 @@ export async function getPublication(id: string) {
 }
 
 // get 4 publications, ideally in the same language but excluding the publication itself *and* its
-// children (because they will already be listed separately anyway)
+// children (because they already appear under their own sections on the publication details page)
 export async function getSameLanguagePublications(pub: Publication) {
 	return (
 		await collection.documents().search({
 			q: "*",
 			per_page: 4,
-			filter_by: `language: \`${pub.language}\` && id :!= [ ${[pub.id, ...(pub.later ?? [])].join()} ]`,
+			filter_by: `language: \`${pub.language}\` && id :!= [ ${[
+				pub.id,
+				...(pub.later ?? []),
+				...(pub.parents ?? []),
+			].join()} ]`,
+			sort_by: "_rand:asc",
 		})
 	).hits?.map((r) => {
 		return r.document;
