@@ -9,5 +9,5 @@ interface TranslatorLinkProps {
 
 export function TranslatorLink({ translator, translatorName }: TranslatorLinkProps) {
 	const name = translator ? translator.name : translatorName;
-	return <AppLink href={`/search?translator=${encodeURI(name!)}`}>{name!}</AppLink>;
+	return <AppLink href={`/search?translator=${encodeURIComponent(name!)}`}>{name!}</AppLink>;
 }
