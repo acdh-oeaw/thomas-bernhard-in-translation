@@ -1,6 +1,6 @@
 # About this page
 
-In other languages, said Thomas Bernhard, known as the ›master of exaggeration‹, his works are »unrecognizable. A translated book is like a corpse, mangled beyond recognition by a car. You can pick up the debris, but it’s no use anymore.« (W22.2: 300). Bernhard became a figure of world literature precisely because this ›debris work‹ was tirelessly carried out ever since in 1967 the French and Serbian translations of his debut novel Frost laid the foundation for his ongoing international impact.
+In other languages, said Thomas Bernhard, known as the ›master of exaggeration‹, his works are »unrecognizable. A translated book is like a corpse, mangled beyond recognition by a car. You can pick up the debris, but it’s no use anymore.« (W22.2: 300). Bernhard became a figure of world literature precisely because this ›debris work‹ was tirelessly carried out ever since in 1967 the French and Serbian translations of his debut novel *Frost* laid the foundation for his ongoing international impact.
 
 As the **first online database of all published translations** of Thomas Bernhard’s works, *thomas bernhard in translation* contains 1,037 entries (809 of which are first publications) in 42 languages (as of 2024). It enables targeted searches for works, languages, and translators.
 

@@ -1,6 +1,6 @@
 # Über diese Seite
 
-In anderen Sprachen, so der als ›Übertreibungskünstler‹ bekannte Thomas Bernhard, seien seine Werke »nicht wiederzuerkennen. Ein übersetztes Buch ist wie eine Leiche, die von einem Auto bis zur Unkenntlichkeit verstümmelt worden ist. Können S’ dann die Trümmer zusammensuchen, aber es nützt nichts mehr.« (W22.2: 300) Zum Weltliteraten geworden ist er, indem genau diese ›Trümmerarbeit‹ unermüdlich geleistet wurde, seit 1967 mit der französischen und serbischen Übertragung des Debütromans Frost (1963) der Grundstein für seine bis heute anhaltende internationale Ausstrahlung gelegt wurde.
+In anderen Sprachen, so der als ›Übertreibungskünstler‹ bekannte Thomas Bernhard, seien seine Werke »nicht wiederzuerkennen. Ein übersetztes Buch ist wie eine Leiche, die von einem Auto bis zur Unkenntlichkeit verstümmelt worden ist. Können S’ dann die Trümmer zusammensuchen, aber es nützt nichts mehr.« (W22.2: 300) Zum Weltliteraten geworden ist er, indem genau diese ›Trümmerarbeit‹ unermüdlich geleistet wurde, seit 1967 mit der französischen und serbischen Übertragung des Debütromans *Frost* (1963) der Grundstein für seine bis heute anhaltende internationale Ausstrahlung gelegt wurde.
 
 Als **erste Online-Datenbank sämtlicher publizierter Übersetzungen** der Werke Thomas Bernhards umfasst *thomas bernhard in translation* 1037 Einträge (davon 809 Erstpublikationen) in 42 Sprachen (Stand: 2024) und ermöglicht eine gezielte Recherche nach Werken, Sprachen und Übersetzer:innen.
 
