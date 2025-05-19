@@ -133,7 +133,7 @@ categories = {
     "autobiography": "autobiography",
     "drama & libretti": "drama",
     "fragments": "fragments",
-    "letters, speeches, interviews": "other",
+    "letters, speeches, interviews & other writings": "other",
     "novellas & short prose": "novellas",
     "novels": "novels",
     "prose": "prose",
