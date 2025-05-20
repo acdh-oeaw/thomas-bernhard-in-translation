@@ -28,7 +28,7 @@ export interface Publication {
 	year: number;
 	year_display?: string;
 	isbn?: string;
-	publisher: string;
+	publisher?: string;
 
 	// misc info that varies between publications of the same publisher
 	// prime example: issue/page details when the 'publisher' is a periodical/magazine
