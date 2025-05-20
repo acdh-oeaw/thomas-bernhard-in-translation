@@ -2,7 +2,7 @@
 
 In other languages, said Thomas Bernhard, known as the ›master of exaggeration‹, his works are »unrecognizable. A translated book is like a corpse, mangled beyond recognition by a car. You can pick up the debris, but it’s no use anymore.« (W22.2: 300). Bernhard became a figure of world literature precisely because this ›debris work‹ was tirelessly carried out ever since in 1967 the French and Serbian translations of his debut novel *Frost* laid the foundation for his ongoing international impact.
 
-As the **first online database of all published translations** of Thomas Bernhard’s works, *thomas bernhard in translation* contains 1,037 entries (809 of which are first publications) in 42 languages (as of 2024). It enables targeted searches for works, languages, and translators.
+As the **first online database of all published translations** of Thomas Bernhard’s works, *thomas bernhard in translation* contains 1,069 entries (829 of which are first publications) in 42 languages (as of 2024). It enables targeted searches for works, languages, and translators.
 
 The website highlights what Bernhard referred to as the »hideous covers« (W22.2: 279), with the design of the book covers providing insights into visual trends and continuities in publishing over the decades, along with the underlying motives to steer reception. Additional bibliographical information includes: original titles, publication years, publishers, translators, reprints, and later editions. Only first publications are displayed; preliminary prints and unpublished stage translations are excluded. If a collected edition contains more than one Bernhard translation, the title refers to the entire publication.
 
