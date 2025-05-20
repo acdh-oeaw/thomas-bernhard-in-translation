@@ -23,7 +23,7 @@ parser.add_argument(
     "-v",
     "--verbose",
     action="count",
-    default=3,
+    default=0,
     help="Increase the verbosity of the logging output: default is WARNING, use -v for INFO, -vv for DEBUG",
 )
 
@@ -60,43 +60,102 @@ def load_json(dirname, filename):
     return json.load(open(f"{dirname}/{filename}.json"))
 
 
-# get the data as it was originally exported to baserow
-publications = load_json("to_baserow", "Publikation")
-translations = load_json("to_baserow", "Übersetzung")
-works = load_json("to_baserow", "BernhardWerk")
-translators = load_json("to_baserow", "Übersetzer")
+def load_baserow_export(dirname, filename, back_reference_columns=[], unary_columns=[]):
+    d = list(load_json(dirname, filename).values())
+    for dt in d:
+        del dt["order"]
+        for col in back_reference_columns:
+            del dt[col]
 
-# get the manual edits
-publication_changes = load_json("from_baserow", "Publikation").values()
-translation_changes = load_json("from_baserow", "Übersetzung").values()
-work_changes = load_json("from_baserow", "BernhardWerk").values()
-translator_changes = load_json("from_baserow", "Übersetzer").values()
+        for f in dt:
+            if isinstance(dt[f], dict):
+                if "order" in dt[f]:
+                    # resolve cross-table relation
+                    dt[f] = dt[f]["id"]
+                else:
+                    # string value
+                    dt[f] = dt[f]["value"]
+            elif isinstance(dt[f], list):
+                if f in unary_columns:
+                    dt[f] = dt[f][0]["id"]
+                else:
+                    dt[f] = [x["id"] for x in dt[f]]
+    return d
 
 
-def merge_changes(orig, changed, field_names):
-    for e1, e2 in zip(orig, changed):
-        for f in field_names:
-            try:
-                if isinstance(e2[f], dict):
-                    e2[f] = e2[f]["value"]
-                elif isinstance(e1[f], int):
-                    e2[f] = int(e2[f])
+def load_json_id(dirname, filename):
+    d = load_json(dirname, filename)
+    for i, dt in enumerate(d):
+        dt["id"] = i + 1
+    return d
 
-                if e1[f] != e2[f]:  # TODO check types and force original numbers
-                    logging.info(
-                        f"integrating manual change to field {f}: '{e1[f]}' > '{e2[f]}'"
-                    )
-                    e1[f] = e2[f]
-            except KeyError:
-                if e2[f]:
-                    logging.info(f"adding new field {f} with value '{e2[f]}'")
-                    e1[f] = e2[f]
+
+# get the (manually edited) baserow export -- this is our source of truth, with the exception of
+# ordered 1:n relationships -- translations within publications, translators within a
+# translation, for which the correct order needs to be recovered from the original baserow import
+publications = load_baserow_export("from_baserow", "Publikation")
+translations = load_baserow_export(
+    "from_baserow", "Übersetzung", ["Publikation"], ["work"]
+)
+works = load_baserow_export("from_baserow", "BernhardWerk", ["Übersetzung"])
+translators = load_baserow_export("from_baserow", "Übersetzer", ["Übersetzung"])
+
+# get the data as it was originally imported into baserow
+orig_publications = load_json_id("to_baserow", "Publikation")
+orig_translations = load_json_id("to_baserow", "Übersetzung")
+orig_works = load_json_id("to_baserow", "BernhardWerk")
+orig_translators = load_json_id("to_baserow", "Übersetzer")
+
+
+def process_baserow_export(new_data, orig_data, misc):
+    """Replaces the {id, value, label} dict with just the id, and recovers the correct order of 1:n
+    relationships according to the original baserow import"""
+    # to recover types
+    prototype = orig_data[0]
+    for d in new_data:
+        try:
+            orig = next(x for x in orig_data if x["id"] == d["id"])
+            for f in d:  # fields
+                try:
+                    # check types and force original numbers
+                    if orig[f] != None and type(d[f]) is not type(orig[f]):
+                        d[f] = int(d[f])
+                    elif d[f] != orig[f]:
+                        if f == "contains" or f == "translators" or f == "parents":
+                            # TODO check
+                            logging.debug(
+                                f"applying original order of field {f}: {orig[f]} (after baserow mangling: {d[f]}"
+                            )
+                            d[f] = orig[f]
+                        else:
+                            logging.warning(
+                                f"manual change to field {f} of {d['id']}: '{orig[f]}' > '{d[f]}'"
+                            )
+                except KeyError:
+                    if d[f]:
+                        logging.info(f"adding new field {f} with value '{d[f]}'")
+        except StopIteration:
+            logging.info(f"adding new entry: {d}")
+            # for f in d: TODO enforce int
+        # for n in list(changed)[-new:]:
+        #     if "language" in n:
+        #         n["language"] = n["language"]["value"]
+        #     if "parents" in n and len(n["parents"]):
+        #         # only 1 value
+        #         n["parents"] = [n["parents"][0]["id"]]
+        #     if "contains" in n:
+        #         n["contains"] = [e["id"] for e in n["contains"]]
+        #     if "translators" in n:
+        #         n["translators"] = [e["id"] for e in n["translators"]]
+        #     orig.append(n)
+        #     # TODO remove embedded values (like 'language' ...)
+    return orig
 
 
 # for publication: title, year, year_display, publisher, publication_details, exemplar_...
-merge_changes(
+process_baserow_export(
     publications,
-    publication_changes,
+    orig_publications,
     [
         "title",
         "short_title",
@@ -106,9 +165,11 @@ merge_changes(
         "publication_details",
     ],
 )
-merge_changes(translations, translation_changes, ["title", "work_display_title"])
-merge_changes(works, work_changes, ["title", "short_title", "year", "category", "gnd"])
-merge_changes(translators, translator_changes, ["name", "gnd"])
+process_baserow_export(translations, orig_translations, ["title", "work_display_title"])
+process_baserow_export(
+    works, orig_works, ["title", "short_title", "year", "category", "gnd"]
+)
+process_baserow_export(translators, orig_translators, ["name", "gnd"])
 
 
 def del_empty_strings(o, field_names):
@@ -123,11 +184,6 @@ def null_empty_strings(o, field_names):
             o[f] = None
 
 
-for i, t in enumerate(translators):
-    # add 1-indexed translator ids to allow links to translator pages
-    t["id"] = i + 1
-
-
 categories = {
     "adaptations": "adaptations",
     "autobiography": "autobiography",
@@ -140,9 +196,7 @@ categories = {
     "poetry": "poetry",
 }
 
-for i, w in enumerate(works):
-    # add 1-indexed bernhard work ids to allow links to work ids
-    w["id"] = i + 1
+for w in works:
     w["category"] = categories[w["category"]] if w["category"] else "fragments"
 
     if not w["short_title"]:
@@ -150,8 +204,7 @@ for i, w in enumerate(works):
     null_empty_strings(w, ["gnd"])
 
 
-for i, t in enumerate(translations):
-    t["id"] = i + 1
+for t in translations:
     if "MISSING" in t["title"]:
         t["title"] = ""
     null_empty_strings(t, ["work_display_title"])
@@ -209,8 +262,7 @@ languages = {
     "vietnamese": "vi",
 }
 
-for i, pub in enumerate(publications):
-    pub["id"] = i + 1
+for pub in publications:
     pub["language"] = languages[pub["language"]]
 
     if "short_title" not in pub:
@@ -232,38 +284,49 @@ for i, pub in enumerate(publications):
     )
 
     for pid in pub["parents"]:
-        if "later" in publications[pid - 1]:
-            publications[pid - 1]["later"].append(i + 1)
+        prevpub = next(x for x in publications if x["id"] == pid)
+        if "later" in prevpub:
+            prevpub["later"].append(pub["id"])
         else:
-            publications[pid - 1]["later"] = [i + 1]
+            prevpub["later"] = [pub["id"]]
 
-    del_empty_strings(pub, ["isbn", "parents", "publication_details"])
-    null_empty_strings(pub, ["year_display"])
+    # part of typesense schema but "optional"
+    null_empty_strings(pub, ["short_title", "publisher", "year_display"])
+    # not part of typesense schema, can be omitted altogether
+    del_empty_strings(
+        pub,
+        [
+            "isbn",
+            "original_publication",
+            "parents",
+            "publication_details",
+            "zusatzinfos",
+        ],
+    )
 
-    # trim data a little
-    del pub["exemplar_suhrkamp_berlin"]
-    del pub["exemplar_oeaw"]
-    del pub["original_publication"]
-    del pub["zusatzinfos"]
+for t in translators:
+    null_empty_strings(t, ["gnd"])
 
 if args.json:
     logging.info("removing orphans before json writeout")
     for t in translations:
         if all([t["id"] not in p["contains"] for p in publications]):
-            logging.info(f"deleting orphaned translation #{t['id']}")
+            logging.info(f"deleting orphaned translation #{t['id']} ({t['title']})")
     for w in works:
         if all([t["id"] != t["work"] for t in translations]):
             logging.info(f"deleting orphaned work #{t['id']}")
     for i, tr in enumerate(translators):
         if all([tr["id"] not in t["translators"] for t in translations]):
-            logging.info(f"deleting orphaned translator #{tr['id']}")
+            logging.info(f"deleting orphaned translator #{tr['id']} ({tr['name']})")
             del translators[i]
 
     logging.info("writing json to data-final/")
 
     def dump_relational(name, data):
         with open(f"data-final/{name}.json", "w") as file:
-            file.write(json.dumps(data, indent=4))
+            file.write(
+                json.dumps(data, indent="\t", ensure_ascii=False, sort_keys=True)
+            )
 
     dump_relational("publications", publications)
     dump_relational("translations", translations)
@@ -276,9 +339,20 @@ logging.info(f"loading typesense access data from {args.env}")
 os.chdir(os.path.dirname(__file__))
 load_dotenv(args.env)
 
+for t in translations:
+    del_empty_strings(t, ["work_display_title"])
+
 # for typesense
 for pub in publications:
     pub["id"] = str(pub["id"])
+
+    # trim data a little
+    del pub["isbn"]
+    del pub["exemplar_suhrkamp_berlin"]
+    del pub["exemplar_oeaw"]
+    del pub["original_publication"]
+    del pub["zusatzinfos"]
+
 
 logging.info("inserting nested documents into typesense")
 
