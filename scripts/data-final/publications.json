@@ -8105,7 +8105,7 @@
 		"year_display": null
 	},
 	{
-		"contains": [521, 522, 523],
+		"contains": [521, 522],
 		"erstpublikation": true,
 		"exemplar_oeaw": "ja",
 		"exemplar_suhrkamp_berlin": "ja",
@@ -10203,7 +10203,7 @@
 		"year_display": null
 	},
 	{
-		"contains": [657, 658, 659, 660, 661, 662],
+		"contains": [657, 658, 659, 660, 661],
 		"erstpublikation": true,
 		"exemplar_oeaw": "nein",
 		"exemplar_suhrkamp_berlin": "ja",
@@ -15595,7 +15595,7 @@
 		"year_display": null
 	},
 	{
-		"contains": [1074, 1075, 1076, 1077, 1078, 1079, 1080],
+		"contains": [1074, 1075, 1076, 1077, 1078, 1079],
 		"erstpublikation": true,
 		"exemplar_oeaw": "ja",
 		"exemplar_suhrkamp_berlin": "ja",

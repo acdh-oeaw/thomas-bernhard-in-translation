@@ -125,11 +125,15 @@ def process_baserow_export(new_data, orig_data, int_columns=[]):
                         d[f] = int(d[f])
                     elif d[f] != orig[f]:
                         if f == "contains" or f == "translators" or f == "parents":
-                            # TODO check
-                            logging.debug(
-                                f"applying original order of field {f}: {orig[f]} (after baserow mangling: {d[f]}"
-                            )
-                            d[f] = orig[f]
+                            if len(orig[f]) != len(d[f]):
+                                logging.warning(
+                                    f"Number of entries of field {f} has changed: keeping new entries {d[f]} even though their order might have been mangled from the original ({orig[f]})"
+                                )
+                            else:
+                                logging.debug(
+                                    f"applying original order of field {f}: {orig[f]} (after baserow mangling: {d[f]}"
+                                )
+                                d[f] = orig[f]
                         else:
                             logging.warning(
                                 f"manual change to field {f} of {d['id']}: '{orig[f]}' > '{d[f]}'"
@@ -203,8 +207,8 @@ for t in translations:
 
     if args.typesense:
         # create nested structures
-        t["work"] = works[t["work"] - 1]
-        t["translators"] = [translators[t_id - 1] for t_id in t["translators"]]
+        t["work"] = find_by_id(works, t["work"])
+        t["translators"] = [find_by_id(translators, t_id) for t_id in t["translators"]]
         # work around https://typesense.org/docs/guide/tips-for-searching-common-types-of-data.html#searching-for-null-or-empty-values
         # for the /translators page
         t["has_translators"] = len(t["translators"]) != 0
@@ -263,9 +267,9 @@ for pub in publications:
     if args.typesense:
         # create nested structures
         pub["contains"] = [
-            translations[t_id - 1]
+            find_by_id(translations, t_id)
             for t_id in pub["contains"]
-            if "MISSING" not in translations[t_id - 1]["work"]["title"]
+            if "MISSING" not in find_by_id(translations, t_id)["work"]["title"]
         ]
         pub["has_image"] = len(pub["images"]) > 0
         if not pub["year_display"]:
@@ -339,11 +343,15 @@ for pub in publications:
     pub["id"] = str(pub["id"])
 
     # trim data a little
-    del pub["isbn"]
-    del pub["exemplar_suhrkamp_berlin"]
-    del pub["exemplar_oeaw"]
-    del pub["original_publication"]
-    del pub["zusatzinfos"]
+    for key in [
+        "isbn",
+        "exemplar_suhrkamp_berlin",
+        "exemplar_oeaw",
+        "original_publication",
+        "zusatzinfos",
+    ]:
+        if key in pub:
+            del pub[key]
 
 
 logging.info("inserting nested documents into typesense")

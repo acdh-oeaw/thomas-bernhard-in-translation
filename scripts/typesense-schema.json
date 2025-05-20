@@ -93,7 +93,7 @@
 			"name": "publisher",
 			"type": "string",
 			"facet": false,
-			"optional": false,
+			"optional": true,
 			"index": true,
 			"sort": false,
 			"infix": false,
