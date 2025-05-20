@@ -92,7 +92,7 @@
 	{
 		"gnd": null,
 		"id": 19,
-		"name": "Dimova, Ana & Students"
+		"name": "Dimova, Ana"
 	},
 	{
 		"gnd": "1029621152",
@@ -1372,7 +1372,7 @@
 	{
 		"gnd": null,
 		"id": 278,
-		"name": "Loo, Christope van de"
+		"name": "Loo, Christophe van de"
 	},
 	{
 		"gnd": "112675725X",
@@ -1525,7 +1525,7 @@
 		"name": "Matysik, Grzegorz"
 	},
 	{
-		"gnd": "Q117871566",
+		"gnd": null,
 		"id": 309,
 		"name": "Wołkowicz, Anna"
 	},
@@ -1872,7 +1872,7 @@
 	{
 		"gnd": null,
 		"id": 380,
-		"name": "Cordchado, Ricardo"
+		"name": "Corchado, Ricardo"
 	},
 	{
 		"gnd": null,
@@ -2018,5 +2018,180 @@
 		"gnd": null,
 		"id": 409,
 		"name": "Lãnh, Hoàng Đăng"
+	},
+	{
+		"gnd": "1234245051",
+		"id": 410,
+		"name": "Avgerinou, Sofia"
+	},
+	{
+		"gnd": null,
+		"id": 412,
+		"name": "Koltsidopoulou, Anny"
+	},
+	{
+		"gnd": null,
+		"id": 414,
+		"name": "Mortazavi, Hadi"
+	},
+	{
+		"gnd": null,
+		"id": 415,
+		"name": "Neri, Angélica"
+	},
+	{
+		"gnd": null,
+		"id": 417,
+		"name": "Bohunovsky, Ruth"
+	},
+	{
+		"gnd": null,
+		"id": 418,
+		"name": "Abdala Jr, Luiz"
+	},
+	{
+		"gnd": null,
+		"id": 419,
+		"name": "Simões, Hugo"
+	},
+	{
+		"gnd": null,
+		"id": 420,
+		"name": "Dickel, Agnieszka"
+	},
+	{
+		"gnd": null,
+		"id": 423,
+		"name": "Szybiak, Agnieszka"
+	},
+	{
+		"gnd": null,
+		"id": 424,
+		"name": "Kamińska, Beata"
+	},
+	{
+		"gnd": null,
+		"id": 425,
+		"name": "Dydak, Paweł"
+	},
+	{
+		"gnd": null,
+		"id": 426,
+		"name": "Dębek, Irena"
+	},
+	{
+		"gnd": null,
+		"id": 427,
+		"name": "Kaczmarek, Magdalena"
+	},
+	{
+		"gnd": null,
+		"id": 428,
+		"name": "Wasilewski, Paweł"
+	},
+	{
+		"gnd": null,
+		"id": 429,
+		"name": "Ziegler-Brodnicka, Ewa"
+	},
+	{
+		"gnd": null,
+		"id": 430,
+		"name": "Schmidt, Krystyna"
+	},
+	{
+		"gnd": null,
+		"id": 431,
+		"name": "Darul, Magdalena"
+	},
+	{
+		"gnd": null,
+		"id": 432,
+		"name": "Sucharska, Zofia"
+	},
+	{
+		"gnd": null,
+		"id": 433,
+		"name": "Kaczorowska, Tatiana"
+	},
+	{
+		"gnd": null,
+		"id": 434,
+		"name": "Mużdżak, Anna"
+	},
+	{
+		"gnd": null,
+		"id": 435,
+		"name": "Mikulska-Frindo, Ewa"
+	},
+	{
+		"gnd": null,
+		"id": 436,
+		"name": "Kuczkowska, Iwona"
+	},
+	{
+		"gnd": null,
+		"id": 437,
+		"name": "Granbichler, Joanna"
+	},
+	{
+		"gnd": null,
+		"id": 438,
+		"name": "Bombrych, Tomasz"
+	},
+	{
+		"gnd": null,
+		"id": 439,
+		"name": "Zarychta, Paweł"
+	},
+	{
+		"gnd": null,
+		"id": 440,
+		"name": "Kromp, Ilona"
+	},
+	{
+		"gnd": null,
+		"id": 441,
+		"name": "Sosnowski, Andrzej"
+	},
+	{
+		"gnd": null,
+		"id": 442,
+		"name": "Filipek, Anna"
+	},
+	{
+		"gnd": null,
+		"id": 443,
+		"name": "Diduszko, Joanna"
+	},
+	{
+		"gnd": null,
+		"id": 444,
+		"name": "Fortuna, Waldemar"
+	},
+	{
+		"gnd": null,
+		"id": 445,
+		"name": "Selewska, Jowita"
+	},
+	{
+		"gnd": null,
+		"id": 446,
+		"name": "Perlikiewicz, Marta"
+	},
+	{
+		"gnd": null,
+		"id": 447,
+		"name": "Worożbit, Sebastian"
+	},
+	{
+		"gnd": null,
+		"id": 448,
+		"name": "Meske, Bożena"
+	},
+	{
+		"gnd": "1309257094",
+		"id": 450,
+		"name": "Maza, Virginia"
 	}
 ]

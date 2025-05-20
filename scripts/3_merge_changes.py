@@ -107,18 +107,21 @@ orig_works = load_json_id("to_baserow", "BernhardWerk")
 orig_translators = load_json_id("to_baserow", "Übersetzer")
 
 
-def process_baserow_export(new_data, orig_data, misc):
+def find_by_id(dct, i):
+    return next(x for x in dct if x["id"] == i)
+
+
+def process_baserow_export(new_data, orig_data, int_columns=[]):
     """Replaces the {id, value, label} dict with just the id, and recovers the correct order of 1:n
     relationships according to the original baserow import"""
     # to recover types
-    prototype = orig_data[0]
     for d in new_data:
         try:
-            orig = next(x for x in orig_data if x["id"] == d["id"])
+            orig = find_by_id(orig_data, d["id"])
             for f in d:  # fields
                 try:
                     # check types and force original numbers
-                    if orig[f] != None and type(d[f]) is not type(orig[f]):
+                    if orig[f] is not None and type(d[f]) is not type(orig[f]):
                         d[f] = int(d[f])
                     elif d[f] != orig[f]:
                         if f == "contains" or f == "translators" or f == "parents":
@@ -136,7 +139,9 @@ def process_baserow_export(new_data, orig_data, misc):
                         logging.info(f"adding new field {f} with value '{d[f]}'")
         except StopIteration:
             logging.info(f"adding new entry: {d}")
-            # for f in d: TODO enforce int
+            for f in int_columns:
+                if d[f]:
+                    d[f] = int(d[f])
         # for n in list(changed)[-new:]:
         #     if "language" in n:
         #         n["language"] = n["language"]["value"]
@@ -153,23 +158,10 @@ def process_baserow_export(new_data, orig_data, misc):
 
 
 # for publication: title, year, year_display, publisher, publication_details, exemplar_...
-process_baserow_export(
-    publications,
-    orig_publications,
-    [
-        "title",
-        "short_title",
-        "year",
-        "year_display",
-        "publisher",
-        "publication_details",
-    ],
-)
-process_baserow_export(translations, orig_translations, ["title", "work_display_title"])
-process_baserow_export(
-    works, orig_works, ["title", "short_title", "year", "category", "gnd"]
-)
-process_baserow_export(translators, orig_translators, ["name", "gnd"])
+process_baserow_export(publications, orig_publications, ["year"])
+process_baserow_export(translations, orig_translations)
+process_baserow_export(works, orig_works, ["year"])
+process_baserow_export(translators, orig_translators)
 
 
 def del_empty_strings(o, field_names):

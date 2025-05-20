@@ -99,7 +99,7 @@
 		"category": "novellas",
 		"gnd": "1147793611",
 		"id": 13,
-		"short_title": "Watten",
+		"short_title": null,
 		"title": "Watten. Ein Nachlass",
 		"year": 1969
 	},
@@ -300,7 +300,7 @@
 		"gnd": "4509408-1",
 		"id": 38,
 		"short_title": null,
-		"title": "Wittgensteins Neffe",
+		"title": "Wittgensteins Neffe. Eine Freundschaft",
 		"year": 1982
 	},
 	{
@@ -348,14 +348,14 @@
 		"gnd": "4447199-3",
 		"id": 44,
 		"short_title": null,
-		"title": "Holzfällen",
+		"title": "Holzfällen. Eine Erregung",
 		"year": 1984
 	},
 	{
 		"category": "novels",
 		"gnd": "4281932-5",
 		"id": 45,
-		"short_title": "Alte Meister",
+		"short_title": null,
 		"title": "Alte Meister. Komödie",
 		"year": 1985
 	},
@@ -363,7 +363,7 @@
 		"category": "novels",
 		"gnd": "4201254-5",
 		"id": 46,
-		"short_title": "Auslöschung",
+		"short_title": null,
 		"title": "Auslöschung. Ein Zerfall",
 		"year": 1986
 	},
@@ -380,7 +380,7 @@
 		"gnd": "7659613-8",
 		"id": 48,
 		"short_title": null,
-		"title": "Elisabeth die Zweite",
+		"title": "Elisabeth II. Keine Komödie",
 		"year": 1987
 	},
 	{
@@ -468,7 +468,7 @@
 		"gnd": "108146285X",
 		"id": 59,
 		"short_title": null,
-		"title": "Die Rosen der Einöde",
+		"title": "die rosen der einöde",
 		"year": "1959"
 	},
 	{
@@ -613,14 +613,6 @@
 		"id": 77,
 		"short_title": null,
 		"title": "Der Hutmacher",
-		"year": null
-	},
-	{
-		"category": "poetry",
-		"gnd": null,
-		"id": 78,
-		"short_title": null,
-		"title": "MISSING original work title of \"Dodatek\" in cze_012",
 		"year": null
 	},
 	{
@@ -824,7 +816,7 @@
 		"year": null
 	},
 	{
-		"category": "drama",
+		"category": "novellas",
 		"gnd": null,
 		"id": 104,
 		"short_title": null,
@@ -904,7 +896,7 @@
 		"year": null
 	},
 	{
-		"category": "novels",
+		"category": "novellas",
 		"gnd": null,
 		"id": 114,
 		"short_title": null,
@@ -1056,7 +1048,7 @@
 		"year": null
 	},
 	{
-		"category": "fragments",
+		"category": "other",
 		"gnd": null,
 		"id": 133,
 		"short_title": "Gerichtschroniken",
@@ -1064,7 +1056,7 @@
 		"year": null
 	},
 	{
-		"category": "fragments",
+		"category": "other",
 		"gnd": null,
 		"id": 134,
 		"short_title": null,
@@ -1072,7 +1064,7 @@
 		"year": null
 	},
 	{
-		"category": "fragments",
+		"category": "other",
 		"gnd": null,
 		"id": 135,
 		"short_title": null,
@@ -1080,7 +1072,7 @@
 		"year": null
 	},
 	{
-		"category": "fragments",
+		"category": "other",
 		"gnd": null,
 		"id": 136,
 		"short_title": null,
@@ -1088,7 +1080,7 @@
 		"year": null
 	},
 	{
-		"category": "fragments",
+		"category": "other",
 		"gnd": null,
 		"id": 137,
 		"short_title": null,
@@ -1096,7 +1088,7 @@
 		"year": null
 	},
 	{
-		"category": "fragments",
+		"category": "other",
 		"gnd": null,
 		"id": 138,
 		"short_title": null,
@@ -1152,14 +1144,6 @@
 		"year": null
 	},
 	{
-		"category": "fragments",
-		"gnd": null,
-		"id": 145,
-		"short_title": null,
-		"title": "Die Frau aus Gußwerk",
-		"year": null
-	},
-	{
 		"category": "other",
 		"gnd": null,
 		"id": 146,
@@ -1168,7 +1152,7 @@
 		"year": null
 	},
 	{
-		"category": "fragments",
+		"category": "novellas",
 		"gnd": null,
 		"id": 147,
 		"short_title": null,
@@ -1176,7 +1160,7 @@
 		"year": null
 	},
 	{
-		"category": "fragments",
+		"category": "other",
 		"gnd": null,
 		"id": 148,
 		"short_title": null,
@@ -1192,7 +1176,7 @@
 		"year": null
 	},
 	{
-		"category": "fragments",
+		"category": "other",
 		"gnd": null,
 		"id": 150,
 		"short_title": null,
@@ -1240,27 +1224,11 @@
 		"year": null
 	},
 	{
-		"category": "fragments",
-		"gnd": null,
-		"id": 156,
-		"short_title": null,
-		"title": "MISSING original work title of \"Deuil\" in fra_085",
-		"year": null
-	},
-	{
 		"category": "poetry",
 		"gnd": null,
 		"id": 157,
 		"short_title": null,
 		"title": "Warum fürchte ich mein Altern",
-		"year": null
-	},
-	{
-		"category": "fragments",
-		"gnd": null,
-		"id": 158,
-		"short_title": null,
-		"title": "MISSING original work title of \"Le mort et le temps\" in fra_088",
 		"year": null
 	},
 	{
@@ -1400,14 +1368,6 @@
 		"year": null
 	},
 	{
-		"category": "poetry",
-		"gnd": null,
-		"id": 176,
-		"short_title": null,
-		"title": "MISSING original work title of \"Aneks\" in pol_021",
-		"year": null
-	},
-	{
 		"category": "other",
 		"gnd": null,
 		"id": 177,
@@ -1501,6 +1461,22 @@
 		"id": 188,
 		"short_title": null,
 		"title": "Frost (Version C)",
+		"year": null
+	},
+	{
+		"category": "poetry",
+		"gnd": null,
+		"id": 189,
+		"short_title": null,
+		"title": "Traurigkeit",
+		"year": 1957
+	},
+	{
+		"category": "poetry",
+		"gnd": null,
+		"id": 191,
+		"short_title": null,
+		"title": "Tod und Thymian",
 		"year": null
 	}
 ]

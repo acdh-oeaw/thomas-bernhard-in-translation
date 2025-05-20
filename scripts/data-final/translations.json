@@ -99,7 +99,7 @@
 	},
 	{
 		"id": 15,
-		"title": "De oorzak",
+		"title": "De oorzaak",
 		"translators": [264],
 		"work": 23,
 		"work_display_title": null
@@ -501,7 +501,7 @@
 		"title": "Преферанс",
 		"translators": [333],
 		"work": 13,
-		"work_display_title": "Watten"
+		"work_display_title": null
 	},
 	{
 		"id": 73,
@@ -585,7 +585,7 @@
 		"title": "Minetti",
 		"translators": [197],
 		"work": 28,
-		"work_display_title": "Minetti"
+		"work_display_title": null
 	},
 	{
 		"id": 85,
@@ -683,7 +683,7 @@
 		"title": "Breath: A Decision",
 		"translators": [54],
 		"work": 32,
-		"work_display_title": "Der Atem"
+		"work_display_title": null
 	},
 	{
 		"id": 99,
@@ -984,7 +984,7 @@
 		"title": "Watten",
 		"translators": [105],
 		"work": 13,
-		"work_display_title": "Watten"
+		"work_display_title": null
 	},
 	{
 		"id": 142,
@@ -1095,7 +1095,7 @@
 		"id": 157,
 		"title": "Deuil",
 		"translators": [109, 108],
-		"work": 156,
+		"work": 189,
 		"work_display_title": null
 	},
 	{
@@ -1138,7 +1138,7 @@
 		"title": "Alsózás",
 		"translators": [175],
 		"work": 13,
-		"work_display_title": "Watten"
+		"work_display_title": null
 	},
 	{
 		"id": 164,
@@ -1208,7 +1208,7 @@
 		"title": "Jugar al watten",
 		"translators": [374],
 		"work": 13,
-		"work_display_title": "Watten"
+		"work_display_title": null
 	},
 	{
 		"id": 174,
@@ -2367,9 +2367,9 @@
 	},
 	{
 		"id": 339,
-		"title": "La mort et le temps",
+		"title": "La Mort et le Thym",
 		"translators": [130],
-		"work": 158,
+		"work": 191,
 		"work_display_title": null
 	},
 	{
@@ -2853,7 +2853,7 @@
 		"title": "Chlad",
 		"translators": [38, 49],
 		"work": 36,
-		"work_display_title": "Die Kälte"
+		"work_display_title": null
 	},
 	{
 		"id": 409,
@@ -3077,7 +3077,7 @@
 		"title": "Minetti",
 		"translators": [41],
 		"work": 28,
-		"work_display_title": "Minetti"
+		"work_display_title": null
 	},
 	{
 		"id": 441,
@@ -3308,7 +3308,7 @@
 		"title": "Élisabeth II",
 		"translators": [101],
 		"work": 48,
-		"work_display_title": "Elisabeth II. Keine Komödie"
+		"work_display_title": null
 	},
 	{
 		"id": 474,
@@ -3413,7 +3413,7 @@
 		"title": "Минетти",
 		"translators": [331],
 		"work": 28,
-		"work_display_title": "Minetti"
+		"work_display_title": null
 	},
 	{
 		"id": 489,
@@ -3497,7 +3497,7 @@
 		"title": "Елізабет II",
 		"translators": [405],
 		"work": 48,
-		"work_display_title": "Elisabeth II. Keine Komödie"
+		"work_display_title": null
 	},
 	{
 		"id": 501,
@@ -3525,7 +3525,7 @@
 		"title": "Moušlování",
 		"translators": [33],
 		"work": 13,
-		"work_display_title": "Watten"
+		"work_display_title": null
 	},
 	{
 		"id": 505,
@@ -3536,7 +3536,7 @@
 	},
 	{
 		"id": 506,
-		"title": "???",
+		"title": "",
 		"translators": [136],
 		"work": 160,
 		"work_display_title": null
@@ -3602,7 +3602,7 @@
 		"title": "Minetti",
 		"translators": [374],
 		"work": 28,
-		"work_display_title": "Minetti"
+		"work_display_title": null
 	},
 	{
 		"id": 516,
@@ -3651,13 +3651,6 @@
 		"title": "Pod okovy měsíce",
 		"translators": [34],
 		"work": 3,
-		"work_display_title": null
-	},
-	{
-		"id": 523,
-		"title": "Dodatek",
-		"translators": [34],
-		"work": 78,
 		"work_display_title": null
 	},
 	{
@@ -3938,7 +3931,7 @@
 		"title": "Portret artysty z czasów starości",
 		"translators": [297],
 		"work": 28,
-		"work_display_title": "Minetti"
+		"work_display_title": null
 	},
 	{
 		"id": 564,
@@ -4141,7 +4134,7 @@
 		"title": "Playing Watten",
 		"translators": [67],
 		"work": 13,
-		"work_display_title": "Watten"
+		"work_display_title": null
 	},
 	{
 		"id": 593,
@@ -4484,7 +4477,7 @@
 		"title": "Минети",
 		"translators": [15],
 		"work": 28,
-		"work_display_title": "Minetti"
+		"work_display_title": null
 	},
 	{
 		"id": 642,
@@ -4624,13 +4617,6 @@
 		"title": "Ave Vergilius",
 		"translators": [177],
 		"work": 37,
-		"work_display_title": null
-	},
-	{
-		"id": 662,
-		"title": "Függelék",
-		"translators": [177],
-		"work": 161,
 		"work_display_title": null
 	},
 	{
@@ -5121,7 +5107,7 @@
 		"title": "A pince. Kivonuás",
 		"translators": [183],
 		"work": 27,
-		"work_display_title": "Der Keller"
+		"work_display_title": null
 	},
 	{
 		"id": 733,
@@ -5688,7 +5674,7 @@
 		"title": "Розите в пущинака",
 		"translators": [15],
 		"work": 59,
-		"work_display_title": "Die Rosen der Einöde (Libretto)"
+		"work_display_title": null
 	},
 	{
 		"id": 814,
@@ -5940,7 +5926,7 @@
 		"title": "pouštní růže",
 		"translators": [30],
 		"work": 59,
-		"work_display_title": "Die Rosen der Einöde (Libretto)"
+		"work_display_title": null
 	},
 	{
 		"id": 850,
@@ -6164,7 +6150,7 @@
 		"title": "Dah",
 		"translators": [352],
 		"work": 32,
-		"work_display_title": "Der Atem"
+		"work_display_title": null
 	},
 	{
 		"id": 882,
@@ -6479,7 +6465,7 @@
 		"title": "Andhämtningen: Ett avgörande",
 		"translators": [386, 387],
 		"work": 32,
-		"work_display_title": "Der Atem"
+		"work_display_title": null
 	},
 	{
 		"id": 927,
@@ -7193,7 +7179,7 @@
 		"title": "Watten",
 		"translators": [393],
 		"work": 13,
-		"work_display_title": "Watten"
+		"work_display_title": null
 	},
 	{
 		"id": 1029,
@@ -7326,14 +7312,14 @@
 		"title": "A Cave",
 		"translators": [318],
 		"work": 27,
-		"work_display_title": "Der Keller"
+		"work_display_title": null
 	},
 	{
 		"id": 1048,
 		"title": "A Respiração",
 		"translators": [318],
 		"work": 32,
-		"work_display_title": "Der Atem"
+		"work_display_title": null
 	},
 	{
 		"id": 1049,
@@ -7519,7 +7505,7 @@
 	},
 	{
 		"id": 1075,
-		"title": "Na ziemi i w piekle (selection)",
+		"title": "Na ziemi i w piekle (Exzerpt)",
 		"translators": [304, 298],
 		"work": 1,
 		"work_display_title": "Auf der Erde und in der Hölle (Exzerpt)"
@@ -7533,7 +7519,7 @@
 	},
 	{
 		"id": 1077,
-		"title": "Pod żelazem księżyca (selection)",
+		"title": "Pod żelazem księżyca (Exzerpt)",
 		"translators": [304, 298],
 		"work": 3,
 		"work_display_title": "Unter dem Eisen des Mondes (Exzerpt)"
@@ -7547,17 +7533,10 @@
 	},
 	{
 		"id": 1079,
-		"title": "Ave Vergil (selection)",
+		"title": "Ave Vergil (Exzerpt)",
 		"translators": [304, 298],
 		"work": 37,
 		"work_display_title": "Ave Vergil (Exzerpt)"
-	},
-	{
-		"id": 1080,
-		"title": "Aneks",
-		"translators": [304, 298],
-		"work": 176,
-		"work_display_title": null
 	},
 	{
 		"id": 1081,
@@ -7711,7 +7690,7 @@
 		"title": "Kortinpeluu",
 		"translators": [95],
 		"work": 13,
-		"work_display_title": "Watten"
+		"work_display_title": null
 	},
 	{
 		"id": 1103,
@@ -7806,63 +7785,63 @@
 	},
 	{
 		"id": 1116,
-		"title": "???",
+		"title": "",
 		"translators": [293],
 		"work": 170,
 		"work_display_title": null
 	},
 	{
 		"id": 1117,
-		"title": "???",
+		"title": "",
 		"translators": [293],
 		"work": 171,
 		"work_display_title": null
 	},
 	{
 		"id": 1118,
-		"title": "???",
+		"title": "",
 		"translators": [293],
 		"work": 12,
 		"work_display_title": null
 	},
 	{
 		"id": 1119,
-		"title": "???",
+		"title": "",
 		"translators": [293],
 		"work": 172,
 		"work_display_title": null
 	},
 	{
 		"id": 1120,
-		"title": "???",
+		"title": "",
 		"translators": [293],
 		"work": 173,
 		"work_display_title": null
 	},
 	{
 		"id": 1121,
-		"title": "???",
+		"title": "",
 		"translators": [293],
 		"work": 22,
 		"work_display_title": null
 	},
 	{
 		"id": 1122,
-		"title": "???",
+		"title": "",
 		"translators": [293],
 		"work": 174,
 		"work_display_title": null
 	},
 	{
 		"id": 1123,
-		"title": "???",
+		"title": "",
 		"translators": [293],
 		"work": 15,
 		"work_display_title": null
 	},
 	{
 		"id": 1124,
-		"title": "???",
+		"title": "",
 		"translators": [293],
 		"work": 175,
 		"work_display_title": null
@@ -8271,7 +8250,7 @@
 		"title": "Minetti",
 		"translators": [385],
 		"work": 28,
-		"work_display_title": "Minetti"
+		"work_display_title": null
 	},
 	{
 		"id": 1183,
@@ -8712,7 +8691,7 @@
 		"title": "米奈蒂",
 		"translators": [28],
 		"work": 28,
-		"work_display_title": "Minetti"
+		"work_display_title": null
 	},
 	{
 		"id": 1246,
@@ -8886,7 +8865,7 @@
 		"id": 1270,
 		"title": "La femme de la fonderie et l'homme avec le sac à dos",
 		"translators": [123],
-		"work": 145,
+		"work": 163,
 		"work_display_title": null
 	},
 	{
@@ -9062,18 +9041,18 @@
 		"title": "De kelder. En onttrekking",
 		"translators": [273],
 		"work": 27,
-		"work_display_title": "Der Keller"
+		"work_display_title": null
 	},
 	{
 		"id": 1296,
-		"title": "De adem. En besluit",
+		"title": "De adem. Een besluit",
 		"translators": [273],
 		"work": 32,
 		"work_display_title": null
 	},
 	{
 		"id": 1297,
-		"title": "De kou. En isolement",
+		"title": "De kou. Een isolement",
 		"translators": [273],
 		"work": 36,
 		"work_display_title": null
@@ -9139,7 +9118,7 @@
 		"title": "Watten",
 		"translators": [385],
 		"work": 13,
-		"work_display_title": "Watten"
+		"work_display_title": null
 	},
 	{
 		"id": 1307,
@@ -9377,7 +9356,7 @@
 		"title": "Minetti. Sanatçının Yaşlı Bir Adam Olarak Portresi",
 		"translators": [389],
 		"work": 28,
-		"work_display_title": "Minetti"
+		"work_display_title": null
 	},
 	{
 		"id": 1341,
@@ -9643,6 +9622,419 @@
 		"title": "Verstoring",
 		"translators": [269],
 		"work": 9,
+		"work_display_title": null
+	},
+	{
+		"id": 1380,
+		"title": "De neef van Wittgenstein. Een vriendschap",
+		"translators": [273],
+		"work": 38,
+		"work_display_title": null
+	},
+	{
+		"id": 1381,
+		"title": "À la suite d’un orage",
+		"translators": [101],
+		"work": 52,
+		"work_display_title": null
+	},
+	{
+		"id": 1383,
+		"title": "Un inconnu",
+		"translators": [101],
+		"work": 52,
+		"work_display_title": null
+	},
+	{
+		"id": 1384,
+		"title": "沉落者",
+		"translators": [22],
+		"work": 42,
+		"work_display_title": null
+	},
+	{
+		"id": 1385,
+		"title": "伐木: 一场情感波澜",
+		"translators": [22],
+		"work": 44,
+		"work_display_title": null
+	},
+	{
+		"id": 1386,
+		"title": "Ο Γκαίτε πεθένει",
+		"translators": [410],
+		"work": 73,
+		"work_display_title": null
+	},
+	{
+		"id": 1387,
+		"title": "Μοντέν. Μια αφήγηση",
+		"translators": [410],
+		"work": 74,
+		"work_display_title": null
+	},
+	{
+		"id": 1388,
+		"title": "Αντάμωμα",
+		"translators": [410],
+		"work": 75,
+		"work_display_title": null
+	},
+	{
+		"id": 1389,
+		"title": "Τυλίχτηκε στις φλόγες. Ταξιδιωτικές εντυπώσεις προς κάποιον παλιό φίλο",
+		"translators": [410],
+		"work": 76,
+		"work_display_title": null
+	},
+	{
+		"id": 1390,
+		"title": "Ο Πρόεδρος",
+		"translators": [412],
+		"work": 24,
+		"work_display_title": null
+	},
+	{
+		"id": 1391,
+		"title": "Μινέττι. Πορτρέτο του καλλιτέχνη σε γεροντική ηλικία",
+		"translators": [412],
+		"work": 28,
+		"work_display_title": null
+	},
+	{
+		"id": 1392,
+		"title": "Skógarhögg. Geðshræring",
+		"translators": [184],
+		"work": 44,
+		"work_display_title": null
+	},
+	{
+		"id": 1393,
+		"title": "کتاب میدان دلاوران",
+		"translators": [414],
+		"work": 49,
+		"work_display_title": null
+	},
+	{
+		"id": 1394,
+		"title": "Na pista da verdade. Discursos, cartas, entrevistas e artigos",
+		"translators": [5],
+		"work": 54,
+		"work_display_title": null
+	},
+	{
+		"id": 1395,
+		"title": "Immanuel Kant",
+		"translators": [415, 417],
+		"work": 31,
+		"work_display_title": null
+	},
+	{
+		"id": 1396,
+		"title": "Uma festa para Boris",
+		"translators": [418, 419],
+		"work": 16,
+		"work_display_title": null
+	},
+	{
+		"id": 1397,
+		"title": "یخبندان",
+		"translators": [296],
+		"work": 5,
+		"work_display_title": null
+	},
+	{
+		"id": 1398,
+		"title": "الیزابت دوم",
+		"translators": [414],
+		"work": 48,
+		"work_display_title": null
+	},
+	{
+		"id": 1399,
+		"title": "Elisabeth II",
+		"translators": [385],
+		"work": 48,
+		"work_display_title": null
+	},
+	{
+		"id": 1400,
+		"title": "石灰工場",
+		"translators": [216],
+		"work": 17,
+		"work_display_title": null
+	},
+	{
+		"id": 1401,
+		"title": "Dwaj wychowawcy",
+		"translators": [420],
+		"work": 82,
+		"work_display_title": null
+	},
+	{
+		"id": 1402,
+		"title": "Czapka",
+		"translators": [299],
+		"work": 10,
+		"work_display_title": null
+	},
+	{
+		"id": 1403,
+		"title": "Czy to komedia? Czy to tragedia?",
+		"translators": [423],
+		"work": 11,
+		"work_display_title": null
+	},
+	{
+		"id": 1404,
+		"title": "Jauregg",
+		"translators": [424],
+		"work": 7,
+		"work_display_title": null
+	},
+	{
+		"id": 1405,
+		"title": "Attaché przy ambasadzie Francji",
+		"translators": [425],
+		"work": 83,
+		"work_display_title": null
+	},
+	{
+		"id": 1406,
+		"title": "Zbrodnia syna pewnego kupca z Innsbrucku",
+		"translators": [426],
+		"work": 80,
+		"work_display_title": null
+	},
+	{
+		"id": 1407,
+		"title": "Cieśla",
+		"translators": [427],
+		"work": 81,
+		"work_display_title": null
+	},
+	{
+		"id": 1408,
+		"title": "Na granicy drzew",
+		"translators": [298],
+		"work": 12,
+		"work_display_title": null
+	},
+	{
+		"id": 1409,
+		"title": "Midland w Stilfs",
+		"translators": [428],
+		"work": 84,
+		"work_display_title": null
+	},
+	{
+		"id": 1410,
+		"title": "Peleryna",
+		"translators": [429],
+		"work": 14,
+		"work_display_title": null
+	},
+	{
+		"id": 1411,
+		"title": "U stóp Ortlera",
+		"translators": [430],
+		"work": 85,
+		"work_display_title": null
+	},
+	{
+		"id": 1412,
+		"title": "Wiosna",
+		"translators": [431],
+		"work": 104,
+		"work_display_title": null
+	},
+	{
+		"id": 1413,
+		"title": "Zeznanie świadka",
+		"translators": [432],
+		"work": 101,
+		"work_display_title": null
+	},
+	{
+		"id": 1414,
+		"title": "Młody pisarz",
+		"translators": [433],
+		"work": 120,
+		"work_display_title": null
+	},
+	{
+		"id": 1415,
+		"title": "Wiktor Niespełna",
+		"translators": [312],
+		"work": 8,
+		"work_display_title": null
+	},
+	{
+		"id": 1416,
+		"title": "Uspokojenie",
+		"translators": [434],
+		"work": 162,
+		"work_display_title": null
+	},
+	{
+		"id": 1417,
+		"title": "Wiejski oszust",
+		"translators": [435],
+		"work": 143,
+		"work_display_title": null
+	},
+	{
+		"id": 1418,
+		"title": "Administrator zakładu opiekuńczego",
+		"translators": [436],
+		"work": 144,
+		"work_display_title": null
+	},
+	{
+		"id": 1419,
+		"title": "Kobieta z odlewni i mężczyzna z plecakiem",
+		"translators": [437],
+		"work": 163,
+		"work_display_title": null
+	},
+	{
+		"id": 1420,
+		"title": "Na równi",
+		"translators": [438],
+		"work": 164,
+		"work_display_title": null
+	},
+	{
+		"id": 1421,
+		"title": "Goethe umira",
+		"translators": [439],
+		"work": 73,
+		"work_display_title": null
+	},
+	{
+		"id": 1422,
+		"title": "Montaigne",
+		"translators": [440],
+		"work": 74,
+		"work_display_title": null
+	},
+	{
+		"id": 1423,
+		"title": "Spotkanie",
+		"translators": [441],
+		"work": 75,
+		"work_display_title": null
+	},
+	{
+		"id": 1424,
+		"title": "W płomieniach",
+		"translators": [433],
+		"work": 76,
+		"work_display_title": null
+	},
+	{
+		"id": 1425,
+		"title": "Czerwone światło",
+		"translators": [435],
+		"work": 87,
+		"work_display_title": null
+	},
+	{
+		"id": 1426,
+		"title": "Osadnicy",
+		"translators": [431],
+		"work": 88,
+		"work_display_title": null
+	},
+	{
+		"id": 1427,
+		"title": "Popołudnie w wielkim mieście",
+		"translators": [440],
+		"work": 89,
+		"work_display_title": null
+	},
+	{
+		"id": 1428,
+		"title": "O siedem jodłach i śniegu",
+		"translators": [442],
+		"work": 90,
+		"work_display_title": null
+	},
+	{
+		"id": 1429,
+		"title": "Szalona Magdalena",
+		"translators": [443],
+		"work": 91,
+		"work_display_title": null
+	},
+	{
+		"id": 1430,
+		"title": "Ostatnia wola",
+		"translators": [443],
+		"work": 165,
+		"work_display_title": null
+	},
+	{
+		"id": 1431,
+		"title": "Przytułek St. Laurin",
+		"translators": [444],
+		"work": 93,
+		"work_display_title": null
+	},
+	{
+		"id": 1432,
+		"title": "Wielki, niepojęty głód",
+		"translators": [442],
+		"work": 94,
+		"work_display_title": null
+	},
+	{
+		"id": 1433,
+		"title": "Zimowy dzień w Alpach",
+		"translators": [445],
+		"work": 95,
+		"work_display_title": null
+	},
+	{
+		"id": 1434,
+		"title": "Zmierzch Zachodu",
+		"translators": [444],
+		"work": 96,
+		"work_display_title": null
+	},
+	{
+		"id": 1435,
+		"title": "Matczyny krajobraz",
+		"translators": [446],
+		"work": 97,
+		"work_display_title": null
+	},
+	{
+		"id": 1436,
+		"title": "Starszy mężczyzna o imieniem August",
+		"translators": [447],
+		"work": 98,
+		"work_display_title": null
+	},
+	{
+		"id": 1437,
+		"title": "O jednym takim, co wyruszył poznawać świat",
+		"translators": [448],
+		"work": 99,
+		"work_display_title": null
+	},
+	{
+		"id": 1438,
+		"title": "Świniopas",
+		"translators": [306],
+		"work": 100,
+		"work_display_title": null
+	},
+	{
+		"id": 1441,
+		"title": "Andar",
+		"translators": [450],
+		"work": 18,
 		"work_display_title": null
 	}
 ]
