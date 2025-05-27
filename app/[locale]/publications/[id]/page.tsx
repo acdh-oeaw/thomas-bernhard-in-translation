@@ -62,7 +62,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 	});
 
 	return (
-		<MainContent className="mx-auto w-fit max-w-fit p-4">
+		<MainContent className="mx-auto w-fit max-w-fit p-8">
 			<h1 className="max-w-screen-lg text-3xl font-bold">{pub.title}</h1>
 			<p className="py-3 lowercase italic">
 				{Array.from(
@@ -78,7 +78,7 @@ export default async function PublicationPage(props: PublicationPageProps) {
 					})
 					.join(" / ")}
 			</p>
-			<div className="m-auto justify-center gap-8 py-8 md:flex md:flex-row">
+			<div className="m-auto justify-center gap-8 py-4 md:flex md:flex-row">
 				<div className="relative mt-4 h-full grow basis-1 md:max-w-[30vw]">
 					<PublicationCover className="object-left-top" publication={pub} />
 				</div>
