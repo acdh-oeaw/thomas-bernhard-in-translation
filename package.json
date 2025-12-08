@@ -1,13 +1,12 @@
 {
-	"name": "@acdh-oeaw/app",
+	"name": "@acdh-oeaw/thomas-bernhard-in-translation",
 	"private": true,
 	"license": "MIT",
 	"type": "module",
 	"engines": {
-		"node": "24.x",
-		"pnpm": "9.x"
+		"node": "^24"
 	},
-	"packageManager": "pnpm@9.11.0",
+	"packageManager": "pnpm@10.24.0",
 	"scripts": {
 		"analyze": "BUNDLE_ANALYZER=\"enabled\" next build --no-lint",
 		"build": "next build",

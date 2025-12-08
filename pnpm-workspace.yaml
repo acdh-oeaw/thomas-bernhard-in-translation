@@ -1,0 +1,8 @@
+onlyBuiltDependencies:
+  - sharp
+  - simple-git-hooks
+  - typesense-instantsearch-adapter
+
+shellEmulator: true
+
+strictDepBuilds: true
