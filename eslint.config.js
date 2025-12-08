@@ -1,5 +1,3 @@
-/** @typedef {import("typescript-eslint").Config} Config */
-
 import baseConfig from "@acdh-oeaw/eslint-config";
 import nextConfig from "@acdh-oeaw/eslint-config-next";
 import playwrightConfig from "@acdh-oeaw/eslint-config-playwright";
@@ -7,7 +5,6 @@ import reactConfig from "@acdh-oeaw/eslint-config-react";
 import tailwindcssConfig from "@acdh-oeaw/eslint-config-tailwindcss";
 import gitignore from "eslint-config-flat-gitignore";
 
-/** @type {Config} */
 const config = [
 	gitignore({ strict: false }),
 	...baseConfig,
