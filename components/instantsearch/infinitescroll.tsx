@@ -1,3 +1,5 @@
+import type { InfiniteHitsCache } from "instantsearch.js/es/connectors/infinite-hits/connectInfiniteHits";
+import { createInfiniteHitsSessionStorageCache } from "instantsearch.js/es/lib/infiniteHitsCache";
 import { useTranslations } from "next-intl";
 import { type ReactNode, useEffect, useRef } from "react";
 import { useInfiniteHits } from "react-instantsearch";
@@ -9,7 +11,11 @@ import { Button } from "../ui/button";
 
 export function InfiniteScroll(): ReactNode {
 	const t = useTranslations("InstantSearch");
-	const { items, isLastPage, showMore } = useInfiniteHits<Publication>();
+	const sessionStorageCache =
+		createInfiniteHitsSessionStorageCache() as unknown as InfiniteHitsCache<Publication>;
+	const { items, isLastPage, showMore } = useInfiniteHits<Publication>({
+		cache: sessionStorageCache,
+	});
 	const sentinelRef = useRef(null);
 	useEffect(() => {
 		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
