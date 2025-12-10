@@ -12,7 +12,7 @@ export interface Publication {
 	title: string;
 
 	// if unset, short_title is the same as title
-	short_title: string;
+	short_title?: string;
 
 	// language tag according to https://www.rfc-editor.org/rfc/rfc5646.html -- see messages scripts/3_merge_data.py or messages/*.json for the list of codes used
 	language: string;
