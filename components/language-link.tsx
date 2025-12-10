@@ -9,7 +9,7 @@ interface LanguageLinkProps {
 export function LanguageLink(props: LanguageLinkProps) {
 	const t = useTranslations("Languages");
 	return (
-		<AppLink className="lowercase" href={`/languages?language=${props.language}`}>
+		<AppLink className="lowercase" href={`/languages/${props.language}`}>
 			{
 				// eslint-disable-next-line @typescript-eslint/no-explicit-any
 				t(props.language as any)
