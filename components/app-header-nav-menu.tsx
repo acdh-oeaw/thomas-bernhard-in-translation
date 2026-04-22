@@ -1,6 +1,6 @@
 "use client";
 import { useTranslations } from "next-intl";
-import { type MouseEventHandler, type ReactNode, useId, useState } from "react";
+import { type ReactNode, useId, useState } from "react";
 
 import { AppNavLink } from "@/components/app-nav-link";
 import { createHref } from "@/lib/create-href";
@@ -9,17 +9,38 @@ import { usePathname } from "@/lib/navigation";
 
 import { DisclosureButton } from "./disclosure-button";
 
-interface AppHeaderNavMenuLinkProps {
+interface NavLinkItem {
+	type: "link";
 	href: string;
 	label: string;
-	onClick: MouseEventHandler<HTMLAnchorElement>;
+	onClick?: () => void;
 }
 
-function AppHeaderNavMenuLink({ href, label, onClick }: AppHeaderNavMenuLinkProps) {
+interface NavDisclosureItem {
+	type: "disclosure";
+	controls: string;
+	label: string;
+	state: boolean;
+	setState: (open: boolean) => void;
+}
+
+type NavItem = NavLinkItem | NavDisclosureItem;
+
+function renderNavItem(item: NavItem): ReactNode {
+	if (item.type === "link") {
+		return (
+			<AppNavLink className="lowercase" href={item.href} onClick={item.onClick}>
+				{item.label}
+			</AppNavLink>
+		);
+	}
 	return (
-		<AppNavLink className="lowercase" href={href} onClick={onClick}>
-			{label}
-		</AppNavLink>
+		<DisclosureButton
+			controls={item.controls}
+			label={item.label}
+			setState={item.setState}
+			state={item.state}
+		/>
 	);
 }
 
@@ -49,57 +70,82 @@ export function AppHeaderNavMenu(): ReactNode {
 		setProseMenuOpen(false);
 	};
 
-	const topLevelItems = {
-		home: (
-			<AppHeaderNavMenuLink
-				href={createHref({ pathname: "/" })}
-				label={t("links.home")}
-				onClick={closeMenus}
-			/>
-		),
-		works: (
-			<DisclosureButton
-				controls={worksMenu}
-				label={t("links.works")}
-				setState={setWorksMenuOpen}
-				state={worksMenuOpen}
-			/>
-		),
-		languages: (
-			<AppHeaderNavMenuLink
-				href={createHref({ pathname: "/languages" })}
-				label={t("links.languages")}
-				onClick={closeMenus}
-			/>
-		),
-		translators: (
-			<AppHeaderNavMenuLink
-				href={createHref({ pathname: "/translators" })}
-				label={t("links.translators")}
-				onClick={closeMenus}
-			/>
-		),
-		about: (
-			<AppHeaderNavMenuLink
-				href={createHref({ pathname: "/about" })}
-				label={t("links.about")}
-				onClick={closeMenus}
-			/>
-		),
-		search: (
-			<AppHeaderNavMenuLink
-				href={createHref({ pathname: "/search" })}
-				label={t("links.search")}
-				onClick={closeMenus}
-			/>
+	const topLevelItems: Record<string, NavItem> = {
+		home: {
+			type: "link",
+			href: createHref({ pathname: "/" }),
+			label: t("links.home"),
+			onClick: closeMenus,
+		},
+		works: {
+			type: "disclosure",
+			controls: worksMenu,
+			label: t("links.works"),
+			state: worksMenuOpen,
+			setState: setWorksMenuOpen,
+		},
+		languages: {
+			type: "link",
+			href: createHref({ pathname: "/languages" }),
+			label: t("links.languages"),
+			onClick: closeMenus,
+		},
+		translators: {
+			type: "link",
+			href: createHref({ pathname: "/translators" }),
+			label: t("links.translators"),
+			onClick: closeMenus,
+		},
+		about: {
+			type: "link",
+			href: createHref({ pathname: "/about" }),
+			label: t("links.about"),
+			onClick: closeMenus,
+		},
+		search: {
+			type: "link",
+			href: createHref({ pathname: "/search" }),
+			label: t("links.search"),
+			onClick: closeMenus,
+		},
+	};
+
+	const worksMenuItems: Record<string, NavItem> = {
+		prose: {
+			type: "disclosure",
+			controls: proseMenu,
+			label: catt("prose"),
+			state: proseMenuOpen,
+			setState: setProseMenuOpen,
+		},
+		...Object.fromEntries<NavItem>(
+			otherCategories.map((c): [string, NavItem] => {
+				return [
+					c,
+					{
+						type: "link",
+						href: `/works/${c}`,
+						label: catt(c),
+						onClick: () => {
+							setProseMenuOpen(false);
+						},
+					},
+				];
+			}),
 		),
 	};
+
+	const proseMenuItems: Record<string, NavItem> = Object.fromEntries<NavItem>(
+		proseCategories.map((c): [string, NavItem] => {
+			return [c, { type: "link", href: `/works/${c}`, label: catt(c) }];
+		}),
+	);
 
 	return (
 		<nav aria-label={t("navigation-primary")} className="flex flex-col justify-center">
 			<ul className="flex items-center gap-6 text-sm" role="list">
 				{Object.entries(topLevelItems).map(([id, item]) => {
-					return <li key={id}>{item}</li>;
+					return <li key={id}>{renderNavItem(item)}</li>;
 				})}
 			</ul>
 			{worksMenuOpen ? (
@@ -108,27 +154,8 @@ export function AppHeaderNavMenu(): ReactNode {
 					id={worksMenu}
 					role="list"
 				>
-					<li>
-						<DisclosureButton
-							controls={proseMenu}
-							label={catt("prose")}
-							setState={setProseMenuOpen}
-							state={proseMenuOpen}
-						/>
-					</li>
-					{otherCategories.map((c) => {
-						return (
-							<AppNavLink
-								key={c}
-								className="lowercase"
-								href={`/works/${c}`}
-								onClick={() => {
-									setProseMenuOpen(false);
-								}}
-							>
-								{catt(c)}
-							</AppNavLink>
-						);
+					{Object.entries(worksMenuItems).map(([id, item]) => {
+						return <li key={id}>{renderNavItem(item)}</li>;
 					})}
 				</ul>
 			) : null}
@@ -138,12 +165,8 @@ export function AppHeaderNavMenu(): ReactNode {
 					id={proseMenu}
 					role="list"
 				>
-					{proseCategories.map((c) => {
-						return (
-							<AppNavLink key={c} className="lowercase" href={`/works/${c}`}>
-								{catt(c)}
-							</AppNavLink>
-						);
+					{Object.entries(proseMenuItems).map(([id, item]) => {
+						return <li key={id}>{renderNavItem(item)}</li>;
 					})}
 				</ul>
 			) : null}
