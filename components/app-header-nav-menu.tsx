@@ -142,15 +142,15 @@ export function AppHeaderNavMenu(): ReactNode {
 	);
 
 	return (
-		<nav aria-label={t("navigation-primary")} className="flex flex-col justify-center">
-			<ul className="flex items-center gap-6 text-sm" role="list">
+		<nav aria-label={t("navigation-primary")} className="hidden flex-col justify-center lg:flex">
+			<ul className="flex min-h-9 items-center gap-6 text-sm" role="list">
 				{Object.entries(topLevelItems).map(([id, item]) => {
 					return <li key={id}>{renderNavItem(item)}</li>;
 				})}
 			</ul>
 			{worksMenuOpen ? (
 				<ul
-					className="mt-4 flex items-center gap-6 text-center text-sm leading-4"
+					className="mt-4 flex min-h-9 items-center gap-6 text-center text-sm leading-4"
 					id={worksMenu}
 					role="list"
 				>
@@ -161,7 +161,7 @@ export function AppHeaderNavMenu(): ReactNode {
 			) : null}
 			{worksMenuOpen && proseMenuOpen ? (
 				<ul
-					className="mt-4 flex items-center gap-6 text-center text-sm leading-4"
+					className="mt-4 flex min-h-9 items-center gap-6 text-center text-sm leading-4"
 					id={proseMenu}
 					role="list"
 				>

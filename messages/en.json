@@ -23,7 +23,9 @@
 			"works": "works",
 			"languages": "languages",
 			"search": "search",
-			"translators": "translators"
+			"translators": "translators",
+			"open-menu": "Open navigation menu",
+			"close-menu": "Close navigation menu"
 		},
 		"navigation-primary": "Primary",
 		"title": "Thomas Bernhard in Translation"

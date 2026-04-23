@@ -23,7 +23,9 @@
 			"works": "Werke",
 			"languages": "Sprachen",
 			"search": "Suche",
-			"translators": "Übersetzer:innen"
+			"translators": "Übersetzer:innen",
+			"open-menu": "Navigationsmenü öffnen",
+			"close-menu": "Navigationsmenü schließen"
 		},
 		"navigation-primary": "Primär",
 		"title": "Thomas Bernhard in Translation"
