@@ -8,6 +8,8 @@ import { env } from "./config/env.config.js";
 
 /** @type {NextConfig} */
 const config = {
+	/** Compression is handled by the traefik reverse proxy, see `.github/auto-deploy-values.yaml`. */
+	compress: false,
 	eslint: {
 		dirs: [process.cwd()],
 		ignoreDuringBuilds: true,
